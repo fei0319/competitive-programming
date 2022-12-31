@@ -1,3 +1,5 @@
+cph
+*.bin
 .vscode/
 *.exe
 *.in
