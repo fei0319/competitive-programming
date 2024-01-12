@@ -26,7 +26,8 @@ jobs:
         run: find . -type f -name "*.cpp" -exec dos2unix {} \;
 
       - name: Run clang-format
-        run: clang-format -i --style=file *.cpp
+        run: |
+          find . -iname "*.cpp" -exec clang-format -i --style=file {} \;
 
       - name: Commit and Push Changes
         run: |
