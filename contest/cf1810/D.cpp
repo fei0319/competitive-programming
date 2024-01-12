@@ -4,7 +4,9 @@ using ll = long long int;
 
 constexpr ll inf = 1e18;
 
-ll mein_ceil(ll a, ll b) { return (a + b - 1) / b; }
+ll mein_ceil(ll a, ll b) {
+    return (a + b - 1) / b;
+}
 
 void solve(void) {
     ll L = 1, R = inf;

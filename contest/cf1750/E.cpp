@@ -28,7 +28,9 @@ struct SegmentTree {
         int mid = (l + r) >> 1;
         build(node << 1, l, mid), build(node << 1 | 1, mid + 1, r);
     }
-    void push_up(int node) { sum[node] = sum[node << 1] + sum[node << 1 | 1]; }
+    void push_up(int node) {
+        sum[node] = sum[node << 1] + sum[node << 1 | 1];
+    }
     void push_down(int node, int L, int R) {
         if (tag[node] == NOTAG) {
             return;

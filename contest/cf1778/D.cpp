@@ -19,8 +19,12 @@ char a[maxn], b[maxn];
 
 struct Node {
     int x, y;
-    Node(int _x = 0, int _y = 0) { x = _x, y = _y; }
-    void out() { std::cout << x << ' ' << y << '\n'; }
+    Node(int _x = 0, int _y = 0) {
+        x = _x, y = _y;
+    }
+    void out() {
+        std::cout << x << ' ' << y << '\n';
+    }
 } f[maxn];
 
 Node operator*(int a, Node b) {
@@ -32,7 +36,9 @@ Node operator*(Node b, int a) {
 Node operator-(Node a, Node b) {
     return Node((a.x - b.x) % mod, (a.y - b.y) % mod);
 }
-Node operator-(Node a, int b) { return Node(a.x, (a.y - b) % mod); }
+Node operator-(Node a, int b) {
+    return Node(a.x, (a.y - b) % mod);
+}
 
 void solve(void) {
     std::cin >> n;

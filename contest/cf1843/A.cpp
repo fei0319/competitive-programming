@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <cstdio>
 
-
 constexpr int MAXN = 1e5 + 19;
 
 int n, a[MAXN];

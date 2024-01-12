@@ -7,9 +7,16 @@
 
 #include <bits/stdc++.h>
 typedef long long int ll;
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))
@@ -24,7 +31,9 @@ int n, m;
 std::vector<int> G[maxn];
 std::mt19937 rng(std::time(0));
 
-int myRnd(int l, int r) { return l + rng() % (r - l + 1); }
+int myRnd(int l, int r) {
+    return l + rng() % (r - l + 1);
+}
 
 bool vist[maxn];
 int fa[maxn], u[maxn], v[maxn];

@@ -1,6 +1,6 @@
+#include <array>
 #include <iostream>
 #include <vector>
-#include <array>
 
 std::vector<uint8_t> sieve(int n) {
     std::vector<uint8_t> is_prime(n + 1, true);
@@ -58,7 +58,8 @@ int main() {
             x = y;
         }
     };
-    std::vector<std::vector<int>> G {std::vector<int> {1, 2}, std::vector<int> {0}, std::vector<int> {0, 2}};
+    std::vector<std::vector<int>> G{std::vector<int>{1, 2}, std::vector<int>{0},
+                                    std::vector<int>{0, 2}};
 
     dp[0][type(a[0])][0] = 0;
     for (int i = 0; i < 3; ++i) {
@@ -67,11 +68,12 @@ int main() {
 
     auto get = [](auto x) {
         int res = INF;
-//        for (int i = 0; i < 3; ++i ) {
-//            for (int j = 0; j < 2; ++j) {
-//                std::cout << "dp_" << i << "_" << j << "=" << x[i][j] << '\n';
-//            }
-//        }
+        //        for (int i = 0; i < 3; ++i ) {
+        //            for (int j = 0; j < 2; ++j) {
+        //                std::cout << "dp_" << i << "_" << j << "=" << x[i][j]
+        //                << '\n';
+        //            }
+        //        }
         for (auto &i : x) {
             for (auto j : i) {
                 res = std::min(res, j);
@@ -83,14 +85,14 @@ int main() {
     for (int i = 1; i < n; ++i) {
         // unmodified
         int t = type(a[i]);
-//        std::cout << a[i] << ":\n";
+        //        std::cout << a[i] << ":\n";
         for (int b : G[t]) {
             if (b != 2 || is_prime[a[i] + 1])
-            update(dp[i][t][0], dp[i - 1][b][1]);
+                update(dp[i][t][0], dp[i - 1][b][1]);
         }
         if (is_prime[a[i] + a[i - 1]]) {
             update(dp[i][t][0], dp[i - 1][type(a[i - 1])][0]);
-//            std::cout << a[i] + a[i - 1] << " is prime\n";
+            //            std::cout << a[i] + a[i - 1] << " is prime\n";
         }
 
         // modified
@@ -107,7 +109,7 @@ int main() {
         if (is_prime[a[i - 1] + 1])
             update(dp[i][2][1], dp[i - 1][type(a[i - 1])][0] + 1);
 
-//        std::cout << get(dp[i]) << '\n';
+        //        std::cout << get(dp[i]) << '\n';
     }
 
     std::cout << get(dp[n - 1]) << '\n';

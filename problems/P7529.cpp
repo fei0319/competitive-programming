@@ -8,9 +8,16 @@
 
 #include <bits/stdc++.h>
 typedef long long int ll;
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))
@@ -24,7 +31,9 @@ const int maxn = 42, mod = 1e9 + 7;
 int n, x[maxn], y[maxn];
 int dp[maxn][maxn][maxn], cnt[maxn][maxn][maxn];
 
-bool cross(int a, int b) { return (ll)x[a] * y[b] - (ll)x[b] * y[a] > 0; }
+bool cross(int a, int b) {
+    return (ll)x[a] * y[b] - (ll)x[b] * y[a] > 0;
+}
 bool check(int a, int b, int c, int t) {
     bool ab = (ll)(x[a] - x[b]) * (y[t] - y[b]) -
                   (ll)(x[t] - x[b]) * (y[a] - y[b]) >
@@ -58,7 +67,9 @@ void init(int n) {
     for (int i = n - 1; i >= 0; --i)
         ifact[i] = (ll)ifact[i + 1] * (i + 1) % mod;
 }
-int A(int n, int m) { return (ll)fact[n] * ifact[n - m] % mod; }
+int A(int n, int m) {
+    return (ll)fact[n] * ifact[n - m] % mod;
+}
 
 void transfer(int a, int b, int c, int x, int y, int z) {
     if (x > y)

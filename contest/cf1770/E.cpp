@@ -27,7 +27,9 @@ void dfs(int node, int f) {
     }
 }
 
-int calc(int x) { return (ll)x * (k - x) % mod; }
+int calc(int x) {
+    return (ll)x * (k - x) % mod;
+}
 
 void solve(void) {
     std::cin >> n >> k;

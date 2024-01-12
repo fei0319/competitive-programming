@@ -1,6 +1,6 @@
+#include <algorithm>
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 using ll = long long int;
 
@@ -52,10 +52,13 @@ class Segment {
         }
         int mid = (L + R) / 2;
         push_down(node);
-        if (l <= mid) add(node << 1, L, mid, l, r, val);
-        if (r > mid) add(node << 1 | 1, mid + 1, R, l, r, val);
+        if (l <= mid)
+            add(node << 1, L, mid, l, r, val);
+        if (r > mid)
+            add(node << 1 | 1, mid + 1, R, l, r, val);
         push_up(node);
     }
+
 public:
     explicit Segment(std::vector<T> &a) {
         n = a.size();
@@ -81,7 +84,7 @@ void solve() {
         i = x;
     }
 
-    Segment<ll> mt {a};
+    Segment<ll> mt{a};
 
     std::vector<std::pair<int, int>> voucher(m);
     for (auto &[r, w] : voucher) {

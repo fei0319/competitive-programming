@@ -30,7 +30,9 @@ int binom(int n, int m) {
     return (ll)fact[n] * ifact[n - m] % mod * ifact[m] % mod;
 }
 
-int empty_divide(int n, int m) { return binom(n + m - 1, m - 1); }
+int empty_divide(int n, int m) {
+    return binom(n + m - 1, m - 1);
+}
 
 int main() {
     std::ios::sync_with_stdio(false);

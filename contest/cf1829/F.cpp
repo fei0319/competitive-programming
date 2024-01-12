@@ -11,23 +11,23 @@ int n, m;
 int deg[MAXN];
 
 void solve(void) {
-	std::cin >> n >> m;
-	for (int i = 1; i <= n; ++i) {
-		deg[i] = 0;
-	}
-	for (int i = 1; i <= m; ++i) {
-		int u, v;
-		std::cin >> u >> v;
-		++deg[u], ++deg[v];
-	}
-	int leaves = 0;
-	for (int i = 1; i <= n; ++i) {
-		if (deg[i] == 1) {
-			++leaves;
-		}
-	}
-	int x = n - 1 - leaves, y = leaves / x;
-	std::cout << x << ' ' << y << '\n';
+    std::cin >> n >> m;
+    for (int i = 1; i <= n; ++i) {
+        deg[i] = 0;
+    }
+    for (int i = 1; i <= m; ++i) {
+        int u, v;
+        std::cin >> u >> v;
+        ++deg[u], ++deg[v];
+    }
+    int leaves = 0;
+    for (int i = 1; i <= n; ++i) {
+        if (deg[i] == 1) {
+            ++leaves;
+        }
+    }
+    int x = n - 1 - leaves, y = leaves / x;
+    std::cout << x << ' ' << y << '\n';
 }
 
 int main(int argc, char *argv[]) {

@@ -1,7 +1,7 @@
-#include <iostream>
-#include <vector>
 #include <cstdint>
+#include <iostream>
 #include <numeric>
+#include <vector>
 
 using ll = long long int;
 const int MOD = 998244353;
@@ -37,7 +37,9 @@ void dfs(int node, int f) {
             if (to == f || !vist[to]) {
                 continue;
             }
-            dp[node] = ((ll)dp[node] * g[to] + (ll)dp[to] * g[node] + (ll)dp[node] * dp[to]) % MOD;
+            dp[node] = ((ll)dp[node] * g[to] + (ll)dp[to] * g[node] +
+                        (ll)dp[node] * dp[to]) %
+                       MOD;
             g[node] = ((ll)g[node] * g[to] + (ll)g[node] * dp[to]) % MOD;
         }
         if (f == -1 || !vist[f]) {

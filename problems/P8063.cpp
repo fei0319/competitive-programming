@@ -8,9 +8,16 @@
 
 #include <bits/stdc++.h>
 typedef long long int ll;
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))
@@ -41,7 +48,9 @@ int k, v[maxn], rnk[maxn], c[maxn], ans[maxn];
 
 struct Node {
     int d, p, id;
-    bool operator<(const Node &b) const { return d != b.d ? d > b.d : p > b.p; }
+    bool operator<(const Node &b) const {
+        return d != b.d ? d > b.d : p > b.p;
+    }
 };
 
 bool rev;

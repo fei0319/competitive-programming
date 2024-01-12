@@ -17,7 +17,9 @@ struct Node {
         int max = std::max(x, 0), min = std::min(x, 0);
         *this = Node(max, min, max, min, max, min, x);
     }
-    Node reverse() const { return Node(mx, mn, rmx, rmn, lmx, lmn, tot); }
+    Node reverse() const {
+        return Node(mx, mn, rmx, rmn, lmx, lmn, tot);
+    }
     Node operator+(const Node &b) const {
         Node res;
         res.lmx = std::max(lmx, tot + b.lmx);
@@ -33,7 +35,9 @@ struct Node {
 
         return res;
     }
-    void print() { printf("%d %d\n", mn, mx); }
+    void print() {
+        printf("%d %d\n", mn, mx);
+    }
 };
 
 int n, q;

@@ -16,9 +16,7 @@ int main() {
         std::cin >> i;
     }
 
-    auto abs = [](int x) {
-        return x > 0 ? x : -x;
-    };
+    auto abs = [](int x) { return x > 0 ? x : -x; };
     auto ans = 0ll;
     for (int i = 1; i < n; ++i) {
         ans += abs(a[i] - a[i - 1]);

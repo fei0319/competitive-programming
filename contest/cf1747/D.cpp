@@ -24,7 +24,9 @@ struct Tar {
             res += tr[x];
         return res;
     }
-    int query(int l, int r) { return query(r) - query(l - 1); }
+    int query(int l, int r) {
+        return query(r) - query(l - 1);
+    }
     int find_next(int x) {
         int res = 0, tmp = 0, s = query(x);
         for (int i = 19; ~i; --i) {

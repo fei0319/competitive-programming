@@ -4,7 +4,8 @@ using i64 = long long int;
 
 constexpr int MOD = 998244353;
 
-template <typename Tp> Tp qpow(Tp a, int b) {
+template <typename Tp>
+Tp qpow(Tp a, int b) {
     Tp res = 1;
     while (b) {
         if (b & 1)
@@ -28,8 +29,12 @@ struct Z {
     int x;
     Z(int x = 0) : x(norm(x)) {}
     Z(i64 x) : x(norm(x % MOD)) {}
-    int val() const { return x; }
-    Z operator-() const { return Z(norm(MOD - x)); }
+    int val() const {
+        return x;
+    }
+    Z operator-() const {
+        return Z(norm(MOD - x));
+    }
     Z inv() const {
         assert(x != 0);
         return qpow(*this, MOD - 2);
@@ -46,7 +51,9 @@ struct Z {
         x = norm(x - rhs.x);
         return *this;
     }
-    Z &operator/=(const Z &rhs) { return *this *= rhs.inv(); }
+    Z &operator/=(const Z &rhs) {
+        return *this *= rhs.inv();
+    }
     friend Z operator*(const Z &lhs, const Z &rhs) {
         Z res = lhs;
         res *= rhs;
@@ -113,14 +120,18 @@ struct BIT {
 
 struct sBIT {
     BIT t;
-    void clear(int n) { t.clear(n); }
+    void clear(int n) {
+        t.clear(n);
+    }
     void update(int l, int r, i64 k) {
         if (l > r)
             return;
         t.update(l, k);
         t.update(r + 1, -k);
     }
-    i64 query(int x) { return t.query(x); }
+    i64 query(int x) {
+        return t.query(x);
+    }
 } con;
 
 void solve(void) {

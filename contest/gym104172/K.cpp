@@ -3,7 +3,9 @@
 
 constexpr int maxn = 1e5 + 19;
 
-int gcd(int a, int b) { return b ? gcd(b, a % b) : a; }
+int gcd(int a, int b) {
+    return b ? gcd(b, a % b) : a;
+}
 
 int n, a[maxn];
 

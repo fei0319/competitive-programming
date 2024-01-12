@@ -19,10 +19,17 @@
 
 typedef long long int ll;
 
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
 
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))
@@ -35,7 +42,9 @@ const int maxn = 2e5 + 19;
 
 struct Edge {
     int to, id;
-    Edge(int __to, int __id) { to = __to, id = __id; }
+    Edge(int __to, int __id) {
+        to = __to, id = __id;
+    }
 };
 
 int n, m, a[maxn], b[maxn];
