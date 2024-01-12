@@ -6,7 +6,9 @@ ll dp[70][2][2][2];
 ll n, m;
 bool ok[70];
 
-inline int g(int a) { return a & 1; }
+inline int g(int a) {
+    return a & 1;
+}
 
 void tran(int b, int less, int eq, int jw) {
     for (int i = 0; i <= 1; ++i) {
@@ -52,7 +54,8 @@ void solve(void) {
             for (int b = 0; b <= 1; ++b) {
                 for (int c = 0; c <= 1; ++c) {
                     tran(i, a, b, c);
-                    //			std::cout << "dp_" << i << "_" << a << b << c <<
+                    //			std::cout << "dp_" << i << "_" << a << b << c
+                    //<<
                     //"="
                     //<< dp[i][a][b][c] << std::endl;
                 }

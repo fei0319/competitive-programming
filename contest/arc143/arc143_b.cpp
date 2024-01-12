@@ -19,10 +19,17 @@
 
 typedef long long int ll;
 
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
 
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))
@@ -35,7 +42,9 @@ const int maxn = 500 + 19, mod = 998244353;
 
 int N, fact[maxn * maxn], ifact[maxn * maxn];
 
-int A(int n, int m) { return (ll)fact[n] * ifact[n - m] % mod; }
+int A(int n, int m) {
+    return (ll)fact[n] * ifact[n - m] % mod;
+}
 
 int qpow(int a, int b) {
     int res = 1;

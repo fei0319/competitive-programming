@@ -5,15 +5,15 @@ using ll = long long int;
 const char *t = "codeforces";
 
 void solve(void) {
-	std::string s;
-	std::cin >> s;
-	int ans = 0;
-	for(int i = 0; i < (int) s.length(); ++i) {
-		if (s[i] != t[i]) {
-			++ans;
-		}
-	}
-	std::cout << ans << std::endl;
+    std::string s;
+    std::cin >> s;
+    int ans = 0;
+    for (int i = 0; i < (int)s.length(); ++i) {
+        if (s[i] != t[i]) {
+            ++ans;
+        }
+    }
+    std::cout << ans << std::endl;
 }
 
 int main(int argc, char *argv[]) {

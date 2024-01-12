@@ -8,9 +8,16 @@
 
 #include <bits/stdc++.h>
 typedef long long int ll;
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))
@@ -23,11 +30,21 @@ const int maxn = 1e5 + 19;
 
 struct Node {
     long double x, y;
-    Node(long double __x = 0, long double __y = 0) { x = __x, y = __y; }
-    bool operator<(const Node &b) const { return x != b.x ? x < b.x : y < b.y; }
-    Node operator+(const Node &b) const { return Node(x + b.x, y + b.y); }
-    Node operator-(const Node &b) const { return Node(x - b.x, y - b.y); }
-    bool operator*(const Node &b) const { return x * b.y - b.x * y > 0; }
+    Node(long double __x = 0, long double __y = 0) {
+        x = __x, y = __y;
+    }
+    bool operator<(const Node &b) const {
+        return x != b.x ? x < b.x : y < b.y;
+    }
+    Node operator+(const Node &b) const {
+        return Node(x + b.x, y + b.y);
+    }
+    Node operator-(const Node &b) const {
+        return Node(x - b.x, y - b.y);
+    }
+    bool operator*(const Node &b) const {
+        return x * b.y - b.x * y > 0;
+    }
 } p[maxn];
 
 int n, st[maxn], top;

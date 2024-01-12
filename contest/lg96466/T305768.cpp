@@ -17,7 +17,9 @@ ull getnext() {
     return seed;
 }
 
-uint rd(uint l, uint r) { return getnext() % (r - l + 1) + l; }
+uint rd(uint l, uint r) {
+    return getnext() % (r - l + 1) + l;
+}
 
 int n;
 ull k;

@@ -8,9 +8,16 @@
 
 #include <bits/stdc++.h>
 typedef long long int ll;
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))
@@ -66,8 +73,12 @@ void modify(int node, int L, int R, int l, int r) {
 struct Node {
     int to;
     ll dist;
-    Node(int __to, ll __dist) { to = __to, dist = __dist; }
-    bool operator<(const Node &b) const { return dist > b.dist; }
+    Node(int __to, ll __dist) {
+        to = __to, dist = __dist;
+    }
+    bool operator<(const Node &b) const {
+        return dist > b.dist;
+    }
 };
 
 void dijkstra(ll *d) {

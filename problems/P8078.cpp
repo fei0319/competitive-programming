@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = std::getchar(), res = 0;
     while (!std::isdigit(ch))
@@ -9,7 +10,10 @@ template <typename Tp> void read(Tp &res) {
         res = res * 10 + ch - 48, ch = std::getchar();
 }
 
-template <typename Tp> Tp pabs(const Tp &x) { return x > 0 ? x : -x; }
+template <typename Tp>
+Tp pabs(const Tp &x) {
+    return x > 0 ? x : -x;
+}
 
 typedef long long int ll;
 const int maxn = 5e5 + 19;

@@ -1,7 +1,7 @@
-#include <iostream>
-#include <vector>
 #include <algorithm>
 #include <array>
+#include <iostream>
+#include <vector>
 
 using ll = long long int;
 
@@ -9,12 +9,12 @@ const int MAXS = 1e7;
 
 class MergeableSegment {
     struct Node {
-        int ls {0}, rs {0};
-        int cnt {0};
+        int ls{0}, rs{0};
+        int cnt{0};
         Node() = default;
     };
-    Node *tr {new Node[MAXS]};
-    int tot {0};
+    Node *tr{new Node[MAXS]};
+    int tot{0};
     ll k;
     void push_up(int node) {
         tr[node].cnt = tr[tr[node].ls].cnt + tr[tr[node].rs].cnt;
@@ -77,15 +77,16 @@ class MergeableSegment {
             tr[x].ls = a, tr[y].ls = b;
             tr[y].rs = tr[x].rs, tr[x].rs = 0;
         } else {
-            auto [a, b] = split(tr[node].rs, mid + 1, R, d - tr[tr[node].ls].cnt);
+            auto [a, b] =
+                split(tr[node].rs, mid + 1, R, d - tr[tr[node].ls].cnt);
             tr[x].rs = a, tr[y].rs = b;
         }
         push_up(x), push_up(y);
         return {x, y};
     }
+
 public:
-    explicit MergeableSegment(ll k) : k(k) {
-    }
+    explicit MergeableSegment(ll k) : k(k) {}
     ~MergeableSegment() {
         delete[] tr;
     }
@@ -125,12 +126,12 @@ int main() {
         if (!b.empty() && i / k == b.back().back() / k) {
             b.back().push_back(i);
         } else {
-            b.push_back(std::vector<ll> {i});
+            b.push_back(std::vector<ll>{i});
         }
     }
 
-    MergeableSegment mt {k};
-    ll tag {0};
+    MergeableSegment mt{k};
+    ll tag{0};
     std::vector<std::pair<ll, int>> tree;
     for (auto &vec : b) {
         int rt = 0;
@@ -157,7 +158,8 @@ int main() {
         d -= tag / mt.size(rt), tag %= mt.size(rt);
     };
     auto query = [&tree, &mt, &tag, &k, &a](int x) {
-        if (tree.size() == 1 || tree[tree.size() - 2].first != tree[tree.size() - 1].first - 1) {
+        if (tree.size() == 1 ||
+            tree[tree.size() - 2].first != tree[tree.size() - 1].first - 1) {
             auto [d, rt] = tree.back();
             int sz = mt.size(rt);
             if (x > sz) {

@@ -20,10 +20,17 @@
 
 typedef long long int ll;
 
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
 
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))
@@ -43,17 +50,27 @@ std::vector<std::pair<int, int>> rain[maxn];
 std::vector<ll> Gx[maxn], Gy[maxn], Lx[maxn];
 std::multiset<ll> G, L;
 
-void add_limit(std::vector<ll> *Tx, int i, const ll &x) { Tx[i].push_back(x); }
+void add_limit(std::vector<ll> *Tx, int i, const ll &x) {
+    Tx[i].push_back(x);
+}
 
 ll les[maxn], grt[maxn];
 ll cl[maxn], cg[maxn];
-int getpos(int x) { return std::lower_bound(pos + 1, pos + 1 + cnt, x) - pos; }
+int getpos(int x) {
+    return std::lower_bound(pos + 1, pos + 1 + cnt, x) - pos;
+}
 
-void add(ll *v, ll *cnt, int i, const ll &x) { v[i] += x, ++cnt[i]; }
+void add(ll *v, ll *cnt, int i, const ll &x) {
+    v[i] += x, ++cnt[i];
+}
 
-void del(ll *v, ll *cnt, int i, const ll &x) { v[i] += x, --cnt[i]; }
+void del(ll *v, ll *cnt, int i, const ll &x) {
+    v[i] += x, --cnt[i];
+}
 
-ll getmax(const std::multiset<ll> &s) { return *--s.end(); }
+ll getmax(const std::multiset<ll> &s) {
+    return *--s.end();
+}
 
 bool ans[maxn];
 

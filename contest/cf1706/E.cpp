@@ -20,10 +20,17 @@
 
 typedef long long int ll;
 
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
 
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))

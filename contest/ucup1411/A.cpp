@@ -8,7 +8,6 @@ int main() {
         std::cout << i << ' ' << i % n + 1 << '\n';
     }
 
-
     k -= n * 2;
     for (int i = 1; i <= n; ++i) {
         for (int j = 1; j <= n; ++j) {

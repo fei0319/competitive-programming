@@ -29,7 +29,7 @@ int main() {
 
     dp[0] = 0;
     for (int i = 1; i < (1 << B); ++i) {
-        for (int j = i & (i - 1); ; j = (j - 1) & i) {
+        for (int j = i & (i - 1);; j = (j - 1) & i) {
             if (tot[i ^ j] <= W) {
                 dp[i] = std::min(dp[i], dp[j] + 1);
             }

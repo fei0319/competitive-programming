@@ -17,7 +17,9 @@ int main() {
         int s = 0;
         for (int j = n; j >= 0; --j) {
             s = (s + dp[i + 1][j]) % MOD;
-            if (p[j] < i) {dp[i][j] = s;}
+            if (p[j] < i) {
+                dp[i][j] = s;
+            }
         }
     }
 

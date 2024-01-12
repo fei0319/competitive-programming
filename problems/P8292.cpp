@@ -8,9 +8,16 @@
 
 #include <bits/stdc++.h>
 typedef long long int ll;
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))
@@ -37,9 +44,15 @@ int dp[maxn][1 << 13], num[maxn][1 << 13];
 int prime[maxs], cnt, kth[maxs], p2[1000009];
 bool notprime[maxs];
 
-inline void add(int &a, int b) { a = (a + b) % mod; }
-inline void mul(int &a, int b) { a = (ll)a * b % mod; }
-inline int rev(int s) { return ((1 << 13) - 1) ^ s; }
+inline void add(int &a, int b) {
+    a = (a + b) % mod;
+}
+inline void mul(int &a, int b) {
+    a = (ll)a * b % mod;
+}
+inline int rev(int s) {
+    return ((1 << 13) - 1) ^ s;
+}
 
 int main() {
     for (int i = 2; i <= 2000; ++i) {

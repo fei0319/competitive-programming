@@ -19,10 +19,17 @@
 
 typedef long long int ll;
 
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
 
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))
@@ -43,8 +50,12 @@ ll __query(int sx, int sy, int gx, int gy) {
     return delta(sx, gx) + delta(sy, gy);
 }
 
-ll flr(ll x) { return x / b * b; }
-ll cel(ll x) { return flr(x + b - 1); }
+ll flr(ll x) {
+    return x / b * b;
+}
+ll cel(ll x) {
+    return flr(x + b - 1);
+}
 
 ll query(int sx, int sy, int gx, int gy) {
     if (sx / b != gx / b && sy / b != gy / b)

@@ -7,9 +7,16 @@
 
 #include <bits/stdc++.h>
 typedef long long int ll;
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))
@@ -26,7 +33,9 @@ int sum(int x, int y) {
     return ((ll)y * (y + 1) / 2 - (ll)x * (x + 1) / 2) % mod;
 }
 
-int Evcount(int l, int r) { return r / 2 - (l - 1) / 2; }
+int Evcount(int l, int r) {
+    return r / 2 - (l - 1) / 2;
+}
 int Evsum(int l, int r) {
     if (l == r)
         return l % 2 == 0 ? l : 0;

@@ -39,21 +39,39 @@ int mod = 998244353, grt = 3;
 #endif
 
 class poly {
-  private:
+private:
     std::vector<int> data;
 
-  public:
-    poly(std::size_t len = std::size_t(0)) { data = std::vector<int>(len); }
-    poly(const std::vector<int> &b) { data = b; }
-    poly(const poly &b) { data = b.data; }
-    void resize(std::size_t len, int val = 0) { data.resize(len, val); }
-    std::size_t size(void) const { return data.size(); }
-    void clear(void) { data.clear(); }
+public:
+    poly(std::size_t len = std::size_t(0)) {
+        data = std::vector<int>(len);
+    }
+    poly(const std::vector<int> &b) {
+        data = b;
+    }
+    poly(const poly &b) {
+        data = b.data;
+    }
+    void resize(std::size_t len, int val = 0) {
+        data.resize(len, val);
+    }
+    std::size_t size(void) const {
+        return data.size();
+    }
+    void clear(void) {
+        data.clear();
+    }
 #ifdef _FEISTDLIB_CPP11_
-    void shrink_to_fit(void) { data.shrink_to_fit(); }
+    void shrink_to_fit(void) {
+        data.shrink_to_fit();
+    }
 #endif
-    int &operator[](std::size_t b) { return data[b]; }
-    const int &operator[](std::size_t b) const { return data[b]; }
+    int &operator[](std::size_t b) {
+        return data[b];
+    }
+    const int &operator[](std::size_t b) const {
+        return data[b];
+    }
 
     poly prefix(std::size_t len) const;
 
@@ -88,10 +106,10 @@ class poly {
 };
 
 class arbitrary_modulo_poly {
-  private:
+private:
     std::vector<int> data;
 
-  public:
+public:
     int mod;
     arbitrary_modulo_poly(std::size_t len = std::size_t(0),
                           int modulo = 1e9 + 7) {
@@ -100,14 +118,26 @@ class arbitrary_modulo_poly {
     arbitrary_modulo_poly(const std::vector<int> &b, int modulo = 1e9 + 7) {
         mod = modulo, data = b;
     }
-    void resize(std::size_t len, const int &val = 0) { data.resize(len, val); }
-    std::size_t size(void) const { return data.size(); }
-    void clear(void) { data.clear(); }
+    void resize(std::size_t len, const int &val = 0) {
+        data.resize(len, val);
+    }
+    std::size_t size(void) const {
+        return data.size();
+    }
+    void clear(void) {
+        data.clear();
+    }
 #ifdef _FEISTDLIB_CPP11_
-    void shrink_to_fit(void) { data.shrink_to_fit(); }
+    void shrink_to_fit(void) {
+        data.shrink_to_fit();
+    }
 #endif
-    int &operator[](std::size_t b) { return data[b]; }
-    const int &operator[](std::size_t b) const { return data[b]; }
+    int &operator[](std::size_t b) {
+        return data[b];
+    }
+    const int &operator[](std::size_t b) const {
+        return data[b];
+    }
 
     arbitrary_modulo_poly prefix(std::size_t len) const;
 
@@ -179,11 +209,14 @@ int qpow(int a, int b, int p = mod) {
     return res;
 }
 
-inline int modulo_sqrt(int a, int p) { return 1; }
+inline int modulo_sqrt(int a, int p) {
+    return 1;
+}
 
 const long double PI = std::acos((long double)(-1)), EPS = 1e-18;
 
-template <typename FLOAT_T> FLOAT_T fabs(const FLOAT_T &x) {
+template <typename FLOAT_T>
+FLOAT_T fabs(const FLOAT_T &x) {
     return x > 0 ? x : -x;
 }
 
@@ -217,9 +250,15 @@ struct comp {
     comp operator*(const comp &b) const {
         return comp(x * b.x - y * b.y, x * b.y + y * b.x);
     }
-    comp operator+(const comp &b) const { return comp(x + b.x, y + b.y); }
-    comp operator-(const comp &b) const { return comp(x - b.x, y - b.y); }
-    comp conj(void) { return comp(x, -y); }
+    comp operator+(const comp &b) const {
+        return comp(x + b.x, y + b.y);
+    }
+    comp operator-(const comp &b) const {
+        return comp(x - b.x, y - b.y);
+    }
+    comp conj(void) {
+        return comp(x, -y);
+    }
 };
 
 std::vector<int> rev;
@@ -398,7 +437,9 @@ m_poly operator*(const m_poly &_f, const m_poly &_h) {
     return m_poly(r, mod);
 }
 
-m_poly &operator*=(m_poly &f, const m_poly &h) { return f = f * h; }
+m_poly &operator*=(m_poly &f, const m_poly &h) {
+    return f = f * h;
+}
 
 /*
  * Polynomial Addition
@@ -681,7 +722,9 @@ poly poly::inv(void) const {
     return f;
 }
 
-poly poly::inv(std::size_t len) const { return prefix(len).inv(); }
+poly poly::inv(std::size_t len) const {
+    return prefix(len).inv();
+}
 
 m_poly m_poly::inv(void) const {
     if (data[0] == 0)
@@ -698,7 +741,9 @@ m_poly m_poly::inv(void) const {
     return f;
 }
 
-m_poly m_poly::inv(std::size_t len) const { return prefix(len).inv(); }
+m_poly m_poly::inv(std::size_t len) const {
+    return prefix(len).inv();
+}
 
 /*
  * Division of Polynomial
@@ -858,9 +903,16 @@ m_poly exp(const m_poly &h) {
 #endif
 
 typedef long long int ll;
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))

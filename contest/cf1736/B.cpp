@@ -4,9 +4,13 @@ using ll = long long int;
 
 constexpr int maxn = 1e5 + 19;
 
-int gcd(int a, int b) { return b ? gcd(b, a % b) : a; }
+int gcd(int a, int b) {
+    return b ? gcd(b, a % b) : a;
+}
 
-int lcm(int x, int y) { return x * y / gcd(x, y); }
+int lcm(int x, int y) {
+    return x * y / gcd(x, y);
+}
 
 int n, a[maxn], b[maxn];
 

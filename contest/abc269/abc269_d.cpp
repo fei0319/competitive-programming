@@ -7,9 +7,16 @@
 
 #include <bits/stdc++.h>
 typedef long long int ll;
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))
@@ -21,7 +28,9 @@ template <typename Tp> void read(Tp &res) {
 const int maxn = 1e3 + 19;
 
 int fa[maxn];
-int getf(int x) { return fa[x] == x ? x : fa[x] = getf(fa[x]); }
+int getf(int x) {
+    return fa[x] == x ? x : fa[x] = getf(fa[x]);
+}
 int n, x[maxn], y[maxn];
 
 bool adj(int a, int b) {

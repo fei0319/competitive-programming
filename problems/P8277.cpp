@@ -1,10 +1,12 @@
 #include <bits/stdc++.h>
 
-template <typename Tp> void chkmax(Tp &a, const Tp &b) {
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
     if (a < b)
         a = b;
 }
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))

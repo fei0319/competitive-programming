@@ -8,9 +8,16 @@
 
 #include <bits/stdc++.h>
 typedef long long int ll;
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     bool flag = false;
@@ -26,10 +33,18 @@ const int maxn = 2e5 + 19;
 
 struct Node {
     int x, y;
-    Node(int __x = 0, int __y = 0) { x = __x, y = __y; }
-    bool operator<(const Node &b) const { return x != b.x ? x < b.x : y < b.y; }
-    Node operator+(const Node &b) const { return Node(x + b.x, y + b.y); }
-    Node operator-(const Node &b) const { return Node(x - b.x, y - b.y); }
+    Node(int __x = 0, int __y = 0) {
+        x = __x, y = __y;
+    }
+    bool operator<(const Node &b) const {
+        return x != b.x ? x < b.x : y < b.y;
+    }
+    Node operator+(const Node &b) const {
+        return Node(x + b.x, y + b.y);
+    }
+    Node operator-(const Node &b) const {
+        return Node(x - b.x, y - b.y);
+    }
     bool operator*(const Node &b) const {
         return (ll)x * b.y - (ll)b.x * y > 0;
     }
@@ -50,7 +65,9 @@ void reorder(std::vector<Node> &a) {
 
 struct Convex {
     std::vector<Node> v;
-    Convex(std::vector<Node> __v = {}) { v = __v; }
+    Convex(std::vector<Node> __v = {}) {
+        v = __v;
+    }
     Convex operator+(const Convex &__b) {
         std::vector<Node> a(v), b(__b.v);
         a.push_back(a.front()), b.push_back(b.front());

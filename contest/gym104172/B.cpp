@@ -1,7 +1,8 @@
 #include <cctype>
 #include <cstdio>
 
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))
@@ -18,8 +19,12 @@ int p[maxn][maxn], q[maxn][maxn];
 constexpr int mod = 998244353;
 struct mod_t {
     int x;
-    mod_t(int _x = 0) { x = _x; }
-    mod_t operator+(const mod_t &b) const { return (x + b.x) % mod; }
+    mod_t(int _x = 0) {
+        x = _x;
+    }
+    mod_t operator+(const mod_t &b) const {
+        return (x + b.x) % mod;
+    }
     mod_t operator*(const mod_t &b) const {
         return (long long int)x * b.x % mod;
     }
@@ -52,7 +57,9 @@ mod_t count_white() {
     return res + 1;
 }
 
-mod_t count_black() { return 1; }
+mod_t count_black() {
+    return 1;
+}
 
 int main() {
     read(n), read(m);

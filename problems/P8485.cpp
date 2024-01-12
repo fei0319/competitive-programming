@@ -8,9 +8,16 @@
 
 #include <bits/stdc++.h>
 typedef long long int ll;
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))
@@ -55,7 +62,9 @@ int dp[maxs], f[maxn], M[maxn], mul[maxn];
 bool chu[maxs];
 
 int fa[maxs];
-int getf(int x) { return fa[x] == x ? x : fa[x] = getf(fa[x]); }
+int getf(int x) {
+    return fa[x] == x ? x : fa[x] = getf(fa[x]);
+}
 
 int lim;
 void dfs(int node, int dep) {
@@ -74,7 +83,9 @@ void dfs(int node, int dep) {
 }
 
 int cnt;
-int new_node(void) { return ++cnt; }
+int new_node(void) {
+    return ++cnt;
+}
 
 int main() {
     read(n), read(m);

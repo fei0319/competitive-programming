@@ -9,9 +9,16 @@
 #include <bits/stdc++.h>
 typedef long long int ll;
 typedef long double real;
-template <typename Tp> void chkmax(Tp &a, const Tp &b) { a = std::max(a, b); }
-template <typename Tp> void chkmin(Tp &a, const Tp &b) { a = std::min(a, b); }
-template <typename Tp> void read(Tp &res) {
+template <typename Tp>
+void chkmax(Tp &a, const Tp &b) {
+    a = std::max(a, b);
+}
+template <typename Tp>
+void chkmin(Tp &a, const Tp &b) {
+    a = std::min(a, b);
+}
+template <typename Tp>
+void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     while (!isdigit(ch))
@@ -29,7 +36,9 @@ real ans;
 
 struct Matrix {
     real a[2][2];
-    Matrix() { a[0][0] = a[0][1] = a[1][0] = a[1][1] = 0; }
+    Matrix() {
+        a[0][0] = a[0][1] = a[1][0] = a[1][1] = 0;
+    }
     Matrix operator*(const Matrix &b) {
         Matrix res;
         for (int i = 0; i < 2; ++i)

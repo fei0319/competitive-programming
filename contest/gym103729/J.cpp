@@ -48,8 +48,12 @@ struct Hasher {
         for (int i = n; i >= 1; --i)
             b[i] = b[i + 1] + b[i];
     }
-    Hash_t code(int l, int r) { return a[r] - a[l - 1]; }
-    Hash_t rcode(int l, int r) { return b[l] - b[r + 1]; }
+    Hash_t code(int l, int r) {
+        return a[r] - a[l - 1];
+    }
+    Hash_t rcode(int l, int r) {
+        return b[l] - b[r + 1];
+    }
     Hash_t operator()(int L, int R, int l, int r) {
         if (l > R)
             return code(L, R);
