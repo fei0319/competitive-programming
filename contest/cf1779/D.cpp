@@ -32,20 +32,12 @@ bool check(int l, int r, int x) {
     cur.push_back(r + 1);
 
     if (need > rest[x]) {
-        //		std::cout << "N" << need << rest[x] << '\n';
         return false;
     }
     rest[x] -= need;
-    //	if(x == 2) std::cout << "DELing2\n";
 
     for (int i = 0; i + 1 < cur.size(); ++i)
         if (!check(cur[i] + 1, cur[i + 1] - 1, x - 1)) {
-            //			std::cout << "FAIL:" << cur[i] + 1 << ' ' <<
-            // cur[i
-            //+ 1]
-            //-
-            // 1
-            //<< ' ' << x - 1 << '\n';
             return false;
         }
     return true;
