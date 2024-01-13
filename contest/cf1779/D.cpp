@@ -41,7 +41,7 @@ bool check(int l, int r, int x) {
     for (int i = 0; i + 1 < cur.size(); ++i)
         if (!check(cur[i] + 1, cur[i + 1] - 1, x - 1)) {
             //			std::cout << "FAIL:" << cur[i] + 1 << ' ' <<
-            //cur[i
+            // cur[i
             //+ 1]
             //-
             // 1
