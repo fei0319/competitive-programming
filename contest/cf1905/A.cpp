@@ -3,9 +3,9 @@
 using ll = long long int;
 
 void solve(void) {
-	int n, m;
-	std::cin >> n >> m;
-	std::cout << std::max(n, m) << '\n';
+    int n, m;
+    std::cin >> n >> m;
+    std::cout << std::max(n, m) << '\n';
 }
 
 int main(int argc, char *argv[]) {
