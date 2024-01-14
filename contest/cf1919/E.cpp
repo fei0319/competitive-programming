@@ -92,9 +92,9 @@ void solve() {
 
     int ans = 0;
     for (int i = 0; i <= z; ++i) {
-        ans = (ans + (ll)binom(z, i) * F(a, i, 1) * F(b, z - i, 0)) % MOD;
-        ans = (ans + (ll)binom(z, i) * F(a, i, 0) * F(b, z - i, 1)) % MOD;
-        ans = (ans - (ll)binom(z, i) * F(a, i, 0) * F(b, z - i, 0)) % MOD;
+        ans = (ans + (ll)binom(z, i) * F(a, i, 1) % MOD * F(b, z - i, 0)) % MOD;
+        ans = (ans + (ll)binom(z, i) * F(a, i, 0) % MOD * F(b, z - i, 1)) % MOD;
+        ans = (ans - (ll)binom(z, i) * F(a, i, 0) % MOD * F(b, z - i, 0)) % MOD;
     }
     ans = (ans + MOD) % MOD;
     std::cout << ans << '\n';
