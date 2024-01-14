@@ -34,8 +34,12 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git add .
-          git commit -m "Applied dos2unix automatically (${{ env.CURRENT_DATE }})"
-          git push
+          if git diff --staged --quiet; then
+            echo "No changes after dos2unix, skipping commit."
+          else
+            git commit -m "Applied dos2unix automatically (${{ env.CURRENT_DATE }})"
+            git push
+          fi
 
       - name: Run clang-format on CPP Files
         run: |
@@ -46,5 +50,9 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git add .
-          git commit -m "Applied clang-format automatically (${{ env.CURRENT_DATE }})"
-          git push
+          if git diff --staged --quiet; then
+            echo "No changes after clang-format, skipping commit."
+          else
+            git commit -m "Applied clang-format automatically (${{ env.CURRENT_DATE }})"
+            git push
+          fi
