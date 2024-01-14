@@ -22,17 +22,29 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y clang-format dos2unix
 
-      - name: Run dos2unix
-        run: find . -type f -name "*.cpp" -exec dos2unix {} \;
+      - name: Get Current Date
+        id: date
+        run: echo "CURRENT_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
-      - name: Run clang-format
-        run: |
-          find . -iname "*.cpp" -exec clang-format -i --style=file {} \;
+      - name: Run dos2unix on All Files
+        run: find . -type f -exec dos2unix {} \;
 
-      - name: Commit and Push Changes
+      - name: Commit dos2unix Changes
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git add .
-          git commit -m "Applied clang-format and dos2unix"
+          git commit -m "Applied dos2unix automatically (${{ env.CURRENT_DATE }})"
+          git push
+
+      - name: Run clang-format on CPP Files
+        run: |
+          find . -iname "*.cpp" -exec clang-format -i --style=file {} \;
+
+      - name: Commit clang-format Changes
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .
+          git commit -m "Applied clang-format automatically (${{ env.CURRENT_DATE }})"
           git push
