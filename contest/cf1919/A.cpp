@@ -3,9 +3,9 @@
 using ll = long long int;
 
 void solve(void) {
-	int a, b;
-	std::cin >> a >> b;
-	std::cout << ((a + b) % 2 ? "Alice" : "Bob") << '\n';
+    int a, b;
+    std::cin >> a >> b;
+    std::cout << ((a + b) % 2 ? "Alice" : "Bob") << '\n';
 }
 
 int main(int argc, char *argv[]) {
