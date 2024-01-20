@@ -3,7 +3,7 @@
 using ll = long long int;
 
 struct Node {
-    int ls {0}, rs {0};
+    int ls{0}, rs{0};
 };
 
 void solve() {
@@ -23,17 +23,19 @@ void solve() {
     std::function<void(int &, int, int)> build = [&](int &node, int L, int R) {
         if (!node) {
             node = ++tot;
-            tr.push_back(Node {});
+            tr.push_back(Node{});
         }
-        if (L == R) return;
+        if (L == R)
+            return;
         int mid = (L + R) / 2;
         build(tr[node].ls, L, mid);
         build(tr[node].rs, mid + 1, R);
     };
     build(rt, 0, n - 1);
 
-    std::function<void(int, int, int)> init = [&](int node, int L, int R){
-        if (L == R) return;
+    std::function<void(int, int, int)> init = [&](int node, int L, int R) {
+        if (L == R)
+            return;
 
         auto [ls, rs] = tr[node];
         if (ls) {
@@ -63,26 +65,30 @@ void solve() {
         }
         return node;
     };
-    std::function<void(int, int, int, int, int, int)> add = [&](int node, int L, int R, int l, int r, int x) {
-        if (l <= L && R <= r) {
-            G[x + tot].push_back(node);
-            G[node + tot].push_back(x);
-            return;
-        }
-        int mid = (L + R) / 2;
-        if (l <= mid) add(tr[node].ls, L, mid, l, r, x);
-        if (r > mid) add(tr[node].rs, mid + 1, R, l, r, x);
-    };
+    std::function<void(int, int, int, int, int, int)> add =
+        [&](int node, int L, int R, int l, int r, int x) {
+            if (l <= L && R <= r) {
+                G[x + tot].push_back(node);
+                G[node + tot].push_back(x);
+                return;
+            }
+            int mid = (L + R) / 2;
+            if (l <= mid)
+                add(tr[node].ls, L, mid, l, r, x);
+            if (r > mid)
+                add(tr[node].rs, mid + 1, R, l, r, x);
+        };
     std::function<void(int)> construct = [&](int diff) {
         G.resize(tot * 2 + 1);
-        for (auto &i : G) i.clear();
+        for (auto &i : G)
+            i.clear();
 
         init(1, 0, n - 1);
-        
+
         for (auto [u, v] : g) {
-        	u = get_id(u), v = get_id(v);
-        	G[u].push_back(v + tot);
-        	G[v].push_back(u + tot);
+            u = get_id(u), v = get_id(v);
+            G[u].push_back(v + tot);
+            G[v].push_back(u + tot);
         }
 
         for (int i = 0; i < n; ++i) {
@@ -103,17 +109,19 @@ void solve() {
     std::function<void(int)> dfs = [&](int node) {
         st.push_back(node);
         vist[node] = true;
-        
+
         dfn[node] = low[node] = ++ind;
         for (int to : G[node]) {
-            if (!dfn[to]) dfs(to);
-            if (vist[to]) low[node] = std::min(low[node], low[to]);
+            if (!dfn[to])
+                dfs(to);
+            if (vist[to])
+                low[node] = std::min(low[node], low[to]);
         }
 
         if (dfn[node] == low[node]) {
-        	++cnt;
+            ++cnt;
             while (!st.empty() && dfn[st.back()] >= dfn[node]) {
-            	scc[st.back()] = cnt;
+                scc[st.back()] = cnt;
                 vist[st.back()] = false;
                 st.pop_back();
             }
