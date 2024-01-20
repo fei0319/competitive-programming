@@ -27,8 +27,10 @@ class Segment {
         }
         int mid = (L + R) / 2;
         int res = +INF;
-        if (l <= mid) res = std::min(res, query_min(node << 1, L, mid, l, r));
-        if (r > mid) res = std::min(res, query_min(node << 1 | 1, mid + 1, R, l, r));
+        if (l <= mid)
+            res = std::min(res, query_min(node << 1, L, mid, l, r));
+        if (r > mid)
+            res = std::min(res, query_min(node << 1 | 1, mid + 1, R, l, r));
         return res;
     }
     int query_max(int node, int L, int R, int l, int r) {
@@ -37,11 +39,14 @@ class Segment {
         }
         int mid = (L + R) / 2;
         int res = -INF;
-        if (l <= mid) res = std::max(res, query_max(node << 1, L, mid, l, r));
-        if (r > mid) res = std::max(res, query_max(node << 1 | 1, mid + 1, R, l, r));
+        if (l <= mid)
+            res = std::max(res, query_max(node << 1, L, mid, l, r));
+        if (r > mid)
+            res = std::max(res, query_max(node << 1 | 1, mid + 1, R, l, r));
         return res;
     }
     int L, R;
+
 public:
     void build(int L, int R, int *p) {
         this->L = L;
