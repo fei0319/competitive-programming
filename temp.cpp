@@ -2,9 +2,9 @@
 
 using ll = long long int;
 
-void solve(void) {}
+void solve() {}
 
-int main(int argc, char *argv[]) {
+int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
 
