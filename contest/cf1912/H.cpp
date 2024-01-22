@@ -45,56 +45,59 @@ int main() {
     }
 
     std::vector<std::pair<int, int>> ans;
-    std::function<void(int, const std::vector<int> &)> add = [&](int x, const std::vector<int> &v) {
-        if (x) {
-            ans.emplace_back(x, v.front());
-        }
-        for (int i = 1; i < (int)v.size(); ++i) {
-            ans.emplace_back(v[i - 1], v[i]);
-        }
-    };
+    std::function<void(int, const std::vector<int> &)> add =
+        [&](int x, const std::vector<int> &v) {
+            if (x) {
+                ans.emplace_back(x, v.front());
+            }
+            for (int i = 1; i < (int)v.size(); ++i) {
+                ans.emplace_back(v[i - 1], v[i]);
+            }
+        };
 
     for (const auto &component : components) {
-        std::function<std::pair<bool, std::vector<int>>(int)> check = [&](int x) {
-            for (int i : component) {
-                deg[i] = 0;
-            }
-            for (int i : component) {
-                if (i == x) continue;
-                for (int to : G[i]) {
-                    deg[to] += 1;
+        std::function<std::pair<bool, std::vector<int>>(int)> check =
+            [&](int x) {
+                for (int i : component) {
+                    deg[i] = 0;
                 }
-            }
-
-            std::queue<int> q;
-            for (int i : component) {
-                if (deg[i] == 0) {
-                    q.push(i);
+                for (int i : component) {
+                    if (i == x)
+                        continue;
+                    for (int to : G[i]) {
+                        deg[to] += 1;
+                    }
                 }
-            }
 
-            std::vector<int> res;
-            while (!q.empty()) {
-                int node = q.front();
-                q.pop();
+                std::queue<int> q;
+                for (int i : component) {
+                    if (deg[i] == 0) {
+                        q.push(i);
+                    }
+                }
 
-                res.push_back(node);
+                std::vector<int> res;
+                while (!q.empty()) {
+                    int node = q.front();
+                    q.pop();
 
-                if (node != x) {
-                    for (int to : G[node]) {
-                        deg[to] -= 1;
-                        if (deg[to] == 0) {
-                            q.push(to);
+                    res.push_back(node);
+
+                    if (node != x) {
+                        for (int to : G[node]) {
+                            deg[to] -= 1;
+                            if (deg[to] == 0) {
+                                q.push(to);
+                            }
                         }
                     }
                 }
-            }
 
-            if (res.size() == component.size()) {
-                return std::make_pair(true, res);
-            }
-            return std::make_pair(false, std::vector<int>{});
-        };
+                if (res.size() == component.size()) {
+                    return std::make_pair(true, res);
+                }
+                return std::make_pair(false, std::vector<int>{});
+            };
         if (check(0).first) {
             add(0, check(0).second);
             continue;
