@@ -42,8 +42,9 @@ void solve() {
         a[i + 1] = (s[i + 1] % 2 == v % 2) ? v + 2 : v + 1;
     }
     a[n - 1] = a[n - 2] = n / 2 * k;
-    
-    for (int i = n - 1; i >= 1; --i) a[i] -= a[i - 1];
+
+    for (int i = n - 1; i >= 1; --i)
+        a[i] -= a[i - 1];
 
     std::vector<std::vector<int>> ans(k);
     std::vector<int> sum(k);

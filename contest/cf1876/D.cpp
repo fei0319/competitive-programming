@@ -20,7 +20,8 @@ int getf(int node) {
 }
 void merge(int x, int y) {
     x = getf(x), y = getf(y);
-    if (x > y) std::swap(x, y);
+    if (x > y)
+        std::swap(x, y);
     fa[x] = y;
 }
 

@@ -56,7 +56,8 @@ bool at_verge(int x, int y) {
     return x == 0 || x == n - 1 || y == 0 || y == m - 1;
 }
 bool is_empty(int x, int y) {
-    return x >= 0 && x < n && y >= 0 && y < m && (a[x][y] == '.' || a[x][y] == 'V');
+    return x >= 0 && x < n && y >= 0 && y < m &&
+           (a[x][y] == '.' || a[x][y] == 'V');
 }
 
 TwoMin dp[MAXN];
