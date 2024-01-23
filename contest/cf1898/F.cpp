@@ -8,18 +8,15 @@ class TwoMin {
     std::vector<std::pair<int, int>> a;
 
 public:
-    bool insert(const std::pair<int, int> &p) {
+    int insert(const std::pair<int, int> &p) {
         if (a.empty()) {
             a.push_back(p);
-            return true;
+            return 0;
         } else if (a.size() == 1 && a[0].second != p.second) {
             a.push_back(p);
-            return true;
-        } else if (a.size() == 2 && a[0].second != p.second && p < a[1]) {
-            a[1] = p;
-            return true;
+            return 1;
         }
-        return false;
+        return -1;
     }
     std::pair<int, int> next(int index) const {
         return {a[index].first + 1, a[index].second};
@@ -151,25 +148,21 @@ void solve() {
             dp[id(i, j)] = TwoMin{};
             if (dist[id(i, j)] != INF && at_verge(i, j)) {
                 dp[id(i, j)].insert({0, id(i, j)});
-                q.push(id(i, j));
+                q.push(id(i, j) * 2);
             }
         }
     }
+
     while (!q.empty()) {
-        int x = q.front() / m, y = q.front() % m;
+        int x = q.front() / 2 / m, y = q.front() / 2 % m, v = q.front() & 1;
         q.pop();
 
         for (int d = 0; d < 4; ++d) {
             int nx = x + dx[d], ny = y + dy[d];
             if (is_empty(nx, ny)) {
-                bool flag = false;
-                for (int i = 0; i < dp[id(x, y)].size(); ++i) {
-                    if (dp[id(nx, ny)].insert(dp[id(x, y)].next(i))) {
-                        flag = true;
-                    }
-                }
-                if (flag) {
-                    q.push(id(nx, ny));
+                int t = dp[id(nx, ny)].insert(dp[id(x, y)].next(v));
+                if (t != -1) {
+                    q.push(id(nx, ny) * 2 + t);
                 }
             }
         }
