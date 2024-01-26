@@ -38,14 +38,14 @@ void solve() {
     };
 
     int ans = 0;
-    std::array<int, 2> f {1, 0};
+    std::array<int, 2> f{1, 0};
     for (int i = B - 1; i >= 0; --i) {
         int c = 0;
         auto g = f;
         if (n & (1LL << i)) {
             f[0] = g[0];
             f[1] = (g[0] + g[1]) % MOD;
-            c = (ll)g[0] * calc({1, 0}, i)% MOD;
+            c = (ll)g[0] * calc({1, 0}, i) % MOD;
         } else {
             f[0] = (g[0] + g[1]) % MOD;
             f[1] = g[1];

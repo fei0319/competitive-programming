@@ -6,7 +6,8 @@ const int MAXN = 2e5 + 19, MOD = 998244353;
 constexpr int qpow(int a, int b) {
     int res = 1;
     while (b) {
-        if (b & 1) res = (ll)res * a % MOD;
+        if (b & 1)
+            res = (ll)res * a % MOD;
         a = (ll)a * a % MOD, b >>= 1;
     }
     return res;
@@ -21,7 +22,8 @@ int p[MAXN], v[MAXN];
 void dfs0(int node, int f) {
     fa[node] = f;
     for (int to : G[node]) {
-        if (to == f) continue;
+        if (to == f)
+            continue;
         dfs0(to, node);
     }
 }
@@ -35,7 +37,8 @@ void dfs1(int node, int f) {
     }
 
     for (int to : G[node]) {
-        if (to == f || to == son[node]) continue;
+        if (to == f || to == son[node])
+            continue;
         dfs1(to, node);
     }
 }
