@@ -60,7 +60,8 @@ int main() {
         }
         if (l != a[i].front() && !mt[l]) {
             mt.update(l, 1);
-            if (i == n && l == m) ans = true;
+            if (i == n && l == m)
+                ans = true;
         }
     }
 

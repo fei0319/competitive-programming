@@ -5,7 +5,8 @@ const int MAXN = 1 << 17, MOD = 998244353;
 constexpr int qpow(int a, int b) {
     int res = 1;
     while (b) {
-        if (b & 1) res = (ll)res * a % MOD;
+        if (b & 1)
+            res = (ll)res * a % MOD;
         a = (ll)a * a % MOD, b >>= 1;
     }
     return res;
