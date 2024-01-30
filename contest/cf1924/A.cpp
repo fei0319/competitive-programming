@@ -30,7 +30,8 @@ void solve() {
     }
 
     std::function<void(int)> output = [&](int x) {
-        if (x == 0) return;
+        if (x == 0)
+            return;
         output(prev[x]);
         std::cout << s[x];
     };
@@ -50,8 +51,8 @@ void solve() {
             }
         }
 
-		if (i) {
-        	has[s[i] - 'a' + 1] = true;
+        if (i) {
+            has[s[i] - 'a' + 1] = true;
         }
     }
     std::cout << "YES\n";

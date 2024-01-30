@@ -14,13 +14,15 @@ struct BIT {
     }
     ll query(int x) {
         ll res = 0;
-        for (; x; x -= x & -x) res += tr[x];
+        for (; x; x -= x & -x)
+            res += tr[x];
         return res;
     }
 } num, val;
 
 ll sum(int x) {
-	if (x <= 0) return 0;
+    if (x <= 0)
+        return 0;
     return (ll)x * (x + 1) / 2;
 }
 
@@ -29,8 +31,10 @@ int prev(int x) {
     int l = 1, r = x;
     while (l < r) {
         int mid = (l + r) / 2;
-        if (num.query(mid) >= v) r = mid;
-        else l = mid + 1;
+        if (num.query(mid) >= v)
+            r = mid;
+        else
+            l = mid + 1;
     }
     return l;
 }
@@ -39,8 +43,10 @@ int next(int x) {
     int l = x - 1, r = n;
     while (l < r) {
         int mid = (l + r + 1) / 2;
-        if (num.query(mid) <= v) l = mid;
-        else r = mid - 1;
+        if (num.query(mid) <= v)
+            l = mid;
+        else
+            r = mid - 1;
     }
     return l + 1;
 }
@@ -61,25 +67,27 @@ ll query(int l, int r) {
     ll res = 0;
     if (prev(l) == prev(r)) {
         int nxt = next(r), pre = prev(l);
-        if (l == pre) l += 1;
-        if (r == nxt) r -= 1;
-        if (l > r) return 0;
+        if (l == pre)
+            l += 1;
+        if (r == nxt)
+            r -= 1;
+        if (l > r)
+            return 0;
         return (sum(nxt - l) - sum(nxt - r - 1)) * V[pre];
     }
     int L = next(l), R = prev(r);
     res += val.query(R - 1) - val.query(L - 1);
-    
+
     res += sum(L - l) * V[prev(l)];
-    
+
     res += (sum(next(r) - R - 1) - sum(next(r) - r - 1)) * V[R];
-    
+
     return res;
 }
 
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
-
 
     std::cin >> n >> m >> q;
 
@@ -95,7 +103,8 @@ int main() {
     for (int i = 0; i < m; ++i) {
         num.update(h[i].first, 1);
         if (i + 1 < m) {
-            val.update(h[i].first, h[i].second * sum(h[i + 1].first - h[i].first - 1));
+            val.update(h[i].first,
+                       h[i].second * sum(h[i + 1].first - h[i].first - 1));
         }
         V[h[i].first] = h[i].second;
     }
