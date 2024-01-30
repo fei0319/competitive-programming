@@ -9,8 +9,8 @@ using BitBase = unsigned long long int;
 class Bitset {
     static const uint W = 64;
     std::vector<BitBase> a;
-    Bitset(std::vector<BitBase> &&b) : a(b) {
-    }
+    Bitset(std::vector<BitBase> &&b) : a(b) {}
+
 public:
     Bitset(uint n) {
         a = std::vector<BitBase>(n / W + 1);
@@ -25,7 +25,7 @@ public:
         return *this;
     }
     Bitset operator<<(uint bias) const {
-    	std::vector<BitBase> x(a.size() + 1);
+        std::vector<BitBase> x(a.size() + 1);
 
         for (int i = 0; i + bias / W < (int)a.size(); ++i) {
             if (a[i]) {
@@ -36,7 +36,7 @@ public:
             }
         }
 
-        return Bitset {std::move(x)};
+        return Bitset{std::move(x)};
     }
     uint msb() const {
         for (int i = (int)a.size() - 1; i >= 0; --i) {
@@ -101,7 +101,6 @@ void dfs(int node) {
             x = std::min((int)dp.msb() + cnt, sz[node] / 2);
         }
     }
-
 
     res += (ll)x * (sz[node] - x);
     sz[node] += 1;
