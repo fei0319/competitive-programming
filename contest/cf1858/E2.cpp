@@ -23,12 +23,17 @@ class PersistentSegment {
         }
     }
     static bool query(int node, int L, int R, int x) {
-        if (!node) return false;
-        if (L == R) return true;
+        if (!node)
+            return false;
+        if (L == R)
+            return true;
         int mid = (L + R) / 2;
-        if (x <= mid) return query(tr[node].ls, L, mid, x);
-        else return query(tr[node].rs, mid + 1, R, x);
+        if (x <= mid)
+            return query(tr[node].ls, L, mid, x);
+        else
+            return query(tr[node].rs, mid + 1, R, x);
     }
+
 public:
     static int L, R;
     static int copy(int node) {
@@ -46,7 +51,7 @@ public:
 int PersistentSegment::L = 1;
 int PersistentSegment::R = 1e6;
 int PersistentSegment::tot = 0;
-PersistentSegment::Node PersistentSegment::tr[MAXS] {};
+PersistentSegment::Node PersistentSegment::tr[MAXS]{};
 
 using ps = PersistentSegment;
 
