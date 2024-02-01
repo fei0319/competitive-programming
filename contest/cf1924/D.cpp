@@ -8,7 +8,8 @@ const int MOD = 1e9 + 7;
 constexpr int qpow(int a, int b) {
     int res = 1;
     while (b) {
-        if (b & 1) res = (ll)res * a % MOD;
+        if (b & 1)
+            res = (ll)res * a % MOD;
         a = (ll)a * a % MOD, b >>= 1;
     }
     return res;
@@ -42,9 +43,11 @@ void solve() {
 
 int main() {
     fact[0] = 1;
-    for (int i = 1; i <= M; ++i) fact[i] = (ll)fact[i - 1] * i % MOD;
+    for (int i = 1; i <= M; ++i)
+        fact[i] = (ll)fact[i - 1] * i % MOD;
     ifact[M] = qpow(fact[M], MOD - 2);
-    for (int i = M - 1; i >= 0; --i) ifact[i] = (ll)ifact[i + 1] * (i + 1) % MOD;
+    for (int i = M - 1; i >= 0; --i)
+        ifact[i] = (ll)ifact[i + 1] * (i + 1) % MOD;
 
     H[0][0] = 1;
     for (int i = 0; i <= N; ++i) {
