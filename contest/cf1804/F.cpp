@@ -68,8 +68,10 @@ int main() {
         int l = now, r = q;
         while (l < r) {
             int mid = (l + r + 1) / 2;
-            if (ans[now] <= d_G(mid) * 2) l = mid;
-            else r = mid - 1;
+            if (ans[now] <= d_G(mid) * 2)
+                l = mid;
+            else
+                r = mid - 1;
         }
 
         for (int i = now; i <= l; ++i) {
