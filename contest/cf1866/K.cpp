@@ -38,7 +38,8 @@ class Lichao {
             return;
         }
         int mid = (L + R) / 2;
-        if (F(p, mid) + F(p, mid + 1) > F(tr[node].p, mid) + F(tr[node].p, mid + 1)) {
+        if (F(p, mid) + F(p, mid + 1) >
+            F(tr[node].p, mid) + F(tr[node].p, mid + 1)) {
             std::swap(p, tr[node].p);
         }
 
@@ -72,7 +73,8 @@ class Lichao {
             return {F(tr[node].p, x), tr[node].v};
         }
         int mid = (L + R) / 2;
-        std::pair<ll, ll> res = (x <= mid) ? query(tr[node].ls, L, mid, x) : query(tr[node].rs, mid + 1, R, x);
+        std::pair<ll, ll> res = (x <= mid) ? query(tr[node].ls, L, mid, x)
+                                           : query(tr[node].rs, mid + 1, R, x);
         ll v = F(tr[node].p, x);
         if (v > res.first) {
             res.second = res.first;
@@ -82,6 +84,7 @@ class Lichao {
         }
         return res;
     }
+
 public:
     static void add(int &node, std::pair<int, ll> p) {
         //        std::cout << "add " << p.first << ' ' <<p.second << '\n';
@@ -114,7 +117,8 @@ void dfs1(int node, int f) {
     dp[node] = {0LL, node};
 
     for (auto [to, w] : G[node]) {
-        if (to == f) continue;
+        if (to == f)
+            continue;
         dep_w[to] = dep_w[node] + w;
         dep[to] = dep[node] + 1;
         dfs1(to, node);
@@ -145,7 +149,8 @@ void dfs2(int node, int f) {
 
     for (int i = 0; i < d; ++i) {
         auto [to, w] = G[node][i];
-        if (to == f) continue;
+        if (to == f)
+            continue;
         g[to] = std::max({pre[i], suf[i], g[node], {0LL, node}});
         g[to].first += w;
         dfs2(to, node);

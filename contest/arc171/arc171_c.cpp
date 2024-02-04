@@ -24,7 +24,9 @@ void dfs(int node, int f) {
         }
         for (int i = 1; i <= deg[node] + 1; ++i) {
             for (int j = 0; j <= deg[to]; ++j) {
-                g[i] = (g[i] + (ll)dp[node][i - 1] * dp[to][j] % MOD * (j + 1)) % MOD;
+                g[i] =
+                    (g[i] + (ll)dp[node][i - 1] * dp[to][j] % MOD * (j + 1)) %
+                    MOD;
             }
         }
         for (int i = 0; i <= deg[node]; ++i) {
