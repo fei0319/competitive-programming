@@ -7,7 +7,8 @@ const int MAXN = 5e3 + 19;
 constexpr int qpow(int a, int b, int p) {
     int res = 1;
     while (b) {
-        if (b & 1) res = (ll)res * a % p;
+        if (b & 1)
+            res = (ll)res * a % p;
         a = (ll)a * a % p, b >>= 1;
     }
     return res;
