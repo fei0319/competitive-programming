@@ -8,7 +8,8 @@ const int MAXN = 501, MOD = 998244353;
 constexpr int qpow(int a, int b) {
     int res = 1;
     while (b) {
-        if (b & 1) res = (ll)res * a % MOD;
+        if (b & 1)
+            res = (ll)res * a % MOD;
         a = (ll)a * a % MOD, b >>= 1;
     }
     return res;
@@ -30,10 +31,13 @@ int dp[MAXN][MAXN * 4];
 
 int main() {
     fact[0] = 1;
-    for (int i = 1; i <= N; ++i) fact[i] = (ll)fact[i - 1] * i % MOD;
+    for (int i = 1; i <= N; ++i)
+        fact[i] = (ll)fact[i - 1] * i % MOD;
     ifact[N] = qpow(fact[N], MOD - 2);
-    for (int i = N - 1; i >= 0; --i) ifact[i] = (ll)ifact[i + 1] * (i + 1) % MOD;
-    for (int i = 1; i <= N; ++i) inv[i] = (ll)ifact[i] * fact[i - 1] % MOD;
+    for (int i = N - 1; i >= 0; --i)
+        ifact[i] = (ll)ifact[i + 1] * (i + 1) % MOD;
+    for (int i = 1; i <= N; ++i)
+        inv[i] = (ll)ifact[i] * fact[i - 1] % MOD;
 
     std::cin >> n >> k;
 

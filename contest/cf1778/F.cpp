@@ -11,7 +11,8 @@ int g[MAXN];
 void dfs1(int node, int f) {
     g[node] = a[node];
     for (int to : G[node]) {
-        if (to == f) continue;
+        if (to == f)
+            continue;
         dfs1(to, node);
         g[node] = std::gcd(g[node], g[to]);
     }
@@ -21,7 +22,8 @@ int dp[MAXN][MAXV], rt[MAXV];
 std::vector<int> d;
 void dfs(int node, int f) {
     for (int to : G[node]) {
-        if (to == f) continue;
+        if (to == f)
+            continue;
         dfs(to, node);
     }
 
@@ -30,7 +32,8 @@ void dfs(int node, int f) {
         g[v] = 0;
     }
     for (int to : G[node]) {
-        if (to == f) continue;
+        if (to == f)
+            continue;
         for (int v : d) {
             g[v] += dp[to][rt[v]];
         }
@@ -47,7 +50,8 @@ void dfs(int node, int f) {
         g[v] = 0;
     }
     for (int to : G[node]) {
-        if (to == f) continue;
+        if (to == f)
+            continue;
         for (int v : d) {
             g[v] += dp[to][v];
         }
