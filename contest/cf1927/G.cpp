@@ -8,7 +8,8 @@ int n, a[MAXN];
 int dp[MAXN][MAXN][2][2];
 
 void update(int &x, int y) {
-    if (y < x) x = y;
+    if (y < x)
+        x = y;
 }
 
 void solve() {
@@ -74,7 +75,8 @@ void solve() {
         }
     }
 
-    int ans = std::min({dp[1][n][0][0], dp[1][n][0][1], dp[1][n][1][0], dp[1][n][1][1]});
+    int ans = std::min(
+        {dp[1][n][0][0], dp[1][n][0][1], dp[1][n][1][0], dp[1][n][1][1]});
     std::cout << ans << '\n';
 }
 

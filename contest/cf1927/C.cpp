@@ -33,7 +33,7 @@ void solve() {
             return;
         }
     }
-//    std::cout << x << ' ' << y << '\n';
+    //    std::cout << x << ' ' << y << '\n';
 
     if (x >= 0 && y >= 0) {
         std::cout << "YES\n";

@@ -22,12 +22,14 @@ void solve() {
     std::vector<uint8_t> vist(n);
     std::vector<std::pair<int, int>> stack;
     std::vector<int> id(n);
-    std::function<void(int, int, int)> dfs = [&](int node, int from, int weight) {
+    std::function<void(int, int, int)> dfs = [&](int node, int from,
+                                                 int weight) {
         vist[node] = true;
         stack.emplace_back(node, n);
         id[node] = stack.size() - 1;
         for (auto [to, w] : G[node]) {
-            if (to == from) continue;
+            if (to == from)
+                continue;
             if (!vist[to]) {
                 dfs(to, node, w);
             } else {
@@ -55,13 +57,14 @@ void solve() {
     auto [w, e] = *std::min_element(edges.begin(), edges.end());
     auto [u, v] = e;
 
-    std::vector<int> ans {u};
+    std::vector<int> ans{u};
     std::fill(vist.begin(), vist.end(), false);
     std::function<bool(int, int)> find = [&](int node, int from) {
         vist[node] = true;
         ans.push_back(node);
         for (auto [to, w] : G[node]) {
-            if (to == from) continue;
+            if (to == from)
+                continue;
             if (to == u) {
                 return true;
             }
