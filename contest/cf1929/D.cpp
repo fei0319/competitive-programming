@@ -21,7 +21,8 @@ void solve() {
     std::function<void(int, int)> dfs = [&](int node, int f) {
         dp[node] = 1;
         for (int to : G[node]) {
-            if (to == f) continue;
+            if (to == f)
+                continue;
             dfs(to, node);
             dp[node] = (ll)dp[node] * (dp[to] + 1) % MOD;
             ans = (ans + dp[to]) % MOD;

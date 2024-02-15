@@ -19,14 +19,16 @@ void dfs1(int node, int f) {
     }
 
     for (int to : G[node]) {
-        if (to == f) continue;
+        if (to == f)
+            continue;
         dfs1(to, node);
     }
 }
 
 void dfs2(int node, int f) {
     for (int to : G[node]) {
-        if (to == f) continue;
+        if (to == f)
+            continue;
         dfs2(to, node);
         s[node] |= s[to];
     }
@@ -35,13 +37,15 @@ void dfs2(int node, int f) {
 }
 
 int lca(int x, int y) {
-    if (dep[x] < dep[y]) std::swap(x, y);
+    if (dep[x] < dep[y])
+        std::swap(x, y);
     for (int i = B - 1; i >= 0; --i) {
         if (dep[fa[x][i]] >= dep[y]) {
             x = fa[x][i];
         }
     }
-    if (x == y) return x;
+    if (x == y)
+        return x;
     for (int i = B - 1; i >= 0; --i) {
         if (fa[x][i] != fa[y][i]) {
             x = fa[x][i];
