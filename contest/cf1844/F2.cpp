@@ -53,9 +53,9 @@ void solve() {
         mt.update(i, 1);
     }
 
-
     auto calc = [&](int x, int y) {
-        if (x < 1 || x > n || y < 1 || y > n) return 0LL;
+        if (x < 1 || x > n || y < 1 || y > n)
+            return 0LL;
         return std::abs<ll>((ll)a[y] - a[x] - c);
     };
 
@@ -79,8 +79,8 @@ void solve() {
         int tot = mt.query(n);
 
         auto check = [&](int x) -> bool {
-        	x = mt.query(x);
-        	
+            x = mt.query(x);
+
             if (x > tot) {
                 return false;
             }
@@ -97,7 +97,8 @@ void solve() {
             int pb = mt.kth(x - 1), b = mt.kth(x), qb = mt.kth(x + 1);
 
             ll u = calc(pb, b) + calc(b, qb) - calc(pb, qb) + ::a[b];
-            ll v = std::abs<ll>(::a[b] - ll(::a[pa] + c)) + ::a[a] - c - calc(pa, a);
+            ll v = std::abs<ll>(::a[b] - ll(::a[pa] + c)) + ::a[a] - c -
+                   calc(pa, a);
             return u == v;
 
             // for ::a[b] >= ::a[pa] + c, i.e. b <= [a certain value]
@@ -145,7 +146,7 @@ void solve() {
 
         int rank = mt.query(x);
         int p = mt.kth(rank - 1), q = mt.kth(rank + 1);
-        
+
         for (int t = 0; t < 2; ++t) {
             if (rank - 1 > 1) {
                 s[t].erase({get_value(p, t), p});
