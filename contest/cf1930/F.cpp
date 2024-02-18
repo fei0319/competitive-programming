@@ -36,7 +36,8 @@ void solve() {
     std::cin >> n >> q;
 
     int L = 1;
-    while (L <= n) L *= 2;
+    while (L <= n)
+        L *= 2;
 
     int lastans = 0;
     while (q--) {

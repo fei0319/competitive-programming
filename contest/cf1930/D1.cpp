@@ -22,21 +22,21 @@ void solve() {
     std::cin >> s;
 
     ll ans = 0;
-    
+
     std::vector<int> f{0, 0, 0};
     for (int i = 0; i < n; ++i) {
-    	std::vector<int> g{0, 0, 0};
-    	if (s[i] == '0') {
-    		g[0] = f[0] + f[1] + 1;
-    		g[1] = f[2];
-    	} else {
-    		ans += ll(f[0] + 1) * (n - i);
-    		
-    		g[0] = f[1];
-    		g[1] = f[2];
-    		g[2] = f[0] + 1;
-    	}
-    	f.swap(g);
+        std::vector<int> g{0, 0, 0};
+        if (s[i] == '0') {
+            g[0] = f[0] + f[1] + 1;
+            g[1] = f[2];
+        } else {
+            ans += ll(f[0] + 1) * (n - i);
+
+            g[0] = f[1];
+            g[1] = f[2];
+            g[2] = f[0] + 1;
+        }
+        f.swap(g);
     }
 
     std::cout << ans << '\n';

@@ -3,18 +3,18 @@
 using ll = long long int;
 
 void solve() {
-	int n;
-	std::cin >> n;
-	
-	std::vector<int> a(n);
-	for (int i = 0; i < n; ++i) {
-		std::cin >> a[i];
-	}
-	
-	std::set<int> s;
-	std::unordered_map<int, int> fa;
-	
-	std::function<int(int)> getf = [&](int x) -> int {
+    int n;
+    std::cin >> n;
+
+    std::vector<int> a(n);
+    for (int i = 0; i < n; ++i) {
+        std::cin >> a[i];
+    }
+
+    std::set<int> s;
+    std::unordered_map<int, int> fa;
+
+    std::function<int(int)> getf = [&](int x) -> int {
         return fa[x] == x ? x : fa[x] = getf(fa[x]);
     };
     auto add = [&](int x) {
@@ -27,18 +27,18 @@ void solve() {
             fa[x] = x - 1;
         }
     };
-	
-	for (int i = 0; i < n; ++i) {
-		int x = a[i] + i + 1;
-		if (s.find(x) == s.end()) {
-			add(x);
-		} else {
-			int rt = getf(x) - 1;
+
+    for (int i = 0; i < n; ++i) {
+        int x = a[i] + i + 1;
+        if (s.find(x) == s.end()) {
+            add(x);
+        } else {
+            int rt = getf(x) - 1;
             if (x - i <= rt) {
                 add(rt);
             }
-		}
-	}
+        }
+    }
 
     a.clear();
     for (auto i : s) {
