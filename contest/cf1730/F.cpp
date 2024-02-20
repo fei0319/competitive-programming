@@ -62,7 +62,8 @@ int main() {
 
             for (int j = 1; j <= k && i + j <= n; ++j) {
                 if (!(S & (1 << (j - 1)))) {
-                    chkmin(dp[i][S | (1 << (j - 1))], dp[i][S] + tot - mt.query(pos[i + j]));
+                    chkmin(dp[i][S | (1 << (j - 1))],
+                           dp[i][S] + tot - mt.query(pos[i + j]));
                 }
             }
 
