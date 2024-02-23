@@ -42,14 +42,16 @@ class Segment {
         }
     }
     static const int L = 0, R = 1e5;
+
 public:
     static void clear() {
         while (tot) {
-            tr[tot--] = Node {0, 0, 0};
+            tr[tot--] = Node{0, 0, 0};
         }
     }
     static void modify(int &rt, int l, int r, const int &val) {
-        if (l > r) return;
+        if (l > r)
+            return;
         modify(rt, L, R, l, r, val);
     }
     static int query(int rt, int x) {
@@ -77,7 +79,8 @@ void solve() {
     for (int i = 1; i <= n; ++i) {
         {
             int sz = 1;
-            auto begin = sl.lower_bound({a[i] - k, 0}), end = sl.upper_bound({a[i], INF});
+            auto begin = sl.lower_bound({a[i] - k, 0}),
+                 end = sl.upper_bound({a[i], INF});
             std::vector<std::pair<int, int>> pre(begin, end);
             for (auto [v, s] : pre) {
                 sl.erase({v, s});
@@ -90,7 +93,8 @@ void solve() {
         }
         {
             int sz = 1;
-            auto begin = sr.lower_bound({a[i], 0}), end = sr.upper_bound({a[i] + k, INF});
+            auto begin = sr.lower_bound({a[i], 0}),
+                 end = sr.upper_bound({a[i] + k, INF});
             std::vector<std::pair<int, int>> pre(begin, end);
             for (auto [v, s] : pre) {
                 sr.erase({v, s});
