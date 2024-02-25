@@ -45,7 +45,7 @@ void dfs2(int node, int fa) {
     s.insert(0LL);
     s.insert(len_g[node]);
     mf.insert(g[node]);
-    
+
     auto it = s.end();
     ans = std::max(ans, *--it + *--it + *--it + *--it);
 
