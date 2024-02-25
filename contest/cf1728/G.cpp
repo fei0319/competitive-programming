@@ -10,7 +10,7 @@ int l[MAXN], p[MAXN];
 int v[MAXM][MAXM];
 
 struct Matrix {
-    int a[MAXM][MAXM] {};
+    int a[MAXM][MAXM]{};
     Matrix operator*(const Matrix &b) const {
         Matrix res;
         for (int i = 0; i < MAXM; ++i) {
