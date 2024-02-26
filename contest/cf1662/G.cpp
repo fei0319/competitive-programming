@@ -26,7 +26,7 @@ void dfs2(int node) {
     }
 
     ll res = dp[node] - size[node] + g[node];
-    std::vector<int> sz {n - size[node]};
+    std::vector<int> sz{n - size[node]};
     for (int to : G[node]) {
         sz.push_back(size[to]);
     }
