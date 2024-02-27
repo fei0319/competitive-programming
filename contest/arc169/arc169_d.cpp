@@ -35,7 +35,7 @@ int main() {
             s[i] += s[i - 1];
         }
     }
-    
+
     ll x = 0;
     for (int i = 0; i < n; ++i) {
         if (cnt[i] > 1) {
