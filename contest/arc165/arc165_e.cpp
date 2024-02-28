@@ -47,7 +47,8 @@ void dfs(int node, int f) {
             for (int y = size[node] - x; y >= 0; --y) {
                 for (int u = 0; u <= size[to]; ++u) {
                     for (int v = 0; u + v <= size[to]; ++v) {
-                        add(tmp[x + u][y + v], (ll)dp[node][x][y] * dp[to][u][v]);
+                        add(tmp[x + u][y + v],
+                            (ll)dp[node][x][y] * dp[to][u][v]);
                     }
                 }
             }
