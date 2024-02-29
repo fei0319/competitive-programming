@@ -28,7 +28,7 @@ void solve() {
     }
 
     int p = 0;
-    std::vector<int> v {p};
+    std::vector<int> v{p};
     for (int i = 1; i < n; ++i) {
         char t = query(max, p, max, i);
         if (t == '<') {
