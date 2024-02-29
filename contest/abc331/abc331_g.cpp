@@ -1,6 +1,6 @@
-#include <bits/stdc++.h>
 #include "atcoder/convolution"
 #include "atcoder/modint"
+#include <bits/stdc++.h>
 
 using mint = atcoder::modint998244353;
 using ll = long long int;
@@ -26,7 +26,7 @@ std::vector<int> solve(const std::vector<std::vector<int>> &F, int l, int r) {
     if (l == r) {
         return F[l];
     }
-    int mid = (l + r) /2 ;
+    int mid = (l + r) / 2;
     return atcoder::convolution(solve(F, l, mid), solve(F, mid + 1, r));
 }
 
