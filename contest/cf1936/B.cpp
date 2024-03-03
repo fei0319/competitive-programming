@@ -23,7 +23,7 @@ struct BIT {
     }
     void update(int x, int k) {
         x += 1;
-        
+
         for (; x <= n + 10; x += x & -x) {
             tr[x] += k;
         }
