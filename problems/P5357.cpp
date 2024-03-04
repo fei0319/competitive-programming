@@ -67,9 +67,9 @@ int main() {
         now = fail[now][s[i] - 'a'];
         cnt[now] += 1;
     }
-    
+
     for (int i = 1; i <= tot; ++i) {
-    	++deg[next[i]];
+        ++deg[next[i]];
     }
     h = 1, t = 0;
     for (int i = 1; i <= tot; ++i) {

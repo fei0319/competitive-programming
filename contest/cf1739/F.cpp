@@ -14,7 +14,7 @@ int tot;
 
 void insert(const std::string_view &s, int value) {
     int now = 0;
-    for (char c: s) {
+    for (char c : s) {
         int &nxt = tr[now].fail[c - 'a'];
         if (!nxt) {
             nxt = ++tot;
@@ -61,7 +61,7 @@ std::string construct_from(const std::string_view &s) {
     std::string res;
     int S = 0, now = -1;
 
-    for (char c: s) {
+    for (char c : s) {
         if (now - 1 >= 0 && res[now - 1] == c) {
             now -= 1;
         } else if (now + 1 < res.size() && res[now + 1] == c) {
@@ -118,7 +118,8 @@ int main() {
             int value = dp[node][S];
             for (int i = 0; i < SIGMA; ++i) {
                 if (!(S & (1 << i))) {
-                    add_value(tr[node].fail[i], S | (1 << i), value + tr[tr[node].fail[i]].val, node, 'a' + i);
+                    add_value(tr[node].fail[i], S | (1 << i),
+                              value + tr[tr[node].fail[i]].val, node, 'a' + i);
                 }
             }
         }
