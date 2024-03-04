@@ -19,12 +19,13 @@ const int MAXN = 1e5 + 19;
 class Segment {
     static struct Node {
         int ls, rs;
-        std::pair<int, int> min {INF, 0};
+        std::pair<int, int> min{INF, 0};
     } tr[MAXN * 2];
     static int tot;
     static void push_up(int node) {
         tr[node].min = std::min(tr[tr[node].ls].min, tr[tr[node].rs].min);
     }
+
 public:
     static int rt;
     static int query() {
@@ -149,7 +150,7 @@ int main() {
 
         int d = neighbors.size();
         for (int S = 1; S < (1 << d); ++S) {
-            std::vector<int> a {x};
+            std::vector<int> a{x};
             for (int j = 0; j < d; ++j) {
                 if (S & (1 << j)) {
                     a.push_back(neighbors[j]);
