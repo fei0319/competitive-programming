@@ -63,8 +63,11 @@ int main() {
         dp[i][0][0] = 1;
         for (int j = 1; j <= a[i]; ++j) {
             for (int k = j; k <= a[i]; ++k) {
-                for (int p = i - 1; k - (i - p) * j >= 0 && p >= 0 && k - (i - p) * j <= a[p]; --p) {
-                    add(dp[i][j][k], (ll)f[p][j][k - (i - p) * j] * binom(i, p));
+                for (int p = i - 1;
+                     k - (i - p) * j >= 0 && p >= 0 && k - (i - p) * j <= a[p];
+                     --p) {
+                    add(dp[i][j][k],
+                        (ll)f[p][j][k - (i - p) * j] * binom(i, p));
                 }
             }
         }
