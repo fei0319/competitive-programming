@@ -1,9 +1,9 @@
-#include <iostream>
-#include <vector>
-#include <numeric>
 #include <algorithm>
-#include <random>
 #include <ctime>
+#include <iostream>
+#include <numeric>
+#include <random>
+#include <vector>
 
 int n, T;
 std::string S;
@@ -12,14 +12,14 @@ int query(std::string s) {
     int res = 0;
     std::cout << s << std::endl;
     std::cin >> res;
-//        for (int i = 0; i < n; ++i) {
-//            if (s[i] == S[i]) {
-//                ++res;
-//            }
-//        }
+    //        for (int i = 0; i < n; ++i) {
+    //            if (s[i] == S[i]) {
+    //                ++res;
+    //            }
+    //        }
 
     if (res == n) {
-//        std::cout << T << '\n';
+        //        std::cout << T << '\n';
         exit(0);
     }
     if (res == -1) {
@@ -84,53 +84,53 @@ int main() {
 
     solve(0, n - 1, tot = query(std::string(n, 'T')));
 
+    std::function<void(std::vector<std::pair<int, int>>)> set_up =
+        [&](std::vector<std::pair<int, int>> p) {
+            std::vector<std::pair<int, int>> a, b;
+            while (p.size() >= 2) {
+                auto [x1, y1] = p.back();
+                p.pop_back();
+                auto [x2, y2] = p.back();
+                p.pop_back();
 
-    std::function<void(std::vector<std::pair<int, int>>)> set_up = [&](std::vector<std::pair<int, int>> p) {
-        std::vector<std::pair<int, int>> a, b;
-        while (p.size() >= 2) {
-            auto [x1, y1] = p.back();
-            p.pop_back();
-            auto [x2, y2] = p.back();
-            p.pop_back();
+                static std::string s;
+                s.resize(n);
+                for (int i = 0; i < n; ++i) {
+                    s[i] = 'T';
+                }
+                s[x1] = s[x2] = 'F';
 
-            static std::string s;
-            s.resize(n);
-            for (int i = 0; i < n; ++i) {
-                s[i] = 'T';
+                int t = query(s);
+                if (t == tot - 2) {
+                    ans[x1] = ans[x2] = 'T';
+                    ans[y1] = ans[y2] = 'F';
+                } else if (t == tot + 2) {
+                    ans[x1] = ans[x2] = 'F';
+                    ans[y1] = ans[y2] = 'T';
+                } else {
+                    a.emplace_back(x1, y1);
+                    b.emplace_back(x2, y2);
+                }
             }
-            s[x1] = s[x2] = 'F';
+            if (!p.empty()) {
+                auto [x, y] = p.back();
+                std::string s(n, 'T');
+                s[x] = 'F';
 
-            int t = query(s);
-            if (t == tot - 2) {
-                ans[x1] = ans[x2] = 'T';
-                ans[y1] = ans[y2] = 'F';
-            } else if (t == tot + 2) {
-                ans[x1] = ans[x2] = 'F';
-                ans[y1] = ans[y2] = 'T';
-            } else {
-                a.emplace_back(x1, y1);
-                b.emplace_back(x2, y2);
+                if (query(s) == tot + 1) {
+                    ans[x] = 'F', ans[y] = 'T';
+                } else {
+                    ans[x] = 'T', ans[y] = 'F';
+                }
             }
-        }
-        if (!p.empty()) {
-            auto [x, y] = p.back();
-            std::string s(n, 'T');
-            s[x] = 'F';
-
-            if (query(s) == tot + 1) {
-                ans[x] = 'F', ans[y] = 'T';
-            } else {
-                ans[x] = 'T', ans[y] = 'F';
+            if (!a.empty()) {
+                set_up(a);
             }
-        }
-        if (!a.empty()) {
-            set_up(a);
-        }
-        for (int i = 0; i < a.size(); ++i) {
-            ans[b[i].first] = rev(ans[a[i].first]);
-            ans[b[i].second] = rev(ans[a[i].second]);
-        }
-    };
+            for (int i = 0; i < a.size(); ++i) {
+                ans[b[i].first] = rev(ans[a[i].first]);
+                ans[b[i].second] = rev(ans[a[i].second]);
+            }
+        };
 
     set_up(p);
     query(ans);
