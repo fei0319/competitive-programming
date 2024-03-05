@@ -79,6 +79,8 @@ std::string construct_from(const std::string_view &s) {
             }
             S |= 1 << (c - 'a');
             res = c + res;
+        } else {
+            return {};
         }
     }
     return res;
