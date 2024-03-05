@@ -1,6 +1,6 @@
+#include <algorithm>
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 using ull = unsigned long long int;
 const int MOD = 1e9 + 7;
@@ -14,7 +14,8 @@ std::string no_reverse(std::string s, int k) {
         while (!s.empty() && s.back() == '0') {
             s.pop_back();
         }
-        while (pos < s.size() && s[pos] != '0') ++pos;
+        while (pos < s.size() && s[pos] != '0')
+            ++pos;
         if (pos < s.size() - 1) {
             std::swap(s[pos], s.back());
         }
@@ -127,7 +128,8 @@ int main() {
             if (mins.empty() || a[r] - a[l] < mins[0].second - mins[0].first) {
                 mins.clear();
                 mins.emplace_back(a[l], a[r]);
-            } else if (!mins.empty() && a[r] - a[l] == mins[0].second - mins[0].first) {
+            } else if (!mins.empty() &&
+                       a[r] - a[l] == mins[0].second - mins[0].first) {
                 mins.emplace_back(a[l], a[r]);
             }
         }
