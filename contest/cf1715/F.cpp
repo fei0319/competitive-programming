@@ -5,9 +5,7 @@ using ld = long double;
 
 int n, m;
 
-ld get(int d) {
-    
-}
+ld get(int d) {}
 
 int main() {
     std::cin >> n >> m;
