@@ -78,9 +78,8 @@ int main() {
                 b.push_back(i);
             }
         }
-        std::sort(b.begin(), b.end(), [](const auto &u, const auto &v) {
-           return u.x2 > v.x2;
-        });
+        std::sort(b.begin(), b.end(),
+                  [](const auto &u, const auto &v) { return u.x2 > v.x2; });
         // now b.back() has the minimum x2
 
         static int positive[MAXN], negative[MAXN];
