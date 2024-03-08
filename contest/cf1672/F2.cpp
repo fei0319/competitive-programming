@@ -15,7 +15,6 @@ bool dfs(int node) {
     st[++top] = node;
     instack[node] = true;
 
-
     for (int to : G[node]) {
         if (to == exclude) {
             continue;
