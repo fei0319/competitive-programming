@@ -84,7 +84,8 @@ int main() {
         int l = x + 1, r = len;
         while (l < r) {
             int mid = (l + r + 1) / 2;
-            if (Node{len, mid - 1}.benefit() == b && tot - b * (mid - x - 1) > m) {
+            if (Node{len, mid - 1}.benefit() == b &&
+                tot - b * (mid - x - 1) > m) {
                 l = mid;
             } else {
                 r = mid - 1;
