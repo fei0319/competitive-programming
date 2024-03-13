@@ -105,7 +105,7 @@ int main() {
         ans = (ans + solve1(S)) % MOD;
     }
     for (int k = 4; k <= 30; ++k) {
-        for (int a = 3; a <= n && qpow(a, k) - qpow(a - 1, k) <= x; ++a)  {
+        for (int a = 3; a <= n && qpow(a, k) - qpow(a - 1, k) <= x; ++a) {
             for (int b = a - 1; b > 1 && qpow(a, k) - qpow(b, k) <= x; --b) {
                 ans = (ans + solve2(a, b, k)) % MOD;
             }
