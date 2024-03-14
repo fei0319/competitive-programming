@@ -14,7 +14,7 @@ bool instack[MAXN];
 void solve(int x) {
     st[top = 1] = x;
     instack[x] = true;
-    
+
     while (top) {
         int u = st[top];
         if (ans[u] || r[u].empty()) {
