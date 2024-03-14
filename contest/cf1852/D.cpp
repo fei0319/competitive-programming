@@ -78,7 +78,9 @@ bool find(std::string t) {
             }
             max[i][j] += (j != code(s[i]));
             min[i][j] += (j != code(s[i]));
-            if (max[i][j] + ((i < n) ? (j != code(t[i + 1])) + suf[i + 1] : 0) == k) {
+            if (max[i][j] +
+                    ((i < n) ? (j != code(t[i + 1])) + suf[i + 1] : 0) ==
+                k) {
                 std::cout << "YES\n";
                 output(i, j, from_max);
                 for (int p = i + 1; p <= n; ++p) {
@@ -87,7 +89,9 @@ bool find(std::string t) {
                 std::cout << '\n';
                 return true;
             }
-            if (min[i][j] + ((i < n) ? (j != code(t[i + 1])) + suf[i + 1] : 0) == k) {
+            if (min[i][j] +
+                    ((i < n) ? (j != code(t[i + 1])) + suf[i + 1] : 0) ==
+                k) {
                 std::cout << "YES\n";
                 output(i, j, from_min);
                 for (int p = i + 1; p <= n; ++p) {
@@ -134,14 +138,16 @@ void solve() {
     }
 
     for (int i = 0; i < 200; ++i) {
-//        for (int j = 0; j < 50; ++j) {
-            if (find(random_string())) {
-                return;
-            }
-//        }
-//        if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - s_time).count() > 1600) {
-//            break;
-//        }
+        //        for (int j = 0; j < 50; ++j) {
+        if (find(random_string())) {
+            return;
+        }
+        //        }
+        //        if
+        //        (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now()
+        //        - s_time).count() > 1600) {
+        //            break;
+        //        }
     }
 
     std::cout << "NO\n";
