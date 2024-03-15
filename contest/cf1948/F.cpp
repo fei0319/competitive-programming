@@ -96,7 +96,6 @@ int main() {
 
         int ans = (ll)half[B] * s[t] % MOD;
         std::cout << (ans + MOD) % MOD << " ";
-
     }
 
     return 0;
