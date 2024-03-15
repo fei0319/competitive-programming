@@ -40,9 +40,11 @@ class NTT {
             }
         }
     }
+
 public:
     static const int MOD = 998244353;
-    static std::vector<int> convolution(std::vector<int> f, std::vector<int> g) {
+    static std::vector<int> convolution(std::vector<int> f,
+                                        std::vector<int> g) {
         int N = 1, n = f.size() + g.size() - 1;
 
         while (N < n) {
