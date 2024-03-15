@@ -112,7 +112,8 @@ ll solve(const std::vector<int> &c) {
         return (ll)c.size() * (c.size() - 1) / 2 + c.size();
     }
 
-    std::vector<std::vector<int>> s(g); // dep[u] - rdep[u] = i (mod g) for u in s[i]
+    std::vector<std::vector<int>> s(
+        g); // dep[u] - rdep[u] = i (mod g) for u in s[i]
     std::vector<int> b(g);
     for (int i : c) {
         int reminder = ((dep[i] - rdep[i]) % g + g) % g;
