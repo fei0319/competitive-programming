@@ -26,7 +26,7 @@ void solve() {
     std::function<std::pair<int, int>(int, int)> dfs = [&](int node, int f) {
         fa[node] = f;
 
-        std::pair<int, int> res {1, node};
+        std::pair<int, int> res{1, node};
         for (int to : G[node]) {
             if (to != f) {
                 dep[to] = dep[node] + 1;
@@ -43,7 +43,7 @@ void solve() {
         auto q = dfs(p.second, 0);
 
         int u = p.second, v = q.second, len = q.first;
-        //std::cout << u << ' ' << v << ' ' << len << '\n';
+        // std::cout << u << ' ' << v << ' ' << len << '\n';
 
         if (len % 4 != 0) {
             int mid = v;
@@ -65,7 +65,6 @@ void solve() {
                 ans.emplace_back(mid2, i);
             }
         }
-
     }
 
     std::cout << ans.size() << '\n';

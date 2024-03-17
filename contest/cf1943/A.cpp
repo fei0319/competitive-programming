@@ -20,7 +20,7 @@ void solve() {
         }
         std::sort(b, b + x);
         if (b[0] == 0) {
-        	return false;
+            return false;
         }
         for (int j = 1; j < x; ++j) {
             if (b[j] < 2) {

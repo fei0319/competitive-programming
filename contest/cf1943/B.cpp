@@ -4,7 +4,8 @@ using ll = long long int;
 using ull = unsigned long long int;
 
 const int MAXN = 2e5 + 19;
-const int D = 3, P[D] = {int(1e9 + 7), 998244353, 19239481}, B[D] = {1233, 23214, 19};
+const int D = 3, P[D] = {int(1e9 + 7), 998244353, 19239481},
+          B[D] = {1233, 23214, 19};
 
 int n, q;
 std::string s;
@@ -35,7 +36,7 @@ ll sum(int n) {
 }
 
 ll solve(int l, int r) {
-	int n = r - l + 1;
+    int n = r - l + 1;
     ll res = 1;
     {
         // even
