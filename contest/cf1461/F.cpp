@@ -106,9 +106,7 @@ void mul_add() {
 }
 
 void mul_sub() {
-    if (std::any_of(a + 1, a + 1 + n, [](int x) {
-        return x == 0;
-    })) {
+    if (std::any_of(a + 1, a + 1 + n, [](int x) { return x == 0; })) {
         int zero = std::find(a + 1, a + 1 + n, 0) - a;
         for (int i = 1; i + 1 < zero; ++i) {
             c[i] = '*';

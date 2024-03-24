@@ -24,12 +24,12 @@ int binom(int n, int m) {
 int solve(std::vector<int> a) {
     int ans = 1;
     for (int i = 1; i < a.size(); ++i) {
-        int res = (ll)binom(a[i] - 2, a[i] - a[i - 1] - 1) * fact[a[i] - a[i - 1] - 1] % MOD;
+        int res = (ll)binom(a[i] - 2, a[i] - a[i - 1] - 1) *
+                  fact[a[i] - a[i - 1] - 1] % MOD;
         ans = (ll)ans * res % MOD;
     }
     return ans;
 }
-
 
 void solve() {
     int n, m1, m2;
