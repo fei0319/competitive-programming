@@ -1,6 +1,6 @@
+#include <algorithm>
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 constexpr int MAXN = 2e5 + 19;
 
@@ -49,7 +49,7 @@ void modify(int node, int L, int R, int x, const int &val) {
     }
 }
 
-}
+} // namespace sg
 
 int n, m;
 std::vector<int> a[MAXN];
