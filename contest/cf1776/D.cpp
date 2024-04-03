@@ -1,5 +1,5 @@
-#include <iostream>
 #include <algorithm>
+#include <iostream>
 #include <vector>
 
 constexpr int N = 3;
@@ -13,9 +13,7 @@ int main() {
 
     std::vector<int> v(N, 0);
     for (int i = 1; i <= l; ++i) {
-        std::for_each(v.begin(), v.end(), [](int &x) {
-            x += 1;
-        });
+        std::for_each(v.begin(), v.end(), [](int &x) { x += 1; });
         std::vector<std::pair<int, int>> p;
         if (a[4]) {
             p = {{4, 1}, {3, 2}, {2, 1}, {3, 1}};
@@ -43,6 +41,7 @@ int main() {
 
     std::cout << ans.size() << '\n';
     for (auto p : ans) {
-        std::cout << p.first << ' ' << p.second.first << ' ' << p.second.second << '\n';
+        std::cout << p.first << ' ' << p.second.first << ' ' << p.second.second
+                  << '\n';
     }
 }
