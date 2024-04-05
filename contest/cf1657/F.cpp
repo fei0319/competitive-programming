@@ -1,10 +1,10 @@
-#include <iostream>
-#include <vector>
-#include <cassert>
 #include <algorithm>
-#include <utility>
-#include <string>
+#include <cassert>
 #include <format>
+#include <iostream>
+#include <string>
+#include <utility>
+#include <vector>
 
 using ll = long long int;
 
@@ -128,10 +128,12 @@ int main() {
                         add(p + n, 1, v[i], j);
                     }
                 }
-                if (std::find(a[v[i]].begin(), a[v[i]].end(), s[i]) == a[v[i]].end()) {
+                if (std::find(a[v[i]].begin(), a[v[i]].end(), s[i]) ==
+                    a[v[i]].end()) {
                     add(p + n, 0, p + n, 1);
                 }
-                if (std::find(a[v[i]].begin(), a[v[i]].end(), t[i]) == a[v[i]].end()) {
+                if (std::find(a[v[i]].begin(), a[v[i]].end(), t[i]) ==
+                    a[v[i]].end()) {
                     add(p + n, 1, p + n, 0);
                 }
             }
