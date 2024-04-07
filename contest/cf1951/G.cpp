@@ -27,12 +27,12 @@ int f(int x) {
 }
 
 void solve() {
-	std::cin >> n >> m;
+    std::cin >> n >> m;
 
     int ans = 0;
-	for (int i = 0; i < n; ++i) {
-		std::cin >> a[i];
-	}
+    for (int i = 0; i < n; ++i) {
+        std::cin >> a[i];
+    }
 
     std::sort(a, a + n);
 
