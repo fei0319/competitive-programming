@@ -192,7 +192,6 @@ void solve() {
     }
     work(true);
 
-
     std::cout << calc() << '\n';
 }
 
