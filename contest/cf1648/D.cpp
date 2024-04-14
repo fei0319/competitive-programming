@@ -50,7 +50,7 @@ void solve(int l, int r, std::vector<int> p, ll k) {
     for (int i = l; i <= r; ++i) {
         dp[i] = std::max(dp[i], res);
     }
-    
+
     solve(l, mid, L, k);
 
     res = -INF;
