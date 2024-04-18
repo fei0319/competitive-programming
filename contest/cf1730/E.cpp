@@ -124,11 +124,9 @@ void solve() {
     }
     L.record();
 
-    auto proj = [](int x) {
-        return a[x];
-    };
+    auto proj = [](int x) { return a[x]; };
 
-    ll ans {0};
+    ll ans{0};
     for (int i = 1; i <= n; ++i) {
         while (L.size() && a[i] <= a[L.top()]) {
             L.pop();
@@ -139,23 +137,37 @@ void solve() {
             ll res_l = 0, res_r = 0;
             int len_l = 0, len_r = 0;
             if (L.index_of(d)) {
-                len_l = L.st[L.index_of(d)] - std::max(L.st[L.index_of(d) - 1], l[i] - 1);
+                len_l = L.st[L.index_of(d)] -
+                        std::max(L.st[L.index_of(d) - 1], l[i] - 1);
                 len_l = std::max(len_l, 0);
                 if (len_l)
-                res_l += (ll)len_l * (std::min(*(std::ranges::upper_bound(R.st + 1, R.st + 1 + R.sz, d, {}, proj) - 1), r[i] + 1) - i);
+                    res_l +=
+                        (ll)len_l * (std::min(*(std::ranges::upper_bound(
+                                                    R.st + 1, R.st + 1 + R.sz,
+                                                    d, {}, proj) -
+                                                1),
+                                              r[i] + 1) -
+                                     i);
             }
             if (R.index_of(d)) {
-                len_r = std::min(R.st[R.index_of(d) - 1], r[i] + 1) - R.st[R.index_of(d)];
+                len_r = std::min(R.st[R.index_of(d) - 1], r[i] + 1) -
+                        R.st[R.index_of(d)];
                 len_r = std::max(len_r, 0);
                 if (len_r)
-                res_r += (ll)len_r * (i - std::max(*(std::ranges::upper_bound(L.st + 1, L.st + 1 + L.sz, d, {}, proj) - 1), l[i] - 1));
+                    res_r += (ll)len_r *
+                             (i - std::max(*(std::ranges::upper_bound(
+                                                 L.st + 1, L.st + 1 + L.sz, d,
+                                                 {}, proj) -
+                                             1),
+                                           l[i] - 1));
             }
             if (len_l && len_r) {
                 ans += (ll)len_l * len_r;
             }
             ans += res_l;
             ans += res_r;
-            // std::cout << std::format("a[{}]={} d={} len_l={} len_r={} res_l={} res_r={}\n", i, a[i], d, len_l, len_r, res_l, res_r);
+            // std::cout << std::format("a[{}]={} d={} len_l={} len_r={}
+            // res_l={} res_r={}\n", i, a[i], d, len_l, len_r, res_l, res_r);
         }
 
         R.revert();
