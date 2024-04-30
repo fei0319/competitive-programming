@@ -11,31 +11,31 @@ int n, a[MAXN];
 std::vector<int> divisors[MAXN];
 
 namespace Segment {
-struct Node {
-    std::pair<int, int> val;
-} tr[MAXN << 2];
-void build(int node, int L, int R) {
-    if (L == R) {
-        tr[node].val = {a[L], L};
-        return;
+    struct Node {
+        std::pair<int, int> val;
+    } tr[MAXN << 2];
+    void build(int node, int L, int R) {
+        if (L == R) {
+            tr[node].val = {a[L], L};
+            return;
+        }
+        int mid = (L + R) / 2;
+        build(node << 1, L, mid);
+        build(node << 1 | 1, mid + 1, R);
+        tr[node].val = std::max(tr[node << 1].val, tr[node << 1 | 1].val);
     }
-    int mid = (L + R) / 2;
-    build(node << 1, L, mid);
-    build(node << 1 | 1, mid + 1, R);
-    tr[node].val = std::max(tr[node << 1].val, tr[node << 1 | 1].val);
-}
-std::pair<int, int> query(int node, int L, int R, int l, int r) {
-    if (l <= L && R <= r) {
-        return tr[node].val;
+    std::pair<int, int> query(int node, int L, int R, int l, int r) {
+        if (l <= L && R <= r) {
+            return tr[node].val;
+        }
+        int mid = (L + R) / 2;
+        std::pair<int, int> res{};
+        if (l <= mid)
+            res = std::max(res, query(node << 1, L, mid, l, r));
+        if (r > mid)
+            res = std::max(res, query(node << 1 | 1, mid + 1, R, l, r));
+        return res;
     }
-    int mid = (L + R) / 2;
-    std::pair<int, int> res{};
-    if (l <= mid)
-        res = std::max(res, query(node << 1, L, mid, l, r));
-    if (r > mid)
-        res = std::max(res, query(node << 1 | 1, mid + 1, R, l, r));
-    return res;
-}
 } // namespace Segment
 
 int l[MAXN], r[MAXN];

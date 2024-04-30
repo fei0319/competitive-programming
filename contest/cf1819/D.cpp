@@ -5,49 +5,49 @@
 constexpr int MAXN = 2e5 + 19;
 
 namespace sg {
-int max[MAXN << 2];
+    int max[MAXN << 2];
 
-void push_up(int node) {
-    max[node] = std::max(max[node << 1], max[node << 1 | 1]);
-}
+    void push_up(int node) {
+        max[node] = std::max(max[node << 1], max[node << 1 | 1]);
+    }
 
-void build(int node, int L, int R) {
-    max[node] = 0;
-    if (L == R) {
-        return;
+    void build(int node, int L, int R) {
+        max[node] = 0;
+        if (L == R) {
+            return;
+        }
+        int mid = (L + R) / 2;
+        build(node << 1, L, mid);
+        build(node << 1 | 1, mid + 1, R);
     }
-    int mid = (L + R) / 2;
-    build(node << 1, L, mid);
-    build(node << 1 | 1, mid + 1, R);
-}
 
-int query(int node, int L, int R, int l, int r) {
-    if (l <= L && R <= r) {
-        return max[node];
+    int query(int node, int L, int R, int l, int r) {
+        if (l <= L && R <= r) {
+            return max[node];
+        }
+        int mid = (L + R) / 2;
+        int res = 0;
+        if (l <= mid) {
+            res = std::max(res, query(node << 1, L, mid, l, r));
+        }
+        if (r > mid) {
+            res = std::max(res, query(node << 1 | 1, mid + 1, R, l, r));
+        }
+        return res;
     }
-    int mid = (L + R) / 2;
-    int res = 0;
-    if (l <= mid) {
-        res = std::max(res, query(node << 1, L, mid, l, r));
-    }
-    if (r > mid) {
-        res = std::max(res, query(node << 1 | 1, mid + 1, R, l, r));
-    }
-    return res;
-}
 
-void modify(int node, int L, int R, int x, const int &val) {
-    max[node] = std::max(max[node], val);
-    if (L == R) {
-        return;
+    void modify(int node, int L, int R, int x, const int &val) {
+        max[node] = std::max(max[node], val);
+        if (L == R) {
+            return;
+        }
+        int mid = (L + R) / 2;
+        if (x <= mid) {
+            modify(node << 1, L, mid, x, val);
+        } else {
+            modify(node << 1 | 1, mid + 1, R, x, val);
+        }
     }
-    int mid = (L + R) / 2;
-    if (x <= mid) {
-        modify(node << 1, L, mid, x, val);
-    } else {
-        modify(node << 1 | 1, mid + 1, R, x, val);
-    }
-}
 
 } // namespace sg
 
