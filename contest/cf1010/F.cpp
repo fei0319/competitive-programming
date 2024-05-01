@@ -94,7 +94,8 @@ std::vector<int> G[MAXN];
 int son[MAXN], size[MAXN];
 void dfs1(int node, int f) {
     size[node] = 1;
-    G[node].resize(std::remove(G[node].begin(), G[node].end(), f) - G[node].begin());
+    G[node].resize(std::remove(G[node].begin(), G[node].end(), f) -
+                   G[node].begin());
     for (int to : G[node]) {
         dfs1(to, node);
         if (size[to] > size[son[node]]) {
@@ -163,7 +164,7 @@ int main() {
     int ans = 0, b = 1;
     for (int i = 1; i <= n; ++i) {
         ans = (ans + (ll)b * f[i]) % MOD;
-        
+
         b = (ll)b * (x % MOD + i) % MOD;
         b = (ll)b * qpow(i, MOD - 2) % MOD;
     }

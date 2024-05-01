@@ -3,15 +3,15 @@
 using ll = long long int;
 
 void solve() {
-	int n, m;
-	std::cin >> n >> m;
-	
-	ll ans = 0;
-	for (int i = 1; i <= m; ++i) {
-		ans += (n / i + 1) / i;
-	}
-	ans -= 1;
-	std::cout << ans << '\n';
+    int n, m;
+    std::cin >> n >> m;
+
+    ll ans = 0;
+    for (int i = 1; i <= m; ++i) {
+        ans += (n / i + 1) / i;
+    }
+    ans -= 1;
+    std::cout << ans << '\n';
 }
 
 int main() {
