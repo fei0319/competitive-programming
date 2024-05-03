@@ -95,8 +95,8 @@ namespace S {
             LL n_min = std::min(min, tr[tr[node].son[x]].min);
             if (n_m >= 0 && n_min + n_X + (LL(1) << b) - 1 >= n_ans) {
                 ok = true;
-                res = std::max(res, dfs(tr[node].son[!x], n_m, b - 1,
-                                        n_ans, n_X, n_min));
+                res = std::max(
+                    res, dfs(tr[node].son[!x], n_m, b - 1, n_ans, n_X, n_min));
             }
         }
 
