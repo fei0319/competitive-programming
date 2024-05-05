@@ -1,14 +1,4 @@
-#ifdef ONLINE_JUDGE
 #include <bits/stdc++.h>
-#endif
-#include <array>
-#include <cstdint>
-#include <functional>
-#include <iostream>
-#include <numeric>
-#include <random>
-#include <unordered_map>
-#include <vector>
 
 template <class T>
 void read(T &res) {
@@ -33,8 +23,7 @@ hash_t make_hash(Iter begin, Iter end) {
     hash_t res = 0, p = 0;
     while (begin != end) {
         res ^= hash_t(*begin) * 998244353ULL + p * 19ULL;
-        res += (p + 89ULL) * 1004535989ULL;
-        p += hash_t(*begin + 1) * 3ULL + 7ULL;
+        p += hash_t(*begin + 1) + 17ULL;
 
         ++begin;
     }
@@ -49,7 +38,7 @@ constexpr int MAXM = 1e3 + 19;
 
 struct Matrix {
     int N;
-    std::array<std::array<int, 12>, 12> a{};
+    int a[12][12]{};
     Matrix(int n) {
         N = n;
     }
@@ -145,33 +134,35 @@ namespace S {
                     continue;
                 }
                 int res = 1, p = 1;
+                ll power = k - v.size();
                 std::vector<int> vals{p};
                 for (int i : v) {
-                    res = (ll)res * qpow(inv[i], x / p / i) % MOD *
-                          fact[x / p] % MOD;
+                    res = (ll)res * qpow(p, x / p - x / (p * i) + 1) % MOD *
+                          qpow(inv[i], x / (p * i)) % MOD * ifact[x / (p * i)] %
+                          MOD * fact[x / p] % MOD;
+                    power += x / p - x / (p * i) + 1;
                     p *= i;
                     vals.push_back(p);
                 }
+                // std::cout << res << '\n';
+                // for (int i : vals) {
+                //     std::cout << i << ' ';
+                // }
+                // std::cout << "\n";
                 res = (ll)res * calc(vals, k - v.size()) % MOD;
-
-                g[x].push_back(
-                    {ll(res), k - (ll)v.size() +
-                                  std::accumulate(v.begin(), v.end(), 0)});
+                g[x].push_back({ll(res), power});
             }
+            // std::cout << std::format("a_{}={}\n", x, a[x]) << std::flush;
         }
     }
     int dp[MAXN], a[MAXN];
     int solve(int n, int b) {
         // std::cout << n << ' ' << b << ' ' << k << '\n';
-
         for (int x = 1; x <= n; ++x) {
-            int ans = 0;
-            for (const auto &v : g[x]) {
-                ans = (ans + v[0] * qpow(b, v[1])) % MOD;
+            a[x] = 0;
+            for (auto [res, power] : g[x]) {
+                a[x] = (a[x] + (ll)res * qpow(b, power)) % MOD;
             }
-            a[x] = ans;
-
-            // std::cout << "a_" << x << "=" << a[x] << '\n';
         }
 
         std::fill(dp, dp + n + 1, 0);
@@ -191,26 +182,34 @@ namespace S {
     }
 } // namespace S
 
-int c, n, m;
+int c, n, m, p[MAXM][MAXN];
+int dim[MAXN][MAXM], sz[MAXN];
+std::vector<hash_t> par[MAXN];
 
-int fa[MAXN], dim[MAXN][MAXM];
-std::vector<int> sub[MAXN];
-int getf(int node) {
-    return node == fa[node] ? node : fa[node] = getf(fa[node]);
-}
-int p[MAXM][MAXN];
-
-struct Node {
-    hash_t dim_hash;
-    std::vector<std::vector<int>> a;
-    bool check(int x, ll h) {
-        if (h != dim_hash) {
-            return false;
-        }
-        return true;
+struct DSU {
+    int fa[MAXN];
+    void init(int n) {
+        std::iota(fa + 1, fa + n + 1, 1);
     }
-};
-std::vector<Node> components;
+    int getf(int node) {
+        return fa[node] == node ? node : fa[node] = getf(fa[node]);
+    }
+    bool merge(int x, int y, int d) {
+        x = getf(x);
+        y = getf(y);
+        if (x != y) {
+            fa[y] = x;
+            dim[x][d] += dim[y][d];
+            sz[x] += sz[y];
+
+            assert(par[x] == par[y]);
+            return true;
+        }
+        return false;
+    }
+} ds[MAXM];
+
+int mv[MAXN], mv_cnt;
 
 int main() {
     std::ios::sync_with_stdio(false);
@@ -222,53 +221,63 @@ int main() {
         read(u), read(v), read(w);
         p[w][u] = v;
     }
-    S::init(n);
 
-    std::iota(fa + 1, fa + n + 1, 1);
-    for (int i = 1; i <= n; ++i) {
-        sub[i].push_back(i);
-    }
-    for (int i = 1; i <= m; ++i) {
-        for (int j = 1; j <= n; ++j) {
-            dim[j][i] = 1;
+    std::fill(sz + 1, sz + n + 1, 1);
+    ds[0].init(n);
+
+    for (int d = 1; d <= m; ++d) {
+        ds[d] = ds[d - 1];
+        for (int i = 1; i <= n; ++i) {
+            dim[i][d] = 1;
         }
-        for (int j = 1; j <= n; ++j) {
-            if (getf(j) != getf(p[i][j])) {
-                int u = getf(j), v = getf(p[i][j]);
-                if (sub[u].size() < sub[v].size()) {
-                    std::swap(u, v);
+        for (int i = 1; i <= n; ++i) {
+            ds[d].merge(i, p[d][i], d);
+        }
+        for (int i = 1; i <= n; ++i) {
+            int x = ds[d].getf(i);
+            if (x == i && dim[x][d] == 1) {
+                int u = x, v = p[d][x];
+                mv_cnt = 0;
+                for (int t = d - 1; t >= 1; --t) {
+                    if (dim[x][t] == 1) {
+                        continue;
+                    }
+                    int len = 0;
+                    while (ds[t - 1].getf(u) != ds[t - 1].getf(v)) {
+                        u = p[t][u];
+                        ++len;
+                    }
+                    mv[++mv_cnt] = len;
                 }
-                fa[v] = u;
-                dim[u][i] += dim[v][i];
-                sub[u].insert(sub[u].end(), sub[v].begin(), sub[v].end());
+                par[x].push_back(make_hash(mv + 1, mv + mv_cnt + 1));
             }
         }
     }
 
+    std::unordered_map<hash_t, std::pair<int, int>> mt;
     for (int i = 1; i <= n; ++i) {
-        if (getf(i) == i) {
-            auto &v = sub[i];
-            auto h = make_hash(dim[i] + 1, dim[i] + m + 1);
-            bool ok = false;
-            for (auto &component : components) {
-                if (component.check(i, h)) {
-                    component.a.push_back(v);
-                    ok = true;
-                    break;
-                }
-            }
-            if (!ok) {
-                components.push_back(Node{});
-                components.back().a.push_back(v);
-                components.back().dim_hash = h;
+        int x = ds[m].getf(i);
+        if (x == i) {
+            hash_t h_d = make_hash(dim[x] + 1, dim[x] + m + 1);
+            hash_t h_p = make_hash(par[x].begin(), par[x].end());
+            hash_t h = (h_d * 10ULL) ^ (h_p * 19ULL + 21ULL) ^ (h_d * h_p);
+            if (!mt.contains(h)) {
+                mt[h] = {1, sz[x]};
+            } else {
+                mt[h].first += 1;
             }
         }
     }
+
+    int N = 1;
+    for (auto [_, pair] : mt) {
+        N = std::max(N, pair.first);
+    }
+    S::init(N);
 
     int ans = 1;
-    for (auto &component : components) {
-        int n = component.a.size(), b = component.a[0].size();
-        ans = (ll)ans * S::solve(n, b) % MOD;
+    for (auto [_, pair] : mt) {
+        ans = (ll)ans * S::solve(pair.first, pair.second) % MOD;
     }
     ans = (ans + MOD) % MOD;
 
