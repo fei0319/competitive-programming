@@ -64,8 +64,9 @@ void decom(int node, int a) {
         if (x > 1)
             dv[++tot] = x, pwr[tot] = 1;
         Dfs(node, 0, 1);
-        std::sort(con[node].begin(), con[node].end(),
-                  [](int x, int y) { return edge[x].num < edge[y].num; });
+        std::sort(con[node].begin(), con[node].end(), [](int x, int y) {
+            return edge[x].num < edge[y].num;
+        });
     } else {
         for (int i : con[tag[a].back()])
             add(node, edge[i].num, 1);

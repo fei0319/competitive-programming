@@ -11,7 +11,9 @@ ll solve(int m) {
     ll res = 0;
 
     int now = m, prev = 1;
-    auto check = [&](int x) { return now + x * m > prev + x; };
+    auto check = [&](int x) {
+        return now + x * m > prev + x;
+    };
     do {
         int l = 0, r = (n - now) / m;
         while (l < r) {

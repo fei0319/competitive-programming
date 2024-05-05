@@ -64,8 +64,9 @@ int main() {
     node[n + 1].l = 1e9 + 3, node[n + 1].r = node[n + 1].l,
              arr.push_back(node[n + 1].l);
     ++n;
-    std::sort(node + 1, node + 1 + n,
-              [](const Node &a, const Node &b) { return a.r > b.r; });
+    std::sort(node + 1, node + 1 + n, [](const Node &a, const Node &b) {
+        return a.r > b.r;
+    });
     std::sort(arr.begin(), arr.end());
     arr.resize(std::unique(arr.begin(), arr.end()) - arr.begin());
     for (int i = 1; i <= n; ++i) {
@@ -78,8 +79,9 @@ int main() {
     k -= n - cnt, n = cnt;
     for (int i = 1; i <= n; ++i)
         node[i] = tmp[i];
-    std::sort(node + 1, node + 1 + n,
-              [](const Node &a, const Node &b) { return a.r < b.r; });
+    std::sort(node + 1, node + 1 + n, [](const Node &a, const Node &b) {
+        return a.r < b.r;
+    });
     for (int i = 0; i <= k; ++i)
         maxv[i] = -1e9;
     maxv[1] = 0;

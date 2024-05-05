@@ -99,7 +99,9 @@ void solve(int L, int R, std::vector<Node> a) {
     solve(mid + 1, R, std::move(for_r));
 
     a.resize(n);
-    std::erase_if(a, [](const Node &x) { return ans[x.id]; });
+    std::erase_if(a, [](const Node &x) {
+        return ans[x.id];
+    });
     if (a.empty())
         return;
 

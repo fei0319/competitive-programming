@@ -32,8 +32,9 @@ void solve(void) {
         s[i] = 1;
     }
 
-    std::sort(a + 1, a + 1 + n,
-              [](const int &x, const int &y) { return win[x] > win[y]; });
+    std::sort(a + 1, a + 1 + n, [](const int &x, const int &y) {
+        return win[x] > win[y];
+    });
 
     //	for(int i = 1; i <= n; ++i) std::cout << a[i] << ' ';
     //	std::cout << std::endl;

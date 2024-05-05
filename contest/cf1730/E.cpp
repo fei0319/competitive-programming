@@ -124,7 +124,9 @@ void solve() {
     }
     L.record();
 
-    auto proj = [](int x) { return a[x]; };
+    auto proj = [](int x) {
+        return a[x];
+    };
 
     ll ans{0};
     for (int i = 1; i <= n; ++i) {

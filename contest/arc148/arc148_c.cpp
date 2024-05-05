@@ -95,8 +95,9 @@ int main() {
         S.resize(m);
         for (int i = 0; i < m; ++i)
             read(S[i]), col[S[i]] = true;
-        std::sort(S.begin(), S.end(),
-                  [](const int &a, const int &b) { return dfn[a] < dfn[b]; });
+        std::sort(S.begin(), S.end(), [](const int &a, const int &b) {
+            return dfn[a] < dfn[b];
+        });
         int top;
         st[top = 1] = 1;
         for (int i = 0; i < m; ++i) {

@@ -13,7 +13,9 @@ int main() {
 
     std::vector<int> v(N, 0);
     for (int i = 1; i <= l; ++i) {
-        std::for_each(v.begin(), v.end(), [](int &x) { x += 1; });
+        std::for_each(v.begin(), v.end(), [](int &x) {
+            x += 1;
+        });
         std::vector<std::pair<int, int>> p;
         if (a[4]) {
             p = {{4, 1}, {3, 2}, {2, 1}, {3, 1}};

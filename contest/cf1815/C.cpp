@@ -47,8 +47,9 @@ void solve() {
     std::vector<int> a(n);
     for (int i = 0; i < n; ++i)
         a[i] = i + 1;
-    std::sort(a.begin(), a.end(),
-              [](const int &x, const int &y) { return dist[x] < dist[y]; });
+    std::sort(a.begin(), a.end(), [](const int &x, const int &y) {
+        return dist[x] < dist[y];
+    });
     int tot = 0;
     for (int i : a) {
         for (int j = 1; j <= dist[i]; ++j)

@@ -53,8 +53,9 @@ void solve(void) {
         return;
     }
     for (int i : cons) {
-        std::sort(con[i].begin(), con[i].end(),
-                  [](const int &x, const int &y) { return deg[x] < deg[y]; });
+        std::sort(con[i].begin(), con[i].end(), [](const int &x, const int &y) {
+            return deg[x] < deg[y];
+        });
     }
     for (int i : cons) {
         if (deg[con[i][0]] < sz[i]) {
@@ -63,8 +64,9 @@ void solve(void) {
         }
     }
 
-    std::sort(cons.begin(), cons.end(),
-              [](const int &x, const int &y) { return sz[x] < sz[y]; });
+    std::sort(cons.begin(), cons.end(), [](const int &x, const int &y) {
+        return sz[x] < sz[y];
+    });
     if (sz[cons[0]] <= 2 || cons.size() < 3) {
         std::cout << sz[cons[0]] << '\n';
         for (int i : con[cons[0]])

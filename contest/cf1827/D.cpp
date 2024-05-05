@@ -68,7 +68,9 @@ bool check_centroid(int g, int x, int n) {
 
 void solve() {
     std::cin >> n;
-    std::for_each(G + 1, G + 1 + n, [](auto &v) { v.clear(); });
+    std::for_each(G + 1, G + 1 + n, [](auto &v) {
+        v.clear();
+    });
     for (int i = 2; i <= n; ++i) {
         int p;
         std::cin >> p;

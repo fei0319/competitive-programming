@@ -42,8 +42,9 @@ void solve(void) {
     for (int i = 0; i < s.length(); ++i)
         ++cnt[s[i] - 'a'];
 
-    std::sort(a, a + 26,
-              [](const int &x, const int &y) { return cnt[x] > cnt[y]; });
+    std::sort(a, a + 26, [](const int &x, const int &y) {
+        return cnt[x] > cnt[y];
+    });
 
     int x = 0, ans = 1e9;
     for (int i = 1; i <= n; ++i) {

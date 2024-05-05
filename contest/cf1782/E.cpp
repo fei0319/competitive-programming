@@ -94,8 +94,9 @@ void solve(void) {
 
     ll ans = 0;
     for (int i = 1; i <= 2; ++i) {
-        std::sort(a[i].begin(), a[i].end(),
-                  [](const Node &x, const Node &y) { return x.l < y.l; });
+        std::sort(a[i].begin(), a[i].end(), [](const Node &x, const Node &y) {
+            return x.l < y.l;
+        });
         std::vector<std::pair<int, int>> b;
         for (auto [l, r, id] : a[i]) {
             if (b.size() && l <= b.back().second)

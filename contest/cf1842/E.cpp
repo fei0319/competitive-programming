@@ -83,8 +83,9 @@ int main() {
         scanf("%d%d%d", &node[i].x, &node[i].y, &node[i].c);
         node[i].x = k - node[i].x;
     }
-    std::sort(node + 1, node + 1 + n,
-              [](const Node &a, const Node &b) { return a.x < b.x; });
+    std::sort(node + 1, node + 1 + n, [](const Node &a, const Node &b) {
+        return a.x < b.x;
+    });
 
     tree.build(1, 0, k);
     int ptr = 1;

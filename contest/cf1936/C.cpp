@@ -31,7 +31,9 @@ void solve() {
     }
 
     std::vector<std::vector<std::pair<int, int>>> G(n * 2 + n * m + 1);
-    auto add = [&](int u, int v, int w) { G[u].emplace_back(v, w); };
+    auto add = [&](int u, int v, int w) {
+        G[u].emplace_back(v, w);
+    };
     auto dijkstra = [&](auto &G, int src, int t) -> ll {
         std::vector<ll> dist(G.size(), ll(1e18));
         std::vector<uint8_t> vist(G.size(), false);
@@ -68,8 +70,9 @@ void solve() {
         for (int i = 1; i <= n; ++i) {
             id.push_back(i);
         }
-        std::sort(id.begin(), id.end(),
-                  [&](int x, int y) { return a[x][b] < a[y][b]; });
+        std::sort(id.begin(), id.end(), [&](int x, int y) {
+            return a[x][b] < a[y][b];
+        });
 
         int d = n * 2 + n * (b - 1);
         std::vector<int> v;
