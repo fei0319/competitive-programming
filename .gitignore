@@ -5,6 +5,7 @@
 *.exe
 *.in
 *.out
+*.ans
 CMakeLists.txt
 cmake-build-debug
 .idea
