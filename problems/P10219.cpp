@@ -1,14 +1,14 @@
 #ifdef ONLINE_JUDGE
 #include <bits/stdc++.h>
 #endif
+#include <array>
 #include <cstdint>
 #include <functional>
 #include <iostream>
 #include <numeric>
+#include <random>
 #include <unordered_map>
 #include <vector>
-#include <array>
-#include <random>
 
 template <class T>
 void read(T &res) {
@@ -147,14 +147,16 @@ namespace S {
                 int res = 1, p = 1;
                 std::vector<int> vals{p};
                 for (int i : v) {
-                    res = (ll)res *
-                          qpow(inv[i], x / p / i) % MOD * fact[x / p] % MOD;
+                    res = (ll)res * qpow(inv[i], x / p / i) % MOD *
+                          fact[x / p] % MOD;
                     p *= i;
                     vals.push_back(p);
                 }
                 res = (ll)res * calc(vals, k - v.size()) % MOD;
 
-                g[x].push_back({ll(res), k - (ll)v.size() + std::accumulate(v.begin(), v.end(), 0)});
+                g[x].push_back(
+                    {ll(res), k - (ll)v.size() +
+                                  std::accumulate(v.begin(), v.end(), 0)});
             }
         }
     }
@@ -242,7 +244,7 @@ int main() {
             }
         }
     }
-    
+
     for (int i = 1; i <= n; ++i) {
         if (getf(i) == i) {
             auto &v = sub[i];
