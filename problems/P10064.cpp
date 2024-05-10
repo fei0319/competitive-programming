@@ -61,9 +61,48 @@ public:
     }
 };
 
+template <class Z>
+struct static_comb {
+    std::vector<Z> fact_, ifact_;
+    static_comb(int n) : fact_(n), ifact_(n) {
+        fact_[0] = 1;
+        for (int i = 1; i < n; ++i) {
+            fact_[i] = fact_[i - 1] * i;
+        }
+        ifact_[n - 1] = 1 / fact_[n - 1];
+        for (int i = n - 2; i >= 0; --i) {
+            ifact_[i] = ifact_[i + 1] * (i + 1);
+        }
+    }
+    Z fact(int x) {
+        return fact_[x];
+    }
+    Z ifact(int x) {
+        return ifact_[x];
+    }
+    Z binom(int n, int m) {
+        return fact_[n] * ifact_[n - m] * ifact_[m];
+    }
+};
+
+using i64 = int64_t;
+
+template <class T>
+constexpr T qpow(T a, i64 b) {
+    T res = 1;
+    while (b) {
+        if (b & 1) {
+            res *= a;
+        }
+        a *= a, b >>= 1;
+    }
+    return res;
+}
+
 constexpr int MOD = 998244353;
 constexpr int N = 3000;
 using mint = static_modint<MOD>;
+using poly = std::vector<mint>;
 
 int main() {
     int n;
@@ -78,138 +117,79 @@ int main() {
         adj[v].push_back(u);
     }
 
-    // std::vector<int> spj{1, 1, 1, 5};
-    // if (n < spj.size()) {
-    //     std::cout << spj[n] << '\n';
-    //     return 0;
-    // }
+    if (n <= 2) {
+        std::cout << 1 << '\n';
+        return 0;
+    }
 
+    int n_l = 0;
+    for (int i = 0; i < n; ++i) {
+        n_l += adj[i].size() == 1;
+    }
     int rt = 0;
     while (adj[rt].size() == 1) {
         ++rt;
     }
 
-    int n_leaves = 0;
-    for (int i = 0; i < n; ++i) {
-        n_leaves += adj[i].size() == 1;
-    }
+    mint ans = 0;
 
-    std::vector<mint> f(n), g(n);
-    std::vector<int> size(n), leaves(n);
-    std::vector<std::bitset<N>> in(n);
-    auto dfs0 = [&](auto self, int node, int fa) -> void {
+    static_comb<mint> comb(n + 1);
+    std::vector<int> sz(n), leaf(n);
+    auto dfs = [&](auto self, int node, int fa) -> void {
+        if (adj[node].size() == 1) {
+            sz[node] = 1;
+            leaf[node] = 1;
+            return;
+        }
+
+        sz[node] = 1;
+        std::vector<mint> f{1};
         for (int to : adj[node]) {
             if (to == fa) {
                 continue;
             }
             self(self, to, node);
 
-            size[node] += size[to];
-            leaves[node] += leaves[to];
-            in[node] |= in[to];
-        }
-        size[node] += 1;
-        leaves[node] += (adj[node].size() == 1);
-        in[node].set(node);
-
-        auto calc = [&](bool flag) -> mint {
-            int available_leaves = 0;
-            mint res = 1, tot = 1;
-            for (int i = 0; i < n; ++i) {
-                if (adj[i].size() == 1) {
-                    if (flag ? in[node].test(i)
-                             : (!in[node].test(i) || i == node)) {
-                        ++available_leaves;
-                    } else {
-                        int num =
-                            flag ? size[node] - leaves[node] + available_leaves
-                                 : (n - size[node] + 1) -
-                                       (n_leaves - leaves[node]) +
-                                       available_leaves;
-                        if (num == 0) {
-                            continue;
-                        }
-                        res *= mint::qpow(2, num) - 1;
-                        tot *= mint::qpow(2, num);
-                    }
+            std::vector<mint> n_f(f.size() + leaf[to]);
+            for (int i = 0; i < f.size(); ++i) {
+                for (int j = 0; j <= leaf[to]; ++j) {
+                    n_f[i + j] += f[i] *
+                                  qpow(mint(2), (sz[node] - i) * (sz[to] - j)) *
+                                  comb.binom(leaf[to], j) *
+                                  qpow(mint(2), sz[to] * (sz[to] - 1) / 2);
                 }
             }
-            return res / tot;
-        };
-
-        f[node] = calc(true);
-        g[node] = calc(false); // only valid for non-leaf nodes
-        if (node == rt) {
-            g[node] = 1;
+            f = std::move(n_f);
+            sz[node] += sz[to];
+            leaf[node] += leaf[to];
         }
-    };
-    dfs0(dfs0, rt, -1);
 
-    auto convolution = [](const std::vector<mint> &f,
-                          const std::vector<mint> &g) {
-        std::vector<mint> res(f.size() + g.size() - 1);
-        for (int x = 0; x < f.size(); ++x) {
-            for (int y = 0; y < g.size(); ++y) {
-                res[x + y] += f[x] * g[y];
+        for (int i = 0; i < f.size(); ++i) {
+            mint res = f[i];
+            if (node != rt) {
+                res *= qpow(mint(2), (n - sz[node] - (n_l - leaf[node])) *
+                                         (sz[node] - i));
+                res *= qpow(qpow(mint(2), sz[node] - i) - 1, n_l - leaf[node]);
+                res *= qpow(mint(2), (n - sz[node]) * (n - sz[node] - 1) / 2);
+            }
+            ans += res * (i & 1 ? -1 : 1);
+        }
+
+        if (node != rt) {
+            for (int i = 0; i <= leaf[node]; ++i) {
+                mint res = qpow(mint(2), sz[node] * (sz[node] - 1) / 2) *
+                           comb.binom(leaf[node], i);
+                res *= qpow(mint(2), (n - sz[node] - (n_l - leaf[node])) *
+                                         (sz[node] - i));
+                res *= qpow(qpow(mint(2), sz[node] - i) - 1, n_l - leaf[node]);
+                res *= qpow(mint(2), (n - sz[node]) * (n - sz[node] - 1) / 2);
+                ans -= res * (i & 1 ? -1 : 1);
             }
         }
-        return res;
     };
-    auto addition = [](const std::vector<mint> &f, const std::vector<mint> &g) {
-        std::vector<mint> res(f);
-        if (g.size() > f.size()) {
-            res.resize(g.size());
-        }
-        for (int i = 0; i < g.size(); ++i) {
-            res[i] += g[i];
-        }
-        return res;
-    };
+    dfs(dfs, rt, -1);
 
-    // std::fill(f.begin(), f.end(), 1);
-    // std::fill(g.begin(), g.end(), 1);
-
-    std::vector<std::vector<mint>> F(n);
-    std::vector<std::vector<mint>> dp(n);
-    auto dfs1 = [&](auto self, int node, int fa) -> void {
-        dp[node].assign(1, 1);
-        F[node].assign(1, 1);
-        for (int to : adj[node]) {
-            if (to == fa) {
-                continue;
-            }
-            self(self, to, node);
-
-            dp[node] = convolution(dp[node], dp[to]);
-            F[node] = convolution(F[node], F[to]);
-        }
-
-        auto tmp = convolution(dp[node], std::vector<mint>{0, g[node]});
-        if (adj[node].size() == 1) {
-            tmp[1] += f[node] - g[node];
-        } else {
-            tmp[1] += (f[node] - 1) * g[node];
-        }
-        F[node] = addition(F[node], tmp);
-
-        dp[node] = convolution(dp[node], std::vector<mint>{1, 1});
-        dp[node][1] -= 1;
-        dp[node][1] += f[node];
-
-        std::cerr << "dp_" << node << " = ";
-        for (int i = 0; i < dp[node].size(); ++i) {
-            std::cerr << dp[node][i].value() << ' ';
-        }
-        std::cerr << '\n';
-    };
-    dfs1(dfs1, rt, -1);
-
-    mint all = mint::qpow(2, n * (n - 1) / 2);
-    std::cerr << all.value() << '\n';
-    for (int i = 0; i < F[rt].size(); ++i) {
-        F[rt][i] *= all;
-        std::cerr << std::format("F_{}={}\n", i, F[rt][i].value());
-    }
+    std::cout << ans.value() << '\n';
 
     return 0;
 }
