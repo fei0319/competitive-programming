@@ -68,7 +68,7 @@ struct Flow {
         edge.emplace_back(u, 0);
         return j;
     }
-    T max_flow(int s, int t) {
+    T operator()(int s, int t) {
         T ans = 0;
         while (bfs(s, t)) {
             cur.assign(n, 0);
