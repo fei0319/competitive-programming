@@ -1,7 +1,7 @@
 template <class Z>
-struct static_comb {
+struct Comb {
     std::vector<Z> fact_, ifact_;
-    static_comb(int n) : fact_(n), ifact_(n) {
+    Comb(int n) : fact_(n), ifact_(n) {
         fact_[0] = 1;
         for (int i = 1; i < n; ++i) {
             fact_[i] = fact_[i - 1] * i;

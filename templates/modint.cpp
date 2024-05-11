@@ -1,16 +1,16 @@
 template <int m>
-struct static_modint {
+struct ModInt {
 private:
     int raw_;
-    using mint = static_modint;
+    using mint = ModInt;
     using i64 = int64_t;
 
 public:
-    static_modint() {
+    ModInt() {
         raw_ = 0;
     }
     template <typename T>
-    static_modint(const T &v) {
+    ModInt(const T &v) {
         raw_ = v % m;
     }
     int value() const {
