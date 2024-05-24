@@ -50,6 +50,46 @@ class Poly : public std::vector<Z> {
 
 public:
     using std::vector<Z>::vector;
+    using std::vector<Z>::size;
+    using std::vector<Z>::resize;
+    using std::vector<Z>::at;
+
+    Poly &operator+=(const Poly &rhs) {
+        if (rhs.size() > size()) {
+            resize(rhs.size());
+        }
+        for (int i = 0; i < rhs.size(); ++i) {
+            this->operator[](i) += rhs[i];
+        }
+        return *this;
+    }
+
+    Poly &operator-=(const Poly &rhs) {
+        if (rhs.size() > size()) {
+            resize(rhs.size());
+        }
+        for (int i = 0; i < rhs.size(); ++i) {
+            this->operator[](i) -= rhs[i];
+        }
+        return *this;
+    }
+    friend Poly operator+(const Poly &lhs, const Poly &rhs) {
+        return Poly(lhs) += rhs;
+    }
+    friend Poly operator-(const Poly &lhs, const Poly &rhs) {
+        return Poly(lhs) -= rhs;
+    }
+
+    Poly &operator*=(const Z &rhs) {
+        for (Z &i : *this) {
+            i *= rhs;
+        }
+        return *this;
+    }
+    friend Poly operator*(const Poly &lhs, const Z &rhs) {
+        return Poly(lhs) *= rhs;
+    }
+
     friend Poly operator*(const Poly &lhs, const Poly &rhs) {
         int N = 1, n = lhs.size() + rhs.size() - 1;
 
@@ -69,6 +109,20 @@ public:
         idft(f.begin(), N);
         f.resize(n);
 
+        return f;
+    }
+
+    Poly prefix(int len) const {
+        Poly f(*this);
+        f.resize(len);
+        return f;
+    }
+    Poly inv() const {
+        Poly f{Z(1) / at(0)};
+        for (int i = 1; i < size(); i *= 2) {
+            f = (f * 2 - f * f * prefix(i * 2)).prefix(i * 2);
+        }
+        f.resize(size());
         return f;
     }
 };
