@@ -52,7 +52,6 @@ public:
     using std::vector<Z>::vector;
     using std::vector<Z>::size;
     using std::vector<Z>::resize;
-    using std::vector<Z>::at;
 
     Poly &operator+=(const Poly &rhs) {
         if (rhs.size() > size()) {
@@ -73,12 +72,6 @@ public:
         }
         return *this;
     }
-    friend Poly operator+(const Poly &lhs, const Poly &rhs) {
-        return Poly(lhs) += rhs;
-    }
-    friend Poly operator-(const Poly &lhs, const Poly &rhs) {
-        return Poly(lhs) -= rhs;
-    }
 
     Poly &operator*=(const Z &rhs) {
         for (Z &i : *this) {
@@ -86,19 +79,15 @@ public:
         }
         return *this;
     }
-    friend Poly operator*(const Poly &lhs, const Z &rhs) {
-        return Poly(lhs) *= rhs;
-    }
-
-    friend Poly operator*(const Poly &lhs, const Poly &rhs) {
-        int N = 1, n = lhs.size() + rhs.size() - 1;
+    Poly &operator*=(const Poly &rhs) {
+        int N = 1, n = size() + rhs.size() - 1;
 
         while (N < n) {
             N *= 2;
         }
 
-        Poly f(N), g(N);
-        std::copy(lhs.begin(), lhs.end(), f.begin());
+        Poly &f(*this), g(N);
+        f.resize(N);
         std::copy(rhs.begin(), rhs.end(), g.begin());
 
         dft(f.begin(), N);
@@ -112,13 +101,24 @@ public:
         return f;
     }
 
+    friend Poly operator+(const Poly &lhs, const Poly &rhs) {
+        return Poly(lhs) += rhs;
+    }
+    friend Poly operator-(const Poly &lhs, const Poly &rhs) {
+        return Poly(lhs) -= rhs;
+    }
+    template <class T>
+    friend Poly operator*(const Poly &lhs, const T &rhs) {
+        return Poly(lhs) *= rhs;
+    }
+
     Poly prefix(int len) const {
         Poly f(*this);
         f.resize(len);
         return f;
     }
     Poly inv() const {
-        Poly f{Z(1) / at(0)};
+        Poly f{Z(1) / this->operator[](0)};
         for (int i = 1; i < size(); i *= 2) {
             f = (f * 2 - f * f * prefix(i * 2)).prefix(i * 2);
         }
