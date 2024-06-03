@@ -9,6 +9,7 @@
 CMakeLists.txt
 cmake-build-debug
 .idea
+build/
 
 test*.cpp
 */test*.cpp
