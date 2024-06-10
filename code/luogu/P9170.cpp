@@ -1,13 +1,5 @@
 #include <bits/stdc++.h>
 
-std::mt19937 rng(std::chrono::steady_clock::now().time_since_epoch().count());
-
-template <class Iter>
-auto random_choice(Iter begin, Iter end) {
-    int sz = end - begin;
-    return *(begin + std::uniform_int_distribution<int>(0, sz - 1)(rng));
-}
-
 struct SegmentTree {
     struct Node {
         int min{0}, tag{0};
@@ -130,7 +122,7 @@ void solve() {
     std::vector<uint8_t> e_vist(n + 1), v_vist(m + 1), vist(m + 1);
     std::vector<int> cyc(m + 1);
     auto solve_pseudotree = [&](int _) -> int {
-        const int rt = random_choice(vertex[_].begin(), vertex[_].end());
+        const int rt = vertex[_][0];
 
         std::vector<int> stk;
         int cyc_len = 0;
@@ -235,7 +227,7 @@ void solve() {
         const int sz = vertex[_].size();
         SegmentTree mt{sz};
 
-        const int rt = random_choice(vertex[_].begin(), vertex[_].end());
+        const int rt = vertex[_][0];
 
         int ind = 0;
         auto dfs1 = [&](auto self, int node, int fa) -> void {
