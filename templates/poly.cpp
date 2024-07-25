@@ -2,7 +2,7 @@ template <class Z>
 class Poly : public std::vector<Z> {
     static std::vector<int> rev;
     static std::vector<Z> w;
-    static void dft(std::vector<Z>::iterator f, int n) {
+    static void dft(auto f, int n) {
         if (rev.size() != n) {
             rev.resize(n);
             for (int i = 0; i < n; i++) {
@@ -39,7 +39,7 @@ class Poly : public std::vector<Z> {
         }
     }
 
-    static void idft(std::vector<Z>::iterator f, int n) {
+    static void idft(auto f, int n) {
         std::reverse(f + 1, f + n);
         dft(f, n);
         const Z inv = (1 - Z::mod()) / n;
@@ -123,6 +123,37 @@ public:
             f = (f * 2 - f * f * prefix(i * 2)).prefix(i * 2);
         }
         f.resize(size());
+        return f;
+    }
+
+    friend Poly log(const Poly &h) {
+        Poly f(h);
+        for (int i = 1; i < (int)f.size(); ++i) {
+            f[i - 1] = f[i] * i;
+        }
+        f[f.size() - 1] = 0, f = f * h.inv(), f.resize(h.size());
+        for (int i = (int)f.size() - 1; i > 0; --i) {
+            f[i] = f[i - 1] * Z::qpow(i, Z::mod() - 2);
+        }
+        f[0] = 0;
+        return f;
+    }
+    friend Poly exp(const Poly &h) {
+        int N = 1;
+        while (N < (int)(h.size() + h.size() - 1)) {
+            N <<= 1;
+        }
+        Poly f(N), g(N), d(h);
+        f[0] = 1, d.resize(N);
+        for (int w = 2; w < N; w <<= 1) {
+            f.resize(w), g.resize(w);
+            for (int i = 0; i < w; ++i) {
+                g[i] = d[i];
+            }
+            f = f * (g + 1 - log(f));
+            f.resize(w);
+        }
+        f.resize(h.size());
         return f;
     }
 };
