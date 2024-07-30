@@ -52,6 +52,7 @@ public:
     using std::vector<Z>::vector;
     using std::vector<Z>::size;
     using std::vector<Z>::resize;
+    using std::vector<Z>::empty;
 
     Poly &operator+=(const Poly &rhs) {
         if (rhs.size() > size()) {
@@ -60,6 +61,13 @@ public:
         for (int i = 0; i < rhs.size(); ++i) {
             this->operator[](i) += rhs[i];
         }
+        return *this;
+    }
+    Poly &operator+=(const Z &rhs) {
+        if (size() == 0) {
+            resize(1);
+        }
+        this->operator[](0) += rhs;
         return *this;
     }
 
@@ -101,14 +109,13 @@ public:
         return f;
     }
 
-    friend Poly operator+(const Poly &lhs, const Poly &rhs) {
+    friend Poly operator+(const Poly &lhs, const auto &rhs) {
         return Poly(lhs) += rhs;
     }
-    friend Poly operator-(const Poly &lhs, const Poly &rhs) {
+    friend Poly operator-(const Poly &lhs, const auto &rhs) {
         return Poly(lhs) -= rhs;
     }
-    template <class T>
-    friend Poly operator*(const Poly &lhs, const T &rhs) {
+    friend Poly operator*(const Poly &lhs, const auto &rhs) {
         return Poly(lhs) *= rhs;
     }
 
