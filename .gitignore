@@ -11,6 +11,8 @@ cmake-build-debug
 .idea
 build/
 
+code/contest/*
+
 test*.cpp
 */test*.cpp
 */*/test*.cpp
