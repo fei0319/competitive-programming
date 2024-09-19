@@ -1,5 +1,5 @@
 template <typename Mono, int TREE_N>
-class Splay {
+class LinkCutTree {
 #define ls son[x][0]
 #define rs son[x][1]
     int son[TREE_N][2], fa[TREE_N];
