@@ -7,9 +7,9 @@
 - LibraryChecker: 176ms
 
 ```cpp
-constexpr u64 N = 1e6;
-u64 res = 0;
-for (u64 i = 0; i < N; ++i) {
-    res += i * i;
+constexpr int N = 1e6;
+std::set<int> s;
+for (int i = 0; i < N; ++i) {
+    s.insert(i);
 }
 ```
