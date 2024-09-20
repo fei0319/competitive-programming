@@ -46,13 +46,13 @@ public:
         return m;
     }
 
-    static constexpr int qpow(int a, int b) {
-        int res = 1;
+    static mint qpow(mint a, i64 b) {
+        mint res = 1;
         while (b) {
             if (b & 1) {
-                res = (i64)res * a % m;
+                res *= a;
             }
-            a = (i64)a * a % m, b >>= 1;
+            a *= a, b >>= 1;
         }
         return res;
     }
