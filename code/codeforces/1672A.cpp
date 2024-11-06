@@ -20,10 +20,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 int n, a[100];
@@ -34,8 +32,7 @@ int main() {
     while (T--) {
         read(n);
         int tot = 0;
-        for (int i = 1; i <= n; ++i)
-            read(a[i]), tot += a[i] - 1;
+        for (int i = 1; i <= n; ++i) read(a[i]), tot += a[i] - 1;
         puts(tot & 1 ? "errorgorn" : "maomao90");
     }
 }

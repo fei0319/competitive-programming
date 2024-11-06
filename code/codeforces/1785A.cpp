@@ -8,8 +8,7 @@ template <typename Tp>
 Tp qpow(Tp a, int b) {
     Tp res = 1;
     while (b) {
-        if (b & 1)
-            res *= a;
+        if (b & 1) res *= a;
         a *= a, b >>= 1;
     }
     return res;
@@ -29,12 +28,8 @@ struct Z {
     int x;
     Z(int x = 0) : x(norm(x)) {}
     Z(i64 x) : x(norm(x % MOD)) {}
-    int val() const {
-        return x;
-    }
-    Z operator-() const {
-        return Z(norm(MOD - x));
-    }
+    int val() const { return x; }
+    Z operator-() const { return Z(norm(MOD - x)); }
     Z inv() const {
         assert(x != 0);
         return qpow(*this, MOD - 2);
@@ -51,9 +46,7 @@ struct Z {
         x = norm(x - rhs.x);
         return *this;
     }
-    Z &operator/=(const Z &rhs) {
-        return *this *= rhs.inv();
-    }
+    Z &operator/=(const Z &rhs) { return *this *= rhs.inv(); }
     friend Z operator*(const Z &lhs, const Z &rhs) {
         Z res = lhs;
         res *= rhs;
@@ -90,8 +83,7 @@ int n, a[maxn];
 
 void solve(void) {
     std::cin >> n;
-    for (int i = 1; i <= n; ++i)
-        std::cin >> a[i];
+    for (int i = 1; i <= n; ++i) std::cin >> a[i];
 
     std::sort(a + 1, a + 1 + n);
     int last = 0;

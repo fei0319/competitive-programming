@@ -8,8 +8,7 @@ int n, m, a[maxn];
 
 void solve(void) {
     std::cin >> n >> m;
-    for (int i = 1; i <= n; ++i)
-        std::cin >> a[i];
+    for (int i = 1; i <= n; ++i) std::cin >> a[i];
     int ans = 1;
     for (int i = 2; i <= n; ++i) {
         if (a[i - 1] % a[i] != 0) {
@@ -20,12 +19,10 @@ void solve(void) {
         std::vector<int> p;
         for (int j = 2; j * j <= k; ++j)
             if (k % j == 0) {
-                while (k % j == 0)
-                    k /= j;
+                while (k % j == 0) k /= j;
                 p.push_back(j);
             }
-        if (k != 1)
-            p.push_back(k);
+        if (k != 1) p.push_back(k);
         //	std::cout << "P:";
         //	for(int j : p) std::cout << j << ' ';
         //	std::cout << std::endl;
@@ -34,8 +31,7 @@ void solve(void) {
         for (int j = 0; j < s; ++j) {
             int v = 1, f = 1;
             for (int u = 0; u < (int)p.size(); ++u)
-                if (j & (1 << u))
-                    v *= p[u], f = -f;
+                if (j & (1 << u)) v *= p[u], f = -f;
             //		std::cout << v << ' ' << f << '\n';
             res += f * (t / v);
         }

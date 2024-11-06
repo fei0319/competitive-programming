@@ -59,7 +59,8 @@ int solve1(int S) {
             int t = x / d;
             for (int a = max_S + d + 1; S3 * a * a <= t && a <= n; ++a) {
                 int b = a - d;
-                if (S3 * (a * a + a * b + b * b) + S2 * (a + b) + S1 == t) {
+                if (S3 * (a * a + a * b + b * b) + S2 * (a + b) + S1 ==
+                    t) {
                     res += 1;
                 }
             }
@@ -106,7 +107,8 @@ int main() {
     }
     for (int k = 4; k <= 30; ++k) {
         for (int a = 3; a <= n && qpow(a, k) - qpow(a - 1, k) <= x; ++a) {
-            for (int b = a - 1; b > 1 && qpow(a, k) - qpow(b, k) <= x; --b) {
+            for (int b = a - 1; b > 1 && qpow(a, k) - qpow(b, k) <= x;
+                 --b) {
                 ans = (ans + solve2(a, b, k)) % MOD;
             }
         }

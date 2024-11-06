@@ -16,7 +16,8 @@ struct Matrix {
         for (int i = 0; i < MAXN; ++i) {
             for (int j = 0; j < MAXN; ++j) {
                 for (int k = 0; k < MAXN; ++k) {
-                    res.a[i][k] = (res.a[i][k] + (ll)a[i][j] * b.a[j][k]) % MOD;
+                    res.a[i][k] =
+                        (res.a[i][k] + (ll)a[i][j] * b.a[j][k]) % MOD;
                 }
             }
         }
@@ -27,8 +28,7 @@ struct Matrix {
 int qpow(int a, int b) {
     int res = 1;
     while (b) {
-        if (b & 1)
-            res = (ll)res * a % MOD;
+        if (b & 1) res = (ll)res * a % MOD;
         a = (ll)a * a % MOD, b >>= 1;
     }
     return res;
@@ -37,8 +37,7 @@ int qpow(int a, int b) {
 Matrix qpow(Matrix a, int b) {
     Matrix res = Matrix(1);
     while (b) {
-        if (b & 1)
-            res = res * a;
+        if (b & 1) res = res * a;
         a = a * a, b >>= 1;
     }
     return res;
@@ -55,7 +54,8 @@ void solve() {
     int ans = (ll)(x + k) * qpow((2 * k + 1) % MOD, n - 1) % MOD;
     Matrix a{0};
     for (int i = 0; i < x; ++i) {
-        for (int j = std::max(0, i - k); j <= std::min(x - 1, i + k); ++j) {
+        for (int j = std::max(0, i - k); j <= std::min(x - 1, i + k);
+             ++j) {
             a.a[i][j] = 1;
         }
     }

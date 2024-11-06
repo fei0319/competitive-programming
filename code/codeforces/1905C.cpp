@@ -21,8 +21,7 @@ void solve(void) {
             while (!pos[c].empty() && pos[c].back() <= now) {
                 pos[c].pop_back();
             }
-            if (pos[c].empty())
-                c -= 1;
+            if (pos[c].empty()) c -= 1;
         }
         if (c >= 0) {
             now = pos[c].back();

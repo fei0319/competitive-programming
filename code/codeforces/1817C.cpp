@@ -58,7 +58,8 @@ int main() {
     f.pop_back(), g.pop_back();
     int fd1 = get_highest(f), gd1 = get_highest(g);
 
-    std::cout << (ll(gd1 - fd1) * qpow((ll)d * fd % mod, mod - 2) % mod + mod) %
+    std::cout << (ll(gd1 - fd1) * qpow((ll)d * fd % mod, mod - 2) % mod +
+                  mod) %
                      mod
               << '\n';
 

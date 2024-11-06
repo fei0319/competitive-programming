@@ -19,8 +19,7 @@ void dfs(int node, int f) {
 
 void solve() {
     scanf("%d", &n);
-    for (int i = 1; i <= n; ++i)
-        G[i].clear();
+    for (int i = 1; i <= n; ++i) G[i].clear();
     for (int i = 2; i <= n; ++i) {
         int x, y;
         scanf("%d%d", &x, &y);
@@ -38,6 +37,5 @@ void solve() {
 int main() {
     int t;
     scanf("%d", &t);
-    while (t--)
-        solve();
+    while (t--) solve();
 }

@@ -10,12 +10,10 @@ void solve(void) {
     std::cin >> n;
     std::cin >> s;
     for (int i = 0; i < 26; ++i)
-        for (int j = 0; j < 26; ++j)
-            ok[i][j] = 0;
+        for (int j = 0; j < 26; ++j) ok[i][j] = 0;
     for (int i = 0; i + 1 < n; ++i) {
         ++ok[s[i] - 'a'][s[i + 1] - 'a'];
-        if (i + 2 < n && s[i] == s[i + 1] && s[i] == s[i + 2])
-            ++i;
+        if (i + 2 < n && s[i] == s[i + 1] && s[i] == s[i + 2]) ++i;
     }
     for (int i = 0; i < 26; ++i)
         for (int j = 0; j < 26; ++j) {

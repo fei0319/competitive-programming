@@ -20,10 +20,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 2e5 + 19;
@@ -41,25 +39,22 @@ int main() {
         for (int i = 1; i <= n; ++i)
             read(a[i]), ++cnt[a[i]], pos[a[i]].push_back(i);
         for (int i = 1; i <= n; ++i)
-            if (cnt[i])
-                all.push_back(i);
+            if (cnt[i]) all.push_back(i);
         while (all.size()) {
             std::vector<int> tmp;
             tmp.swap(all);
             for (int i : tmp) {
                 --cnt[i];
-                if (cnt[i])
-                    all.push_back(i);
+                if (cnt[i]) all.push_back(i);
             }
-            if (!tmp.size())
-                return 0;
+            if (!tmp.size()) return 0;
             tmp.push_back(tmp.front());
             for (int i = 1; i < (int)tmp.size(); ++i) {
-                a[pos[tmp[i - 1]].back()] = tmp[i], pos[tmp[i - 1]].pop_back();
+                a[pos[tmp[i - 1]].back()] = tmp[i],
+                              pos[tmp[i - 1]].pop_back();
             }
         }
-        for (int i = 1; i <= n; ++i)
-            printf("%d ", a[i]);
+        for (int i = 1; i <= n; ++i) printf("%d ", a[i]);
         puts("");
     }
 }

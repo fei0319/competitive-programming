@@ -64,8 +64,7 @@ void solve(void) {
 
     for (int i = 0; i < n && rest; i += 2) {
         for (int j = 0; j < n && rest; j += 2) {
-            if (i == 0 && j == 0 && k % 4 == 2)
-                continue;
+            if (i == 0 && j == 0 && k % 4 == 2) continue;
             if (!a[i][j]) {
                 accept(i, j);
                 rest -= 1;

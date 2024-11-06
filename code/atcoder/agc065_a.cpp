@@ -10,15 +10,13 @@ int main(int argc, char *argv[]) {
     std::cin >> n >> k;
 
     std::vector<int> a(n);
-    for (int &i : a)
-        std::cin >> i;
+    for (int &i : a) std::cin >> i;
     std::sort(a.begin(), a.end());
 
     int max_cnt = 0;
     for (int l = 0, r; l < n; l = r + 1) {
         r = l;
-        while (r + 1 < n && a[r + 1] == a[r])
-            ++r;
+        while (r + 1 < n && a[r + 1] == a[r]) ++r;
         if (r - l + 1 > max_cnt) {
             max_cnt = r - l + 1;
         }
@@ -26,8 +24,7 @@ int main(int argc, char *argv[]) {
     std::vector<int> M;
     for (int l = 0, r; l < n; l = r + 1) {
         r = l;
-        while (r + 1 < n && a[r + 1] == a[r])
-            ++r;
+        while (r + 1 < n && a[r + 1] == a[r]) ++r;
         if (r - l + 1 == max_cnt) {
             M.push_back(a[r]);
         }

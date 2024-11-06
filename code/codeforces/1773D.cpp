@@ -8,9 +8,7 @@
 #include <random>
 #include <vector>
 
-auto current_time() {
-    return std::chrono::steady_clock::now();
-}
+auto current_time() { return std::chrono::steady_clock::now(); }
 std::mt19937 rng(current_time().time_since_epoch().count());
 
 template <class T>
@@ -209,9 +207,7 @@ int main() {
         return 0;
     }
 
-    auto encode = [&](int x, int y) {
-        return m * x + y;
-    };
+    auto encode = [&](int x, int y) { return m * x + y; };
 
     std::vector<uint8_t> type(n * m);
     for (int x = 0; x < n; ++x) {
@@ -292,7 +288,8 @@ int main() {
                 }
                 int now = encode(x, y);
                 if (type[now]) {
-                    nadj[now].insert(nadj[now].end(), adj[partner[now]].begin(),
+                    nadj[now].insert(nadj[now].end(),
+                                     adj[partner[now]].begin(),
                                      adj[partner[now]].end());
                     auto unique = [](std::vector<int> &vec) {
                         std::sort(vec.begin(), vec.end());

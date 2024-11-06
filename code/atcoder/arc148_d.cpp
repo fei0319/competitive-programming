@@ -20,18 +20,14 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 int n, m;
 std::set<int> s;
 
-int rep(int x) {
-    return (x + m / 2) % m;
-}
+int rep(int x) { return (x + m / 2) % m; }
 
 int main() {
     read(n), read(m);
@@ -39,14 +35,11 @@ int main() {
     for (int i = 1; i <= n + n; ++i) {
         int x;
         read(x);
-        if (s.find(x) != s.end())
-            s.erase(x);
+        if (s.find(x) != s.end()) s.erase(x);
         else if (m % 2 == 0 && s.find(rep(x)) != s.end())
             s.erase(rep(x)), ++cnt;
-        else
-            s.insert(x);
+        else s.insert(x);
     }
-    if (!s.empty())
-        return puts("Alice"), 0;
+    if (!s.empty()) return puts("Alice"), 0;
     puts(cnt & 1 ? "Alice" : "Bob");
 }

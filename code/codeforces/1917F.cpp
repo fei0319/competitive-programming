@@ -14,8 +14,7 @@ void solve(void) {
     int cnt = 0;
     for (int &i : a) {
         std::cin >> i;
-        if (i > d / 2)
-            ++cnt;
+        if (i > d / 2) ++cnt;
     }
 
     if (cnt >= 2) {

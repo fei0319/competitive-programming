@@ -11,7 +11,8 @@ class Segment {
         int sum;
     } tr[MAXS];
     static int tot;
-    static void modify(int &node, int L, int R, int l, int r, const int &val) {
+    static void modify(int &node, int L, int R, int l, int r,
+                       const int &val) {
         if (!node) {
             node = ++tot;
         }
@@ -50,13 +51,10 @@ public:
         }
     }
     static void modify(int &rt, int l, int r, const int &val) {
-        if (l > r)
-            return;
+        if (l > r) return;
         modify(rt, L, R, l, r, val);
     }
-    static int query(int rt, int x) {
-        return query(rt, L, R, x);
-    }
+    static int query(int rt, int x) { return query(rt, L, R, x); }
 };
 Segment::Node Segment::tr[MAXS];
 int Segment::tot;

@@ -32,10 +32,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 2e5 + 19;
@@ -44,21 +42,17 @@ int n, x, y, a[maxn];
 
 int main() {
     read(n), read(x), read(y);
-    for (int i = 1; i <= n; ++i)
-        read(a[i]), a[i] %= (x + y);
+    for (int i = 1; i <= n; ++i) read(a[i]), a[i] %= (x + y);
     if (x <= y) {
         int cnt = 0;
         for (int i = 1; i <= n; ++i)
-            if (a[i] >= x)
-                ++cnt;
+            if (a[i] >= x) ++cnt;
         puts(cnt ? "First" : "Second");
     } else {
         int gx = 0, lx = 0;
         for (int i = 1; i <= n; ++i)
-            if (a[i] >= x)
-                ++gx;
-            else if (a[i] >= y)
-                ++lx;
+            if (a[i] >= x) ++gx;
+            else if (a[i] >= y) ++lx;
         puts(gx && !lx ? "First" : "Second");
     }
 }

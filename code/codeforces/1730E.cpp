@@ -30,8 +30,7 @@ namespace Segment {
         }
         int mid = (L + R) / 2;
         std::pair<int, int> res{};
-        if (l <= mid)
-            res = std::max(res, query(node << 1, L, mid, l, r));
+        if (l <= mid) res = std::max(res, query(node << 1, L, mid, l, r));
         if (r > mid)
             res = std::max(res, query(node << 1 | 1, mid + 1, R, l, r));
         return res;
@@ -65,18 +64,10 @@ struct Revertable {
         pos[a[st[sz]]] = 0;
         --sz;
     }
-    int index_of(int x) const {
-        return pos[x];
-    }
-    int size() const {
-        return sz;
-    }
-    int top() const {
-        return st[sz];
-    }
-    void record() {
-        op.push_back({});
-    }
+    int index_of(int x) const { return pos[x]; }
+    int size() const { return sz; }
+    int top() const { return st[sz]; }
+    void record() { op.push_back({}); }
     void revert() {
         auto &p = op.back();
         for (auto &i : std::ranges::reverse_view(p)) {
@@ -124,9 +115,7 @@ void solve() {
     }
     L.record();
 
-    auto proj = [](int x) {
-        return a[x];
-    };
+    auto proj = [](int x) { return a[x]; };
 
     ll ans{0};
     for (int i = 1; i <= n; ++i) {
@@ -143,13 +132,13 @@ void solve() {
                         std::max(L.st[L.index_of(d) - 1], l[i] - 1);
                 len_l = std::max(len_l, 0);
                 if (len_l)
-                    res_l +=
-                        (ll)len_l * (std::min(*(std::ranges::upper_bound(
-                                                    R.st + 1, R.st + 1 + R.sz,
-                                                    d, {}, proj) -
-                                                1),
-                                              r[i] + 1) -
-                                     i);
+                    res_l += (ll)len_l *
+                             (std::min(*(std::ranges::upper_bound(
+                                             R.st + 1, R.st + 1 + R.sz, d,
+                                             {}, proj) -
+                                         1),
+                                       r[i] + 1) -
+                              i);
             }
             if (R.index_of(d)) {
                 len_r = std::min(R.st[R.index_of(d) - 1], r[i] + 1) -
@@ -158,8 +147,8 @@ void solve() {
                 if (len_r)
                     res_r += (ll)len_r *
                              (i - std::max(*(std::ranges::upper_bound(
-                                                 L.st + 1, L.st + 1 + L.sz, d,
-                                                 {}, proj) -
+                                                 L.st + 1, L.st + 1 + L.sz,
+                                                 d, {}, proj) -
                                              1),
                                            l[i] - 1));
             }
@@ -169,7 +158,8 @@ void solve() {
             ans += res_l;
             ans += res_r;
             // std::cout << std::format("a[{}]={} d={} len_l={} len_r={}
-            // res_l={} res_r={}\n", i, a[i], d, len_l, len_r, res_l, res_r);
+            // res_l={} res_r={}\n", i, a[i], d, len_l, len_r, res_l,
+            // res_r);
         }
 
         R.revert();

@@ -32,10 +32,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 5e5 + 19;
@@ -48,10 +46,8 @@ int main() {
     while (q--) {
         int t, x;
         read(t), read(x);
-        if (t == 1)
-            p = (p + n - x) % n;
-        else
-            printf("%c\n", s[(p + x - 1) % n]);
+        if (t == 1) p = (p + n - x) % n;
+        else printf("%c\n", s[(p + x - 1) % n]);
     }
 }
 

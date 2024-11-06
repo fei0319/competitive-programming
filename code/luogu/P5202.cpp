@@ -20,10 +20,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 3e5 + 19;
@@ -40,11 +38,10 @@ int main() {
         s[i] = s[i - 1] + (grass[i] == 'G' ? 1 : -1);
     q[h = t = 0] = 0;
     for (int i = 1; i <= n; ++i) {
-        while (i - q[h] > k)
-            ++h;
+        while (i - q[h] > k) ++h;
         dp[i] = dp[q[h]] + (s[i] - s[q[h]] >= 0);
-        while (h <= t &&
-               (dp[q[t]] > dp[i] || (dp[q[t]] == dp[i] && s[q[t]] <= s[i])))
+        while (h <= t && (dp[q[t]] > dp[i] ||
+                          (dp[q[t]] == dp[i] && s[q[t]] <= s[i])))
             --t;
         q[++t] = i;
     }

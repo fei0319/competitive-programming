@@ -26,10 +26,10 @@ std::vector<int> solve(int v) {
         for (int j = 0; j < v; ++j) {
             for (int k = 0; k < v; ++k) {
                 if (dp[i - 1][j][k] != NA) {
-                    int p = dp[i - 1][j][k] >= 0 ? i - 1 : -dp[i - 1][j][k] - 1;
+                    int p = dp[i - 1][j][k] >= 0 ? i - 1
+                                                 : -dp[i - 1][j][k] - 1;
 
-                    if (!vist[i])
-                        dp[i][j + 1][(k + a[i]) % v] = p;
+                    if (!vist[i]) dp[i][j + 1][(k + a[i]) % v] = p;
                     dp[i][j][k] = -p - 1;
                 }
             }

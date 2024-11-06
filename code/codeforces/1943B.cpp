@@ -31,9 +31,7 @@ std::vector<int> get(int l, int r, int h[D][MAXN], int b[D][MAXN]) {
     return res;
 }
 
-ll sum(int n) {
-    return (ll)n * (n + 1) / 2;
-}
+ll sum(int n) { return (ll)n * (n + 1) / 2; }
 
 ll solve(int l, int r) {
     int n = r - l + 1;

@@ -9,9 +9,7 @@ class ModInt {
 public:
     ModInt() : raw(0) {}
     ModInt(const auto &v) : raw((v % m + m) % m) {}
-    int value() const {
-        return raw;
-    }
+    int value() const { return raw; }
 
     mint &operator+=(const mint &rhs) {
         raw += rhs.raw;
@@ -31,9 +29,7 @@ public:
         raw = (i64)raw * rhs.raw % m;
         return *this;
     }
-    mint &operator/=(const mint &rhs) {
-        return *this *= qpow(rhs, m - 2);
-    }
+    mint &operator/=(const mint &rhs) { return *this *= qpow(rhs, m - 2); }
 
     friend mint operator+(const mint &lhs, const mint &rhs) {
         return mint(lhs) += rhs;
@@ -48,9 +44,7 @@ public:
         return mint(lhs) /= rhs;
     }
 
-    static constexpr int mod() {
-        return m;
-    }
+    static constexpr int mod() { return m; }
 
     static mint qpow(mint a, i64 b) {
         mint res = 1;
@@ -129,9 +123,7 @@ class Min25 {
             }
         }
     }
-    int idx(i64 v) {
-        return v <= lim ? le[v] : ge[n / v];
-    }
+    int idx(i64 v) { return v <= lim ? le[v] : ge[n / v]; }
     void calcFprime() {
         for (int k = 1; k <= pcnt; ++k) {
             int p = prime[k];
@@ -236,9 +228,7 @@ int main() {
     }
 
     std::array<mint, 3> a{0, -1, 1};
-    auto f = [&](int p, int k) -> mint {
-        return power[p][k];
-    };
+    auto f = [&](int p, int k) -> mint { return power[p][k]; };
 
     Min25<mint, 3, decltype(f)> s(a, f);
     std::cout << s(n).value() << '\n';

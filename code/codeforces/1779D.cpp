@@ -11,10 +11,8 @@ int tmp[maxn], tot;
 
 bool check(int l, int r, int x) {
     //	std::cout << l << ' ' << r << ' ' << tmp[x] << std::endl;
-    if (x == 0)
-        return true;
-    if (l > r)
-        return true;
+    if (x == 0) return true;
+    if (l > r) return true;
 
     int need = 0;
 
@@ -23,10 +21,8 @@ bool check(int l, int r, int x) {
     for (auto it = std::lower_bound(pos[x].begin(), pos[x].end(), l);
          it != pos[x].end() && *it <= r; ++it) {
         //		std::cout << *it << '\n';
-        if (a[*it] > b[*it])
-            need = 1;
-        else if (a[*it] < b[*it])
-            return false;
+        if (a[*it] > b[*it]) need = 1;
+        else if (a[*it] < b[*it]) return false;
         cur.push_back(*it);
     }
     cur.push_back(r + 1);
@@ -62,8 +58,7 @@ void solve(void) {
 
     std::sort(tmp + 1, tmp + 1 + tot);
     tot = std::unique(tmp + 1, tmp + 1 + tot) - tmp - 1;
-    for (int i = 1; i <= tot; ++i)
-        rest[i] = 0, pos[i].clear();
+    for (int i = 1; i <= tot; ++i) rest[i] = 0, pos[i].clear();
 
     for (int i = 1; i <= n; ++i) {
         a[i] = std::lower_bound(tmp + 1, tmp + 1 + tot, a[i]) - tmp;
@@ -75,10 +70,8 @@ void solve(void) {
         ++rest[p[i]];
     }
 
-    if (check(1, n, tot))
-        std::cout << "YES\n";
-    else
-        std::cout << "NO\n";
+    if (check(1, n, tot)) std::cout << "YES\n";
+    else std::cout << "NO\n";
 }
 
 int main() {

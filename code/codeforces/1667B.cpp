@@ -21,12 +21,9 @@ void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
     bool flag = false;
-    while (!isdigit(ch))
-        flag |= (ch == '-'), ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
-    if (flag)
-        res = -res;
+    while (!isdigit(ch)) flag |= (ch == '-'), ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
+    if (flag) res = -res;
 }
 
 const int maxn = 5e5 + 19, inf = 1e9;
@@ -38,17 +35,14 @@ std::vector<ll> t;
 struct Tree {
     int tr[maxn];
     void clear(void) {
-        for (int i = 1; i <= n + 1; ++i)
-            tr[i] = -inf;
+        for (int i = 1; i <= n + 1; ++i) tr[i] = -inf;
     }
     void update(int x, int k) {
-        for (; x <= n + 1; x += x & -x)
-            chkmax(tr[x], k);
+        for (; x <= n + 1; x += x & -x) chkmax(tr[x], k);
     }
     int query(int x) {
         int res = -inf;
-        for (; x; x -= x & -x)
-            chkmax(res, tr[x]);
+        for (; x; x -= x & -x) chkmax(res, tr[x]);
         return res;
     }
 } m1, m2, m3;
@@ -64,12 +58,13 @@ int main() {
         std::sort(t.begin(), t.end()),
             t.resize(std::unique(t.begin(), t.end()) - t.begin());
         for (int i = 0; i <= n; ++i)
-            x[i] = std::lower_bound(t.begin(), t.end(), s[i]) - t.begin() + 1;
+            x[i] =
+                std::lower_bound(t.begin(), t.end(), s[i]) - t.begin() + 1;
         m1.clear(), m2.clear(), m3.clear();
         m1.update(x[0], 0), m2.update(x[0], 0), m3.update(x[0], 0);
         for (int i = 1; i <= n; ++i) {
-            dp[i] = std::max(
-                {m1.query(x[i] - 1) + i, m2.query(x[i]), m3.query(n + 1) - i});
+            dp[i] = std::max({m1.query(x[i] - 1) + i, m2.query(x[i]),
+                              m3.query(n + 1) - i});
             m1.update(x[i], dp[i] - i);
             m2.update(x[i], dp[i]);
             m3.update(x[i], dp[i] + i);

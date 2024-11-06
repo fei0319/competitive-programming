@@ -8,14 +8,11 @@ std::string s;
 int prev[maxn][2], suff[maxn][2];
 
 void out(int a, int b, int n) {
-    for (int i = 1; i < a; ++i)
-        std::cout << s[i - 1];
+    for (int i = 1; i < a; ++i) std::cout << s[i - 1];
     std::cout << ' ';
-    for (int i = a; i < b; ++i)
-        std::cout << s[i - 1];
+    for (int i = a; i < b; ++i) std::cout << s[i - 1];
     std::cout << ' ';
-    for (int i = b; i <= n; ++i)
-        std::cout << s[i - 1];
+    for (int i = b; i <= n; ++i) std::cout << s[i - 1];
     std::cout << '\n';
 }
 
@@ -48,18 +45,13 @@ void solve(void) {
     }
 
     int m = 1;
-    while (s[m] == s[m - 1])
-        ++m;
+    while (s[m] == s[m - 1]) ++m;
     if (s[0] == 'a') {
-        if (m >= 2)
-            out(m, m + 1, n);
-        else
-            out(m + 1, n, n);
+        if (m >= 2) out(m, m + 1, n);
+        else out(m + 1, n, n);
     } else {
-        if (m >= 2)
-            out(2, m + 1, n);
-        else
-            out(m + 1, m + 2, n);
+        if (m >= 2) out(2, m + 1, n);
+        else out(m + 1, m + 2, n);
     }
 }
 

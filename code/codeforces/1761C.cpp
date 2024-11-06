@@ -17,13 +17,11 @@ void solve(void) {
     for (int i = 1; i <= n; ++i) {
         s[i].push_back(i);
         for (int j = 1; j <= n; ++j)
-            if (b[i][j] == '1')
-                s[j].push_back(i);
+            if (b[i][j] == '1') s[j].push_back(i);
     }
     for (int i = 1; i <= n; ++i) {
         std::cout << s[i].size() << ' ';
-        for (int j : s[i])
-            std::cout << j << ' ';
+        for (int j : s[i]) std::cout << j << ' ';
         std::cout << '\n';
     }
 }

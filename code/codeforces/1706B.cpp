@@ -33,10 +33,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 1e5 + 19;
@@ -52,8 +50,7 @@ int main() {
             read(c[i]);
             pos[i].clear();
         }
-        for (int i = 1; i <= n; ++i)
-            pos[c[i]].push_back(i);
+        for (int i = 1; i <= n; ++i) pos[c[i]].push_back(i);
         for (int i = 1; i <= n; ++i) {
             int sz = pos[i].size(), ans = 0, cur[] = {0, 0};
             for (int j = 0; j < sz; ++j) {

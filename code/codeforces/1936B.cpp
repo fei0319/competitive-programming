@@ -18,9 +18,7 @@ struct BIT {
         }
         return res;
     }
-    ll query(int l, int r) {
-        return query(r) - query(l - 1);
-    }
+    ll query(int l, int r) { return query(r) - query(l - 1); }
     void update(int x, int k) {
         x += 1;
 

@@ -11,10 +11,8 @@ void solve(void) {
     for (int i = 1; i <= n; ++i) {
         std::cin >> a[i];
     }
-    if (a[1] == 1)
-        std::cout << "Yes" << std::endl;
-    else
-        std::cout << "No" << std::endl;
+    if (a[1] == 1) std::cout << "Yes" << std::endl;
+    else std::cout << "No" << std::endl;
 }
 
 int main() {

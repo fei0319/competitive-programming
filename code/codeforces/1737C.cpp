@@ -4,9 +4,7 @@ using ll = long long int;
 
 int n, r1, c1, r2, c2, r3, c3, X, Y;
 
-inline int rabs(int x) {
-    return x > 0 ? x : -x;
-}
+inline int rabs(int x) { return x > 0 ? x : -x; }
 
 inline bool cor(int a, int b, int x, int y) {
     return (a == x && rabs(b - y) == 1) || ((b == y) && rabs(a - x) == 1);
@@ -29,7 +27,8 @@ void solve(void) {
         std::cout << ((X == x || Y == y) ? "YES" : "NO") << std::endl;
         return;
     }
-    std::cout << ((rabs(X - x) % 2 == 1 && rabs(Y - y) % 2 == 1) ? "NO" : "YES")
+    std::cout << ((rabs(X - x) % 2 == 1 && rabs(Y - y) % 2 == 1) ? "NO"
+                                                                 : "YES")
               << std::endl;
 }
 

@@ -17,10 +17,8 @@ int bfs(int src) {
     while (!q.empty()) {
         int node = q.top().second;
         q.pop();
-        if (tag[node] == timer)
-            continue;
-        if (a[node] > cnt)
-            return cnt;
+        if (tag[node] == timer) continue;
+        if (a[node] > cnt) return cnt;
         tag[node] = timer, vist[node] = true, ++cnt;
         for (int to : G[node]) {
             if (tag[to] != timer) {
@@ -38,8 +36,7 @@ void solve(void) {
         G[i].clear();
     }
 
-    for (int i = 1; i <= n; ++i)
-        std::cin >> a[i];
+    for (int i = 1; i <= n; ++i) std::cin >> a[i];
     for (int i = 1; i <= m; ++i) {
         int u, v;
         std::cin >> u >> v;

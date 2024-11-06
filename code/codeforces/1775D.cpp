@@ -21,8 +21,7 @@ inline void add(int from, int to) {
 }
 
 void dijkstra(int s) {
-    for (int i = 1; i <= N + N; ++i)
-        dist[i] = inf, vist[i] = 0;
+    for (int i = 1; i <= N + N; ++i) dist[i] = inf, vist[i] = 0;
     vist[s] = 0, dist[s] = 0;
 
     static int q[maxn], h, t;
@@ -30,8 +29,7 @@ void dijkstra(int s) {
 
     while (h <= t) {
         int node = q[h++];
-        if (vist[node])
-            continue;
+        if (vist[node]) continue;
         vist[node] = 1;
 
         for (int i = head[node]; i; i = edge[i].next) {
@@ -80,8 +78,7 @@ void solve(void) {
         return;
     }
     for (int i = 1; i <= n; ++i) {
-        if (a[i] != a[s] && a[i] != a[t])
-            vist[a[i]] = i;
+        if (a[i] != a[s] && a[i] != a[t]) vist[a[i]] = i;
     }
     vist[a[s]] = s, vist[a[t]] = t;
 
@@ -93,8 +90,7 @@ void solve(void) {
     ans.push_back(s);
     std::reverse(ans.begin(), ans.end());
     std::cout << ans.size() << std::endl;
-    for (int i : ans)
-        std::cout << i << ' ';
+    for (int i : ans) std::cout << i << ' ';
 }
 
 int main() {

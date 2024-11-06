@@ -22,8 +22,7 @@ void read(T &res) {
     }
     while (isdigit(ch)) {
         res = res * 10 + (ch - 48);
-        if (std::cin.eof())
-            break;
+        if (std::cin.eof()) break;
         std::cin.get(ch);
     }
 }
@@ -74,8 +73,8 @@ namespace S {
         }
     }
 
-    LL dfs(int node, const int &m, const int &b, const LL &ans, const LL &X,
-           const LL &min) {
+    LL dfs(int node, const int &m, const int &b, const LL &ans,
+           const LL &X, const LL &min) {
 
         if (b == -1) {
             return ans;
@@ -95,8 +94,8 @@ namespace S {
             LL n_min = std::min(min, tr[tr[node].son[x]].min);
             if (n_m >= 0 && n_min + n_X + (LL(1) << b) - 1 >= n_ans) {
                 ok = true;
-                res = std::max(
-                    res, dfs(tr[node].son[!x], n_m, b - 1, n_ans, n_X, n_min));
+                res = std::max(res, dfs(tr[node].son[!x], n_m, b - 1,
+                                        n_ans, n_X, n_min));
             }
         }
 
@@ -110,17 +109,15 @@ namespace S {
             LL n_X = X + (LL(x) << b);
             LL n_min = min;
             if (n_min + n_X + (LL(1) << b) - 1 >= ans) {
-                res = std::max(
-                    res, dfs(tr[node].son[x], n_m, b - 1, ans, n_X, n_min));
+                res = std::max(res, dfs(tr[node].son[x], n_m, b - 1, ans,
+                                        n_X, n_min));
             }
         }
 
         return res;
     }
 
-    LL solve(int m, int hb) {
-        return dfs(1, m, hb, 0, 0, INF);
-    }
+    LL solve(int m, int hb) { return dfs(1, m, hb, 0, 0, INF); }
 } // namespace S
 
 int n, m, k;

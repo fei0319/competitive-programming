@@ -30,7 +30,8 @@ class Segment {
         if (l <= mid)
             res = std::min(res, query_min(node << 1, L, mid, l, r));
         if (r > mid)
-            res = std::min(res, query_min(node << 1 | 1, mid + 1, R, l, r));
+            res =
+                std::min(res, query_min(node << 1 | 1, mid + 1, R, l, r));
         return res;
     }
     int query_max(int node, int L, int R, int l, int r) {
@@ -42,7 +43,8 @@ class Segment {
         if (l <= mid)
             res = std::max(res, query_max(node << 1, L, mid, l, r));
         if (r > mid)
-            res = std::max(res, query_max(node << 1 | 1, mid + 1, R, l, r));
+            res =
+                std::max(res, query_max(node << 1 | 1, mid + 1, R, l, r));
         return res;
     }
     int L, R;
@@ -53,12 +55,8 @@ public:
         this->R = R;
         build(1, L, R, p);
     }
-    int query_min(int l, int r) {
-        return query_min(1, L, R, l, r);
-    }
-    int query_max(int l, int r) {
-        return query_max(1, L, R, l, r);
-    }
+    int query_min(int l, int r) { return query_min(1, L, R, l, r); }
+    int query_max(int l, int r) { return query_max(1, L, R, l, r); }
 } mt;
 
 struct Node {
@@ -70,8 +68,7 @@ int ans[MAXN];
 
 int p[MAXN];
 void solve(int L, int R, std::vector<Node> a) {
-    if (a.empty())
-        return;
+    if (a.empty()) return;
 
     std::vector<Node> for_l, for_r;
     int n = 0, mid = (L + R) / 2;
@@ -89,8 +86,7 @@ void solve(int L, int R, std::vector<Node> a) {
             }
             if (a[i].r > mid) {
                 Node node = a[i];
-                if (a[i].l <= mid)
-                    node.lmax = mt.query_max(a[i].l, mid);
+                if (a[i].l <= mid) node.lmax = mt.query_max(a[i].l, mid);
                 for_r.push_back(node);
             }
         }
@@ -99,11 +95,8 @@ void solve(int L, int R, std::vector<Node> a) {
     solve(mid + 1, R, std::move(for_r));
 
     a.resize(n);
-    std::erase_if(a, [](const Node &x) {
-        return ans[x.id];
-    });
-    if (a.empty())
-        return;
+    std::erase_if(a, [](const Node &x) { return ans[x.id]; });
+    if (a.empty()) return;
 
     static int pre_max[MAXN], suf_min[MAXN];
     pre_max[L - 1] = -INF, suf_min[R + 1] = +INF;
@@ -128,26 +121,20 @@ void solve(int L, int R, std::vector<Node> a) {
         l = 0, r = (int)pos.size() - 1;
         while (l < r) {
             int mid = (l + r) / 2;
-            if (suf_min[pos[mid] + 1] > q.lmax)
-                r = mid;
-            else
-                l = mid + 1;
+            if (suf_min[pos[mid] + 1] > q.lmax) r = mid;
+            else l = mid + 1;
         }
         x = l;
-        if (suf_min[pos[x] + 1] <= q.lmax)
-            continue;
+        if (suf_min[pos[x] + 1] <= q.lmax) continue;
 
         l = 0, r = (int)pos.size() - 1;
         while (l < r) {
             int mid = (l + r + 1) / 2;
-            if (pre_max[pos[mid]] < q.rmin)
-                l = mid;
-            else
-                r = mid - 1;
+            if (pre_max[pos[mid]] < q.rmin) l = mid;
+            else r = mid - 1;
         }
         y = l;
-        if (pre_max[pos[y]] >= q.rmin)
-            continue;
+        if (pre_max[pos[y]] >= q.rmin) continue;
 
         if (x < y || (x == y && (pos[x] != R || q.r != R))) {
             ans[q.id] = pos[x];
@@ -161,8 +148,7 @@ int main(int argc, char *argv[]) {
 
     int n, q;
     std::cin >> n;
-    for (int i = 1; i <= n; ++i)
-        std::cin >> p[i];
+    for (int i = 1; i <= n; ++i) std::cin >> p[i];
     mt.build(1, n, p);
     std::cin >> q;
     std::vector<Node> Q;

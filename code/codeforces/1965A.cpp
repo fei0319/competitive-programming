@@ -15,10 +15,8 @@ void solve() {
     std::vector<int> b;
     for (int i = 0; i < n; ++i) {
         int v = a[i];
-        if (i >= 1)
-            v -= a[i - 1];
-        if (v != 0)
-            b.push_back(v);
+        if (i >= 1) v -= a[i - 1];
+        if (v != 0) b.push_back(v);
     }
 
     bool is_alice = true;

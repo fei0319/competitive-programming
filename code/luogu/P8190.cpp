@@ -21,10 +21,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 1e3 + 19;
@@ -36,9 +34,7 @@ real ans;
 
 struct Matrix {
     real a[2][2];
-    Matrix() {
-        a[0][0] = a[0][1] = a[1][0] = a[1][1] = 0;
-    }
+    Matrix() { a[0][0] = a[0][1] = a[1][0] = a[1][1] = 0; }
     Matrix operator*(const Matrix &b) {
         Matrix res;
         for (int i = 0; i < 2; ++i)
@@ -53,8 +49,7 @@ Matrix qpow(Matrix a, int b) {
     Matrix res = a;
     --b;
     while (b) {
-        if (b & 1)
-            res = res * a;
+        if (b & 1) res = res * a;
         a = a * a, b >>= 1;
     }
     return res;
@@ -75,22 +70,17 @@ int main() {
         binom[i][i] = 1;
         p2 /= 2;
     }
-    for (int i = 0; i <= t; ++i)
-        s[i] = p[i] = binom[t][i] * p2;
-    for (int i = 1; i <= t; ++i)
-        s[i] += s[i - 1];
-    for (int i = t; i >= 0; --i)
-        E[i] = E[i + 1] + p[i] * i;
+    for (int i = 0; i <= t; ++i) s[i] = p[i] = binom[t][i] * p2;
+    for (int i = 1; i <= t; ++i) s[i] += s[i - 1];
+    for (int i = t; i >= 0; --i) E[i] = E[i + 1] + p[i] * i;
     int x = 0;
     while (x < k) {
         int v = ans;
         int l = x + 1, r = k;
         while (l < r) {
             int mid = (l + r) >> 1;
-            if ((ll)(check(mid - x, v)) > v)
-                r = mid;
-            else
-                l = mid + 1;
+            if ((ll)(check(mid - x, v)) > v) r = mid;
+            else l = mid + 1;
         }
         ans = check(l - x, v), x = l;
     }

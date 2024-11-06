@@ -25,13 +25,10 @@ void solve(void) {
         while (l <= r && u <= v && b[r] < a[v]) {
             right.push_back(b[r--]);
         }
-        if (u <= v)
-            right.push_back(a[v--]);
+        if (u <= v) right.push_back(a[v--]);
     }
-    while (u <= v)
-        left.push_back(a[u++]);
-    while (l <= r)
-        left.push_back(b[l++]);
+    while (u <= v) left.push_back(a[u++]);
+    while (l <= r) left.push_back(b[l++]);
 
     std::reverse(right.begin(), right.end());
 

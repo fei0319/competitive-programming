@@ -10,23 +10,20 @@ ull a[maxn][maxn];
 
 void f(int start, int del) {
     for (int i = start; i <= n; i += del)
-        for (int j = 1; j <= m; ++j)
-            a[i][j] += 1ull << b;
+        for (int j = 1; j <= m; ++j) a[i][j] += 1ull << b;
     ++b;
 }
 
 void g(int start, int del) {
     for (int j = start; j <= m; j += del)
-        for (int i = 1; i <= n; ++i)
-            a[i][j] += 1ull << b;
+        for (int i = 1; i <= n; ++i) a[i][j] += 1ull << b;
     ++b;
 }
 
 void solve(void) {
     std::cin >> n >> m;
     for (int i = 1; i <= n; ++i)
-        for (int j = 1; j <= m; ++j)
-            a[i][j] = 0;
+        for (int j = 1; j <= m; ++j) a[i][j] = 0;
 
     b = 0;
     for (int del : {2, 5, 7, 11})
@@ -35,8 +32,7 @@ void solve(void) {
 
     std::cout << n * m << '\n';
     for (int i = 1; i <= n; ++i) {
-        for (int j = 1; j <= m; ++j)
-            std::cout << a[i][j] << ' ';
+        for (int j = 1; j <= m; ++j) std::cout << a[i][j] << ' ';
         std::cout << '\n';
     }
 }

@@ -8,8 +8,7 @@ template <typename Tp>
 Tp qpow(Tp a, int b) {
     Tp res = 1;
     while (b) {
-        if (b & 1)
-            res *= a;
+        if (b & 1) res *= a;
         a *= a, b >>= 1;
     }
     return res;
@@ -29,12 +28,8 @@ struct Z {
     int x;
     Z(int x = 0) : x(norm(x)) {}
     Z(i64 x) : x(norm(x % MOD)) {}
-    int val() const {
-        return x;
-    }
-    Z operator-() const {
-        return Z(norm(MOD - x));
-    }
+    int val() const { return x; }
+    Z operator-() const { return Z(norm(MOD - x)); }
     Z inv() const {
         assert(x != 0);
         return qpow(*this, MOD - 2);
@@ -51,9 +46,7 @@ struct Z {
         x = norm(x - rhs.x);
         return *this;
     }
-    Z &operator/=(const Z &rhs) {
-        return *this *= rhs.inv();
-    }
+    Z &operator/=(const Z &rhs) { return *this *= rhs.inv(); }
     friend Z operator*(const Z &lhs, const Z &rhs) {
         Z res = lhs;
         res *= rhs;
@@ -98,40 +91,31 @@ int getf(int node) {
 struct BIT {
     i64 tr[maxn];
     void clear(int n) {
-        for (int i = 1; i <= n; ++i)
-            tr[i] = 0;
+        for (int i = 1; i <= n; ++i) tr[i] = 0;
     }
     void update(int x, i64 k) {
-        for (; x <= n; x += x & -x)
-            tr[x] += k;
+        for (; x <= n; x += x & -x) tr[x] += k;
     }
     i64 query(int x) {
         i64 res = 0;
-        for (; x; x -= x & -x)
-            res += tr[x];
+        for (; x; x -= x & -x) res += tr[x];
         return res;
     }
     i64 query(int l, int r) {
-        if (l > r)
-            return 0;
+        if (l > r) return 0;
         return query(r) - query(l - 1);
     }
 } T;
 
 struct sBIT {
     BIT t;
-    void clear(int n) {
-        t.clear(n);
-    }
+    void clear(int n) { t.clear(n); }
     void update(int l, int r, i64 k) {
-        if (l > r)
-            return;
+        if (l > r) return;
         t.update(l, k);
         t.update(r + 1, -k);
     }
-    i64 query(int x) {
-        return t.query(x);
-    }
+    i64 query(int x) { return t.query(x); }
 } con;
 
 void solve(void) {
@@ -180,12 +164,10 @@ void solve(void) {
 
         tot -= con.query(pos);
 
-        if (next != n + 1)
-            fa[next] = next + 1;
+        if (next != n + 1) fa[next] = next + 1;
     }
 
-    for (int i = 1; i <= n; ++i)
-        std::cout << ans[i] << ' ';
+    for (int i = 1; i <= n; ++i) std::cout << ans[i] << ' ';
     std::cout << '\n';
 }
 

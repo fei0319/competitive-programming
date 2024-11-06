@@ -8,15 +8,12 @@ int n, m, a[maxn], b[maxn];
 
 void solve(void) {
     std::cin >> n >> m;
-    for (int i = 1; i <= n; ++i)
-        std::cin >> a[i];
-    for (int i = 1; i <= m; ++i)
-        std::cin >> b[i];
+    for (int i = 1; i <= n; ++i) std::cin >> a[i];
+    for (int i = 1; i <= m; ++i) std::cin >> b[i];
 
     ll ans = 0ll;
     std::priority_queue<int, std::vector<int>, std::greater<int>> q;
-    for (int i = 1; i <= n; ++i)
-        q.push(a[i]), ans += a[i];
+    for (int i = 1; i <= n; ++i) q.push(a[i]), ans += a[i];
     for (int i = 1; i <= m; ++i) {
         ans -= q.top(), q.pop();
         q.push(b[i]), ans += b[i];

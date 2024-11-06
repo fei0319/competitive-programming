@@ -4,9 +4,7 @@ using ll = long long int;
 
 constexpr ll inf = 1e18;
 
-ll mein_ceil(ll a, ll b) {
-    return (a + b - 1) / b;
-}
+ll mein_ceil(ll a, ll b) { return (a + b - 1) / b; }
 
 void solve(void) {
     ll L = 1, R = inf;
@@ -19,7 +17,8 @@ void solve(void) {
         std::cin >> type >> a >> b;
         if (type == 1) {
             std::cin >> n;
-            ll l = ll(a - b) * (n - 2) + a + 1, r = ll(a - b) * (n - 1) + a;
+            ll l = ll(a - b) * (n - 2) + a + 1,
+               r = ll(a - b) * (n - 1) + a;
             if (n == 1) {
                 l = 1, r = a;
             }

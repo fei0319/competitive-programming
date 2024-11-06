@@ -33,10 +33,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 1e5 + 19;
@@ -56,8 +54,7 @@ int solve() {
     for (int i = 2; i < n; ++i)
         if (t[i] != t[i - 1] && t[i] != t[i + 1])
             return printf("%d %lld\n", i, t[i] - t[i - 1]), 0;
-    if (t[1] != t[2])
-        return printf("1 %lld\n", t[1] - t[2]), 0;
+    if (t[1] != t[2]) return printf("1 %lld\n", t[1] - t[2]), 0;
     return printf("%d %lld\n", n, t[n] - t[1]), 0;
 }
 

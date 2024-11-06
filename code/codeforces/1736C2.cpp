@@ -55,9 +55,8 @@ void solve(void) {
         std::cin >> node[i].p >> node[i].x;
         node[i].id = i;
     }
-    std::sort(node + 1, node + 1 + q, [](const Node &a, const Node &b) {
-        return a.p > b.p;
-    });
+    std::sort(node + 1, node + 1 + q,
+              [](const Node &a, const Node &b) { return a.p > b.p; });
     int ptr = n + 1;
     st[0] = n + 1;
     for (int i = 1; i <= q; ++i) {

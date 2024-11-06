@@ -10,9 +10,7 @@ private:
 public:
     ModInt() : raw_(0) {}
     ModInt(const auto &v) : raw_(v % m) {}
-    int value() const {
-        return (raw_ + m) % m;
-    }
+    int value() const { return (raw_ + m) % m; }
 
     mint &operator+=(const mint &rhs) {
         raw_ = (raw_ + rhs.raw_) % m;
@@ -44,9 +42,7 @@ public:
         return mint(lhs) /= rhs;
     }
 
-    static constexpr int mod() {
-        return m;
-    }
+    static constexpr int mod() { return m; }
 
     static constexpr int qpow(int a, int b) {
         int res = 1;
@@ -139,7 +135,8 @@ int topbit(int x) {
 }
 
 void monoid_product(const std::vector<DP> &vec,
-                    const std::vector<std::pair<int, int>> &query, auto f) {
+                    const std::vector<std::pair<int, int>> &query,
+                    auto f) {
     const int n = vec.size();
     std::vector<std::vector<int>> buk(n);
     for (int id = 0; id < query.size(); ++id) {
@@ -175,9 +172,7 @@ void monoid_product(const std::vector<DP> &vec,
 }
 
 std::mt19937 rng(std::random_device{}());
-int randint(int l, int r) {
-    return rng() % (r - l + 1) + l;
-}
+int randint(int l, int r) { return rng() % (r - l + 1) + l; }
 
 int main() {
     std::ios::sync_with_stdio(false);

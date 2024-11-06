@@ -7,8 +7,7 @@ void solve() {
     if (x != 1) {
         puts("YES");
         printf("%d\n", n);
-        for (int i = 1; i <= n; ++i)
-            printf("1 ");
+        for (int i = 1; i <= n; ++i) printf("1 ");
         puts("");
     } else if (k == 1) {
         puts("NO");
@@ -16,8 +15,7 @@ void solve() {
         if (n % 2 == 0) {
             puts("YES");
             printf("%d\n", n / 2);
-            for (int i = 1; i <= n / 2; ++i)
-                printf("2 ");
+            for (int i = 1; i <= n / 2; ++i) printf("2 ");
             puts("");
         } else {
             puts("NO");
@@ -26,14 +24,12 @@ void solve() {
         if (n % 2 == 0) {
             puts("YES");
             printf("%d\n", n / 2);
-            for (int i = 1; i <= n / 2; ++i)
-                printf("2 ");
+            for (int i = 1; i <= n / 2; ++i) printf("2 ");
             puts("");
         } else {
             puts("YES");
             printf("%d\n", n / 2);
-            for (int i = 1; i < n / 2; ++i)
-                printf("2 ");
+            for (int i = 1; i < n / 2; ++i) printf("2 ");
             puts("3");
         }
     }

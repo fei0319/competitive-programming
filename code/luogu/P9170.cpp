@@ -7,8 +7,8 @@ struct SegmentTree {
     std::vector<Node> tr;
     SegmentTree(int n) : tr(n * 4 + 2) {}
     void push_up(int node) {
-        tr[node].min =
-            std::min(tr[node << 1].min, tr[node << 1 | 1].min) + tr[node].tag;
+        tr[node].min = std::min(tr[node << 1].min, tr[node << 1 | 1].min) +
+                       tr[node].tag;
     }
     void modify(int node, int L, int R, int l, int r, const int &val) {
         if (l <= L && R <= r) {
@@ -25,19 +25,13 @@ struct SegmentTree {
         }
         push_up(node);
     }
-    int operator()() const {
-        return tr[1].min;
-    }
+    int operator()() const { return tr[1].min; }
 };
 
 struct DSU {
     std::vector<int> fa;
-    DSU(int n) : fa(n) {
-        std::iota(fa.begin(), fa.end(), 0);
-    }
-    int getf(int x) {
-        return fa[x] == x ? x : fa[x] = getf(fa[x]);
-    }
+    DSU(int n) : fa(n) { std::iota(fa.begin(), fa.end(), 0); }
+    int getf(int x) { return fa[x] == x ? x : fa[x] = getf(fa[x]); }
     void merge(int x, int y) {
         x = getf(x);
         y = getf(y);
@@ -50,7 +44,8 @@ struct DSU {
 struct EdgeAbstration {
     int u, v;
     bool wu, wv;
-    EdgeAbstration(std::pair<int, int> a = {}, std::pair<int, int> b = {}) {
+    EdgeAbstration(std::pair<int, int> a = {},
+                   std::pair<int, int> b = {}) {
         u = b.first;
         v = b.second;
         wu = (a.first == u || a.second == u);
@@ -167,7 +162,8 @@ void solve() {
                     // std::cerr << "b_" << t << " must be " << to << '\n';
                     if (b[t].wu) {
                         all += 1;
-                        // std::cerr << "and a_" << t << " can be the same\n";
+                        // std::cerr << "and a_" << t << " can be the
+                        // same\n";
                     }
                     self(self, to);
                 }
@@ -193,7 +189,8 @@ void solve() {
         } else {
             for (int i : edge[_]) {
                 if (cyc[b[i].u] && cyc[b[i].v]) {
-                    if ((cyc[b[i].v] - cyc[b[i].u] + cyc_len) % cyc_len != 1) {
+                    if ((cyc[b[i].v] - cyc[b[i].u] + cyc_len) % cyc_len !=
+                        1) {
                         b[i].reverse();
                     }
                 }
@@ -247,9 +244,11 @@ void solve() {
                 }
                 if (b[t].wv) {
                     mt.modify(1, 1, sz, 1, sz, 1);
-                    mt.modify(1, 1, sz, dfn[to], dfn[to] + size[to] - 1, -1);
+                    mt.modify(1, 1, sz, dfn[to], dfn[to] + size[to] - 1,
+                              -1);
                 } else if (b[t].wu) {
-                    mt.modify(1, 1, sz, dfn[to], dfn[to] + size[to] - 1, 1);
+                    mt.modify(1, 1, sz, dfn[to], dfn[to] + size[to] - 1,
+                              1);
                 }
             }
         };
@@ -266,12 +265,14 @@ void solve() {
 
                 if (b[t].wu && b[t].wv) {
                     mt.modify(1, 1, sz, 1, sz, -1);
-                    mt.modify(1, 1, sz, dfn[to], dfn[to] + size[to] - 1, 2);
+                    mt.modify(1, 1, sz, dfn[to], dfn[to] + size[to] - 1,
+                              2);
 
                     self(self, to, node);
 
                     mt.modify(1, 1, sz, 1, sz, 1);
-                    mt.modify(1, 1, sz, dfn[to], dfn[to] + size[to] - 1, -2);
+                    mt.modify(1, 1, sz, dfn[to], dfn[to] + size[to] - 1,
+                              -2);
                 } else {
                     self(self, to, node);
                 }
@@ -298,7 +299,8 @@ void solve() {
             // std::cerr << "edge:\n";
             // for (int i : edge[_]) {
             //     std::cerr << std::format("{}({}) {}({})\n", b[i].u,
-            //                              int(b[i].wu), b[i].v, int(b[i].wv));
+            //                              int(b[i].wu), b[i].v,
+            //                              int(b[i].wv));
             // }
             // std::cerr << "value = " << v << '\n';
             // std::cerr << '\n';
@@ -312,7 +314,8 @@ void solve() {
             // std::cerr << "edge:\n";
             // for (int i : edge[_]) {
             //     std::cerr << std::format("{}({}) {}({})\n", b[i].u,
-            //                              int(b[i].wu), b[i].v, int(b[i].wv));
+            //                              int(b[i].wu), b[i].v,
+            //                              int(b[i].wv));
             // }
             // std::cerr << "value = " << v << '\n';
             // std::cerr << '\n';

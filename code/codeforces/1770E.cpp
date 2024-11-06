@@ -7,8 +7,7 @@ constexpr int maxn = 3e5 + 19, mod = 998244353;
 int qpow(int a, int b) {
     int res = 1;
     while (b) {
-        if (b & 1)
-            res = (ll)res * a % mod;
+        if (b & 1) res = (ll)res * a % mod;
         a = (ll)a * a % mod, b >>= 1;
     }
     return res;
@@ -20,37 +19,30 @@ std::vector<int> G[maxn];
 void dfs(int node, int f) {
     dep[node] = dep[f] + 1;
     for (int to : G[node]) {
-        if (to == f)
-            continue;
+        if (to == f) continue;
         dfs(to, node);
         sz[node] += sz[to];
     }
 }
 
-int calc(int x) {
-    return (ll)x * (k - x) % mod;
-}
+int calc(int x) { return (ll)x * (k - x) % mod; }
 
 void solve(void) {
     std::cin >> n >> k;
-    for (int i = 1; i <= k; ++i)
-        std::cin >> a[i];
+    for (int i = 1; i <= k; ++i) std::cin >> a[i];
     for (int i = 1; i < n; ++i) {
         std::cin >> u[i] >> v[i];
         G[u[i]].push_back(v[i]), G[v[i]].push_back(u[i]);
     }
 
-    for (int i = 1; i <= n; ++i)
-        sz[i] = 0, p[i] = 0;
-    for (int i = 1; i <= k; ++i)
-        sz[a[i]] = 1, p[a[i]] = 1;
+    for (int i = 1; i <= n; ++i) sz[i] = 0, p[i] = 0;
+    for (int i = 1; i <= k; ++i) sz[a[i]] = 1, p[a[i]] = 1;
     dfs(1, 0);
 
     int ans = 0, half = qpow(2, mod - 2);
     for (int i = 1; i < n; ++i) {
         // ensure u is father
-        if (dep[u[i]] > dep[v[i]])
-            std::swap(u[i], v[i]);
+        if (dep[u[i]] > dep[v[i]]) std::swap(u[i], v[i]);
         int
             // u to v
             p1 = (ll)p[u[i]] * (1 - p[v[i]]) % mod * half % mod,
@@ -59,8 +51,8 @@ void solve(void) {
             // else
             p3 = (1 - p1 - p2) % mod;
 
-        ans = (ans + (ll)p1 * calc(sz[v[i]] + 1) + (ll)p2 * calc(sz[v[i]] - 1) +
-               (ll)p3 * calc(sz[v[i]])) %
+        ans = (ans + (ll)p1 * calc(sz[v[i]] + 1) +
+               (ll)p2 * calc(sz[v[i]] - 1) + (ll)p3 * calc(sz[v[i]])) %
               mod;
 
         int pu = p[u[i]], pv = p[v[i]];

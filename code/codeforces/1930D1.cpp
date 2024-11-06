@@ -2,9 +2,7 @@
 
 using ll = long long int;
 
-int h(int x) {
-    return (x + 1) / 2;
-}
+int h(int x) { return (x + 1) / 2; }
 
 ll g(int n) {
     ll res = 0;

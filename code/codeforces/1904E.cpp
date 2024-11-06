@@ -37,20 +37,16 @@ class Segment {
         }
         push_down(node);
         int mid = (L + R) / 2;
-        if (l <= mid)
-            modify(node << 1, L, mid, l, r, val);
-        if (r > mid)
-            modify(node << 1 | 1, mid + 1, R, l, r, val);
+        if (l <= mid) modify(node << 1, L, mid, l, r, val);
+        if (r > mid) modify(node << 1 | 1, mid + 1, R, l, r, val);
         push_up(node);
     }
     T query(int node, int L, int R, int l, int r) {
-        if (l <= L && R <= r)
-            return tr[node].max;
+        if (l <= L && R <= r) return tr[node].max;
         push_down(node);
         int mid = (L + R) / 2;
         T res = -INF<T>;
-        if (l <= mid)
-            res = std::max(res, query(node << 1, L, mid, l, r));
+        if (l <= mid) res = std::max(res, query(node << 1, L, mid, l, r));
         if (r > mid)
             res = std::max(res, query(node << 1 | 1, mid + 1, R, l, r));
         push_up(node);
@@ -62,12 +58,8 @@ public:
         L = l;
         R = r;
     }
-    void modify(int l, int r, const T &val) {
-        modify(1, L, R, l, r, val);
-    }
-    T query(int l, int r) {
-        return query(1, L, R, l, r);
-    }
+    void modify(int l, int r, const T &val) { modify(1, L, R, l, r, val); }
+    T query(int l, int r) { return query(1, L, R, l, r); }
 };
 
 int n, q;
@@ -87,8 +79,7 @@ void dfs1(int node, int f) {
     dfn[node] = ++ind, size[node] = 1;
 
     for (int to : G[node]) {
-        if (to == f)
-            continue;
+        if (to == f) continue;
         dfs1(to, node);
         size[node] += size[to];
     }
@@ -129,8 +120,7 @@ void dfs2(int node, int f) {
     }
 
     for (int to : G[node]) {
-        if (to == f)
-            continue;
+        if (to == f) continue;
         mt.modify(1, n, 1);
         mt.modify(dfn[to], dfn[to] + size[to] - 1, -2);
         dfs2(to, node);
@@ -156,8 +146,7 @@ int main() {
         std::cin >> x >> k;
 
         a[i].resize(k);
-        for (int j = 0; j < k; ++j)
-            std::cin >> a[i][j];
+        for (int j = 0; j < k; ++j) std::cin >> a[i][j];
 
         queries[x].push_back(i);
     }

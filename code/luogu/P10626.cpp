@@ -130,12 +130,8 @@ struct StringStream {
         }
         return data[front++];
     }
-    int peek() const {
-        return data[front];
-    }
-    bool empty() {
-        return front >= data.size();
-    }
+    int peek() const { return data[front]; }
+    bool empty() { return front >= data.size(); }
     int readInt() {
         char ch = get();
         while (!isdigit(ch)) {

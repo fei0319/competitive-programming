@@ -33,10 +33,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 2e5 + 19;
@@ -49,16 +47,13 @@ void solve(void) {
     read(n), read(c), read(q);
     std::scanf("%s", s + 1);
     len[0] = n;
-    for (int i = 1; i <= c; ++i)
-        read(l[i]), read(r[i]);
-    for (int i = 1; i <= c; ++i)
-        len[i] = len[i - 1] + r[i] - l[i] + 1;
+    for (int i = 1; i <= c; ++i) read(l[i]), read(r[i]);
+    for (int i = 1; i <= c; ++i) len[i] = len[i - 1] + r[i] - l[i] + 1;
     while (q--) {
         ll k;
         read(k);
         for (int i = c; i >= 1; --i)
-            if (k > len[i - 1])
-                k = k - len[i - 1] + l[i] - 1;
+            if (k > len[i - 1]) k = k - len[i - 1] + l[i] - 1;
         putchar(s[k]);
         puts("");
     }
@@ -67,8 +62,7 @@ void solve(void) {
 int main() {
     int T;
     read(T);
-    while (T--)
-        solve();
+    while (T--) solve();
 }
 
 /*

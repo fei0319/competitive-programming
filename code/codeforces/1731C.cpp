@@ -8,8 +8,7 @@ int n, cnt[maxn];
 
 void solve(void) {
     std::cin >> n;
-    for (int i = 0; i <= n * 2; ++i)
-        cnt[i] = 0;
+    for (int i = 0; i <= n * 2; ++i) cnt[i] = 0;
     int s = 0;
     ++cnt[s];
     ll ans = (ll)n * (n + 1) / 2;
@@ -17,8 +16,7 @@ void solve(void) {
         int a;
         std::cin >> a;
         s ^= a;
-        for (int j = 0; j * j <= n * 2; ++j)
-            ans -= cnt[s ^ (j * j)];
+        for (int j = 0; j * j <= n * 2; ++j) ans -= cnt[s ^ (j * j)];
         ++cnt[s];
     }
     std::cout << ans << std::endl;

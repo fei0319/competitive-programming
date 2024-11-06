@@ -40,10 +40,8 @@ struct Tree {
         }
         push_down(node);
         int mid = (L + R) / 2;
-        if (l <= mid)
-            add(node << 1, L, mid, l, r, val);
-        if (r > mid)
-            add(node << 1 | 1, mid + 1, R, l, r, val);
+        if (l <= mid) add(node << 1, L, mid, l, r, val);
+        if (r > mid) add(node << 1 | 1, mid + 1, R, l, r, val);
         push_up(node);
     }
     ll query(int node, int L, int R, int l, int r) {
@@ -53,8 +51,7 @@ struct Tree {
         push_down(node);
         int mid = (L + R) / 2;
         ll res = inf;
-        if (l <= mid)
-            res = std::min(res, query(node << 1, L, mid, l, r));
+        if (l <= mid) res = std::min(res, query(node << 1, L, mid, l, r));
         if (r > mid)
             res = std::min(res, query(node << 1 | 1, mid + 1, R, l, r));
         push_up(node);
@@ -67,10 +64,8 @@ struct Tree {
         }
         push_down(node);
         int mid = (L + R) / 2;
-        if (x <= mid)
-            set(node << 1, L, mid, x, val);
-        else
-            set(node << 1 | 1, mid + 1, R, x, val);
+        if (x <= mid) set(node << 1, L, mid, x, val);
+        else set(node << 1 | 1, mid + 1, R, x, val);
         push_up(node);
     }
 } tree;
@@ -83,9 +78,8 @@ int main() {
         scanf("%d%d%d", &node[i].x, &node[i].y, &node[i].c);
         node[i].x = k - node[i].x;
     }
-    std::sort(node + 1, node + 1 + n, [](const Node &a, const Node &b) {
-        return a.x < b.x;
-    });
+    std::sort(node + 1, node + 1 + n,
+              [](const Node &a, const Node &b) { return a.x < b.x; });
 
     tree.build(1, 0, k);
     int ptr = 1;
@@ -99,8 +93,7 @@ int main() {
             ++ptr;
         }
         ll val = i == 0 ? sum : f[i - 1] - A + sum;
-        if (i)
-            val = std::min(val, tree.query(1, 0, k, 0, i - 1));
+        if (i) val = std::min(val, tree.query(1, 0, k, 0, i - 1));
         val = std::min(val, 0ll);
         f[i] = val;
         tree.set(1, 0, k, i, val);

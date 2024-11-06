@@ -49,9 +49,11 @@ void solve() {
         f[node][1] = std::max(f[node][0], f[node][1] + 1);
         g[node][1] = std::max(g[node][0], g[node][1] + 1);
 
-        // std::cout << "f_" << node << " = " << f[node][0] << ' ' << f[node][1]
+        // std::cout << "f_" << node << " = " << f[node][0] << ' ' <<
+        // f[node][1]
         //           << '\n';
-        // std::cout << "g_" << node << " = " << g[node][0] << ' ' << g[node][1]
+        // std::cout << "g_" << node << " = " << g[node][0] << ' ' <<
+        // g[node][1]
         //           << '\n';
     };
 

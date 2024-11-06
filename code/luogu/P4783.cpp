@@ -26,9 +26,7 @@ public:
         return *this;
     }
 
-    int value() const {
-        return (raw_ + m) % m;
-    }
+    int value() const { return (raw_ + m) % m; }
 
     friend mint operator+(const mint &lhs, const mint &rhs) {
         return mint{lhs} += rhs;

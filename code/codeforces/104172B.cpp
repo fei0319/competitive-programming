@@ -5,10 +5,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 constexpr int maxn = 1e3 + 19;
@@ -19,12 +17,8 @@ int p[maxn][maxn], q[maxn][maxn];
 constexpr int mod = 998244353;
 struct mod_t {
     int x;
-    mod_t(int _x = 0) {
-        x = _x;
-    }
-    mod_t operator+(const mod_t &b) const {
-        return (x + b.x) % mod;
-    }
+    mod_t(int _x = 0) { x = _x; }
+    mod_t operator+(const mod_t &b) const { return (x + b.x) % mod; }
     mod_t operator*(const mod_t &b) const {
         return (long long int)x * b.x % mod;
     }
@@ -57,17 +51,13 @@ mod_t count_white() {
     return res + 1;
 }
 
-mod_t count_black() {
-    return 1;
-}
+mod_t count_black() { return 1; }
 
 int main() {
     read(n), read(m);
     for (int i = 1; i <= n; ++i)
-        for (int j = 1; j <= m; ++j)
-            read(p[i][j]);
+        for (int j = 1; j <= m; ++j) read(p[i][j]);
     for (int i = 1; i <= n; ++i)
-        for (int j = 1; j <= m; ++j)
-            read(q[i][j]);
+        for (int j = 1; j <= m; ++j) read(q[i][j]);
     printf("%d\n", (count_white() + count_black()).x);
 }

@@ -11,22 +11,18 @@ std::set<int> s;
 
 void solve(void) {
     std::cin >> n;
-    for (int i = 1; i <= n; ++i)
-        std::cin >> a[i];
+    for (int i = 1; i <= n; ++i) std::cin >> a[i];
 
     s.clear();
-    for (int i : prime)
-        cnt[i] = 0;
+    for (int i : prime) cnt[i] = 0;
 
     for (int i = 1; i <= n; ++i) {
         int x = a[i];
         for (int p : prime) {
-            if (x == 1)
-                break;
+            if (x == 1) break;
             if (x % p == 0) {
                 ++cnt[p];
-                while (x % p == 0)
-                    x /= p;
+                while (x % p == 0) x /= p;
             }
         }
         if (x != 1) {
@@ -49,8 +45,7 @@ void solve(void) {
 
 int main() {
     constexpr int N = 4e4;
-    for (int i = 2; i <= N; ++i)
-        isprime[i] = 1;
+    for (int i = 2; i <= N; ++i) isprime[i] = 1;
     for (int i = 2; i <= N; ++i) {
         if (isprime[i]) {
             prime.push_back(i);
@@ -64,6 +59,5 @@ int main() {
 
     int T;
     std::cin >> T;
-    while (T--)
-        solve();
+    while (T--) solve();
 }

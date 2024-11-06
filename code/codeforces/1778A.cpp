@@ -8,14 +8,12 @@ int n, a[maxn];
 
 void solve(void) {
     std::cin >> n;
-    for (int i = 1; i <= n; ++i)
-        std::cin >> a[i];
+    for (int i = 1; i <= n; ++i) std::cin >> a[i];
 
     int tot = 0, dlt = -10;
     for (int i = 1; i <= n; ++i) {
         tot += a[i];
-        if (i < n)
-            dlt = std::max(dlt, -2 * (a[i] + a[i + 1]));
+        if (i < n) dlt = std::max(dlt, -2 * (a[i] + a[i + 1]));
     }
     std::cout << tot + dlt << '\n';
 }

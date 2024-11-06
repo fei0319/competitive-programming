@@ -20,7 +20,8 @@ void read(T &res) {
 using i128 = __int128;
 using u64 = uint64_t;
 
-std::mt19937 rng(std::chrono::steady_clock::now().time_since_epoch().count());
+std::mt19937
+    rng(std::chrono::steady_clock::now().time_since_epoch().count());
 
 int main() {
     std::ios::sync_with_stdio(false);

@@ -11,8 +11,7 @@ std::vector<int> prime;
 void solve(void) {
     int n;
     std::cin >> n;
-    for (int i = 1; i <= n; ++i)
-        std::cin >> a[i];
+    for (int i = 1; i <= n; ++i) std::cin >> a[i];
 
     std::sort(a + 1, a + 1 + n);
     for (int i = 1; i < n; ++i)
@@ -50,8 +49,7 @@ int main() {
     for (int i = 2; i <= N; ++i) {
         if (!vist[i]) {
             prime.push_back(i);
-            for (int j = i + i; j <= N; j += i)
-                vist[j] = true;
+            for (int j = i + i; j <= N; j += i) vist[j] = true;
         }
     }
 

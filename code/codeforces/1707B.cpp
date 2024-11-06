@@ -33,10 +33,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 1e5 + 19;
@@ -46,34 +44,26 @@ int za, zb;
 
 void solve() {
     read(n);
-    for (int i = 1; i <= n; ++i)
-        read(a[i]);
+    for (int i = 1; i <= n; ++i) read(a[i]);
     cnt = n, za = 0;
     while (cnt > 1) {
         zb = 0;
         tmp = 0;
         if (za) {
-            if (a[1] != 0)
-                b[++tmp] = a[1];
-            else
-                ++zb;
+            if (a[1] != 0) b[++tmp] = a[1];
+            else ++zb;
             zb += za - 1;
         }
         for (int i = 2; i <= cnt; ++i)
-            if (a[i] - a[i - 1] != 0)
-                b[++tmp] = a[i] - a[i - 1];
-            else
-                ++zb;
+            if (a[i] - a[i - 1] != 0) b[++tmp] = a[i] - a[i - 1];
+            else ++zb;
         std::sort(b + 1, b + 1 + tmp);
         cnt = tmp;
-        for (int i = 1; i <= cnt; ++i)
-            a[i] = b[i];
+        for (int i = 1; i <= cnt; ++i) a[i] = b[i];
         std::swap(za, zb);
     }
-    if (cnt)
-        printf("%d\n", a[1]);
-    else
-        puts("0");
+    if (cnt) printf("%d\n", a[1]);
+    else puts("0");
 }
 
 int main() {

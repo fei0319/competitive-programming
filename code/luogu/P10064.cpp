@@ -8,16 +8,12 @@ private:
     using i64 = int64_t;
 
 public:
-    static_modint() {
-        raw_ = 0;
-    }
+    static_modint() { raw_ = 0; }
     template <typename T>
     static_modint(const T &v) {
         raw_ = v % m;
     }
-    int value() const {
-        return (raw_ + m) % m;
-    }
+    int value() const { return (raw_ + m) % m; }
     mint &operator+=(const mint &rhs) {
         raw_ = (raw_ + rhs.raw_) % m;
         return *this;
@@ -46,9 +42,7 @@ public:
     friend mint operator/(const mint &lhs, const mint &rhs) {
         return mint(lhs) /= rhs;
     }
-    static constexpr int mod() {
-        return m;
-    }
+    static constexpr int mod() { return m; }
     static constexpr int qpow(int a, int b) {
         int res = 1;
         while (b) {
@@ -74,15 +68,9 @@ struct static_comb {
             ifact_[i] = ifact_[i + 1] * (i + 1);
         }
     }
-    Z fact(int x) {
-        return fact_[x];
-    }
-    Z ifact(int x) {
-        return ifact_[x];
-    }
-    Z binom(int n, int m) {
-        return fact_[n] * ifact_[n - m] * ifact_[m];
-    }
+    Z fact(int x) { return fact_[x]; }
+    Z ifact(int x) { return ifact_[x]; }
+    Z binom(int n, int m) { return fact_[n] * ifact_[n - m] * ifact_[m]; }
 };
 
 using i64 = int64_t;
@@ -153,10 +141,11 @@ int main() {
             std::vector<mint> n_f(f.size() + leaf[to]);
             for (int i = 0; i < f.size(); ++i) {
                 for (int j = 0; j <= leaf[to]; ++j) {
-                    n_f[i + j] += f[i] *
-                                  qpow(mint(2), (sz[node] - i) * (sz[to] - j)) *
-                                  comb.binom(leaf[to], j) *
-                                  qpow(mint(2), sz[to] * (sz[to] - 1) / 2);
+                    n_f[i + j] +=
+                        f[i] *
+                        qpow(mint(2), (sz[node] - i) * (sz[to] - j)) *
+                        comb.binom(leaf[to], j) *
+                        qpow(mint(2), sz[to] * (sz[to] - 1) / 2);
                 }
             }
             f = std::move(n_f);
@@ -169,8 +158,10 @@ int main() {
             if (node != rt) {
                 res *= qpow(mint(2), (n - sz[node] - (n_l - leaf[node])) *
                                          (sz[node] - i));
-                res *= qpow(qpow(mint(2), sz[node] - i) - 1, n_l - leaf[node]);
-                res *= qpow(mint(2), (n - sz[node]) * (n - sz[node] - 1) / 2);
+                res *= qpow(qpow(mint(2), sz[node] - i) - 1,
+                            n_l - leaf[node]);
+                res *=
+                    qpow(mint(2), (n - sz[node]) * (n - sz[node] - 1) / 2);
             }
             ans += res * (i & 1 ? -1 : 1);
         }
@@ -181,8 +172,10 @@ int main() {
                            comb.binom(leaf[node], i);
                 res *= qpow(mint(2), (n - sz[node] - (n_l - leaf[node])) *
                                          (sz[node] - i));
-                res *= qpow(qpow(mint(2), sz[node] - i) - 1, n_l - leaf[node]);
-                res *= qpow(mint(2), (n - sz[node]) * (n - sz[node] - 1) / 2);
+                res *= qpow(qpow(mint(2), sz[node] - i) - 1,
+                            n_l - leaf[node]);
+                res *=
+                    qpow(mint(2), (n - sz[node]) * (n - sz[node] - 1) / 2);
                 ans -= res * (i & 1 ? -1 : 1);
             }
         }

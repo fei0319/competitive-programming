@@ -33,8 +33,10 @@ void solve(void) {
         ans = std::min(ans, (d[1][u[i]] + d[v[i]][n] + 1) * w[i]);
         ans = std::min(ans, (d[1][v[i]] + d[u[i]][n] + 1) * w[i]);
         for (int j = 1; j <= n; ++j) {
-            ans = std::min(ans, (d[1][j] + d[j][n] + d[u[i]][j] + 2) * w[i]);
-            ans = std::min(ans, (d[1][j] + d[j][n] + d[v[i]][j] + 2) * w[i]);
+            ans =
+                std::min(ans, (d[1][j] + d[j][n] + d[u[i]][j] + 2) * w[i]);
+            ans =
+                std::min(ans, (d[1][j] + d[j][n] + d[v[i]][j] + 2) * w[i]);
         }
     }
     std::cout << ans << std::endl;

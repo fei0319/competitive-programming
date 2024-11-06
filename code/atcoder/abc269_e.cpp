@@ -1,7 +1,7 @@
 // Problem: E - Last Rook
-// Contest: AtCoder - UNICORN Programming Contest 2022(AtCoder Beginner Contest
-// 269) URL: https://atcoder.jp/contests/abc269/tasks/abc269_e Memory Limit:
-// 1024 MB Time Limit: 2000 ms
+// Contest: AtCoder - UNICORN Programming Contest 2022(AtCoder Beginner
+// Contest 269) URL: https://atcoder.jp/contests/abc269/tasks/abc269_e
+// Memory Limit: 1024 MB Time Limit: 2000 ms
 //
 // Powered by CP Editor (https://cpeditor.org)
 
@@ -19,10 +19,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 int n;
@@ -41,19 +39,15 @@ int main() {
     int l = 1, r = n;
     while (l < r) {
         int mid = (l + r) >> 1;
-        if (query(l, mid, 1, n) < mid - l + 1)
-            r = mid;
-        else
-            l = mid + 1;
+        if (query(l, mid, 1, n) < mid - l + 1) r = mid;
+        else l = mid + 1;
     }
     x = l;
     l = 1, r = n;
     while (l < r) {
         int mid = (l + r) >> 1;
-        if (query(1, n, l, mid) < mid - l + 1)
-            r = mid;
-        else
-            l = mid + 1;
+        if (query(1, n, l, mid) < mid - l + 1) r = mid;
+        else l = mid + 1;
     }
     y = l;
     printf("! %d %d\n", x, y);

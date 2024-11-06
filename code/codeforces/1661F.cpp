@@ -14,12 +14,8 @@ struct Node {
 
         return (ll)f * (b + 1) * (b + 1) + ll(t - f) * b * b;
     }
-    ll benefit() const {
-        return value() - Node{len, x + 1}.value();
-    }
-    bool operator<(const Node &b) const {
-        return benefit() < b.benefit();
-    }
+    ll benefit() const { return value() - Node{len, x + 1}.value(); }
+    bool operator<(const Node &b) const { return benefit() < b.benefit(); }
 } node[MAXN];
 
 int get(int len, ll b) {

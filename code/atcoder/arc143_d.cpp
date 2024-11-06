@@ -32,19 +32,15 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 2e5 + 19;
 
 struct Edge {
     int to, id;
-    Edge(int __to, int __id) {
-        to = __to, id = __id;
-    }
+    Edge(int __to, int __id) { to = __to, id = __id; }
 };
 
 int n, m, a[maxn], b[maxn];
@@ -59,26 +55,21 @@ void dfs(int node) {
         if (!vist[to.to]) {
             s[to.id] = (to.to == a[to.id]);
             dfs(to.to);
-        } else
-            s[to.id] = (to.to != a[to.id]);
+        } else s[to.id] = (to.to != a[to.id]);
     }
 }
 
 int main() {
     read(n), read(m), std::fill(s + 1, s + 1 + m, 3);
-    for (int i = 1; i <= m; ++i)
-        read(a[i]);
-    for (int i = 1; i <= m; ++i)
-        read(b[i]);
+    for (int i = 1; i <= m; ++i) read(a[i]);
+    for (int i = 1; i <= m; ++i) read(b[i]);
     for (int i = 1; i <= m; ++i) {
         G[a[i]].emplace_back(b[i], i);
         G[b[i]].emplace_back(a[i], i);
     }
     for (int i = 1; i <= n; ++i)
-        if (!vist[i])
-            dfs(i);
-    for (int i = 1; i <= m; ++i)
-        printf("%d", s[i]);
+        if (!vist[i]) dfs(i);
+    for (int i = 1; i <= m; ++i) printf("%d", s[i]);
 }
 
 /*

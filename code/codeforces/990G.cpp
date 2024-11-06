@@ -5,10 +5,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 typedef long long int ll;
@@ -46,8 +44,7 @@ std::vector<int> tag[maxn];
 std::vector<int> dvs;
 void decom(int node, int a) {
     if (a == 166320 && !dvs.empty()) {
-        for (int i : dvs)
-            add(node, i, 1);
+        for (int i : dvs) add(node, i, 1);
         return;
     }
     while (!tag[a].empty() && con[tag[a].back()].empty())
@@ -58,23 +55,18 @@ void decom(int node, int a) {
         for (int i = 2; i * i <= x; ++i)
             if (x % i == 0) {
                 dv[++tot] = i, pwr[tot] = 0;
-                while (x % i == 0)
-                    x /= i, ++pwr[tot];
+                while (x % i == 0) x /= i, ++pwr[tot];
             }
-        if (x > 1)
-            dv[++tot] = x, pwr[tot] = 1;
+        if (x > 1) dv[++tot] = x, pwr[tot] = 1;
         Dfs(node, 0, 1);
-        std::sort(con[node].begin(), con[node].end(), [](int x, int y) {
-            return edge[x].num < edge[y].num;
-        });
+        std::sort(con[node].begin(), con[node].end(),
+                  [](int x, int y) { return edge[x].num < edge[y].num; });
     } else {
-        for (int i : con[tag[a].back()])
-            add(node, edge[i].num, 1);
+        for (int i : con[tag[a].back()]) add(node, edge[i].num, 1);
     }
     tag[a].push_back(node);
     if (a == 166320) {
-        for (int i : con[node])
-            dvs.push_back(edge[i].num);
+        for (int i : con[node]) dvs.push_back(edge[i].num);
     }
 }
 
@@ -82,39 +74,33 @@ ll ans[maxn];
 
 void dfs(int node, int f) {
     for (int to : G[node]) {
-        if (to == f)
-            continue;
+        if (to == f) continue;
         dfs(to, node);
         if (con[node].empty()) {
             decom(node, a[node]);
-            for (int i : con[node])
-                ans[edge[i].num] += edge[i].val;
+            for (int i : con[node]) ans[edge[i].num] += edge[i].val;
         }
         int ptr = 0;
         for (int i : con[to])
             if (a[node] % edge[i].num == 0) {
-                while (edge[con[node][ptr]].num < edge[i].num)
-                    ++ptr;
+                while (edge[con[node][ptr]].num < edge[i].num) ++ptr;
                 int x = con[node][ptr];
                 ans[edge[i].num] += (ll)edge[i].val * edge[x].val;
                 edge[x].val += edge[i].val;
-                if (rub_t < maxn * 10 - 1)
-                    rub[++rub_t] = i;
+                if (rub_t < maxn * 10 - 1) rub[++rub_t] = i;
             }
         std::vector<int> em;
         em.swap(con[to]);
     }
     if (con[node].empty()) {
         decom(node, a[node]);
-        for (int i : con[node])
-            ans[edge[i].num] += edge[i].val;
+        for (int i : con[node]) ans[edge[i].num] += edge[i].val;
     }
 }
 
 int main() {
     read(n);
-    for (int i = 1; i <= n; ++i)
-        read(a[i]);
+    for (int i = 1; i <= n; ++i) read(a[i]);
     for (int i = 2, x, y; i <= n; ++i) {
         read(x), read(y);
         G[x].push_back(y), G[y].push_back(x);
@@ -122,9 +108,7 @@ int main() {
     dfs(1, 0);
     const int N = 2e5;
     for (int i = N; i >= 1; --i)
-        for (int j = i + i; j <= N; j += i)
-            ans[i] -= ans[j];
+        for (int j = i + i; j <= N; j += i) ans[i] -= ans[j];
     for (int i = 1; i <= N; ++i)
-        if (ans[i])
-            printf("%d %lld\n", i, ans[i]);
+        if (ans[i]) printf("%d %lld\n", i, ans[i]);
 }

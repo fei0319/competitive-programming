@@ -20,8 +20,7 @@ void solve(void) {
     }
 
     for (int i = 1; i <= n; ++i)
-        for (int j : val[i])
-            ++cnt[j];
+        for (int j : val[i]) ++cnt[j];
 
     for (int i = 1; i <= n; ++i) {
         bool flag = 1;

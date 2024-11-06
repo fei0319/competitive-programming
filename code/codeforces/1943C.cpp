@@ -23,7 +23,8 @@ void solve() {
     std::vector<std::pair<int, int>> ans;
     std::vector<int> fa(n + 1), dep(n + 1);
 
-    std::function<std::pair<int, int>(int, int)> dfs = [&](int node, int f) {
+    std::function<std::pair<int, int>(int, int)> dfs = [&](int node,
+                                                           int f) {
         fa[node] = f;
 
         std::pair<int, int> res{1, node};

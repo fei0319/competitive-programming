@@ -23,15 +23,11 @@ class PersistentSegment {
         }
     }
     static bool query(int node, int L, int R, int x) {
-        if (!node)
-            return false;
-        if (L == R)
-            return true;
+        if (!node) return false;
+        if (L == R) return true;
         int mid = (L + R) / 2;
-        if (x <= mid)
-            return query(tr[node].ls, L, mid, x);
-        else
-            return query(tr[node].rs, mid + 1, R, x);
+        if (x <= mid) return query(tr[node].ls, L, mid, x);
+        else return query(tr[node].rs, mid + 1, R, x);
     }
 
 public:
@@ -40,12 +36,8 @@ public:
         tr[++tot] = tr[node];
         return tot;
     }
-    static void add(int node, int x) {
-        add(node, L, R, x);
-    }
-    static bool query(int node, int x) {
-        return query(node, L, R, x);
-    }
+    static void add(int node, int x) { add(node, L, R, x); }
+    static bool query(int node, int x) { return query(node, L, R, x); }
 };
 
 int PersistentSegment::L = 1;

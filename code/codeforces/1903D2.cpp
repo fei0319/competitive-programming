@@ -48,8 +48,7 @@ int main(int argc, char *argv[]) {
 
     std::vector<std::pair<ll, ll>> st;
     for (auto [s, c] : save_and_cost) {
-        while (!st.empty() && st.back().second >= c)
-            st.pop_back();
+        while (!st.empty() && st.back().second >= c) st.pop_back();
         st.emplace_back(s, c);
     }
 
@@ -60,10 +59,8 @@ int main(int argc, char *argv[]) {
         int l = 0, r = st.size() - 1;
         while (l < r) {
             int mid = (l + r + 1) / 2;
-            if (st[mid].second <= k)
-                l = mid;
-            else
-                r = mid - 1;
+            if (st[mid].second <= k) l = mid;
+            else r = mid - 1;
         }
 
         std::cout << (k + st[l].first) / n << '\n';

@@ -26,14 +26,11 @@ class Segment {
     void modify(int node, int L, int R, int x, const int &val) {
         tr[node].sum += (ll)x * val;
         tr[node].cnt += val;
-        if (L == R)
-            return;
+        if (L == R) return;
         push_down(node);
         int mid = (L + R) / 2;
-        if (x <= mid)
-            modify(node << 1, L, mid, x, val);
-        else
-            modify(node << 1 | 1, mid + 1, R, x, val);
+        if (x <= mid) modify(node << 1, L, mid, x, val);
+        else modify(node << 1 | 1, mid + 1, R, x, val);
         push_up(node);
     }
     void clear(int node, int L, int R, int l, int r) {
@@ -44,44 +41,29 @@ class Segment {
         }
         push_down(node);
         int mid = (L + R) / 2;
-        if (l <= mid)
-            clear(node << 1, L, mid, l, r);
-        if (r > mid)
-            clear(node << 1 | 1, mid + 1, R, l, r);
+        if (l <= mid) clear(node << 1, L, mid, l, r);
+        if (r > mid) clear(node << 1 | 1, mid + 1, R, l, r);
         push_up(node);
     }
     int query(int node, int L, int R, int l, int r) {
-        if (l <= L && R <= r)
-            return tr[node].cnt;
+        if (l <= L && R <= r) return tr[node].cnt;
         push_down(node);
         int mid = (L + R) / 2;
         int res = 0;
-        if (l <= mid)
-            res += query(node << 1, L, mid, l, r);
-        if (r > mid)
-            res += query(node << 1 | 1, mid + 1, R, l, r);
+        if (l <= mid) res += query(node << 1, L, mid, l, r);
+        if (r > mid) res += query(node << 1 | 1, mid + 1, R, l, r);
         push_up(node);
         return res;
     }
-    ll get_sum(int node) {
-        return tr[node].sum;
-    }
+    ll get_sum(int node) { return tr[node].sum; }
     int L, R;
 
 public:
     explicit Segment(int L, int R) : L(L), R(R) {}
-    void modify(int x, const int &val) {
-        modify(1, L, R, x, val);
-    }
-    void clear(int l, int r) {
-        clear(1, L, R, l, r);
-    }
-    int query(int l, int r) {
-        return query(1, L, R, l, r);
-    }
-    ll get_sum() {
-        return get_sum(1);
-    }
+    void modify(int x, const int &val) { modify(1, L, R, x, val); }
+    void clear(int l, int r) { clear(1, L, R, l, r); }
+    int query(int l, int r) { return query(1, L, R, l, r); }
+    ll get_sum() { return get_sum(1); }
 };
 
 using sg = Segment;

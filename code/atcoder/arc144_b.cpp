@@ -33,10 +33,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 3e5 + 19;
@@ -45,24 +43,19 @@ int N, a, b, w[maxn];
 bool check(int v) {
     ll need = 0;
     for (int i = 1; i <= N; ++i)
-        if (w[i] > v)
-            need += (w[i] - v) / b;
-        else if (w[i] < v)
-            need -= (v - w[i] + a - 1) / a;
+        if (w[i] > v) need += (w[i] - v) / b;
+        else if (w[i] < v) need -= (v - w[i] + a - 1) / a;
     return need >= 0;
 }
 
 int main() {
     read(N), read(a), read(b);
-    for (int i = 1; i <= N; ++i)
-        read(w[i]);
+    for (int i = 1; i <= N; ++i) read(w[i]);
     int l = 1, r = 1e9;
     while (l < r) {
         int mid = (l + r + 1) >> 1;
-        if (check(mid))
-            l = mid;
-        else
-            r = mid - 1;
+        if (check(mid)) l = mid;
+        else r = mid - 1;
     }
     printf("%d\n", l);
 }

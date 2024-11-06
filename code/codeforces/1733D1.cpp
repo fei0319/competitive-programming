@@ -26,10 +26,10 @@ void solve(void) {
         if (pos.size() == 2ll && pos[0] == pos[1] - 1) {
             if ((pos[0] - 2 >= 1 || pos[1] + 2 <= n) && (ll)y * 2 <= x)
                 std::cout << (ll)y * 2 << std::endl;
-            else if ((pos[0] - 1 >= 1 && pos[1] + 1 <= n) && (ll)y * 3 <= x)
+            else if ((pos[0] - 1 >= 1 && pos[1] + 1 <= n) &&
+                     (ll)y * 3 <= x)
                 std::cout << (ll)y * 3 << std::endl;
-            else
-                std::cout << x << std::endl;
+            else std::cout << x << std::endl;
         } else {
             std::cout << (ll)pos.size() / 2 * y << std::endl;
         }

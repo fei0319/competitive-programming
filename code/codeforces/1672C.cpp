@@ -20,10 +20,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 2e5 + 19;
@@ -35,8 +33,7 @@ int main() {
     read(T);
     while (T--) {
         read(n);
-        for (int i = 1; i <= n; ++i)
-            read(a[i]);
+        for (int i = 1; i <= n; ++i) read(a[i]);
         int l = n, r = 1;
         for (int i = 1; i < n; ++i)
             if (a[i] == a[i + 1]) {
@@ -52,11 +49,8 @@ int main() {
             puts("0");
             continue;
         }
-        if (r - l == 1)
-            puts("0");
-        else if (r - l == 2)
-            puts("1");
-        else
-            printf("%d\n", r - l - 2);
+        if (r - l == 1) puts("0");
+        else if (r - l == 2) puts("1");
+        else printf("%d\n", r - l - 2);
     }
 }

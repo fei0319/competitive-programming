@@ -33,10 +33,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 2e5 + 19;
@@ -53,7 +51,8 @@ void push_up(int node) {
 
 void push_down(int node) {
     if (t[node].tag != -1) {
-        t[node << 1].cnt = t[node].tag * (t[node << 1].r - t[node << 1].l + 1);
+        t[node << 1].cnt =
+            t[node].tag * (t[node << 1].r - t[node << 1].l + 1);
         t[node << 1 | 1].cnt =
             t[node].tag * (t[node << 1 | 1].r - t[node << 1 | 1].l + 1);
 
@@ -78,23 +77,18 @@ void build(int node, int L, int R) {
 }
 
 int toppos(int node) {
-    if (t[node].l == t[node].r)
-        return t[node].l;
+    if (t[node].l == t[node].r) return t[node].l;
     push_down(node);
-    if (t[node << 1 | 1].cnt)
-        return toppos(node << 1 | 1);
+    if (t[node << 1 | 1].cnt) return toppos(node << 1 | 1);
     return toppos(node << 1);
 }
 
 int query(int node, int L, int R) {
-    if (L <= t[node].l && t[node].r <= R)
-        return t[node].cnt;
+    if (L <= t[node].l && t[node].r <= R) return t[node].cnt;
     push_down(node);
     int mid = (t[node].l + t[node].r) >> 1, res = 0;
-    if (L <= mid)
-        res += query(node << 1, L, R);
-    if (R > mid)
-        res += query(node << 1 | 1, L, R);
+    if (L <= mid) res += query(node << 1, L, R);
+    if (R > mid) res += query(node << 1 | 1, L, R);
     push_up(node);
     return res;
 }
@@ -106,38 +100,30 @@ void modify(int node, int L, int R, int tag) {
     }
     push_down(node);
     int mid = (t[node].l + t[node].r) >> 1;
-    if (L <= mid)
-        modify(node << 1, L, R, tag);
-    if (R > mid)
-        modify(node << 1 | 1, L, R, tag);
+    if (L <= mid) modify(node << 1, L, R, tag);
+    if (R > mid) modify(node << 1 | 1, L, R, tag);
     push_up(node);
 }
 
 void insert(int a) {
-    if (query(1, a, a) == 0)
-        return modify(1, a, a, 1);
+    if (query(1, a, a) == 0) return modify(1, a, a, 1);
     int l = a, r = t[1].r;
     while (l < r) {
         int mid = (l + r + 1) >> 1;
-        if (query(1, a, mid) == mid - a + 1)
-            l = mid;
-        else
-            r = mid - 1;
+        if (query(1, a, mid) == mid - a + 1) l = mid;
+        else r = mid - 1;
     }
     modify(1, a, l, 0);
     modify(1, l + 1, l + 1, 1);
 }
 
 void erase(int a) {
-    if (query(1, a, a) == 1)
-        return modify(1, a, a, 0);
+    if (query(1, a, a) == 1) return modify(1, a, a, 0);
     int l = a, r = t[1].r;
     while (l < r) {
         int mid = (l + r + 1) >> 1;
-        if (query(1, a, mid) == 0)
-            l = mid;
-        else
-            r = mid - 1;
+        if (query(1, a, mid) == 0) l = mid;
+        else r = mid - 1;
     }
     modify(1, a, l, 1);
     modify(1, l + 1, l + 1, 0);

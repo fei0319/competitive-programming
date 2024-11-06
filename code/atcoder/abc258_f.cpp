@@ -32,15 +32,12 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 ll delta(const ll &a, const ll &b) {
-    if (a > b)
-        return a - b;
+    if (a > b) return a - b;
     return b - a;
 }
 
@@ -50,20 +47,14 @@ ll __query(int sx, int sy, int gx, int gy) {
     return delta(sx, gx) + delta(sy, gy);
 }
 
-ll flr(ll x) {
-    return x / b * b;
-}
-ll cel(ll x) {
-    return flr(x + b - 1);
-}
+ll flr(ll x) { return x / b * b; }
+ll cel(ll x) { return flr(x + b - 1); }
 
 ll query(int sx, int sy, int gx, int gy) {
     if (sx / b != gx / b && sy / b != gy / b)
         return __query(sx, sy, gx, gy);
-    if (sx / b != gx / b)
-        std::swap(sx, sy), std::swap(gx, gy);
-    if (sy == gy)
-        return delta(sx, gx);
+    if (sx / b != gx / b) std::swap(sx, sy), std::swap(gx, gy);
+    if (sy == gy) return delta(sx, gx);
     return std::min({delta(sx, flr(sx)) + delta(gx, flr(gx)) +
                          __query(flr(sx), sy, flr(gx), gy),
                      delta(sx, flr(sx)) + delta(gx, cel(gx)) +
@@ -95,18 +86,14 @@ void solve(void) {
     for (int i = 0; i < 4; ++i)
         for (int j = 0; j < 4; ++j) {
             ll res = 0;
-            if (sx != s[i].first)
-                res += delta(sx, s[i].first);
-            if (gx != g[j].first)
-                res += delta(gx, g[j].first);
+            if (sx != s[i].first) res += delta(sx, s[i].first);
+            if (gx != g[j].first) res += delta(gx, g[j].first);
 
-            if (sy != s[i].second)
-                res += delta(sy, s[i].second);
-            if (gy != g[j].second)
-                res += delta(gy, g[j].second);
+            if (sy != s[i].second) res += delta(sy, s[i].second);
+            if (gy != g[j].second) res += delta(gy, g[j].second);
 
-            chkmin(ans, res * k + query(s[i].first, s[i].second, g[j].first,
-                                        g[j].second));
+            chkmin(ans, res * k + query(s[i].first, s[i].second,
+                                        g[j].first, g[j].second));
         }
 
     printf("%lld\n", ans);
@@ -115,8 +102,7 @@ void solve(void) {
 int main() {
     int t;
     read(t);
-    while (t--)
-        solve();
+    while (t--) solve();
 }
 
 /*

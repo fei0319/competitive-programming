@@ -82,9 +82,7 @@ namespace Flow {
     }
 }; // namespace Flow
 
-std::pair<int, int> construct_from(int x) {
-    return {2 * x, 3 * x};
-}
+std::pair<int, int> construct_from(int x) { return {2 * x, 3 * x}; }
 std::pair<int, int> construct_from(int a, int d) {
     return {a + d, a * 2 + d};
 }

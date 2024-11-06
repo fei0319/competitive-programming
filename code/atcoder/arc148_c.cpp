@@ -20,10 +20,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 2e5 + 19;
@@ -42,24 +40,19 @@ void dfs1(int node, int f) {
         if (to != f) {
             dfs1(to, node);
             size[node] += size[to];
-            if (size[to] > size[son[node]])
-                son[node] = to;
+            if (size[to] > size[son[node]]) son[node] = to;
         }
 }
 void dfs2(int node, int t) {
     top[node] = t;
-    if (son[node])
-        dfs2(son[node], t);
+    if (son[node]) dfs2(son[node], t);
     for (int to : G[node])
-        if (to != fa[node] && to != son[node])
-            dfs2(to, to);
+        if (to != fa[node] && to != son[node]) dfs2(to, to);
 }
 int lca(int x, int y) {
     while (top[x] != top[y])
-        if (dep[top[x]] > dep[top[y]])
-            x = fa[top[x]];
-        else
-            y = fa[top[y]];
+        if (dep[top[x]] > dep[top[y]]) x = fa[top[x]];
+        else y = fa[top[y]];
     return dep[x] < dep[y] ? x : y;
 }
 
@@ -70,8 +63,7 @@ void dfs(int node) {
         dfs(to);
         if ((dep[to] - dep[node]) == 1)
             t[0] += dp[to][0], t[1] += dp[to][1];
-        else
-            t[0] += dp[to][0], t[1] += dp[to][0] + 1;
+        else t[0] += dp[to][0], t[1] += dp[to][0] + 1;
     }
     if (col[node]) {
         dp[node][0] = t[1] + 1;
@@ -93,30 +85,25 @@ int main() {
     while (q--) {
         read(m);
         S.resize(m);
-        for (int i = 0; i < m; ++i)
-            read(S[i]), col[S[i]] = true;
+        for (int i = 0; i < m; ++i) read(S[i]), col[S[i]] = true;
         std::sort(S.begin(), S.end(), [](const int &a, const int &b) {
             return dfn[a] < dfn[b];
         });
         int top;
         st[top = 1] = 1;
         for (int i = 0; i < m; ++i) {
-            if (S[i] == 1)
-                continue;
+            if (S[i] == 1) continue;
             int x = lca(S[i], st[top]);
             while (dep[st[top]] > dep[x]) {
                 if (dep[st[top - 1]] > dep[x])
                     E[st[top - 1]].push_back(st[top]);
-                else
-                    E[x].push_back(st[top]);
+                else E[x].push_back(st[top]);
                 --top;
             }
-            if (st[top] != x)
-                st[++top] = x;
+            if (st[top] != x) st[++top] = x;
             st[++top] = S[i];
         }
-        for (int i = 1; i < top; ++i)
-            E[st[i]].push_back(st[i + 1]);
+        for (int i = 1; i < top; ++i) E[st[i]].push_back(st[i + 1]);
         // for(int i = 1; i <= n; ++i){
         // printf("%d:", i);
         // for(int j : E[i]) printf("%d ", j);

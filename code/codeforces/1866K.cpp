@@ -5,9 +5,7 @@ using ll = long long int;
 const int MAXN = 1e5 + 19, MAXS = 1e7 + 19, B = 18;
 const ll INF = 1e18;
 
-ll F(std::pair<int, ll> p, int k) {
-    return (ll)k * p.first + p.second;
-}
+ll F(std::pair<int, ll> p, int k) { return (ll)k * p.first + p.second; }
 
 class Lichao {
     static const int N = 1e9;
@@ -18,7 +16,8 @@ class Lichao {
         ll v;
     };
     static Node tr[MAXS];
-    static void add(int &node, int L, int R, std::pair<int, ll> p, bool f) {
+    static void add(int &node, int L, int R, std::pair<int, ll> p,
+                    bool f) {
         if (!node) {
             node = ++tot;
             tr[node].p = {-1, -INF};
@@ -73,8 +72,9 @@ class Lichao {
             return {F(tr[node].p, x), tr[node].v};
         }
         int mid = (L + R) / 2;
-        std::pair<ll, ll> res = (x <= mid) ? query(tr[node].ls, L, mid, x)
-                                           : query(tr[node].rs, mid + 1, R, x);
+        std::pair<ll, ll> res = (x <= mid)
+                                    ? query(tr[node].ls, L, mid, x)
+                                    : query(tr[node].rs, mid + 1, R, x);
         ll v = F(tr[node].p, x);
         if (v > res.first) {
             res.second = res.first;
@@ -117,8 +117,7 @@ void dfs1(int node, int f) {
     dp[node] = {0LL, node};
 
     for (auto [to, w] : G[node]) {
-        if (to == f)
-            continue;
+        if (to == f) continue;
         dep_w[to] = dep_w[node] + w;
         dep[to] = dep[node] + 1;
         dfs1(to, node);
@@ -149,8 +148,7 @@ void dfs2(int node, int f) {
 
     for (int i = 0; i < d; ++i) {
         auto [to, w] = G[node][i];
-        if (to == f)
-            continue;
+        if (to == f) continue;
         g[to] = std::max({pre[i], suf[i], g[node], {0LL, node}});
         g[to].first += w;
         dfs2(to, node);

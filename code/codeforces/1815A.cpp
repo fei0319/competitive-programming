@@ -11,15 +11,11 @@ void solve(void) {
     for (int i = 1; i <= n; ++i) {
         std::cin >> a[i];
     }
-    for (int i = n; i >= 1; --i)
-        a[i] -= a[i - 1];
+    for (int i = n; i >= 1; --i) a[i] -= a[i - 1];
     ll sum = 0;
-    for (int i = 2; i <= n; i += 2)
-        sum += a[i];
-    if (sum >= 0 || n % 2 == 1)
-        std::cout << "YES\n";
-    else
-        std::cout << "NO\n";
+    for (int i = 2; i <= n; i += 2) sum += a[i];
+    if (sum >= 0 || n % 2 == 1) std::cout << "YES\n";
+    else std::cout << "NO\n";
 }
 
 int main() {

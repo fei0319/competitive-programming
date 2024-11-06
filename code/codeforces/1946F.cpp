@@ -26,9 +26,7 @@ struct BIT {
         }
         return res;
     }
-    ll query(int l, int r) {
-        return query(r) - query(l - 1);
-    }
+    ll query(int l, int r) { return query(r) - query(l - 1); }
 } mt;
 
 bool vist[MAXN];

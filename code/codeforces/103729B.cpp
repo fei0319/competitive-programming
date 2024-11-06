@@ -2,9 +2,7 @@
 
 using ll = long long int;
 
-ll gcd(ll a, ll b) {
-    return b ? gcd(b, a % b) : a;
-}
+ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
 
 void f(ll &x, ll &y) {
     ll g = gcd(x, y);
@@ -17,8 +15,7 @@ void solve() {
     f(x, y);
     ll t = x + y;
     int ans = 1;
-    while (t % 2 == 0)
-        t >>= 1, ++ans;
+    while (t % 2 == 0) t >>= 1, ++ans;
     if (t != 1) {
         puts("-1");
     } else {

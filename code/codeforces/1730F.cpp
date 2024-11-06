@@ -58,7 +58,8 @@ int main() {
             while (S & (1 << (nxt - 1))) {
                 nxt += 1;
             }
-            chkmin(dp[i + nxt][S >> nxt], dp[i][S] + tot - mt.query(pos[i]));
+            chkmin(dp[i + nxt][S >> nxt],
+                   dp[i][S] + tot - mt.query(pos[i]));
 
             for (int j = 1; j <= k && i + j <= n; ++j) {
                 if (!(S & (1 << (j - 1)))) {

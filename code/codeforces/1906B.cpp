@@ -5,8 +5,7 @@ using ll = long long int;
 int f(std::vector<int> a) {
     int res = 0, n = a.size();
     for (int i = 0; i < n; ++i) {
-        if (!a[i])
-            continue;
+        if (!a[i]) continue;
         if (i == res) {
             res += 1;
             continue;
@@ -17,8 +16,7 @@ int f(std::vector<int> a) {
             a[i + 1] = 0;
         } else {
             res += 2;
-            if (i + 1 < n)
-                a[i + 1] ^= 1;
+            if (i + 1 < n) a[i + 1] ^= 1;
         }
     }
     return res;

@@ -7,8 +7,7 @@ const int MAXN = 2e5 + 19, MOD = 998244353;
 constexpr int qpow(int a, int b) {
     int res = 1;
     while (b) {
-        if (b & 1)
-            res = (ll)res * a % MOD;
+        if (b & 1) res = (ll)res * a % MOD;
         a = (ll)a * a % MOD, b >>= 1;
     }
     return res;
@@ -20,8 +19,7 @@ int getf(int node) {
 }
 void merge(int x, int y) {
     x = getf(x), y = getf(y);
-    if (x > y)
-        std::swap(x, y);
+    if (x > y) std::swap(x, y);
     fa[x] = y;
 }
 
@@ -62,7 +60,8 @@ int main(int argc, char *argv[]) {
     std::sort(vals.begin(), vals.end());
     vals.resize(std::unique(vals.begin(), vals.end()) - vals.begin());
     for (int i = 0; i < n; ++i) {
-        a[i] = std::lower_bound(vals.begin(), vals.end(), a[i]) - vals.begin();
+        a[i] = std::lower_bound(vals.begin(), vals.end(), a[i]) -
+               vals.begin();
     }
 
     std::vector<std::vector<int>> pos(vals.size());
@@ -95,9 +94,11 @@ int main(int argc, char *argv[]) {
         indices.push_back(getf(i));
     }
     std::sort(indices.begin(), indices.end());
-    int cnt = std::unique(indices.begin(), indices.end()) - indices.begin();
+    int cnt =
+        std::unique(indices.begin(), indices.end()) - indices.begin();
 
-    int ans = ll(qpow(2, vals.size()) - qpow(2, cnt)) * qpow(2, MOD - 2) % MOD;
+    int ans =
+        ll(qpow(2, vals.size()) - qpow(2, cnt)) * qpow(2, MOD - 2) % MOD;
     std::cout << (ans + MOD) % MOD << '\n';
 
     return 0;

@@ -15,24 +15,19 @@ struct Node {
 struct Tar {
     int tr[maxn];
     void update(int x, int k) {
-        for (; x <= n; x += x & -x)
-            tr[x] += k;
+        for (; x <= n; x += x & -x) tr[x] += k;
     }
     int query(int x) {
         int res = 0;
-        for (; x; x -= x & -x)
-            res += tr[x];
+        for (; x; x -= x & -x) res += tr[x];
         return res;
     }
-    int query(int l, int r) {
-        return query(r) - query(l - 1);
-    }
+    int query(int l, int r) { return query(r) - query(l - 1); }
     int find_next(int x) {
         int res = 0, tmp = 0, s = query(x);
         for (int i = 19; ~i; --i) {
             int n_res = res + (1 << i);
-            if (n_res > n)
-                continue;
+            if (n_res > n) continue;
             int n_tmp = tmp + tr[n_res];
             if (n_tmp >= n_res - x + s) {
                 res = n_res, tmp = n_tmp;
@@ -93,7 +88,8 @@ int main() {
             }
             if (L >= R) {
                 ans[id] = 0;
-            } else if (L != preL || (R - L) % 2 == 0 || (R - preL) % 2 == 0) {
+            } else if (L != preL || (R - L) % 2 == 0 ||
+                       (R - preL) % 2 == 0) {
                 ans[id] = 1;
             } else {
                 if (mt[0].query(L, R) == 0 || mt[1].query(L, R) == 0) {

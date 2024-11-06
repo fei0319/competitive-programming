@@ -12,10 +12,8 @@ void solve(void) {
     n = a + b + (c + d) * 2;
 
     for (int i = 1; i <= n; ++i)
-        if (s[i] == 'A')
-            --a;
-        else
-            --b;
+        if (s[i] == 'A') --a;
+        else --b;
     if (-a != c + d || -b != c + d) {
         std::cout << "NO\n";
         return;
@@ -25,10 +23,8 @@ void solve(void) {
     std::vector<int> a_only, b_only;
     for (int l = 1, r; l <= n; l = r + 1) {
         r = l;
-        while (r + 1 <= n && s[r + 1] != s[r])
-            ++r;
-        if ((r - l) % 2 == 0)
-            common += (r - l) / 2;
+        while (r + 1 <= n && s[r + 1] != s[r]) ++r;
+        if ((r - l) % 2 == 0) common += (r - l) / 2;
         else {
             int num = (r - l + 1) / 2;
             if (s[l] == 'A') {
@@ -44,21 +40,17 @@ void solve(void) {
     for (int num : a_only) {
         int sub = std::min(num, c);
         c -= sub, num -= sub;
-        if (num > 1)
-            common += num - 1;
+        if (num > 1) common += num - 1;
     }
     for (int num : b_only) {
         int sub = std::min(num, d);
         d -= sub, num -= sub;
-        if (num > 1)
-            common += num - 1;
+        if (num > 1) common += num - 1;
     }
 
     //	std::cout << c << ' ' << d << ' ' << common << '\n';
-    if (common >= c + d)
-        std::cout << "YES\n";
-    else
-        std::cout << "NO\n";
+    if (common >= c + d) std::cout << "YES\n";
+    else std::cout << "NO\n";
 }
 
 int main() {

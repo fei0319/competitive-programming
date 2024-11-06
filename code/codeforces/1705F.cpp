@@ -65,9 +65,7 @@ void solve(int l, int r, int cnt) {
 }
 
 std::mt19937 rng(time(nullptr));
-char rev(char c) {
-    return c == 'T' ? 'F' : 'T';
-}
+char rev(char c) { return c == 'T' ? 'F' : 'T'; }
 
 int main() {
     std::cin >> n;

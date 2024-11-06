@@ -1,7 +1,7 @@
 // Problem: C - Chinese Restaurant
-// Contest: AtCoder - UNIQUE VISION Programming Contest 2022 Summer (AtCoder
-// Beginner Contest 268) URL: https://atcoder.jp/contests/abc268/tasks/abc268_c
-// Memory Limit: 1024 MB
+// Contest: AtCoder - UNIQUE VISION Programming Contest 2022 Summer
+// (AtCoder Beginner Contest 268) URL:
+// https://atcoder.jp/contests/abc268/tasks/abc268_c Memory Limit: 1024 MB
 // Time Limit: 2000 ms
 //
 // Powered by CP Editor (https://cpeditor.org)
@@ -20,10 +20,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 2e5 + 19;
@@ -38,7 +36,6 @@ int main() {
         ++cnt[(i - p[i] + n - 1) % n];
     }
     int ans = 0;
-    for (int i = 0; i < n; ++i)
-        ans = std::max(ans, cnt[i]);
+    for (int i = 0; i < n; ++i) ans = std::max(ans, cnt[i]);
     std::cout << ans;
 }

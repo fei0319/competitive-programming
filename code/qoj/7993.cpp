@@ -38,8 +38,10 @@ int main() {
 
     for (auto [x, y] : p) {
         int u = -2 * std::max(x, y), v = -2 * std::min(x, y);
-        int p_u = std::upper_bound(arr.begin(), arr.end(), u) - arr.begin() - 1;
-        int p_v = std::upper_bound(arr.begin(), arr.end(), v) - arr.begin() - 1;
+        int p_u =
+            std::upper_bound(arr.begin(), arr.end(), u) - arr.begin() - 1;
+        int p_v =
+            std::upper_bound(arr.begin(), arr.end(), v) - arr.begin() - 1;
         if (p_u < arr.size() - n) {
             if (p_v < arr.size() - n + 1) {
                 ans = std::max(ans, res + sum[2] + u + v);

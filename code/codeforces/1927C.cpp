@@ -10,14 +10,12 @@ void solve() {
     for (int i = 0; i < n; ++i) {
         int t;
         std::cin >> t;
-        if (t <= k)
-            a[t - 1] = true;
+        if (t <= k) a[t - 1] = true;
     }
     for (int i = 0; i < m; ++i) {
         int t;
         std::cin >> t;
-        if (t <= k)
-            b[t - 1] = true;
+        if (t <= k) b[t - 1] = true;
     }
 
     int x = k / 2, y = k / 2, p = 0;

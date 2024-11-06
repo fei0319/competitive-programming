@@ -20,18 +20,12 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
-int pabs(int a) {
-    return a > 0 ? a : -a;
-}
-int gcd(int a, int b) {
-    return b ? gcd(b, a % b) : a;
-}
+int pabs(int a) { return a > 0 ? a : -a; }
+int gcd(int a, int b) { return b ? gcd(b, a % b) : a; }
 
 const int maxn = 2e5 + 19;
 
@@ -39,12 +33,9 @@ int n, a[maxn];
 
 int main() {
     read(n);
-    for (int i = 1; i <= n; ++i)
-        read(a[i]);
-    for (int i = n; i >= 2; --i)
-        a[i] = pabs(a[i] - a[i - 1]);
+    for (int i = 1; i <= n; ++i) read(a[i]);
+    for (int i = n; i >= 2; --i) a[i] = pabs(a[i] - a[i - 1]);
     int x = a[2];
-    for (int i = 3; i <= n; ++i)
-        x = gcd(x, a[i]);
+    for (int i = 3; i <= n; ++i) x = gcd(x, a[i]);
     puts(x >= 2 || x == 0 ? "1" : "2");
 }

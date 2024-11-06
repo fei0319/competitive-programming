@@ -8,8 +8,7 @@ const int MOD = 998244353;
 constexpr int qpow(int a, int b) {
     int res = 1;
     while (b) {
-        if (b & 1)
-            res = (ll)res * a % MOD;
+        if (b & 1) res = (ll)res * a % MOD;
         a = (ll)a * a % MOD, b >>= 1;
     }
     return res;
@@ -20,9 +19,7 @@ std::vector<int> f, g;
 
 int fact[MAXN], ifact[MAXN];
 
-void add(int &x, ll y) {
-    x = (x + y) % MOD;
-}
+void add(int &x, ll y) { x = (x + y) % MOD; }
 
 int main() {
     std::cin >> n;
@@ -30,8 +27,7 @@ int main() {
     g.resize(n + 1);
 
     fact[0] = 1;
-    for (int i = 1; i <= n; ++i)
-        fact[i] = (ll)fact[i - 1] * i % MOD;
+    for (int i = 1; i <= n; ++i) fact[i] = (ll)fact[i - 1] * i % MOD;
     ifact[n] = qpow(fact[n], MOD - 2);
     for (int i = n - 1; i >= 0; --i) {
         ifact[i] = (ll)ifact[i + 1] * (i + 1) % MOD;

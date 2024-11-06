@@ -8,8 +8,7 @@ int n, a[maxn];
 
 void solve(void) {
     std::cin >> n;
-    for (int i = 1; i <= n; ++i)
-        std::cin >> a[i];
+    for (int i = 1; i <= n; ++i) std::cin >> a[i];
 
     ll pos = 0, neg = 0, ans = 0;
     for (int i = 1; i <= n; ++i) {

@@ -6,8 +6,7 @@ void solve(void) {
     int n;
     std::cin >> n;
     int d = 0;
-    while (n >= 10)
-        n /= 10, ++d;
+    while (n >= 10) n /= 10, ++d;
     std::cout << n + 9 * d << '\n';
 }
 

@@ -19,8 +19,7 @@ void solve(void) {
 
     int t = 1;
     for (int i = n; i >= 1; --i) {
-        if (i != n)
-            s[i] += s[i + 1];
+        if (i != n) s[i] += s[i + 1];
         if (a[i] < i && s[i]) {
             t = std::max(t, (i - a[i] + s[i] - 1) / s[i]);
         }
@@ -32,13 +31,10 @@ void solve(void) {
     std::vector<int> next(n + 1);
     for (int i = 0, p; i < n; i = p) {
         p = i + 1;
-        while (p <= n && a[p] > p)
-            p += 1;
-        if (p > n)
-            break;
+        while (p <= n && a[p] > p) p += 1;
+        if (p > n) break;
         next[i] = p;
-        if (a[p] == p)
-            tot += 1;
+        if (a[p] == p) tot += 1;
     }
 
     for (int i = 0; i <= std::min(t * k, d - 1); ++i) {

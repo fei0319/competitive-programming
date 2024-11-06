@@ -121,7 +121,8 @@ int main() {
             for (int i = 0; i < SIGMA; ++i) {
                 if (!(S & (1 << i))) {
                     add_value(tr[node].fail[i], S | (1 << i),
-                              value + tr[tr[node].fail[i]].val, node, 'a' + i);
+                              value + tr[tr[node].fail[i]].val, node,
+                              'a' + i);
                 }
             }
         }

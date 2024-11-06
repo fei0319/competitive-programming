@@ -22,7 +22,8 @@ void dfs1(int node) {
 ll ans;
 void dfs2(int node) {
     for (int to : G[node]) {
-        g[to] = dp[node] - (dp[to] + size[to]) + g[node] + (n - size[node]);
+        g[to] =
+            dp[node] - (dp[to] + size[to]) + g[node] + (n - size[node]);
     }
 
     ll res = dp[node] - size[node] + g[node];

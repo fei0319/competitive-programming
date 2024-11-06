@@ -20,10 +20,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 1e5 + 19, maxm = maxn * 4;
@@ -64,21 +62,15 @@ void modify(int node, int L, int R, int l, int r) {
         return;
     }
     int mid = (L + R) >> 1;
-    if (l <= mid)
-        modify(node << 1, L, mid, l, r);
-    if (r > mid)
-        modify(node << 1 | 1, mid + 1, R, l, r);
+    if (l <= mid) modify(node << 1, L, mid, l, r);
+    if (r > mid) modify(node << 1 | 1, mid + 1, R, l, r);
 }
 
 struct Node {
     int to;
     ll dist;
-    Node(int __to, ll __dist) {
-        to = __to, dist = __dist;
-    }
-    bool operator<(const Node &b) const {
-        return dist > b.dist;
-    }
+    Node(int __to, ll __dist) { to = __to, dist = __dist; }
+    bool operator<(const Node &b) const { return dist > b.dist; }
 };
 
 void dijkstra(ll *d) {
@@ -93,8 +85,7 @@ void dijkstra(ll *d) {
     while (!q.empty()) {
         int node = q.top().to;
         q.pop();
-        if (vist[node])
-            continue;
+        if (vist[node]) continue;
         vist[node] = true;
         for (int i = head[node]; i; i = edge[i].next)
             if (d[edge[i].to] > d[node] + edge[i].dist) {
@@ -109,8 +100,7 @@ struct SegmentTree {
     int m;
     void init(void) {
         m = 1;
-        while (m <= n)
-            m <<= 1;
+        while (m <= n) m <<= 1;
     }
     void build(void) {
         for (int i = m - 1; i >= 1; --i)
@@ -119,10 +109,8 @@ struct SegmentTree {
     ll query(int l, int r) {
         ll res = inf;
         for (l += m - 1, r += m + 1; l ^ r ^ 1; l >>= 1, r >>= 1) {
-            if (l & 1 ^ 1)
-                chkmin(res, tr[l ^ 1]);
-            if (r & 1)
-                chkmin(res, tr[r ^ 1]);
+            if (l & 1 ^ 1) chkmin(res, tr[l ^ 1]);
+            if (r & 1) chkmin(res, tr[r ^ 1]);
         }
         return res;
     }
@@ -137,8 +125,7 @@ int main() {
         __to = id[c], __dist = p;
         modify(1, 1, n, a, b);
     }
-    for (int i = 1; i <= tot; ++i)
-        f[i] = g[i] = dp[i] = inf;
+    for (int i = 1; i <= tot; ++i) f[i] = g[i] = dp[i] = inf;
     f[id[1]] = g[id[n]] = 0ll;
     dijkstra(f), dijkstra(g);
 
@@ -157,8 +144,6 @@ int main() {
     }
     dijkstra(dp);
     for (int i = 1; i <= n; ++i)
-        if (dp[id[i]] < inf)
-            std::printf("%lld\n", dp[id[i]]);
-        else
-            std::puts("-1");
+        if (dp[id[i]] < inf) std::printf("%lld\n", dp[id[i]]);
+        else std::puts("-1");
 }

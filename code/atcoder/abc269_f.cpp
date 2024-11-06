@@ -1,7 +1,7 @@
 // Problem: F - Numbered Checker
-// Contest: AtCoder - UNICORN Programming Contest 2022(AtCoder Beginner Contest
-// 269) URL: https://atcoder.jp/contests/abc269/tasks/abc269_f Memory Limit:
-// 1024 MB Time Limit: 3000 ms
+// Contest: AtCoder - UNICORN Programming Contest 2022(AtCoder Beginner
+// Contest 269) URL: https://atcoder.jp/contests/abc269/tasks/abc269_f
+// Memory Limit: 1024 MB Time Limit: 3000 ms
 //
 // Powered by CP Editor (https://cpeditor.org)
 
@@ -19,10 +19,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int mod = 998244353;
@@ -33,12 +31,9 @@ int sum(int x, int y) {
     return ((ll)y * (y + 1) / 2 - (ll)x * (x + 1) / 2) % mod;
 }
 
-int Evcount(int l, int r) {
-    return r / 2 - (l - 1) / 2;
-}
+int Evcount(int l, int r) { return r / 2 - (l - 1) / 2; }
 int Evsum(int l, int r) {
-    if (l == r)
-        return l % 2 == 0 ? l : 0;
+    if (l == r) return l % 2 == 0 ? l : 0;
     return sum((l - 1) / 2 + 1, r / 2) * 2 % mod;
 }
 

@@ -18,8 +18,9 @@ int main() {
 
     std::vector<std::vector<std::pair<int, int>>> dp(n * 2 + 2);
     auto get = [&](int l, int r) -> int {
-        auto it = std::upper_bound(dp[l].begin(), dp[l].end(),
-                                   std::make_pair(r, static_cast<int>(1e9)));
+        auto it =
+            std::upper_bound(dp[l].begin(), dp[l].end(),
+                             std::make_pair(r, static_cast<int>(1e9)));
         if (it == dp[l].begin()) {
             return 0;
         }

@@ -33,10 +33,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 1e6 + 19;
@@ -60,17 +58,11 @@ int getpos(int x) {
     return std::lower_bound(pos + 1, pos + 1 + cnt, x) - pos;
 }
 
-void add(ll *v, ll *cnt, int i, const ll &x) {
-    v[i] += x, ++cnt[i];
-}
+void add(ll *v, ll *cnt, int i, const ll &x) { v[i] += x, ++cnt[i]; }
 
-void del(ll *v, ll *cnt, int i, const ll &x) {
-    v[i] += x, --cnt[i];
-}
+void del(ll *v, ll *cnt, int i, const ll &x) { v[i] += x, --cnt[i]; }
 
-ll getmax(const std::multiset<ll> &s) {
-    return *--s.end();
-}
+ll getmax(const std::multiset<ll> &s) { return *--s.end(); }
 
 bool ans[maxn];
 
@@ -114,26 +106,19 @@ int main() {
             }
         }
         for (int i = 1; i <= cnt; ++i) {
-            for (auto j : Gx[i])
-                G.insert(j);
-            for (auto j : Gy[i])
-                G.erase(G.find(j));
-            for (auto j : Lx[i])
-                L.insert(j);
+            for (auto j : Gx[i]) G.insert(j);
+            for (auto j : Gy[i]) G.erase(G.find(j));
+            for (auto j : Lx[i]) L.insert(j);
             ll req = 0;
-            if (!G.empty())
-                chkmax(req, getmax(G) - pos[i]);
-            if (!L.empty())
-                chkmax(req, getmax(L) + pos[i]);
+            if (!G.empty()) chkmax(req, getmax(G) - pos[i]);
+            if (!L.empty()) chkmax(req, getmax(L) + pos[i]);
             std::sort(rain[i].begin(), rain[i].end());
             for (int j = 0; j < (int)rain[i].size(); ++j) {
-                if (rain[i][j].first >= req)
-                    break;
+                if (rain[i][j].first >= req) break;
                 ans[rain[i][j].second] = false;
             }
         }
-        for (int i = 1; i <= n; ++i)
-            putchar(ans[i] ? '1' : '0');
+        for (int i = 1; i <= n; ++i) putchar(ans[i] ? '1' : '0');
         puts("");
     }
 }

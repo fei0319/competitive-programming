@@ -14,8 +14,7 @@ uint k[MAXN];
 uint qpow(uint a, uint b) {
     uint res = 1;
     while (b) {
-        if (b & 1)
-            res = (ll)res * a % M;
+        if (b & 1) res = (ll)res * a % M;
         a = (ll)a * a % M, b >>= 1;
     }
     return res;
@@ -55,8 +54,7 @@ void add(uint x) {
     }
 
     for (auto [v, p] : a) {
-        if (v == 2)
-            continue;
+        if (v == 2) continue;
         if (v < MAXN) {
             if ((k[v] + 1) % M) {
                 ans = (ull)ans * qpow(k[v] + 1, M - 2) % M;
