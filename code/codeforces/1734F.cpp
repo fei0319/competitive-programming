@@ -52,8 +52,9 @@ void solve(void) {
             for (int b = 0; b <= 1; ++b) {
                 for (int c = 0; c <= 1; ++c) {
                     tran(i, a, b, c);
-                    //			std::cout << "dp_" << i << "_" << a <<
-                    //b
+                    //			std::cout << "dp_" << i << "_" << a
+                    //<<
+                    // b
                     //<<
                     // c
                     //<<

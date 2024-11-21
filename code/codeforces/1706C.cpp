@@ -62,7 +62,7 @@ ll dyp(void) {
         dp[i][1] = std::min(dp[i - 2][1], dp[i - 3][0]) + cal(i);
     }
     //	for(int i = 1; i <= n; ++i) printf("dp%d={%lld,%lld}\n", i,
-    //dp[i][0],
+    // dp[i][0],
     // dp[i][1]);
     return std::min(dp[n - 2][0], std::min(dp[n - 1][0], dp[n - 1][1]));
 }

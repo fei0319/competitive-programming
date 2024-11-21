@@ -104,7 +104,7 @@ int main() {
             ll t = da[i] + db[j] + w[i][j];
             if (t >= inf || c[i] == j || c[j] == i) continue;
             //	printf("(%d, %d): %d %d %lld\n", i, j, pa[i] + 1, k - 1 -
-            //pb[j],
+            // pb[j],
             // t);
             update(pa[i] + 1, k - 1 - pb[j], t);
         }

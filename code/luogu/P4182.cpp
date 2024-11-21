@@ -91,7 +91,7 @@ int main() {
             if (!q[i - j].empty())
                 chkmax(dp[j][i], f(i - j, q[i - j].front()) + node[i].r);
             //			printf("dp[%d][%d] = %d\n", i, j,
-            //dp[j][i]);
+            // dp[j][i]);
         }
         for (int j = 0; j <= std::min(i - 1, k); ++j) {
             int x = dp[j][i] - node[i].r;

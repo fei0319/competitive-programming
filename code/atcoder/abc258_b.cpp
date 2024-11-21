@@ -59,7 +59,7 @@ int main() {
                 }
                 vec.push_back(str);
                 //				std::cout << str <<
-                //std::endl;
+                // std::endl;
             }
     std::sort(vec.begin(), vec.end());
     std::cout << vec.back();
