@@ -103,8 +103,7 @@ bool check(int u) {
     for (int i = 1; i <= n; ++i) {
         if (!is_neighbor[i]) {
             for (int to : G[i]) {
-                if (is_neighbor[to])
-                    E[getf(i)].push_back(to);
+                if (is_neighbor[to]) E[getf(i)].push_back(to);
             }
         }
     }

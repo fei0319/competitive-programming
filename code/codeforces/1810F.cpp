@@ -12,14 +12,13 @@ struct MBase {
         ll tr[maxn << 2], tag[maxn << 2];
         void build(int node, int L, int R) {
             tr[node] = tag[node] = 0;
-            if (L == R)
-                return;
+            if (L == R) return;
             int mid = (L + R) / 2;
             build(node << 1, L, mid), build(node << 1 | 1, mid + 1, R);
         }
         void push_up(int node, int L, int R) {
-            tr[node] =
-                tr[node << 1] + tr[node << 1 | 1] + tag[node] * (R - L + 1);
+            tr[node] = tr[node << 1] + tr[node << 1 | 1] +
+                       tag[node] * (R - L + 1);
         }
         void modify(int node, int L, int R, int l, int r, const int &val) {
             if (l <= L && R <= r) {
@@ -28,21 +27,16 @@ struct MBase {
                 return;
             }
             int mid = (L + R) >> 1;
-            if (l <= mid)
-                modify(node << 1, L, mid, l, r, val);
-            if (r > mid)
-                modify(node << 1 | 1, mid + 1, R, l, r, val);
+            if (l <= mid) modify(node << 1, L, mid, l, r, val);
+            if (r > mid) modify(node << 1 | 1, mid + 1, R, l, r, val);
             push_up(node, L, R);
         }
         ll query(int node, int L, int R, int l, int r) {
-            if (l <= L && R <= r)
-                return tr[node];
+            if (l <= L && R <= r) return tr[node];
             int mid = (L + R) >> 1;
             ll res = tag[node] * (std::min(R, r) - std::max(L, l) + 1);
-            if (l <= mid)
-                res += query(node << 1, L, mid, l, r);
-            if (r > mid)
-                res += query(node << 1 | 1, mid + 1, R, l, r);
+            if (l <= mid) res += query(node << 1, L, mid, l, r);
+            if (r > mid) res += query(node << 1 | 1, mid + 1, R, l, r);
             return res;
         }
     } t;
@@ -59,8 +53,7 @@ struct MBase {
                 int mid = (l + r + 1) / 2;
                 if (t.query(1, 1, n, x, mid) == ll(m - 1) * (mid - x + 1))
                     l = mid;
-                else
-                    r = mid - 1;
+                else r = mid - 1;
             }
             t.modify(1, 1, n, x, l, -(m - 1));
             t.modify(1, 1, n, l + 1, l + 1, 1);
@@ -73,10 +66,8 @@ struct MBase {
             int l = x, r = n;
             while (l < r) {
                 int mid = (l + r + 1) / 2;
-                if (t.query(1, 1, n, x, mid) == 0)
-                    l = mid;
-                else
-                    r = mid - 1;
+                if (t.query(1, 1, n, x, mid) == 0) l = mid;
+                else r = mid - 1;
             }
             t.modify(1, 1, n, x, l, m - 1);
             t.modify(1, 1, n, l + 1, l + 1, -1);
@@ -86,16 +77,12 @@ struct MBase {
         int l = 1, r = n;
         while (l < r) {
             int mid = (l + r + 1) / 2;
-            if (t.query(1, 1, n, mid, n))
-                l = mid;
-            else
-                r = mid - 1;
+            if (t.query(1, 1, n, mid, n)) l = mid;
+            else r = mid - 1;
         }
         // return l;
-        if (t.query(1, 1, n, 1, n) == 1)
-            return l;
-        else
-            return l + 1;
+        if (t.query(1, 1, n, 1, n) == 1) return l;
+        else return l + 1;
     }
     void out() {
         // for(int i = 7; i >= 1; --i) std::cout << t.query(1, 1, n, i, i);
@@ -105,11 +92,9 @@ struct MBase {
 
 void solve(void) {
     std::cin >> n >> m >> q;
-    for (int i = 1; i <= n; ++i)
-        std::cin >> a[i];
+    for (int i = 1; i <= n; ++i) std::cin >> a[i];
     mt.init(n + 40);
-    for (int i = 1; i <= n; ++i)
-        mt.add(a[i]);
+    for (int i = 1; i <= n; ++i) mt.add(a[i]);
     mt.out();
     while (q--) {
         int x, y;

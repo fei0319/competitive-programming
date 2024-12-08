@@ -10,9 +10,7 @@ int n, sz[MAXN];
 std::vector<int> G[MAXN];
 std::vector<ll> f[MAXN], g[MAXN];
 
-int calc(int x) {
-    return x * (x + 1) / 2;
-}
+int calc(int x) { return x * (x + 1) / 2; }
 
 void dfs(int node, int fa) {
     for (int to : G[node]) {
@@ -30,9 +28,9 @@ void dfs(int node, int fa) {
             std::vector<ll> n_f(std::min(A + B - 1, S), INF);
             for (int i = 0; i < A; ++i) {
                 for (int j = 0; j < B && i + j < n_f.size(); ++j) {
-                    n_f[i + j] = std::min(n_f[i + j], f[node][i] + f[to][j] +
-                                                          calc(i + j) -
-                                                          calc(i) - calc(j));
+                    n_f[i + j] = std::min(
+                        n_f[i + j], f[node][i] + f[to][j] + calc(i + j) -
+                                        calc(i) - calc(j));
                 }
             }
             std::swap(f[node], n_f);
@@ -53,8 +51,9 @@ void dfs(int node, int fa) {
             for (int i = 0; i < A; ++i) {
                 for (int j = 0; j < B && i + j < n_g.size(); ++j) {
                     n_g[i + j] = std::min(
-                        n_g[i + j], g[node][i] + g[to][j] +
-                                        (calc(i + j) - calc(i) - calc(j)) * 2);
+                        n_g[i + j],
+                        g[node][i] + g[to][j] +
+                            (calc(i + j) - calc(i) - calc(j)) * 2);
                 }
             }
             std::swap(g[node], n_g);

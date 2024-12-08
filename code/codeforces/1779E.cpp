@@ -12,10 +12,8 @@ int a[maxn];
 int ask(int x) {
     std::cout << "? " << x << ' ';
     for (int i = 1; i <= n; ++i)
-        if (i != x)
-            std::cout << s[i];
-        else
-            std::cout << 0;
+        if (i != x) std::cout << s[i];
+        else std::cout << 0;
     std::cout << std::endl;
 
     std::cin >> x;
@@ -24,27 +22,23 @@ int ask(int x) {
 
 void solve(void) {
     std::cin >> n;
-    for (int i = 1; i <= n; ++i)
-        s[i] = 1, a[i] = i;
+    for (int i = 1; i <= n; ++i) s[i] = 1, a[i] = i;
     for (int i = 1; i <= n; ++i) {
         s[i] = 0;
         win[i] = ask(i);
         s[i] = 1;
     }
 
-    std::sort(a + 1, a + 1 + n, [](const int &x, const int &y) {
-        return win[x] > win[y];
-    });
+    std::sort(a + 1, a + 1 + n,
+              [](const int &x, const int &y) { return win[x] > win[y]; });
 
     //	for(int i = 1; i <= n; ++i) std::cout << a[i] << ' ';
     //	std::cout << std::endl;
 
-    for (int i = 1; i <= n; ++i)
-        s[i] = 0;
+    for (int i = 1; i <= n; ++i) s[i] = 0;
     ans[a[1]] = 1, s[a[1]] = 1;
     for (int i = 2; i <= n; ++i)
-        if (win[a[i]] == win[a[1]])
-            ans[a[i]] = 1, s[a[i]] = 1;
+        if (win[a[i]] == win[a[1]]) ans[a[i]] = 1, s[a[i]] = 1;
 
     for (int i = 2; i <= n; ++i) {
         if (ask(a[i])) {
@@ -55,8 +49,7 @@ void solve(void) {
     }
 
     std::cout << "! ";
-    for (int i = 1; i <= n; ++i)
-        std::cout << ans[i];
+    for (int i = 1; i <= n; ++i) std::cout << ans[i];
     std::cout << std::endl;
 }
 

@@ -20,10 +20,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 2e5 + 19, mod = 1e9 + 7;
@@ -31,8 +29,7 @@ const int maxn = 2e5 + 19, mod = 1e9 + 7;
 int qpow(int a, int b) {
     int res = 1;
     while (b) {
-        if (b & 1)
-            res = (ll)res * a % mod;
+        if (b & 1) res = (ll)res * a % mod;
         a = (ll)a * a % mod, b >>= 1;
     }
     return res;
@@ -50,8 +47,7 @@ int main() {
         return 0;
     }
     fact[0] = 1;
-    for (int i = 1; i <= n; ++i)
-        fact[i] = (ll)fact[i - 1] * i % mod;
+    for (int i = 1; i <= n; ++i) fact[i] = (ll)fact[i - 1] * i % mod;
     ifact[n] = qpow(fact[n], mod - 2);
     for (int i = n - 1; i >= 0; --i)
         ifact[i] = (ll)ifact[i + 1] * (i + 1) % mod;

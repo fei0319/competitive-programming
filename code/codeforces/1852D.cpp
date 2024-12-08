@@ -13,9 +13,7 @@ int from_max[MAXN][2], from_min[MAXN][2];
 
 auto s_time = std::chrono::high_resolution_clock::now();
 
-int code(char c) {
-    return c == 'B';
-}
+int code(char c) { return c == 'B'; }
 
 void output(int i, int j, int from[][2]) {
     if (i == 0) {

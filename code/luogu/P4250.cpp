@@ -10,9 +10,7 @@ class HalfPlaneIntersection {
     };
     struct Line {
         T a, b, c;
-        Point dir() const {
-            return Point{b, -a};
-        }
+        Point dir() const { return Point{b, -a}; }
         bool operator()(const Point &p) {
             return a * p.x + b * p.y + c >= 0;
         }
@@ -34,9 +32,10 @@ public:
     using line_t = Line;
     using point_t = Point;
     std::vector<Point> operator()(std::vector<Line> lines) {
-        std::sort(lines.begin(), lines.end(), [](const Line &u, const Line &v) {
-            return atan2(u.b, -u.a) > atan2(v.b, -v.a);
-        });
+        std::sort(lines.begin(), lines.end(),
+                  [](const Line &u, const Line &v) {
+                      return atan2(u.b, -u.a) > atan2(v.b, -v.a);
+                  });
         {
             int j = -1;
             for (int i = 0; i < lines.size(); ++i) {

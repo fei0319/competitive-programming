@@ -33,10 +33,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 19;
@@ -48,8 +46,7 @@ int dx[] = {0, 0, 1, -1, 1, 1, -1, -1}, dy[] = {1, -1, 0, 0, 1, -1, 1, -1};
 
 int main() {
     read(n);
-    for (int i = 0; i < n; ++i)
-        scanf("%s", s[i]);
+    for (int i = 0; i < n; ++i) scanf("%s", s[i]);
     for (int p = 0; p < 8; ++p)
         for (int x = 0; x < n; ++x)
             for (int y = 0; y < n; ++y) {
@@ -61,7 +58,8 @@ int main() {
                     ty = (ty + dy[p] + n) % n;
                 }
                 vec.push_back(str);
-                //				std::cout << str << std::endl;
+                //				std::cout << str <<
+                // std::endl;
             }
     std::sort(vec.begin(), vec.end());
     std::cout << vec.back();

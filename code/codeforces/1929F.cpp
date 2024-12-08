@@ -9,8 +9,7 @@ int L[MAXN], R[MAXN], v[MAXN];
 int a[MAXN], tot;
 
 void dfs(int node) {
-    if (node == -1)
-        return;
+    if (node == -1) return;
     dfs(L[node]);
     a[++tot] = v[node];
     dfs(R[node]);
@@ -19,8 +18,7 @@ void dfs(int node) {
 constexpr int qpow(int a, int b) {
     int res = 1;
     while (b) {
-        if (b & 1)
-            res = (ll)res * a % MOD;
+        if (b & 1) res = (ll)res * a % MOD;
         a = (ll)a * a % MOD, b >>= 1;
     }
     return res;
@@ -28,16 +26,13 @@ constexpr int qpow(int a, int b) {
 
 int binom(int a, int b) {
     int u = 1, d = 1;
-    for (int i = a; i > a - b; --i)
-        u = (ll)u * i % MOD;
-    for (int i = 1; i <= b; ++i)
-        d = (ll)d * i % MOD;
+    for (int i = a; i > a - b; --i) u = (ll)u * i % MOD;
+    for (int i = 1; i <= b; ++i) d = (ll)d * i % MOD;
     return (ll)u * qpow(d, MOD - 2) % MOD;
 }
 
 int f(int l, int r, int x) {
-    if (l > r)
-        return 0;
+    if (l > r) return 0;
     return binom(x + r - l, x);
 }
 

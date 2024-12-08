@@ -20,9 +20,7 @@ int count_colors() {
 struct Submatrix {
     int x1, y1;
     int x2, y2;
-    bool has_value() const {
-        return x1 != 0;
-    }
+    bool has_value() const { return x1 != 0; }
 } mat[MAXN * MAXN];
 void update(int c, int x, int y) {
     if (mat[c].has_value()) {

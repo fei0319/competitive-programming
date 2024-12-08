@@ -7,14 +7,10 @@ constexpr int maxn = 500;
 int a[maxn][maxn];
 
 void change(int &x, int &y, char d) {
-    if (d == 'R')
-        ++y;
-    else if (d == 'L')
-        --y;
-    else if (d == 'D')
-        ++x;
-    else if (d == 'U')
-        --x;
+    if (d == 'R') ++y;
+    else if (d == 'L') --y;
+    else if (d == 'D') ++x;
+    else if (d == 'U') --x;
 }
 
 void construct(int n, int pre) {
@@ -23,22 +19,16 @@ void construct(int n, int pre) {
     char d = 'R';
     for (int i = 1; i <= n * n; ++i) {
         //	std::cout << x << ' ' << y << '\n';
-        if (p % 2 == 0)
-            a[x][y] = l++;
-        else
-            a[x][y] = r--;
+        if (p % 2 == 0) a[x][y] = l++;
+        else a[x][y] = r--;
         ++p;
         int nx = x, ny = y;
         change(nx, ny, d);
         if (a[nx][ny] || nx > n || ny > n || !nx || !ny) {
-            if (d == 'R')
-                d = 'D';
-            else if (d == 'D')
-                d = 'L';
-            else if (d == 'L')
-                d = 'U';
-            else if (d == 'U')
-                d = 'R';
+            if (d == 'R') d = 'D';
+            else if (d == 'D') d = 'L';
+            else if (d == 'L') d = 'U';
+            else if (d == 'U') d = 'R';
             nx = x, ny = y;
             change(nx, ny, d);
         }
@@ -50,12 +40,10 @@ void solve(void) {
     int n;
     std::cin >> n;
     for (int i = 1; i <= n; ++i)
-        for (int j = 1; j <= n; ++j)
-            a[i][j] = 0;
+        for (int j = 1; j <= n; ++j) a[i][j] = 0;
     construct(n, 0);
     for (int i = 1; i <= n; ++i) {
-        for (int j = 1; j <= n; ++j)
-            std::cout << a[i][j] << ' ';
+        for (int j = 1; j <= n; ++j) std::cout << a[i][j] << ' ';
         std::cout << '\n';
     }
 }

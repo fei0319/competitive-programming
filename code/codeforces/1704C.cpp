@@ -33,10 +33,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 1e6 + 19;
@@ -48,8 +46,7 @@ int main() {
     read(T);
     while (T--) {
         read(n), read(m);
-        for (int i = 1; i <= m; ++i)
-            read(a[i]);
+        for (int i = 1; i <= m; ++i) read(a[i]);
         std::sort(a + 1, a + 1 + m), a[0] = a[m] - n;
         all.clear();
         for (int i = 1; i <= m; ++i)
@@ -58,14 +55,11 @@ int main() {
         std::sort(all.begin(), all.end());
         int ans = 0;
         for (int i = 0; i <= m * 2; i += 2) {
-            if (all.empty())
-                break;
+            if (all.empty()) break;
             int v = all.back() - i * 2;
             all.pop_back();
-            if (v == 1)
-                ++ans;
-            else if (v > 1)
-                ans += v - 1;
+            if (v == 1) ++ans;
+            else if (v > 1) ans += v - 1;
         }
         printf("%d\n", n - ans);
     }

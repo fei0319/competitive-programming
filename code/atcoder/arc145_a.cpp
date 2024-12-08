@@ -33,10 +33,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 2e5 + 19;
@@ -50,14 +48,12 @@ bool check(void) {
     while (l < r) {
         if (s[l] != s[r]) {
             if (s[l] == 'A' || l == r - 1) {
-                if (!pre)
-                    return false;
+                if (!pre) return false;
                 pre = true;
             } else {
                 pre = true;
             }
-        } else
-            pre = true;
+        } else pre = true;
         ++l, --r;
     }
     return true;
@@ -66,10 +62,8 @@ bool check(void) {
 int main() {
     read(N);
     scanf("%s", s + 1);
-    if (check())
-        puts("Yes");
-    else
-        puts("No");
+    if (check()) puts("Yes");
+    else puts("No");
 }
 
 /*

@@ -25,9 +25,7 @@ void solve() {
         std::cin >> q[i];
     }
 
-    auto is_leaf = [&](int node) -> bool {
-        return node >= (1 << n);
-    };
+    auto is_leaf = [&](int node) -> bool { return node >= (1 << n); };
 
     std::vector<i64> dp(1 << (n + 1));
     auto get_sentinel = [&](int node, i64 k) -> int {
@@ -54,15 +52,15 @@ void solve() {
                 }
                 self(self, node << 1);
                 self(self, node << 1 | 1);
-                dp[node] = dp[node << 1] + std::min(dp[node << 1 | 1], w[node]);
+                dp[node] =
+                    dp[node << 1] + std::min(dp[node << 1 | 1], w[node]);
             };
             dfs1(dfs1, node);
             return dp[node] <= k;
         };
 
-        std::sort(leaves.begin(), leaves.end(), [&](int x, int y) {
-            return q[x] < q[y];
-        });
+        std::sort(leaves.begin(), leaves.end(),
+                  [&](int x, int y) { return q[x] < q[y]; });
         int l = 0, r = leaves.size() - 1;
         while (l < r) {
             int mid = (l + r + 1) / 2;
@@ -97,7 +95,8 @@ void solve() {
             k_for_l += self(self, node << 1 | 1, k - k_for_l);
             return self(self, node << 1, k_for_l);
         } else {
-            i64 k_for_r = dp[node] - dp[node << 1], dp_r = dp[node << 1 | 1];
+            i64 k_for_r = dp[node] - dp[node << 1],
+                dp_r = dp[node << 1 | 1];
             k_for_r += self(self, node << 1, k - k_for_r);
             if (k_for_r >= dp_r) {
                 return self(self, node << 1 | 1, k_for_r);

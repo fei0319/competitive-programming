@@ -1,7 +1,7 @@
 // Problem: G - Reversible Cards 2
-// Contest: AtCoder - UNICORN Programming Contest 2022(AtCoder Beginner Contest
-// 269) URL: https://atcoder.jp/contests/abc269/tasks/abc269_g Memory Limit:
-// 1024 MB Time Limit: 3000 ms
+// Contest: AtCoder - UNICORN Programming Contest 2022(AtCoder Beginner
+// Contest 269) URL: https://atcoder.jp/contests/abc269/tasks/abc269_g
+// Memory Limit: 1024 MB Time Limit: 3000 ms
 //
 // Powered by CP Editor (https://cpeditor.org)
 
@@ -19,10 +19,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 struct Node {
@@ -37,15 +35,11 @@ std::vector<Node> merge(const std::vector<Node> &a,
     int x = 0, y = 0;
     std::vector<Node> res;
     while (x < a.size() && y < b.size()) {
-        if (a[x] * b[y])
-            res.push_back(a[x++]);
-        else
-            res.push_back(b[y++]);
+        if (a[x] * b[y]) res.push_back(a[x++]);
+        else res.push_back(b[y++]);
     }
-    while (x < a.size())
-        res.push_back(a[x++]);
-    while (y < b.size())
-        res.push_back(b[y++]);
+    while (x < a.size()) res.push_back(a[x++]);
+    while (y < b.size()) res.push_back(b[y++]);
     return res;
 }
 
@@ -54,8 +48,7 @@ const int maxn = 2e5 + 19, inf = 1e9;
 int n, m, a[maxn], b[maxn], ans[maxn];
 std::vector<Node> v[maxn];
 std::vector<Node> solve(int l, int r) {
-    if (l == r)
-        return v[l];
+    if (l == r) return v[l];
     int mid = (l + r) >> 1;
     return merge(solve(l, mid), solve(mid + 1, r));
 }
@@ -74,16 +67,13 @@ int main() {
             v[i].push_back((Node){-a[i], inf});
         }
     }
-    for (int i = 0; i <= m; ++i)
-        ans[i] = inf;
+    for (int i = 0; i <= m; ++i) ans[i] = inf;
     auto res = solve(1, n);
     ll x = 0, y = 0;
     for (auto t : res) {
         x += t.x, y += t.y;
-        if (y + (ll)inf * n < ans[x])
-            ans[x] = y + (ll)inf * n;
+        if (y + (ll)inf * n < ans[x]) ans[x] = y + (ll)inf * n;
     }
 
-    for (int i = 0; i <= m; ++i)
-        printf("%d\n", ans[i]);
+    for (int i = 0; i <= m; ++i) printf("%d\n", ans[i]);
 }

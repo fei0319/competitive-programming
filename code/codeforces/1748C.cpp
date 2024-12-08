@@ -9,16 +9,14 @@ ll s[maxn];
 
 int find_first_zero() {
     for (int i = 1; i <= n; ++i)
-        if (a[i] == 0)
-            return i;
+        if (a[i] == 0) return i;
     return -1;
 }
 
 int count_zero(int n) {
     int res = 0;
     for (int i = 1; i <= n; ++i)
-        if (s[i] == 0)
-            ++res;
+        if (s[i] == 0) ++res;
     return res;
 }
 
@@ -26,10 +24,8 @@ int count_dep(int l, int r) {
     std::sort(s + l, s + r + 1);
     int ans = 0;
     for (int i = l, cur; i <= r; ++i) {
-        if (i == l || s[i] != s[i - 1])
-            cur = 1;
-        else
-            ++cur;
+        if (i == l || s[i] != s[i - 1]) cur = 1;
+        else ++cur;
         ans = std::max(ans, cur);
     }
     return ans;
@@ -42,14 +38,12 @@ void solve(void) {
         s[i] = s[i - 1] + a[i];
     }
     int l = find_first_zero(), r;
-    if (l == -1)
-        std::cout << count_zero(n) << std::endl;
+    if (l == -1) std::cout << count_zero(n) << std::endl;
     else {
         int ans = count_zero(l - 1);
         for (; l <= n; l = r + 1) {
             r = l;
-            while (r + 1 <= n && a[r + 1] != 0)
-                ++r;
+            while (r + 1 <= n && a[r + 1] != 0) ++r;
             ans += count_dep(l, r);
         }
         std::cout << ans << std::endl;

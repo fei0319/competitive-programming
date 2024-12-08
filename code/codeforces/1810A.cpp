@@ -8,8 +8,7 @@ int n, a[maxn];
 
 void solve(void) {
     std::cin >> n;
-    for (int i = 1; i <= n; ++i)
-        std::cin >> a[i];
+    for (int i = 1; i <= n; ++i) std::cin >> a[i];
     for (int i = 1; i <= n; ++i)
         if (a[i] <= i) {
             std::cout << "YES\n";

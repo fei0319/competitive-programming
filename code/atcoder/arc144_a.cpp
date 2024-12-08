@@ -33,20 +33,16 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 int main() {
     int N;
     read(N);
     printf("%d\n", N + N);
-    if (N % 4)
-        printf("%d", N % 4), N -= N % 4;
-    for (int i = 1; i <= N / 4; ++i)
-        putchar('4');
+    if (N % 4) printf("%d", N % 4), N -= N % 4;
+    for (int i = 1; i <= N / 4; ++i) putchar('4');
 }
 
 /*

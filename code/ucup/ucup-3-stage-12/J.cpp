@@ -15,9 +15,7 @@ void exgcd(T a, T b, T &x, T &y) {
 }
 
 // dp[x] = sum(g(dp[s])) + sz[x]
-i64 g(i64 v) {
-    return (i128)v * (v ^ MAGIC) * 2 % MOD;
-}
+i64 g(i64 v) { return (i128)v * (v ^ MAGIC) * 2 % MOD; }
 
 struct Division {
     i64 core, branch;
@@ -62,9 +60,8 @@ struct Tree {
                 self(self, to);
             }
 
-            std::sort(adj[node].begin(), adj[node].end(), [&](int x, int y) {
-                return sz[x] < sz[y];
-            });
+            std::sort(adj[node].begin(), adj[node].end(),
+                      [&](int x, int y) { return sz[x] < sz[y]; });
             pre[node].resize(adj[node].size());
             i64 sum = 0;
             for (int i = 0; i < adj[node].size(); ++i) {
@@ -152,7 +149,8 @@ bool test(int &x) {
     return false;
 }
 
-std::mt19937 rng(std::chrono::steady_clock::now().time_since_epoch().count());
+std::mt19937
+    rng(std::chrono::steady_clock::now().time_since_epoch().count());
 
 void solve() {
     int a, b, c;
@@ -172,7 +170,8 @@ void solve() {
         // if (!rev)
         //     std::cout << "checking " << x << ' ' << y << '\n';
         // else
-        //     std::cout << "checking " << y << ' ' << x << " (rev)" << '\n';
+        //     std::cout << "checking " << y << ' ' << x << " (rev)" <<
+        //     '\n';
 
         std::vector<int> son = C.adj[C.rt];
         std::vector<std::array<Division, 2>> res(

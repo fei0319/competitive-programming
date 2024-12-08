@@ -14,8 +14,7 @@ void solve() {
     }
 
     for (int i = 1; i <= n - 1; i += y)
-        for (int j = 1; j <= y; ++j)
-            std::cout << i + 1 << " ";
+        for (int j = 1; j <= y; ++j) std::cout << i + 1 << " ";
     std::cout << std::endl;
 }
 

@@ -6,10 +6,8 @@ int n;
 std::vector<int> ans;
 
 bool dfs(int x) {
-    if (x % 2 == 0)
-        return false;
-    if (x == 1)
-        return true;
+    if (x % 2 == 0) return false;
+    if (x == 1) return true;
     if (dfs((x + 1) / 2)) {
         ans.push_back(1);
         return true;
@@ -24,12 +22,10 @@ bool dfs(int x) {
 void solve(void) {
     std::cin >> n;
     ans.clear();
-    if (!dfs(n))
-        std::cout << "-1\n";
+    if (!dfs(n)) std::cout << "-1\n";
     else {
         std::cout << ans.size() << '\n';
-        for (int i : ans)
-            std::cout << i << ' ';
+        for (int i : ans) std::cout << i << ' ';
         std::cout << '\n';
     }
 }

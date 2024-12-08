@@ -12,8 +12,7 @@ void solve(void) {
         int t;
         std::cin >> t;
 
-        if (t & 1)
-            b.push_back(t);
+        if (t & 1) b.push_back(t);
         max_value = std::max(max_value, t);
     }
 

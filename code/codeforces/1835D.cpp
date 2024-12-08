@@ -2,9 +2,7 @@
 
 using ll = int64_t;
 
-constexpr int gcd(int a, int b) {
-    return b ? gcd(b, a % b) : a;
-}
+constexpr int gcd(int a, int b) { return b ? gcd(b, a % b) : a; }
 
 const int MAXN = 1e5 + 19;
 

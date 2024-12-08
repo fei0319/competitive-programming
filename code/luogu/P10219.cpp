@@ -39,9 +39,7 @@ constexpr int MAXM = 1e3 + 19;
 struct Matrix {
     int N;
     int a[12][12]{};
-    Matrix(int n) {
-        N = n;
-    }
+    Matrix(int n) { N = n; }
     static Matrix E(int n) {
         Matrix res(n);
         for (int i = 0; i < n; ++i) {
@@ -66,8 +64,7 @@ struct Matrix {
 Matrix qpow(Matrix a, ll b) {
     Matrix res = Matrix::E(a.N);
     while (b) {
-        if (b & 1)
-            res = res * a;
+        if (b & 1) res = res * a;
         a = a * a, b >>= 1;
     }
     return res;
@@ -76,8 +73,7 @@ Matrix qpow(Matrix a, ll b) {
 constexpr int qpow(int a, ll b) {
     int res = 1;
     while (b) {
-        if (b & 1)
-            res = (ll)res * a % MOD;
+        if (b & 1) res = (ll)res * a % MOD;
         a = (ll)a * a % MOD, b >>= 1;
     }
     return res;
@@ -137,9 +133,9 @@ namespace S {
                 ll power = k - v.size();
                 std::vector<int> vals{p};
                 for (int i : v) {
-                    res = (ll)res * qpow(p, x / p - x / (p * i) + 1) % MOD *
-                          qpow(inv[i], x / (p * i)) % MOD * ifact[x / (p * i)] %
-                          MOD * fact[x / p] % MOD;
+                    res = (ll)res * qpow(p, x / p - x / (p * i) + 1) %
+                          MOD * qpow(inv[i], x / (p * i)) % MOD *
+                          ifact[x / (p * i)] % MOD * fact[x / p] % MOD;
                     power += x / p - x / (p * i) + 1;
                     p *= i;
                     vals.push_back(p);
@@ -152,7 +148,8 @@ namespace S {
                 res = (ll)res * calc(vals, k - v.size()) % MOD;
                 g[x].push_back({ll(res), power});
             }
-            // std::cout << std::format("a_{}={}\n", x, a[x]) << std::flush;
+            // std::cout << std::format("a_{}={}\n", x, a[x]) <<
+            // std::flush;
         }
     }
     int dp[MAXN], a[MAXN];
@@ -173,7 +170,8 @@ namespace S {
                 for (int j = 1; i - j * x >= 0; ++j) {
                     v = (ll)v * b % MOD;
                     dp[i] =
-                        (dp[i] + (ll)dp[i - j * x] * v % MOD * ifact[j]) % MOD;
+                        (dp[i] + (ll)dp[i - j * x] * v % MOD * ifact[j]) %
+                        MOD;
                 }
             }
         }
@@ -188,9 +186,7 @@ std::vector<hash_t> par[MAXN];
 
 struct DSU {
     int fa[MAXN];
-    void init(int n) {
-        std::iota(fa + 1, fa + n + 1, 1);
-    }
+    void init(int n) { std::iota(fa + 1, fa + n + 1, 1); }
     int getf(int node) {
         return fa[node] == node ? node : fa[node] = getf(fa[node]);
     }

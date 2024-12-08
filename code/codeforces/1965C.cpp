@@ -11,10 +11,8 @@ void solve() {
 
     if (s[0] == '1') {
         for (auto &i : s) {
-            if (i == '0')
-                i = '1';
-            else
-                i = '0';
+            if (i == '0') i = '1';
+            else i = '0';
         }
     }
 

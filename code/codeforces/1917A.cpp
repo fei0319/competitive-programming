@@ -9,12 +9,9 @@ void solve(void) {
     int signedness = 1, p = 0;
     for (int i = 0; i < n; ++i) {
         std::cin >> a[i];
-        if (a[i] == 0)
-            signedness = 0;
-        if (a[i] < 0)
-            signedness *= -1;
-        if (a[i] > 0)
-            p = i;
+        if (a[i] == 0) signedness = 0;
+        if (a[i] < 0) signedness *= -1;
+        if (a[i] > 0) p = i;
     }
 
     switch (signedness) {

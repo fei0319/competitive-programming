@@ -26,8 +26,7 @@ int main() {
         G[v].emplace_back(u, y);
     }
 
-    for (int i = 1; i <= n; ++i)
-        a[i] = inf;
+    for (int i = 1; i <= n; ++i) a[i] = inf;
     a[n] = 0;
 
     while (true) {
@@ -49,8 +48,7 @@ int main() {
             }
         }
 
-        if (a[1] == 0)
-            break;
+        if (a[1] == 0) break;
         ll t = inf;
         std::string s(n, '0');
         for (int i = 1; i <= n; ++i) {
@@ -60,19 +58,16 @@ int main() {
             }
         }
         for (int i = 1; i <= n; ++i)
-            if (a[i])
-                a[i] -= t;
+            if (a[i]) a[i] -= t;
         ans.emplace_back(s, t);
     }
 
     ll T = 0;
-    for (auto [s, t] : ans)
-        T += t;
+    for (auto [s, t] : ans) T += t;
     if (T >= ll(1e18)) {
         std::cout << "inf\n";
         return 0;
     }
     std::cout << T << ' ' << ans.size() << '\n';
-    for (auto [s, t] : ans)
-        std::cout << s << ' ' << t << '\n';
+    for (auto [s, t] : ans) std::cout << s << ' ' << t << '\n';
 }

@@ -11,9 +11,7 @@ public:
     ModInt() : raw_(0) {}
     ModInt(const auto &v) : raw_(v % m) {}
 
-    int value() const {
-        return (raw_ + m) % m;
-    }
+    int value() const { return (raw_ + m) % m; }
 
     mint &operator+=(const mint &rhs) {
         raw_ = (raw_ + rhs.raw_) % m;
@@ -41,8 +39,8 @@ public:
 
 using mint = ModInt<998244353>;
 
-std::vector<mint> conv(const std::vector<mint> &f, const std::vector<mint> &g,
-                       int n) {
+std::vector<mint> conv(const std::vector<mint> &f,
+                       const std::vector<mint> &g, int n) {
     if (f.empty() || g.empty()) {
         return {};
     }

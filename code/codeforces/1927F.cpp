@@ -28,8 +28,7 @@ void solve() {
         stack.emplace_back(node, n);
         id[node] = stack.size() - 1;
         for (auto [to, w] : G[node]) {
-            if (to == from)
-                continue;
+            if (to == from) continue;
             if (!vist[to]) {
                 dfs(to, node, w);
             } else {
@@ -63,8 +62,7 @@ void solve() {
         vist[node] = true;
         ans.push_back(node);
         for (auto [to, w] : G[node]) {
-            if (to == from)
-                continue;
+            if (to == from) continue;
             if (to == u) {
                 return true;
             }

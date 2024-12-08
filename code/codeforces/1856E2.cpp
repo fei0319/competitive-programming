@@ -12,12 +12,8 @@ class Bitset {
     Bitset(std::vector<BitBase> &&b) : a(b) {}
 
 public:
-    Bitset(uint n) {
-        a = std::vector<BitBase>(n / W + 1);
-    }
-    void set(uint pos) {
-        a[pos / W] |= 1ULL << (pos % W);
-    }
+    Bitset(uint n) { a = std::vector<BitBase>(n / W + 1); }
+    void set(uint pos) { a[pos / W] |= 1ULL << (pos % W); }
     Bitset &operator|=(const Bitset &b) {
         for (int i = (int)a.size() - 1; i >= 0; --i) {
             a[i] |= b.a[i];

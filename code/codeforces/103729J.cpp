@@ -30,7 +30,8 @@ struct Hasher {
         }
         Hash_t operator-(const Hash_t &b) const {
             Hash_t res;
-            res.val = ((val - (ll)b.val * base[len - b.len]) % mod + mod) % mod;
+            res.val =
+                ((val - (ll)b.val * base[len - b.len]) % mod + mod) % mod;
             res.tal = tal - b.tal * ull(ubase[len - b.len]);
             res.len = len - b.len;
             return res;
@@ -43,22 +44,14 @@ struct Hasher {
             a[i] = b[i] = tmp;
             //    printf("%d\n", tmp.val);
         }
-        for (int i = 1; i <= n; ++i)
-            a[i] = a[i - 1] + a[i];
-        for (int i = n; i >= 1; --i)
-            b[i] = b[i + 1] + b[i];
+        for (int i = 1; i <= n; ++i) a[i] = a[i - 1] + a[i];
+        for (int i = n; i >= 1; --i) b[i] = b[i + 1] + b[i];
     }
-    Hash_t code(int l, int r) {
-        return a[r] - a[l - 1];
-    }
-    Hash_t rcode(int l, int r) {
-        return b[l] - b[r + 1];
-    }
+    Hash_t code(int l, int r) { return a[r] - a[l - 1]; }
+    Hash_t rcode(int l, int r) { return b[l] - b[r + 1]; }
     Hash_t operator()(int L, int R, int l, int r) {
-        if (l > R)
-            return code(L, R);
-        if (r <= R)
-            return code(L, l - 1) + rcode(l, r) + code(r + 1, R);
+        if (l > R) return code(L, R);
+        if (r <= R) return code(L, l - 1) + rcode(l, r) + code(r + 1, R);
         int len = R - l + 1;
         return code(L, l - 1) + rcode(r - len + 1, r);
     }
@@ -71,15 +64,15 @@ bool brute_judge(int l, int r) {
     //    puts(s + 1);
     bool ans = true;
     for (int i = 1; i < n - i + 1; ++i)
-        if (s[i] != s[n - i + 1])
-            ans = false;
+        if (s[i] != s[n - i + 1]) ans = false;
     for (int i = 1; l + i - 1 < r - i + 1; ++i)
         std::swap(s[l + i - 1], s[r - i + 1]);
     return ans;
 }
 bool judge(int l, int r) {
     int mid = (1 + n) >> 1;
-    auto vl = hashS(1, mid, l, r), vr = hashT(1, mid, n - r + 1, n - l + 1);
+    auto vl = hashS(1, mid, l, r),
+         vr = hashT(1, mid, n - r + 1, n - l + 1);
     //    printf("%d %d\n", vl.val, vr.val);
 
     return vl == vr && brute_judge(l, r);
@@ -89,21 +82,17 @@ int main() {
     //    freopen("in", "r", stdin);
     scanf("%s", s + 1);
     n = strlen(s + 1);
-    for (int i = 1; i <= n; ++i)
-        t[i] = s[n - i + 1];
+    for (int i = 1; i <= n; ++i) t[i] = s[n - i + 1];
     base[0] = 1;
-    for (int i = 1; i <= n; ++i)
-        base[i] = (ll)base[i - 1] * seed % mod;
+    for (int i = 1; i <= n; ++i) base[i] = (ll)base[i - 1] * seed % mod;
     ubase[0] = 1;
-    for (int i = 1; i <= n; ++i)
-        ubase[i] = ubase[i - 1] * useed;
+    for (int i = 1; i <= n; ++i) ubase[i] = ubase[i - 1] * useed;
 
     hashS.init(s);
     hashT.init(t);
 
     int l = 1, r = n;
-    while (l <= r && s[l] == s[r])
-        ++l, --r;
+    while (l <= r && s[l] == s[r]) ++l, --r;
     if (l > r) {
         printf("%d %d\n", 1, n);
         return 0;

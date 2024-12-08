@@ -120,7 +120,8 @@ int main() {
                 int nx = x + DX[_], ny = y + DY[_];
                 if (nx >= 0 && nx < a && ny >= 0 && ny < b) {
                     for (int z = d; z < c; ++z) {
-                        f.add_edge(coord(x, y, z), coord(nx, ny, z - d), INF);
+                        f.add_edge(coord(x, y, z), coord(nx, ny, z - d),
+                                   INF);
                     }
                 }
             }

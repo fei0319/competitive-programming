@@ -22,7 +22,8 @@ constexpr int qpow(int a, int b) {
 int n, m, c[MAXN];
 mint f[MAXN], fact[MAXN], p[MAXN];
 
-std::vector<int> solve(const std::vector<std::vector<int>> &F, int l, int r) {
+std::vector<int> solve(const std::vector<std::vector<int>> &F, int l,
+                       int r) {
     if (l == r) {
         return F[l];
     }
@@ -30,9 +31,7 @@ std::vector<int> solve(const std::vector<std::vector<int>> &F, int l, int r) {
     return atcoder::convolution(solve(F, l, mid), solve(F, mid + 1, r));
 }
 
-mint binom(int n, int m) {
-    return fact[n] / (fact[n - m] * fact[m]);
-}
+mint binom(int n, int m) { return fact[n] / (fact[n - m] * fact[m]); }
 
 int main() {
     std::ios::sync_with_stdio(false);

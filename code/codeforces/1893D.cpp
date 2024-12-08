@@ -14,8 +14,7 @@ void solve(void) {
 
     std::set<std::pair<int, int>> mt;
     for (int i = 0; i < n; ++i) {
-        if (cnt[i])
-            mt.emplace(cnt[i], i);
+        if (cnt[i]) mt.emplace(cnt[i], i);
     }
 
     for (int &i : s) {
@@ -39,8 +38,7 @@ void solve(void) {
     };
     auto take = [&mt, &cnt](int x) {
         mt.erase(std::make_pair(cnt[x]--, x));
-        if (cnt[x])
-            mt.insert(std::make_pair(cnt[x], x));
+        if (cnt[x]) mt.insert(std::make_pair(cnt[x], x));
     };
 
     std::vector<std::vector<int>> a(m);

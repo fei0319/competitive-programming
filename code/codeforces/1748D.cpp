@@ -7,8 +7,7 @@ int a, b, d;
 ll mds(int a, int d) {
     ll k = 0ll;
     for (int i = 1; i <= a; i <<= 1)
-        if ((a & i) && !(k & i))
-            k += ((ll)d * i);
+        if ((a & i) && !(k & i)) k += ((ll)d * i);
     return k;
 }
 
@@ -21,8 +20,7 @@ void solve(void) {
         return;
     }
     int p = 0;
-    while (!(d & 1))
-        d >>= 1, a >>= 1, ++p;
+    while (!(d & 1)) d >>= 1, a >>= 1, ++p;
     std::cout << (mds(a, d) << p) << std::endl;
 }
 

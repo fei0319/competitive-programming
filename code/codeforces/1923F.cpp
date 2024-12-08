@@ -14,8 +14,7 @@ std::string no_reverse(std::string s, int k) {
         while (!s.empty() && s.back() == '0') {
             s.pop_back();
         }
-        while (pos < s.size() && s[pos] != '0')
-            ++pos;
+        while (pos < s.size() && s[pos] != '0') ++pos;
         if (pos < s.size() - 1) {
             std::swap(s[pos], s.back());
         }
@@ -97,7 +96,8 @@ int main() {
             return h[r] - h[l - 1] * b[r - l + 1];
         };
 
-        auto cmp = [&](std::pair<int, int> _x, std::pair<int, int> _y) -> bool {
+        auto cmp = [&](std::pair<int, int> _x,
+                       std::pair<int, int> _y) -> bool {
             int x = _x.first, y = _y.first;
             int l = 0, r = _x.second - _x.first + 1;
             while (l < r) {
@@ -125,7 +125,8 @@ int main() {
                 std::cout << value(std::string(cnt, '1')) << '\n';
                 return 0;
             }
-            if (mins.empty() || a[r] - a[l] < mins[0].second - mins[0].first) {
+            if (mins.empty() ||
+                a[r] - a[l] < mins[0].second - mins[0].first) {
                 mins.clear();
                 mins.emplace_back(a[l], a[r]);
             } else if (!mins.empty() &&

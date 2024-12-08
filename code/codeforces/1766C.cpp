@@ -20,12 +20,10 @@ void solve(void) {
     std::string s[2];
     std::cin >> s[0] >> s[1];
     int c = 0, t = 0;
-    for (int i = 0; i < 2 * n; ++i)
-        fa[i] = i;
+    for (int i = 0; i < 2 * n; ++i) fa[i] = i;
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < n; ++j) {
-            if (s[i][j] == 'W')
-                continue;
+            if (s[i][j] == 'W') continue;
             int d = 0;
             if (i + 1 < 2 && s[i + 1][j] == 'B')
                 ++d, merge(i * n + j, (i + 1) * n + j);
@@ -35,19 +33,15 @@ void solve(void) {
                 ++d, merge(i * n + j, i * n + j + 1);
             if (j - 1 >= 0 && s[i][j - 1] == 'B')
                 ++d, merge(i * n + j, i * n + j - 1);
-            if (d & 1)
-                ++c;
+            if (d & 1) ++c;
         }
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < n; ++j)
-            if (getf(i * n + j) == i * n + j && s[i][j] == 'B')
-                ++t;
+            if (getf(i * n + j) == i * n + j && s[i][j] == 'B') ++t;
     for (int l = 0, r; l < n; l = r + 1) {
         r = l;
-        if (s[0][l] == 'W' || s[1][l] == 'W')
-            continue;
-        while (r + 1 < n && s[0][r + 1] == 'B' && s[1][r + 1] == 'B')
-            ++r;
+        if (s[0][l] == 'W' || s[1][l] == 'W') continue;
+        while (r + 1 < n && s[0][r + 1] == 'B' && s[1][r + 1] == 'B') ++r;
         //	std::cout << l << r<< '\n';
         if (l - 1 >= 0 && r + 1 < n) {
             int x = (s[1][l - 1] == 'B'), y = (s[1][r + 1] == 'B');
@@ -60,10 +54,8 @@ void solve(void) {
             }
         }
     }
-    if (t == 1)
-        std::cout << "YES\n";
-    else
-        std::cout << "NO\n";
+    if (t == 1) std::cout << "YES\n";
+    else std::cout << "NO\n";
 }
 
 int main() {

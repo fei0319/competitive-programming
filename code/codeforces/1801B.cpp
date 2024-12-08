@@ -9,8 +9,7 @@ std::pair<int, int> a[maxn];
 
 void solve(void) {
     std::cin >> n;
-    for (int i = 1; i <= n; ++i)
-        std::cin >> a[i].first >> a[i].second;
+    for (int i = 1; i <= n; ++i) std::cin >> a[i].first >> a[i].second;
     std::sort(a + 1, a + 1 + n);
     std::set<int> seconds;
 
@@ -25,15 +24,14 @@ void solve(void) {
             seconds.insert(a[i].second);
         if (second <= first) {
             auto it = seconds.lower_bound(first);
-            if (it != seconds.end())
-                ans = std::min(ans, *it - first);
+            if (it != seconds.end()) ans = std::min(ans, *it - first);
             if (it != seconds.begin())
                 ans = std::min(ans, first - std::max(second, *--it));
         }
         seconds.insert(a[i].second);
         if (i != n)
-            ans =
-                std::min(ans, second > first ? second - first : first - second);
+            ans = std::min(ans, second > first ? second - first
+                                               : first - second);
         //	std::cout << ans << '\n';
     }
     std::cout << ans << '\n';

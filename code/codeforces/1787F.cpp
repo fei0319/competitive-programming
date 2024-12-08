@@ -12,16 +12,14 @@ bool vist[maxn];
 int qpow(int a, int b, const int &mod) {
     int res = 1;
     while (b) {
-        if (b & 1)
-            res = (ll)res * a % mod;
+        if (b & 1) res = (ll)res * a % mod;
         a = (ll)a * a % mod, b >>= 1;
     }
     return res;
 }
 
 void construct(int m, int K) {
-    if (K >= 20)
-        return;
+    if (K >= 20) return;
     int num = 1 << K, step = qpow(2, k, num * m);
     while (ring[m].size() >= num) {
         std::vector<int> now(num * m);
@@ -77,8 +75,7 @@ void solve(void) {
             return;
         }
     std::cout << "YES\n";
-    for (int i = 1; i <= n; ++i)
-        std::cout << a[i] << ' ';
+    for (int i = 1; i <= n; ++i) std::cout << a[i] << ' ';
     std::cout << '\n';
 }
 

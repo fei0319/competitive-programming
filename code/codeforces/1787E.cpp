@@ -36,8 +36,7 @@ void solve(void) {
 
     std::vector<std::vector<int>> ans;
     for (int i = 1; i <= n; ++i) {
-        if (vist[i])
-            continue;
+        if (vist[i]) continue;
         if (i == x) {
             vist[i] = 1;
             ans.emplace_back(std::vector<int>{i});
@@ -50,10 +49,8 @@ void solve(void) {
 
     std::vector<int> rest;
     for (int i = 1; i <= n; ++i)
-        if (!vist[i])
-            rest.push_back(i);
-    if (!rest.empty())
-        ans.push_back(rest);
+        if (!vist[i]) rest.push_back(i);
+    if (!rest.empty()) ans.push_back(rest);
 
     if (ans.size() < k) {
         std::cout << "NO\n";
@@ -64,8 +61,7 @@ void solve(void) {
 
     std::vector<int> tail;
     while (ans.size() > k - 1) {
-        for (int i : ans.back())
-            tail.push_back(i);
+        for (int i : ans.back()) tail.push_back(i);
         ans.pop_back();
     }
     ans.push_back(tail);
@@ -73,8 +69,7 @@ void solve(void) {
     for (auto i : ans) {
         std::sort(i.begin(), i.end());
         std::cout << i.size();
-        for (int j : i)
-            std::cout << ' ' << j;
+        for (int j : i) std::cout << ' ' << j;
         std::cout << '\n';
     }
 }

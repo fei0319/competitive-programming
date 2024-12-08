@@ -17,11 +17,9 @@ void solve(void) {
 
     std::vector<int> dp(n);
     for (int i = 0; i < n; ++i) {
-        if (i)
-            dp[i] = dp[i - 1];
+        if (i) dp[i] = dp[i - 1];
         dp[i] += 1;
-        if (sum[i] == 0)
-            dp[i] = 0;
+        if (sum[i] == 0) dp[i] = 0;
         else if (mt[sum[i] + n] != -1) {
             dp[i] = dp[mt[sum[i] + n]];
         } else {

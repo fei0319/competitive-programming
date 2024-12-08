@@ -28,9 +28,7 @@ class Segment {
 
 public:
     static int rt;
-    static int query() {
-        return tr[rt].min.second;
-    }
+    static int query() { return tr[rt].min.second; }
     static void modify(int &node, int L, int R, int x, const int &val) {
         if (!node) {
             node = ++tot;
@@ -73,12 +71,8 @@ void insert(std::pair<ll, ll> &p, ll x) {
 
 bool vist[MAXN];
 
-int query() {
-    return sg::query();
-}
-void modify(int x, const int &val) {
-    sg::modify(sg::rt, 1, n, x, val);
-}
+int query() { return sg::query(); }
+void modify(int x, const int &val) { sg::modify(sg::rt, 1, n, x, val); }
 
 int main() {
     std::ios::sync_with_stdio(false);

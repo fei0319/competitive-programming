@@ -6,8 +6,7 @@ std::vector<int> ans;
 
 void out() {
     printf("%d\n", (int)ans.size());
-    for (int i : ans)
-        printf("%d ", i);
+    for (int i : ans) printf("%d ", i);
 }
 
 int main() {

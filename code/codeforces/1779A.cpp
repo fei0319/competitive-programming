@@ -17,10 +17,8 @@ void solve(void) {
         std::cout << "-1\n";
         return;
     }
-    if (s[pos] == 'L')
-        std::cout << pos + 1 << '\n';
-    else
-        std::cout << "0\n";
+    if (s[pos] == 'L') std::cout << pos + 1 << '\n';
+    else std::cout << "0\n";
 }
 
 int main() {

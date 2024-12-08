@@ -13,8 +13,7 @@ void solve(void) {
         return;
     }
     std::cout << x << ' ';
-    for (int i = 2; i < n; ++i)
-        a[i] = i;
+    for (int i = 2; i < n; ++i) a[i] = i;
     int now = x, ptr = x + x;
     for (; ptr < n; ptr += now) {
         if (n % ptr == 0) {
@@ -23,8 +22,7 @@ void solve(void) {
         }
     }
     a[now] = n;
-    for (int i = 2; i < n; ++i)
-        std::cout << a[i] << ' ';
+    for (int i = 2; i < n; ++i) std::cout << a[i] << ' ';
     std::cout << 1 << '\n';
 }
 

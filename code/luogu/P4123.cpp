@@ -101,8 +101,9 @@ int main() {
         f.add_edge(v, u, w);
     }
 
-    std::mt19937 rbg{
-        (uint32_t)std::chrono::steady_clock::now().time_since_epoch().count()};
+    std::mt19937 rbg{(uint32_t)std::chrono::steady_clock::now()
+                         .time_since_epoch()
+                         .count()};
 
     std::unordered_set<int> ans;
     std::vector<int> a(n);
@@ -123,9 +124,8 @@ int main() {
         ans.insert(nf(s, t));
 
         nf.bfs(s, t);
-        std::sort(a.begin() + l, a.begin() + r + 1, [&](int x, int y) {
-            return nf.dep[x] < nf.dep[y];
-        });
+        std::sort(a.begin() + l, a.begin() + r + 1,
+                  [&](int x, int y) { return nf.dep[x] < nf.dep[y]; });
 
         int mid = l;
         while (mid + 1 <= r && nf.dep[a[mid + 1]] == -1) {

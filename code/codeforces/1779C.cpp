@@ -25,14 +25,11 @@ int n, m, a[maxn];
 
 void solve(void) {
     std::cin >> n >> m;
-    for (int i = 1; i <= n; ++i)
-        std::cin >> a[i];
+    for (int i = 1; i <= n; ++i) std::cin >> a[i];
 
     std::vector<int> b, c;
-    for (int i = m + 1; i <= n; ++i)
-        b.push_back(a[i]);
-    for (int i = m; i >= 2; --i)
-        c.push_back(-a[i]);
+    for (int i = m + 1; i <= n; ++i) b.push_back(a[i]);
+    for (int i = m; i >= 2; --i) c.push_back(-a[i]);
 
     std::cout << count(b) + count(c) << '\n';
 }

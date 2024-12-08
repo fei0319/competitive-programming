@@ -19,8 +19,7 @@ struct SuffixAutomaton {
         int cur = ++tot;
         len[cur] = len[p] + 1;
         ans += len[cur];
-        for (; p && !next[p][c]; p = link[p])
-            next[p][c] = cur;
+        for (; p && !next[p][c]; p = link[p]) next[p][c] = cur;
         int q = next[p][c];
         if (!p) {
             set(link[cur], 1);
@@ -34,8 +33,7 @@ struct SuffixAutomaton {
             next[r] = next[q];
             set(link[q], r);
             set(link[cur], r);
-            for (; next[p][c] == q; p = link[p])
-                next[p][c] = r;
+            for (; next[p][c] == q; p = link[p]) next[p][c] = r;
         }
         return cur;
     }

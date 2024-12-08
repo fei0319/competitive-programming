@@ -25,9 +25,10 @@ void solve(void) {
     }
     int ans = 0;
     for (int i = 0; i <= m; ++i) {
-        ans = (ans + (ll)binom(n, i) * binom(m, i) % mod *
-                         (f[n + m - i] + (ll)i * p2[n + m - i - 1] % mod)) %
-              mod;
+        ans =
+            (ans + (ll)binom(n, i) * binom(m, i) % mod *
+                       (f[n + m - i] + (ll)i * p2[n + m - i - 1] % mod)) %
+            mod;
     }
     std::cout << ans << std::endl;
 }

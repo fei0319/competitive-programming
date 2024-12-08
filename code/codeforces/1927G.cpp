@@ -8,8 +8,7 @@ int n, a[MAXN];
 int dp[MAXN][MAXN][2][2];
 
 void update(int &x, int y) {
-    if (y < x)
-        x = y;
+    if (y < x) x = y;
 }
 
 void solve() {
@@ -55,18 +54,21 @@ void solve() {
                 int x = b & 1, y = bool(b & 2);
                 for (int m = l; m < r; ++m) {
                     int u = std::min(dp[l][m][x][0], dp[l][m][x][1]),
-                        v = std::min(dp[m + 1][r][0][y], dp[m + 1][r][1][y]);
+                        v = std::min(dp[m + 1][r][0][y],
+                                     dp[m + 1][r][1][y]);
                     update(dp[l][r][x][y], u + v);
                 }
                 if (dp[l][r][x][y] != INF) {
                     int val = dp[l][r][x][y];
                     if (!x) {
-                        for (int p = std::max(l - a[l] + 1, 1); p < l; ++p) {
+                        for (int p = std::max(l - a[l] + 1, 1); p < l;
+                             ++p) {
                             update(dp[p][r][0][y], val + 1);
                         }
                     }
                     if (!y) {
-                        for (int p = std::min(r + a[r] - 1, n); p > r; --p) {
+                        for (int p = std::min(r + a[r] - 1, n); p > r;
+                             --p) {
                             update(dp[l][p][x][0], val + 1);
                         }
                     }

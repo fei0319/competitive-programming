@@ -11,13 +11,11 @@ void solve(void) {
     std::cin >> n;
     std::cin >> s + 1;
     int cnt[] = {0, 0};
-    for (int i = 1; i <= n; ++i)
-        ++cnt[s[i] - '0'];
+    for (int i = 1; i <= n; ++i) ++cnt[s[i] - '0'];
     ll ans = (ll)cnt[0] * cnt[1];
     for (int l = 1, r; l <= n; l = r + 1) {
         r = l;
-        while (r + 1 <= n && s[r + 1] == s[r])
-            ++r;
+        while (r + 1 <= n && s[r + 1] == s[r]) ++r;
         ans = std::max(ans, (ll)(r - l + 1) * (r - l + 1));
     }
     std::cout << ans << std::endl;

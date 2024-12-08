@@ -24,9 +24,7 @@ struct Point {
     friend Point operator+(const Point &a, const Point &b) {
         return Point{a.x + b.x, a.y + b.y};
     }
-    int type() const {
-        return y < 0 || (y == 0 && x < 0);
-    }
+    int type() const { return y < 0 || (y == 0 && x < 0); }
 } p[MAXN * 2];
 
 int n;

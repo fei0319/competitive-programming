@@ -11,10 +11,8 @@ ll cal(int *a, int *b) {
     int ptr = 1;
     ll ans = 1e18;
     for (int i = 1; i <= n; ++i) {
-        while (b[ptr] < a[i] && ptr + 1 <= n)
-            ++ptr;
-        if (b[ptr] < a[i])
-            break;
+        while (b[ptr] < a[i] && ptr + 1 <= n) ++ptr;
+        if (b[ptr] < a[i]) break;
         ans = std::min(ans, (ll)b[ptr] - a[i]);
     }
     return ans;

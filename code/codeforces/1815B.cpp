@@ -21,10 +21,8 @@ int query(int i, int j) {
 
 void out() {
     for (int i = 1; i <= n; ++i)
-        if (d[i] % 2 == 0)
-            printf("%d ", d[i] / 2 + 1);
-        else
-            printf("%d ", n - d[i] / 2);
+        if (d[i] % 2 == 0) printf("%d ", d[i] / 2 + 1);
+        else printf("%d ", n - d[i] / 2);
 }
 
 void work(void) {
@@ -39,14 +37,12 @@ void work(void) {
     }
     d[max] = 0;
     for (int i = 1; i <= n; ++i) {
-        if (i == max)
-            continue;
+        if (i == max) continue;
         d[i] = query(max, i);
     }
     printf("! ");
     out();
-    for (int i = 1; i <= n; ++i)
-        d[i] = n - 1 - d[i];
+    for (int i = 1; i <= n; ++i) d[i] = n - 1 - d[i];
     out();
     puts("");
     std::fflush(stdout);

@@ -38,7 +38,8 @@ void solve() {
         if (s[i] != s[0] && s[i + 1] != s[n - 1]) {
             std::cout << "YES\n";
             std::cout << 2 << '\n';
-            std::cout << s.substr(0, i + 1) << ' ' << s.substr(i + 1) << '\n';
+            std::cout << s.substr(0, i + 1) << ' ' << s.substr(i + 1)
+                      << '\n';
             return;
         }
     }
@@ -62,7 +63,8 @@ void solve() {
     };
 
     auto get = [&](int t, int h[T][MAXN], int l, int r) -> int {
-        return ((h[t][r] - (ll)h[t][l - 1] * b[t][r - l + 1]) % p[t] + p[t]) %
+        return ((h[t][r] - (ll)h[t][l - 1] * b[t][r - l + 1]) % p[t] +
+                p[t]) %
                p[t];
     };
 

@@ -8,9 +8,7 @@ int n, m, a[MAXN];
 int dp[MAXN][MAXN][MAXN], f[MAXN][MAXN][MAXN];
 std::string s;
 
-void add(auto &x, const auto &y) {
-    x = (x + y) % MOD;
-}
+void add(auto &x, const auto &y) { x = (x + y) % MOD; }
 
 int fact[MAXN], ifact[MAXN];
 int binom(int n, int m) {
@@ -63,8 +61,8 @@ int main() {
         dp[i][0][0] = 1;
         for (int j = 1; j <= a[i]; ++j) {
             for (int k = j; k <= a[i]; ++k) {
-                for (int p = i - 1;
-                     k - (i - p) * j >= 0 && p >= 0 && k - (i - p) * j <= a[p];
+                for (int p = i - 1; k - (i - p) * j >= 0 && p >= 0 &&
+                                    k - (i - p) * j <= a[p];
                      --p) {
                     add(dp[i][j][k],
                         (ll)f[p][j][k - (i - p) * j] * binom(i, p));

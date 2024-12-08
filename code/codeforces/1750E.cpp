@@ -52,10 +52,8 @@ struct SegmentTree {
         }
         push_down(node, L, R);
         int mid = (L + R) >> 1;
-        if (l <= mid)
-            modify(node << 1, L, mid, l, r, val);
-        if (r > mid)
-            modify(node << 1 | 1, mid + 1, R, l, r, val);
+        if (l <= mid) modify(node << 1, L, mid, l, r, val);
+        if (r > mid) modify(node << 1 | 1, mid + 1, R, l, r, val);
         push_up(node);
     }
     ll query(int node, int L, int R, int l, int r) {
@@ -65,10 +63,8 @@ struct SegmentTree {
         push_down(node, L, R);
         ll res = 0ll;
         int mid = (L + R) >> 1;
-        if (l <= mid)
-            res += query(node << 1, L, mid, l, r);
-        if (r > mid)
-            res += query(node << 1 | 1, mid + 1, R, l, r);
+        if (l <= mid) res += query(node << 1, L, mid, l, r);
+        if (r > mid) res += query(node << 1 | 1, mid + 1, R, l, r);
         push_up(node);
         return res;
     }

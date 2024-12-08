@@ -59,9 +59,7 @@ struct BIT {
         }
         return res;
     }
-    ll query(ll l, ll r) {
-        return query(r) - query(l - 1);
-    }
+    ll query(ll l, ll r) { return query(r) - query(l - 1); }
 } mA, mB;
 
 int main() {

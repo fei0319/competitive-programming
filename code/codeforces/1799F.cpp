@@ -24,9 +24,10 @@ void solve() {
     ll ans = INF;
     // k1 + k2 - t <= a.size()
     // t >= k1 + k2 - a.size()
-    for (int t = std::max<int>(0, k1 + k2 - a.size()); t <= std::min(k1, k2);
-         ++t) {
-        std::vector<int> c = std::vector<int>(a.end() - (k1 + k2 - t), a.end());
+    for (int t = std::max<int>(0, k1 + k2 - a.size());
+         t <= std::min(k1, k2); ++t) {
+        std::vector<int> c =
+            std::vector<int>(a.end() - (k1 + k2 - t), a.end());
 
         ll res = std::accumulate(a.begin(), a.end() - (k1 + k2 - t), 0LL);
         for (int i = c.size() - t; i < c.size(); ++i) {

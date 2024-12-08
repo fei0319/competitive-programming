@@ -14,10 +14,8 @@ void solve() {
             scanf("%d", a + i);
         }
         for (int i = 1; i <= n; ++i) {
-            if ((a[i] | x) == x)
-                now |= a[i];
-            else
-                break;
+            if ((a[i] | x) == x) now |= a[i];
+            else break;
         }
     }
     puts(now == x ? "Yes" : "No");

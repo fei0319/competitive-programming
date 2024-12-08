@@ -17,10 +17,8 @@ void solve(void) {
     }
     std::cout << "YES\n";
     for (int i = 1; i <= n; ++i) {
-        if (i % 2 == 1)
-            std::cout << a << ' ';
-        else
-            std::cout << -b << ' ';
+        if (i % 2 == 1) std::cout << a << ' ';
+        else std::cout << -b << ' ';
     }
     std::cout << '\n';
 }

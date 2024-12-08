@@ -1,7 +1,7 @@
 // Problem: B. Mainak and Interesting Sequence
-// Contest: Codeforces Round #819 (Div. 1 + Div. 2) and Grimoire of Code Annual
-// Contest 2022 URL: https://codeforces.com/contest/1726/problem/B Memory Limit:
-// 256 MB Time Limit: 1000 ms
+// Contest: Codeforces Round #819 (Div. 1 + Div. 2) and Grimoire of Code
+// Annual Contest 2022 URL: https://codeforces.com/contest/1726/problem/B
+// Memory Limit: 256 MB Time Limit: 1000 ms
 //
 // Powered by CP Editor (https://cpeditor.org)
 
@@ -19,10 +19,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 int n, m;
@@ -35,16 +33,14 @@ void sov() {
     }
     if (m == n) {
         puts("YES");
-        for (int i = 1; i <= n; ++i)
-            printf("1 ");
+        for (int i = 1; i <= n; ++i) printf("1 ");
         puts("");
         return;
     }
     if (m == n + 1) {
         if (n & 1) {
             puts("YES");
-            for (int i = 1; i < n; ++i)
-                printf("1 ");
+            for (int i = 1; i < n; ++i) printf("1 ");
             printf("2\n");
         } else {
             puts("NO");
@@ -53,17 +49,14 @@ void sov() {
     }
     if (n & 1) {
         puts("YES");
-        for (int i = 1; i < n; ++i)
-            printf("1 ");
+        for (int i = 1; i < n; ++i) printf("1 ");
         printf("%d\n", m - n + 1);
     } else {
         if ((m - n + 2) % 2 == 0) {
             puts("YES");
-            for (int i = 1; i <= n - 2; ++i)
-                printf("1 ");
+            for (int i = 1; i <= n - 2; ++i) printf("1 ");
             printf("%d %d\n", (m - n + 2) / 2, (m - n + 2) / 2);
-        } else
-            puts("NO");
+        } else puts("NO");
     }
 }
 

@@ -6,16 +6,14 @@ struct Node {
     int tag;
 } tr[MAXS];
 int cnt;
-int new_node() {
-    return ++cnt;
-}
+int new_node() { return ++cnt; }
 int copy(int node) {
     int x = new_node();
     tr[x] = tr[node];
     return x;
 }
-void clone(int &node, int L, int R, int x, int tag_x, int y, int tag_y, int l,
-           int mid, int r) {
+void clone(int &node, int L, int R, int x, int tag_x, int y, int tag_y,
+           int l, int mid, int r) {
     tag_x += tr[x].tag;
     tag_y += tr[y].tag;
     if (l <= L && R <= mid) {
@@ -31,8 +29,10 @@ void clone(int &node, int L, int R, int x, int tag_x, int y, int tag_y, int l,
 
     node = new_node();
     int MID = (L + R) / 2;
-    clone(tr[node].ls, L, MID, tr[x].ls, tag_x, tr[y].ls, tag_y, l, mid, r);
-    clone(tr[node].rs, MID + 1, R, tr[x].rs, tag_x, tr[y].rs, tag_y, l, mid, r);
+    clone(tr[node].ls, L, MID, tr[x].ls, tag_x, tr[y].ls, tag_y, l, mid,
+          r);
+    clone(tr[node].rs, MID + 1, R, tr[x].rs, tag_x, tr[y].rs, tag_y, l,
+          mid, r);
 }
 void modify(int &node, int L, int R, int l, int r, const int &val) {
     node = copy(node);
@@ -76,8 +76,8 @@ int main() {
     std::vector<int> rt(n + 3);
     rt[n + 1] = new_node();
     for (int i = n; i >= 1; --i) {
-        clone(rt[i], 1, n + 1, rt[i + 1], 0, rt[pos[a[i]] + 1], 0, 1, pos[a[i]],
-              n + 1);
+        clone(rt[i], 1, n + 1, rt[i + 1], 0, rt[pos[a[i]] + 1], 0, 1,
+              pos[a[i]], n + 1);
         modify(rt[i], 1, n + 1, i + 1, pos[a[i]], 1);
         pos[a[i]] = i;
     }

@@ -33,10 +33,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 1e3 + 19, mod = 998244353;
@@ -47,8 +45,7 @@ std::vector<int> G[maxn];
 
 bool empty() {
     for (int i = 1; i <= n; ++i)
-        if (a[i])
-            return false;
+        if (a[i]) return false;
     return true;
 }
 
@@ -66,28 +63,23 @@ void solve() {
     }
     int ans = 0;
     while (!empty()) {
-        for (int i = 1; i <= n; ++i)
-            v[i] = a[i] ? -1 : 0;
+        for (int i = 1; i <= n; ++i) v[i] = a[i] ? -1 : 0;
         for (int i = 1; i <= n; ++i)
             if (a[i]) {
-                for (int to : G[i])
-                    ++v[to];
+                for (int to : G[i]) ++v[to];
             }
         ll t = 0;
         bool off = false;
         for (int i = 1; i <= n; ++i) {
-            if (v[i] == -1 && (a[i] < a[t] || v[t] != -1))
-                t = i;
+            if (v[i] == -1 && (a[i] < a[t] || v[t] != -1)) t = i;
             if (v[i] && !a[i]) {
                 off = true;
                 break;
             }
         }
         t = a[t];
-        if (off)
-            t = 1;
-        for (int i = 1; i <= n; ++i)
-            a[i] += t * v[i];
+        if (off) t = 1;
+        for (int i = 1; i <= n; ++i) a[i] += t * v[i];
         ans = (ans + t) % mod;
     }
     printf("%d\n", ans);
@@ -96,8 +88,7 @@ void solve() {
 int main() {
     int T;
     read(T);
-    while (T--)
-        solve();
+    while (T--) solve();
 }
 
 /*

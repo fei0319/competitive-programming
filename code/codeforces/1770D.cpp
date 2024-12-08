@@ -7,8 +7,7 @@ constexpr int maxn = 1e5 + 19, mod = 998244353;
 int qpow(int a, int b) {
     int res = 1;
     while (b) {
-        if (b & 1)
-            res = (ll)res * a % mod;
+        if (b & 1) res = (ll)res * a % mod;
         a = (ll)a * a % mod, b >>= 1;
     }
     return res;
@@ -31,27 +30,21 @@ int n, a[maxn], b[maxn];
 
 void solve(void) {
     std::cin >> n;
-    for (int i = 1; i <= n; ++i)
-        std::cin >> a[i];
-    for (int i = 1; i <= n; ++i)
-        std::cin >> b[i];
+    for (int i = 1; i <= n; ++i) std::cin >> a[i];
+    for (int i = 1; i <= n; ++i) std::cin >> b[i];
 
     int ans = 1, half_n = (ll)n * qpow(2, mod - 2) % mod;
-    for (int i = 1; i <= n; ++i)
-        fa[i] = i, sz[i] = 1, dg[i] = 0;
+    for (int i = 1; i <= n; ++i) fa[i] = i, sz[i] = 1, dg[i] = 0;
     for (int i = 1; i <= n; ++i) {
         merge(a[i], b[i]);
         ++dg[getf(a[i])];
-        if (a[i] == b[i])
-            ans = (ll)ans * half_n % mod;
+        if (a[i] == b[i]) ans = (ll)ans * half_n % mod;
     }
 
     for (int i = 1; i <= n; ++i)
         if (fa[i] == i) {
-            if (sz[i] != dg[i])
-                ans = 0;
-            else
-                ans = ans * 2 % mod;
+            if (sz[i] != dg[i]) ans = 0;
+            else ans = ans * 2 % mod;
         }
 
     std::cout << ans << '\n';

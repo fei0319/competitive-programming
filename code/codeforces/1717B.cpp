@@ -20,10 +20,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 5e2 + 19;
@@ -38,16 +36,14 @@ int main() {
         read(n), read(k), read(r), read(c);
         int m = n / k;
         for (int i = 1; i <= n; ++i)
-            for (int j = 1; j <= n; ++j)
-                is[i][j] = false;
+            for (int j = 1; j <= n; ++j) is[i][j] = false;
         is[(r - 1) % k + 1][(c - 1) % k + 1] = true;
         for (int i = 0; i < m; ++i)
             for (int j = 0; j < m; ++j)
                 if ((r - 1) / k == i && (c - 1) / k == j) {
                     std::set<int> s;
                     for (int x = 1; x <= k; ++x)
-                        if (x != (c - 1) % k + 1)
-                            s.insert(x);
+                        if (x != (c - 1) % k + 1) s.insert(x);
                     for (int x = 1; x <= k; ++x)
                         if (x != (r - 1) % k + 1) {
                             auto it = s.begin();

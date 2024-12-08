@@ -28,8 +28,7 @@ void solve(void) {
                     break;
                 }
             }
-            if (flag)
-                continue;
+            if (flag) continue;
             if (xy * (a + b) == n) {
                 std::cout << x << ' ' << y << '\n';
                 return;

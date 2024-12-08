@@ -42,8 +42,7 @@ bool check(int x, int mask) {
     } else {
         std::unordered_map<int, int> id;
         for (auto &[k, v] : mt) {
-            if (!mt.contains(k ^ x))
-                continue;
+            if (!mt.contains(k ^ x)) continue;
             int p = G.size();
             id[k] = p;
             G.push_back(std::vector<int>());

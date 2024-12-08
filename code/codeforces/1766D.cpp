@@ -32,8 +32,7 @@ int main() {
     constexpr int N = 1e7;
     for (int i = 2; i <= N; ++i)
         for (int j = i; j <= N; j += i)
-            if (vist[j])
-                add(j, i);
+            if (vist[j]) add(j, i);
 
     for (int i = 1; i <= T; ++i) {
         if (x[i] == y[i] - 1) {

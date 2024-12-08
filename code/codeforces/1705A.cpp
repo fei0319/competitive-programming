@@ -33,10 +33,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 int T;
@@ -44,8 +42,7 @@ int n, x, h[100009];
 
 void solve() {
     read(n), read(x);
-    for (int i = 1; i <= n + n; ++i)
-        read(h[i]);
+    for (int i = 1; i <= n + n; ++i) read(h[i]);
     std::sort(h + 1, h + 1 + n + n);
     for (int i = 1; i <= n; ++i)
         if (h[i + n] < h[i] + x) {
@@ -57,8 +54,7 @@ void solve() {
 
 int main() {
     read(T);
-    while (T--)
-        solve();
+    while (T--) solve();
 }
 
 /*

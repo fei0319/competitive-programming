@@ -38,9 +38,7 @@ struct BIT {
         }
         return res;
     }
-    int query(int l, int r) {
-        return query(r) - query(l - 1);
-    }
+    int query(int l, int r) { return query(r) - query(l - 1); }
 } mt;
 
 // Check whether y is in the subtree of x
@@ -68,9 +66,7 @@ bool check_centroid(int g, int x, int n) {
 
 void solve() {
     std::cin >> n;
-    std::for_each(G + 1, G + 1 + n, [](auto &v) {
-        v.clear();
-    });
+    std::for_each(G + 1, G + 1 + n, [](auto &v) { v.clear(); });
     for (int i = 2; i <= n; ++i) {
         int p;
         std::cin >> p;
@@ -99,7 +95,8 @@ void solve() {
             max = std::max(max, mt.query(dfn[x], dfn[x] + size[x] - 1));
         }
 
-        int res = std::max(max, i - mt.query(dfn[g], dfn[g] + size[g] - 1));
+        int res =
+            std::max(max, i - mt.query(dfn[g], dfn[g] + size[g] - 1));
         std::cout << i - res * 2 << ' ';
     }
     std::cout << '\n';

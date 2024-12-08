@@ -16,9 +16,7 @@ constexpr int qpow(int a, int b) {
     return res;
 }
 
-void add(auto &a, const auto &b) {
-    a = (a + b) % MOD;
-}
+void add(auto &a, const auto &b) { a = (a + b) % MOD; }
 
 int n, k;
 std::vector<int> G[MAXN];

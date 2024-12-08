@@ -33,7 +33,8 @@ void solve(void) {
             if (i == j) {
                 std::cout << b[i] << ' ';
             } else {
-                std::cout << ((i * (i - j) + (ll)(b[i] + b[j]) * r2) % n + n) %
+                std::cout << ((i * (i - j) + (ll)(b[i] + b[j]) * r2) % n +
+                              n) %
                                  n
                           << ' ';
             }

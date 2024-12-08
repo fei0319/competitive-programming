@@ -8,16 +8,12 @@ private:
     using i64 = int64_t;
 
 public:
-    ModInt() {
-        raw_ = 0;
-    }
+    ModInt() { raw_ = 0; }
     template <typename T>
     ModInt(const T &v) {
         raw_ = v % m;
     }
-    int value() const {
-        return (raw_ + m) % m;
-    }
+    int value() const { return (raw_ + m) % m; }
     mint &operator+=(const mint &rhs) {
         raw_ = (raw_ + rhs.raw_) % m;
         return *this;
@@ -46,9 +42,7 @@ public:
     friend mint operator/(const mint &lhs, const mint &rhs) {
         return mint(lhs) /= rhs;
     }
-    static constexpr int mod() {
-        return m;
-    }
+    static constexpr int mod() { return m; }
     static constexpr int qpow(int a, int b) {
         int res = 1;
         while (b) {

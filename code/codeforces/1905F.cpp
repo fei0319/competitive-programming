@@ -18,9 +18,7 @@ class PersistantSegment {
     }
 
 public:
-    static void clear() {
-        ind = 0;
-    }
+    static void clear() { ind = 0; }
     static int copy(int node) {
         int res = new_node();
         tr[res] = tr[node];
@@ -34,41 +32,31 @@ public:
         int mid = (L + R) / 2;
         if (x <= mid)
             modify(tr[node].ls = copy(tr[node].ls), L, mid, x, val);
-        else
-            modify(tr[node].rs = copy(tr[node].rs), mid + 1, R, x, val);
+        else modify(tr[node].rs = copy(tr[node].rs), mid + 1, R, x, val);
     }
     static int query(int node, int L, int R, int l, int r) {
-        if (l <= L && R <= r)
-            return tr[node].num;
+        if (l <= L && R <= r) return tr[node].num;
         int res = 0;
         int mid = (L + R) / 2;
-        if (l <= mid)
-            res += query(tr[node].ls, L, mid, l, r);
-        if (r > mid)
-            res += query(tr[node].rs, mid + 1, R, l, r);
+        if (l <= mid) res += query(tr[node].ls, L, mid, l, r);
+        if (r > mid) res += query(tr[node].rs, mid + 1, R, l, r);
         return res;
     }
     static int find(int node, int L, int R) {
-        if (L == R)
-            return L;
+        if (L == R) return L;
         int mid = (L + R) / 2;
-        if (tr[tr[node].ls].num)
-            return find(tr[node].ls, L, mid);
-        else
-            return find(tr[node].rs, mid + 1, R);
+        if (tr[tr[node].ls].num) return find(tr[node].ls, L, mid);
+        else return find(tr[node].rs, mid + 1, R);
     }
     static int find(int node, int L, int R, int l, int r) {
         if (l <= L && R <= r) {
-            if (tr[node].num)
-                return find(node, L, R);
-            else
-                return 0;
+            if (tr[node].num) return find(node, L, R);
+            else return 0;
         }
         int mid = (L + R) / 2;
         if (l <= mid) {
             int t = find(tr[node].ls, L, mid, l, r);
-            if (t)
-                return t;
+            if (t) return t;
         }
         return find(tr[node].rs, mid + 1, R, l, r);
     }

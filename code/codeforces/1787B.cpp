@@ -8,8 +8,7 @@ void solve(void) {
     int n;
     std::cin >> n;
     static ll a[maxp];
-    for (int i = 0; i < maxp; ++i)
-        a[i] = 1;
+    for (int i = 0; i < maxp; ++i) a[i] = 1;
     for (int i = 2; i * i <= n; ++i) {
         if (n % i == 0) {
             int p = 0;

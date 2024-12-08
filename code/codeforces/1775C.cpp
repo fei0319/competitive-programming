@@ -19,8 +19,7 @@ void solve(void) {
             //		std::cout << (raw + (1ll << i)) << '\n';
         }
         //	std::cout << l << ' ' << r << '\n';
-        if (raw & (1ll << i))
-            raw -= 1ll << i;
+        if (raw & (1ll << i)) raw -= 1ll << i;
     }
     if (r <= l) {
         std::cout << "-1\n";

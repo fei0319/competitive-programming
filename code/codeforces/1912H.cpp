@@ -62,8 +62,7 @@ int main() {
                     deg[i] = 0;
                 }
                 for (int i : component) {
-                    if (i == x)
-                        continue;
+                    if (i == x) continue;
                     for (int to : G[i]) {
                         deg[to] += 1;
                     }

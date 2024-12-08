@@ -27,17 +27,14 @@ void dfs(int x, bool *a) {
     }
 }
 
-void update(int v, bool *a) {
-    dfs(v, a);
-}
+void update(int v, bool *a) { dfs(v, a); }
 
 void solve() {
     int n, q;
     std::cin >> n >> q;
 
     int L = 1;
-    while (L <= n)
-        L *= 2;
+    while (L <= n) L *= 2;
 
     int lastans = 0;
     while (q--) {

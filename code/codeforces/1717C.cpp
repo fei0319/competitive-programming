@@ -20,10 +20,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 2e5 + 19;
@@ -35,20 +33,16 @@ int main() {
     read(T);
     while (T--) {
         read(n);
-        for (int i = 0; i < n; ++i)
-            read(a[i]);
-        for (int i = 0; i < n; ++i)
-            read(b[i]);
+        for (int i = 0; i < n; ++i) read(a[i]);
+        for (int i = 0; i < n; ++i) read(b[i]);
         bool ans = true;
         for (int i = 0; i < n; ++i)
-            if (a[i] > b[i])
-                ans = false;
+            if (a[i] > b[i]) ans = false;
         for (int i = 0; i < n; ++i)
             if (a[i] <= a[(i + 1) % n] && b[i] > b[(i + 1) % n] + 1)
                 ans = false;
         for (int i = 0; i < n; ++i)
-            if (a[i] < b[i] && b[i] > b[(i + 1) % n] + 1)
-                ans = false;
+            if (a[i] < b[i] && b[i] > b[(i + 1) % n] + 1) ans = false;
         puts(ans ? "YES" : "NO");
     }
 }

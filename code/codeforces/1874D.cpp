@@ -17,10 +17,9 @@ int main() {
 
     std::vector<ld> f(m + 1, INF), g(m + 1);
 
-    std::function<void(int, int, int, int)> solve = [&](int L, int R, int l,
-                                                        int r) {
-        if (l > r)
-            return;
+    std::function<void(int, int, int, int)> solve = [&](int L, int R,
+                                                        int l, int r) {
+        if (l > r) return;
         if (L == R) {
             for (int i = l; i <= r; ++i) {
                 g[i] = f[L] + (ld)i / (i - L);

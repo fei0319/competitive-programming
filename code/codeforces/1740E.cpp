@@ -10,8 +10,7 @@ int n, f[maxn], g[maxn];
 void dfs(int node, int fa) {
     f[node] = 1;
     for (int to : G[node]) {
-        if (to == fa)
-            continue;
+        if (to == fa) continue;
         dfs(to, node);
         g[node] += std::max(g[to], f[to]),
             f[node] = std::max(f[node], f[to] + 1);

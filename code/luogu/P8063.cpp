@@ -20,10 +20,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 2e3 + 19, maxm = 1e5 + 19, inf = 1e9;
@@ -55,26 +53,21 @@ struct Node {
 
 bool rev;
 int get(int u, int v) {
-    if (c[u] != v && c[v] != u)
-        return 0;
-    if (c[u] == v)
-        return rev ? k - rnk[u] : rnk[u];
-    else
-        return rev ? k - rnk[v] : rnk[v];
+    if (c[u] != v && c[v] != u) return 0;
+    if (c[u] == v) return rev ? k - rnk[u] : rnk[u];
+    else return rev ? k - rnk[v] : rnk[v];
 }
 
 void dijkstra(int s, int *d, int *p) {
     static bool vist[maxn];
     std::priority_queue<Node> q;
-    for (int i = 1; i <= n; ++i)
-        d[i] = inf, p[i] = inf, vist[i] = false;
+    for (int i = 1; i <= n; ++i) d[i] = inf, p[i] = inf, vist[i] = false;
     d[s] = p[s] = 0;
     q.push((Node){0, 0, s});
     while (!q.empty()) {
         auto node = q.top().id;
         q.pop();
-        if (vist[node])
-            continue;
+        if (vist[node]) continue;
         vist[node] = true;
         for (int i = head[node]; i; i = edge[i].next) {
             int to = edge[i].to;
@@ -88,15 +81,13 @@ void dijkstra(int s, int *d, int *p) {
 }
 
 void update(int l, int r, int w) {
-    for (int i = l; i <= r; ++i)
-        chkmin(ans[i], w);
+    for (int i = l; i <= r; ++i) chkmin(ans[i], w);
 }
 
 int main() {
     read(n), read(m), read(a), read(b);
     for (int i = 1; i <= n; ++i)
-        for (int j = 1; j <= n; ++j)
-            w[i][j] = (i == j ? 0 : inf);
+        for (int j = 1; j <= n; ++j) w[i][j] = (i == j ? 0 : inf);
     for (int i = 1, u, v, d; i <= m; ++i) {
         read(u), read(v), read(d);
         add(u, v, d), add(v, u, d);
@@ -104,22 +95,18 @@ int main() {
         w[v][u] = std::min(w[v][u], d);
     }
     read(k);
-    for (int i = 1; i <= k; ++i)
-        read(v[i]), rnk[v[i]] = i;
-    for (int i = k; i > 1; --i)
-        c[v[i - 1]] = v[i];
+    for (int i = 1; i <= k; ++i) read(v[i]), rnk[v[i]] = i;
+    for (int i = k; i > 1; --i) c[v[i - 1]] = v[i];
     dijkstra(a, da, pa), rev = true, dijkstra(b, db, pb);
-    for (int i = 1; i <= k; ++i)
-        ans[i] = inf;
+    for (int i = 1; i <= k; ++i) ans[i] = inf;
     for (int i = 1; i <= n; ++i)
         for (int j = 1; j <= n; ++j) {
             ll t = da[i] + db[j] + w[i][j];
-            if (t >= inf || c[i] == j || c[j] == i)
-                continue;
-            //	printf("(%d, %d): %d %d %lld\n", i, j, pa[i] + 1, k - 1 - pb[j],
+            if (t >= inf || c[i] == j || c[j] == i) continue;
+            //	printf("(%d, %d): %d %d %lld\n", i, j, pa[i] + 1, k - 1 -
+            // pb[j],
             // t);
             update(pa[i] + 1, k - 1 - pb[j], t);
         }
-    for (int i = 1; i < k; ++i)
-        printf("%d\n", ans[i] < inf ? ans[i] : -1);
+    for (int i = 1; i < k; ++i) printf("%d\n", ans[i] < inf ? ans[i] : -1);
 }

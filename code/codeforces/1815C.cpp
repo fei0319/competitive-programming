@@ -10,8 +10,7 @@ std::vector<int> ans[maxn];
 
 int dist[maxn];
 void bfs(int src, int *dist) {
-    for (int i = 1; i <= n; ++i)
-        dist[i] = inf;
+    for (int i = 1; i <= n; ++i) dist[i] = inf;
     dist[src] = 1;
     static int q[maxn], h, t;
     q[h = t = 0] = src;
@@ -27,8 +26,7 @@ void bfs(int src, int *dist) {
 
 void solve() {
     scanf("%d%d", &n, &m);
-    for (int i = 1; i <= n; ++i)
-        G[i].clear();
+    for (int i = 1; i <= n; ++i) G[i].clear();
     for (int i = 1; i <= m; ++i) {
         int u, v;
         scanf("%d%d", &u, &v);
@@ -42,18 +40,15 @@ void solve() {
             return;
         }
 
-    for (int i = 1; i <= n; ++i)
-        ans[i].clear();
+    for (int i = 1; i <= n; ++i) ans[i].clear();
     std::vector<int> a(n);
-    for (int i = 0; i < n; ++i)
-        a[i] = i + 1;
+    for (int i = 0; i < n; ++i) a[i] = i + 1;
     std::sort(a.begin(), a.end(), [](const int &x, const int &y) {
         return dist[x] < dist[y];
     });
     int tot = 0;
     for (int i : a) {
-        for (int j = 1; j <= dist[i]; ++j)
-            ans[j].push_back(i);
+        for (int j = 1; j <= dist[i]; ++j) ans[j].push_back(i);
         tot += dist[i];
     }
     puts("FINITE");

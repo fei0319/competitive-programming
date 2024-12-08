@@ -8,18 +8,15 @@ int n, a[maxn];
 
 void solve(void) {
     std::cin >> n;
-    for (int i = 1; i <= n; ++i)
-        std::cin >> a[i];
+    for (int i = 1; i <= n; ++i) std::cin >> a[i];
     std::sort(a + 1, a + 1 + n);
 
     int ans = (a[1] != 0);
     a[n + 1] = 1e9;
     for (int l = 1, r; l <= n; l = r + 1) {
         r = l;
-        while (r + 1 <= n && a[r + 1] == a[r])
-            ++r;
-        if (r > a[r] && r < a[r + 1])
-            ++ans; //, std::cout << r << '\n';
+        while (r + 1 <= n && a[r + 1] == a[r]) ++r;
+        if (r > a[r] && r < a[r + 1]) ++ans; //, std::cout << r << '\n';
     }
     std::cout << ans << '\n';
 }

@@ -83,9 +83,7 @@ struct Segment {
         }
         return res;
     }
-    void clear() {
-        std::fill(tr, tr + n * 4 + 1, 0);
-    }
+    void clear() { std::fill(tr, tr + n * 4 + 1, 0); }
 } st1, st2;
 
 struct BIT {
@@ -102,12 +100,8 @@ struct BIT {
         }
         return res;
     }
-    int query(int l, int r) {
-        return query(r) - query(l - 1);
-    }
-    void clear() {
-        std::fill(tr, tr + n + 1, 0);
-    }
+    int query(int l, int r) { return query(r) - query(l - 1); }
+    void clear() { std::fill(tr, tr + n + 1, 0); }
 } bt;
 
 void work(bool reverse) {
@@ -154,7 +148,8 @@ void work(bool reverse) {
         if (bt.query(pos[i] - 1)) {
             int x = 0, res = 0, target = bt.query(pos[i] - 1);
             for (int b = B; b >= 0; --b) {
-                if (x + (1 << b) <= n && res + bt.tr[x + (1 << b)] < target) {
+                if (x + (1 << b) <= n &&
+                    res + bt.tr[x + (1 << b)] < target) {
                     x += 1 << b;
                     res += bt.tr[x];
                 }

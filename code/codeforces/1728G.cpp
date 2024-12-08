@@ -16,7 +16,8 @@ struct Matrix {
         for (int i = 0; i < MAXM; ++i) {
             for (int j = 0; j < MAXM; ++j) {
                 for (int k = 0; k < MAXM; ++k) {
-                    res.a[i][k] = (res.a[i][k] + (ll)a[i][j] * b.a[j][k]) % MOD;
+                    res.a[i][k] =
+                        (res.a[i][k] + (ll)a[i][j] * b.a[j][k]) % MOD;
                 }
             }
         }
@@ -89,7 +90,8 @@ int main() {
         int res = 0;
         for (int i = 0; i < MAXM; ++i) {
             for (int j = 0; j < MAXM; ++j) {
-                res = (res + (ll)a.a[0][i] * b.a[i][j] % MOD * c.a[j][m]) % MOD;
+                res = (res + (ll)a.a[0][i] * b.a[i][j] % MOD * c.a[j][m]) %
+                      MOD;
             }
         }
         std::cout << res << '\n';

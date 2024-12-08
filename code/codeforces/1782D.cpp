@@ -14,15 +14,13 @@ inline bool is_square(ll x) {
 int calc(ll x) {
     int res = 0;
     for (int i = 1; i <= n; ++i)
-        if (is_square(a[i] + x))
-            ++res;
+        if (is_square(a[i] + x)) ++res;
     return res;
 }
 
 void solve(void) {
     std::cin >> n;
-    for (int i = 1; i <= n; ++i)
-        std::cin >> a[i];
+    for (int i = 1; i <= n; ++i) std::cin >> a[i];
     std::sort(a + 1, a + 1 + n);
 
     int ans = 1;
@@ -32,11 +30,9 @@ void solve(void) {
             for (int x = 1; x * x < d; ++x)
                 if (d % x == 0) {
                     int y = d / x;
-                    if ((y - x) % 2 == 1)
-                        continue;
+                    if ((y - x) % 2 == 1) continue;
                     ll to = ll((y - x) / 2) * ((y - x) / 2);
-                    if (to < a[i])
-                        continue;
+                    if (to < a[i]) continue;
                     ans = std::max(ans, calc(to - a[i]));
                 }
         }

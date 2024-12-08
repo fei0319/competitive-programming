@@ -5,9 +5,7 @@ constexpr i64 INF = 1e18;
 
 struct Node {
     std::vector<std::pair<i64, i64>> p;
-    void insert(i64 l, i64 r) {
-        p.emplace_back(l, r);
-    }
+    void insert(i64 l, i64 r) { p.emplace_back(l, r); }
     i64 get() {
         std::sort(p.begin(), p.end());
 

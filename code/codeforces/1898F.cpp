@@ -21,9 +21,7 @@ public:
     std::pair<int, int> next(int index) const {
         return {a[index].first + 1, a[index].second};
     }
-    std::size_t size() const {
-        return a.size();
-    }
+    std::size_t size() const { return a.size(); }
     int sum(int index) const {
         int res = 0;
         for (int i = 0; i < index; ++i) {
@@ -36,9 +34,7 @@ public:
 int n, m;
 std::vector<std::string> a;
 
-int id(int x, int y) {
-    return x * m + y;
-}
+int id(int x, int y) { return x * m + y; }
 
 int fa[MAXN], sz[MAXN];
 int getf(int node) {
@@ -155,7 +151,8 @@ void solve() {
     }
 
     while (!q.empty()) {
-        int x = q.front() / 2 / m, y = q.front() / 2 % m, v = q.front() & 1;
+        int x = q.front() / 2 / m, y = q.front() / 2 % m,
+            v = q.front() & 1;
         q.pop();
 
         for (int d = 0; d < 4; ++d) {

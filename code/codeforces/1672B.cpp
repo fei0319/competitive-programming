@@ -20,10 +20,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 2e5 + 19;
@@ -37,11 +35,9 @@ int main() {
         std::scanf("%s", s + 1), n = std::strlen(s + 1);
         int len = 0, ans = (s[n] == 'B');
         for (int i = 1; i <= n; ++i) {
-            if (s[i] == 'A')
-                ++len;
+            if (s[i] == 'A') ++len;
             if (s[i] == 'B') {
-                if (len == 0)
-                    ans = 0;
+                if (len == 0) ans = 0;
                 --len;
             }
         }

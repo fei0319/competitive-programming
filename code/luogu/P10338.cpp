@@ -7,16 +7,12 @@ private:
     using i64 = int64_t;
 
 public:
-    ModInt() {
-        raw_ = 0;
-    }
+    ModInt() { raw_ = 0; }
     template <typename T>
     ModInt(const T &v) {
         raw_ = v % m;
     }
-    int value() const {
-        return (raw_ + m) % m;
-    }
+    int value() const { return (raw_ + m) % m; }
     mint &operator+=(const mint &rhs) {
         raw_ = (raw_ + rhs.raw_) % m;
         return *this;
@@ -45,9 +41,7 @@ public:
     friend mint operator/(const mint &lhs, const mint &rhs) {
         return mint(lhs) /= rhs;
     }
-    static constexpr int mod() {
-        return m;
-    }
+    static constexpr int mod() { return m; }
     static constexpr int qpow(int a, int b) {
         int res = 1;
         while (b) {
@@ -77,7 +71,8 @@ struct Segment {
     void push_up(int node) {
         tr[node].ans = tr[node << 1].ans + tr[node << 1 | 1].ans;
         tr[node].sum = tr[node << 1].sum + tr[node << 1 | 1].sum;
-        tr[node].min_c = std::min(tr[node << 1].min_c, tr[node << 1 | 1].min_c);
+        tr[node].min_c =
+            std::min(tr[node << 1].min_c, tr[node << 1 | 1].min_c);
     }
     void push_down(int node) {
         if (tr[node].tag) {
@@ -115,8 +110,8 @@ struct Segment {
             if (tr[node].min_c >= INF) {
                 tr[node].min_c = 0;
             }
-            tr[node].sum =
-                (tr[node].sum * tr[node].min_c + p * c) / (tr[node].min_c + c);
+            tr[node].sum = (tr[node].sum * tr[node].min_c + p * c) /
+                           (tr[node].min_c + c);
             tr[node].min_c += c;
             return;
         }

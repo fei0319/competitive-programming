@@ -15,9 +15,7 @@ public:
         }
         raw = v;
     }
-    int operator()() const {
-        return raw;
-    }
+    int operator()() const { return raw; }
 
     mint &operator+=(const mint &rhs) {
         raw += rhs.raw;
@@ -41,9 +39,7 @@ public:
         raw = (i64)raw * rhs.raw % m;
         return *this;
     }
-    mint &operator/=(const mint &rhs) {
-        return *this *= qpow(rhs, m - 2);
-    }
+    mint &operator/=(const mint &rhs) { return *this *= qpow(rhs, m - 2); }
 
     friend mint operator+(const mint &lhs, const mint &rhs) {
         return mint(lhs) += rhs;
@@ -58,9 +54,7 @@ public:
         return mint(lhs) /= rhs;
     }
 
-    static constexpr int mod() {
-        return m;
-    }
+    static constexpr int mod() { return m; }
 
     static mint qpow(mint a, i64 b) {
         mint res = 1;

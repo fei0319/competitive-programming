@@ -32,10 +32,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 int main() {
@@ -44,10 +42,8 @@ int main() {
     std::sort(a, a + 3);
     //(a - x) + (b - x) = (c - x)
     ll x = a[0] + a[1] - a[2];
-    if (x < 0ll)
-        puts("-1");
-    else
-        printf("%lld\n", a[2]);
+    if (x < 0ll) puts("-1");
+    else printf("%lld\n", a[2]);
 }
 
 /*

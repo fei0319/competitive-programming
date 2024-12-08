@@ -1,7 +1,7 @@
 // Problem: A - Anyway Takahashi
-// Contest: AtCoder - UNICORN Programming Contest 2022(AtCoder Beginner Contest
-// 269) URL: https://atcoder.jp/contests/abc269/tasks/abc269_a Memory Limit:
-// 1024 MB Time Limit: 2000 ms
+// Contest: AtCoder - UNICORN Programming Contest 2022(AtCoder Beginner
+// Contest 269) URL: https://atcoder.jp/contests/abc269/tasks/abc269_a
+// Memory Limit: 1024 MB Time Limit: 2000 ms
 //
 // Powered by CP Editor (https://cpeditor.org)
 
@@ -19,10 +19,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 int main() {

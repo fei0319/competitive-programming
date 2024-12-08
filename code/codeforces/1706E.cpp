@@ -33,10 +33,8 @@ template <typename Tp>
 void read(Tp &res) {
     static char ch;
     ch = getchar(), res = 0;
-    while (!isdigit(ch))
-        ch = getchar();
-    while (isdigit(ch))
-        res = res * 10 + ch - 48, ch = getchar();
+    while (!isdigit(ch)) ch = getchar();
+    while (isdigit(ch)) res = res * 10 + ch - 48, ch = getchar();
 }
 
 const int maxn = 2e5 + 19;
@@ -63,26 +61,19 @@ struct T {
             return;
         }
         int mid = (tr[node].L + tr[node].R) >> 1;
-        if (x <= mid)
-            modify(node << 1, x, val);
-        else
-            modify(node << 1 | 1, x, val);
+        if (x <= mid) modify(node << 1, x, val);
+        else modify(node << 1 | 1, x, val);
         push_up(node);
     }
     int query(int node, int l, int r) {
         if (l <= tr[node].L && tr[node].R <= r)
             return tr[node].mx == tr[node].mn ? tr[node].mx : -1;
         int mid = (tr[node].L + tr[node].R) >> 1, Lv = 0, Rv = 0;
-        if (l <= mid)
-            Lv = query(node << 1, l, r);
-        if (r > mid)
-            Rv = query(node << 1 | 1, l, r);
-        if (Lv != 0 && Rv != 0 && Lv != Rv)
-            return -1;
-        if (Lv == -1 || Rv == -1)
-            return -1;
-        if (Lv == Rv)
-            return Lv;
+        if (l <= mid) Lv = query(node << 1, l, r);
+        if (r > mid) Rv = query(node << 1 | 1, l, r);
+        if (Lv != 0 && Rv != 0 && Lv != Rv) return -1;
+        if (Lv == -1 || Rv == -1) return -1;
+        if (Lv == Rv) return Lv;
         return Lv + Rv;
     }
 } mt;
@@ -94,8 +85,7 @@ struct UFS {
         mt.modify(1, x, y);
     }
     int find(int x) {
-        if (x != fa[x])
-            mod(x, find(fa[x]));
+        if (x != fa[x]) mod(x, find(fa[x]));
         return fa[x];
     }
     void merge(int x, int y) {
@@ -103,8 +93,7 @@ struct UFS {
         mod(x, y);
     }
     void init(void) {
-        for (int i = 1; i <= n; ++i)
-            fa[i] = i;
+        for (int i = 1; i <= n; ++i) fa[i] = i;
     }
 } ufs;
 
@@ -114,8 +103,7 @@ int main() {
     while (T--) {
         read(n), read(m), read(q);
         ufs.init(), mt.build;
-        for (int i = 1; i <= n; ++i)
-    }
+        for (int i = 1; i <= n; ++i) }
 }
 
 /*

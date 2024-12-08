@@ -10,10 +10,8 @@ void dfs(int node) {
     int g1 = 0, g2 = 0;
     for (int to : G[node]) {
         dfs(to);
-        if (dp[to] >= g1)
-            g2 = g1, g1 = dp[to];
-        else if (dp[to] > g2)
-            g2 = dp[to];
+        if (dp[to] >= g1) g2 = g1, g1 = dp[to];
+        else if (dp[to] > g2) g2 = dp[to];
     }
     dp[node] = std::max(g1 - 1, g2) + 1;
 }
@@ -24,8 +22,7 @@ void solve() {
         scanf("%d", p + i);
         G[i].clear();
     }
-    for (int i = 2; i <= n; ++i)
-        G[p[i]].push_back(i);
+    for (int i = 2; i <= n; ++i) G[p[i]].push_back(i);
 
     dfs(1);
     printf("%d\n", dp[1]);
@@ -34,6 +31,5 @@ void solve() {
 int main() {
     int T;
     scanf("%d", &T);
-    while (T--)
-        solve();
+    while (T--) solve();
 }

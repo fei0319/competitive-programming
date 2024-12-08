@@ -15,8 +15,7 @@ void solve() {
     }
     if (!a.empty()) {
         int v = k - 1 - (a.back() * 2 - 1);
-        if (v)
-            a.push_back(v);
+        if (v) a.push_back(v);
     }
 
     a.push_back(k + 1);
@@ -27,8 +26,7 @@ void solve() {
     }
 
     std::cout << a.size() << '\n';
-    for (int i : a)
-        std::cout << i << ' ';
+    for (int i : a) std::cout << i << ' ';
     std::cout << '\n';
 }
 
