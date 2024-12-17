@@ -36,7 +36,7 @@ struct SCC {
 
 public:
     explicit SCC(int n)
-        : n(n), adj(n), dfn(n, -1), low(n), bel(n, -1), cur(0), cnt(0) {};
+        : n(n), adj(n), dfn(n, -1), low(n), bel(n, -1), cur(0), cnt(0){};
 
     void add_edge(int u, int v) {
         adj[u].push_back(v);
