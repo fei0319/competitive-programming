@@ -1,6 +1,6 @@
 # competitive-programming
 
-An archive of my competitive programming codes.
+An archive of my competitive programming code.
 
 ## logs
 
