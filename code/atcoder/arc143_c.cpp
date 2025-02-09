@@ -52,7 +52,8 @@ int main() {
         int gx = 0, lx = 0;
         for (int i = 1; i <= n; ++i)
             if (a[i] >= x) ++gx;
-            else if (a[i] >= y) ++lx;
+            else if (a[i] >= y)
+                ++lx;
         puts(gx && !lx ? "First" : "Second");
     }
 }

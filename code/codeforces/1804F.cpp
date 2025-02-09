@@ -69,7 +69,8 @@ int main() {
         while (l < r) {
             int mid = (l + r + 1) / 2;
             if (ans[now] <= d_G(mid) * 2) l = mid;
-            else r = mid - 1;
+            else
+                r = mid - 1;
         }
 
         for (int i = now; i <= l; ++i) {

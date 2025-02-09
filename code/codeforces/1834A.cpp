@@ -12,7 +12,8 @@ int main() {
             int a;
             std::cin >> a;
             if (a == -1) ++cntn;
-            else ++cntp;
+            else
+                ++cntp;
         }
         // std::cout << cntn << ' ' << cntp << '\n';
         if (cntn <= cntp) {

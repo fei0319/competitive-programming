@@ -31,7 +31,8 @@ std::vector<int> merge(const std::vector<int> &a,
     while (n < a.size() || m < b.size()) {
         if (n == a.size() || (m < b.size() && b[m] < a[n]))
             res.emplace_back(b[m++]);
-        else res.emplace_back(a[n++]);
+        else
+            res.emplace_back(a[n++]);
     }
     return res;
 }

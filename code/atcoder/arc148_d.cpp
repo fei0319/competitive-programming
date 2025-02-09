@@ -38,7 +38,8 @@ int main() {
         if (s.find(x) != s.end()) s.erase(x);
         else if (m % 2 == 0 && s.find(rep(x)) != s.end())
             s.erase(rep(x)), ++cnt;
-        else s.insert(x);
+        else
+            s.insert(x);
     }
     if (!s.empty()) return puts("Alice"), 0;
     puts(cnt & 1 ? "Alice" : "Bob");

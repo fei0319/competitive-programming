@@ -44,7 +44,8 @@ void solve(void) {
     for (int i = 1; i <= n; ++i)
         if (fa[i] == i) {
             if (sz[i] != dg[i]) ans = 0;
-            else ans = ans * 2 % mod;
+            else
+                ans = ans * 2 % mod;
         }
 
     std::cout << ans << '\n';

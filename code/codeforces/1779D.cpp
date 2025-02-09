@@ -22,7 +22,8 @@ bool check(int l, int r, int x) {
          it != pos[x].end() && *it <= r; ++it) {
         //		std::cout << *it << '\n';
         if (a[*it] > b[*it]) need = 1;
-        else if (a[*it] < b[*it]) return false;
+        else if (a[*it] < b[*it])
+            return false;
         cur.push_back(*it);
     }
     cur.push_back(r + 1);
@@ -71,7 +72,8 @@ void solve(void) {
     }
 
     if (check(1, n, tot)) std::cout << "YES\n";
-    else std::cout << "NO\n";
+    else
+        std::cout << "NO\n";
 }
 
 int main() {

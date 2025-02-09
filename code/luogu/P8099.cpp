@@ -78,15 +78,19 @@ struct Tree {
         if (t[t[x].rs].mn >= h - k && t[t[x].rs].mx <= h + k) {
             if (t[x].v >= h - k && t[x].v <= h + k)
                 return find(t[x].ls, h) + 1 + t[t[x].rs].sz;
-            else return t[t[x].rs].sz;
-        } else return find(t[x].rs, h);
+            else
+                return t[t[x].rs].sz;
+        } else
+            return find(t[x].rs, h);
     }
     int upper_bound(int x, const int &val) {
         if (!x) return 0;
         if (t[x].mx <= val) return t[x].sz + 1;
         if (t[t[x].ls].mx > val) return upper_bound(t[x].ls, val);
-        else if (t[x].v > val) return t[t[x].ls].sz + 1;
-        else return t[t[x].ls].sz + 1 + upper_bound(t[x].rs, val);
+        else if (t[x].v > val)
+            return t[t[x].ls].sz + 1;
+        else
+            return t[t[x].ls].sz + 1 + upper_bound(t[x].rs, val);
     }
 } mt;
 

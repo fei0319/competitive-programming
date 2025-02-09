@@ -25,7 +25,8 @@ int count_dep(int l, int r) {
     int ans = 0;
     for (int i = l, cur; i <= r; ++i) {
         if (i == l || s[i] != s[i - 1]) cur = 1;
-        else ++cur;
+        else
+            ++cur;
         ans = std::max(ans, cur);
     }
     return ans;

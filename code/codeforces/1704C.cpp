@@ -59,7 +59,8 @@ int main() {
             int v = all.back() - i * 2;
             all.pop_back();
             if (v == 1) ++ans;
-            else if (v > 1) ans += v - 1;
+            else if (v > 1)
+                ans += v - 1;
         }
         printf("%d\n", n - ans);
     }

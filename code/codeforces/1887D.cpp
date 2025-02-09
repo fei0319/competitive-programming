@@ -122,7 +122,8 @@ void solve(int L, int R, std::vector<Node> a) {
         while (l < r) {
             int mid = (l + r) / 2;
             if (suf_min[pos[mid] + 1] > q.lmax) r = mid;
-            else l = mid + 1;
+            else
+                l = mid + 1;
         }
         x = l;
         if (suf_min[pos[x] + 1] <= q.lmax) continue;
@@ -131,7 +132,8 @@ void solve(int L, int R, std::vector<Node> a) {
         while (l < r) {
             int mid = (l + r + 1) / 2;
             if (pre_max[pos[mid]] < q.rmin) l = mid;
-            else r = mid - 1;
+            else
+                r = mid - 1;
         }
         y = l;
         if (pre_max[pos[y]] >= q.rmin) continue;

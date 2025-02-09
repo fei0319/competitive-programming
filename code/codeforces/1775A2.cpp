@@ -48,10 +48,12 @@ void solve(void) {
     while (s[m] == s[m - 1]) ++m;
     if (s[0] == 'a') {
         if (m >= 2) out(m, m + 1, n);
-        else out(m + 1, n, n);
+        else
+            out(m + 1, n, n);
     } else {
         if (m >= 2) out(2, m + 1, n);
-        else out(m + 1, m + 2, n);
+        else
+            out(m + 1, m + 2, n);
     }
 }
 

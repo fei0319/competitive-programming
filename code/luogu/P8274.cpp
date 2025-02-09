@@ -73,7 +73,8 @@ void solve(bool B) {
     while (l < r) {
         int mid = (l + r) >> 1;
         if (check(mid)) r = mid;
-        else l = mid + 1;
+        else
+            l = mid + 1;
     }
     printf("%d\n", l);
     if (B) output(l);

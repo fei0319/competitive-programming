@@ -15,7 +15,8 @@ void solve() {
         if (a[l] >= 0) {
             ans += a[l];
             continue;
-        } else ans -= a[l], ++cnt;
+        } else
+            ans -= a[l], ++cnt;
         while (r + 1 <= n && a[r + 1] <= 0) ans -= a[++r];
     }
     printf("%lld %lld\n", ans, cnt);

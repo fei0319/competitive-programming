@@ -65,7 +65,8 @@ struct Tree {
         push_down(node);
         int mid = (L + R) / 2;
         if (x <= mid) set(node << 1, L, mid, x, val);
-        else set(node << 1 | 1, mid + 1, R, x, val);
+        else
+            set(node << 1 | 1, mid + 1, R, x, val);
         push_up(node);
     }
 } tree;

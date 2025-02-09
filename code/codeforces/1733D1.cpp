@@ -29,7 +29,8 @@ void solve(void) {
             else if ((pos[0] - 1 >= 1 && pos[1] + 1 <= n) &&
                      (ll)y * 3 <= x)
                 std::cout << (ll)y * 3 << std::endl;
-            else std::cout << x << std::endl;
+            else
+                std::cout << x << std::endl;
         } else {
             std::cout << (ll)pos.size() / 2 * y << std::endl;
         }

@@ -32,7 +32,8 @@ public:
         int mid = (L + R) / 2;
         if (x <= mid)
             modify(tr[node].ls = copy(tr[node].ls), L, mid, x, val);
-        else modify(tr[node].rs = copy(tr[node].rs), mid + 1, R, x, val);
+        else
+            modify(tr[node].rs = copy(tr[node].rs), mid + 1, R, x, val);
     }
     static int query(int node, int L, int R, int l, int r) {
         if (l <= L && R <= r) return tr[node].num;
@@ -46,12 +47,14 @@ public:
         if (L == R) return L;
         int mid = (L + R) / 2;
         if (tr[tr[node].ls].num) return find(tr[node].ls, L, mid);
-        else return find(tr[node].rs, mid + 1, R);
+        else
+            return find(tr[node].rs, mid + 1, R);
     }
     static int find(int node, int L, int R, int l, int r) {
         if (l <= L && R <= r) {
             if (tr[node].num) return find(node, L, R);
-            else return 0;
+            else
+                return 0;
         }
         int mid = (L + R) / 2;
         if (l <= mid) {

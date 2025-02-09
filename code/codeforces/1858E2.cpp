@@ -27,7 +27,8 @@ class PersistentSegment {
         if (L == R) return true;
         int mid = (L + R) / 2;
         if (x <= mid) return query(tr[node].ls, L, mid, x);
-        else return query(tr[node].rs, mid + 1, R, x);
+        else
+            return query(tr[node].rs, mid + 1, R, x);
     }
 
 public:

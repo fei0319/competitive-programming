@@ -36,7 +36,8 @@ std::vector<Node> merge(const std::vector<Node> &a,
     std::vector<Node> res;
     while (x < a.size() && y < b.size()) {
         if (a[x] * b[y]) res.push_back(a[x++]);
-        else res.push_back(b[y++]);
+        else
+            res.push_back(b[y++]);
     }
     while (x < a.size()) res.push_back(a[x++]);
     while (y < b.size()) res.push_back(b[y++]);

@@ -30,7 +30,8 @@ int prev(int x) {
     while (l < r) {
         int mid = (l + r) / 2;
         if (num.query(mid) >= v) r = mid;
-        else l = mid + 1;
+        else
+            l = mid + 1;
     }
     return l;
 }
@@ -40,7 +41,8 @@ int next(int x) {
     while (l < r) {
         int mid = (l + r + 1) / 2;
         if (num.query(mid) <= v) l = mid;
-        else r = mid - 1;
+        else
+            r = mid - 1;
     }
     return l + 1;
 }

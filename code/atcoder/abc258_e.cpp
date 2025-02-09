@@ -43,7 +43,8 @@ ll s[maxn];
 
 ll sum(int l, int r) {
     if (l == 0) return s[r];
-    else return s[r] - s[l - 1];
+    else
+        return s[r] - s[l - 1];
 }
 
 int query(ll k) {
@@ -67,7 +68,8 @@ int main() {
         while (l < r) {
             int mid = (l + r) / 2;
             if (sum(i, mid) < rest) l = mid + 1;
-            else r = mid;
+            else
+                r = mid;
         }
         nxt[i][0] = (l + 1) % n;
     }
@@ -83,7 +85,8 @@ int main() {
         while (l < r) {
             int mid = (l + r) / 2;
             if (sum(now, mid) < rest) l = mid + 1;
-            else r = mid;
+            else
+                r = mid;
         }
         ans += l - now + 1;
         printf("%lld\n", ans);

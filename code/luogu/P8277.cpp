@@ -37,7 +37,8 @@ int main() {
         int res = 0;
         chkmax(res, std::max(m1.query(p[i]), m2.query(n - p[i] + 1)) + 1);
         if (s[res + 1] == 'U') m1.update(p[i], res);
-        else m2.update(n - p[i] + 1, res);
+        else
+            m2.update(n - p[i] + 1, res);
         chkmax(ans, res);
     }
     printf("%d\n", ans);

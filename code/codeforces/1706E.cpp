@@ -62,7 +62,8 @@ struct T {
         }
         int mid = (tr[node].L + tr[node].R) >> 1;
         if (x <= mid) modify(node << 1, x, val);
-        else modify(node << 1 | 1, x, val);
+        else
+            modify(node << 1 | 1, x, val);
         push_up(node);
     }
     int query(int node, int l, int r) {

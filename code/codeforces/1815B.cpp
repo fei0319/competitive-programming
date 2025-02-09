@@ -22,7 +22,8 @@ int query(int i, int j) {
 void out() {
     for (int i = 1; i <= n; ++i)
         if (d[i] % 2 == 0) printf("%d ", d[i] / 2 + 1);
-        else printf("%d ", n - d[i] / 2);
+        else
+            printf("%d ", n - d[i] / 2);
 }
 
 void work(void) {

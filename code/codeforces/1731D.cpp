@@ -11,7 +11,8 @@ bool check(int x) {
         for (int j = 1; j <= m; ++j) {
             if (a[i][j] >= x)
                 dp[i][j] = std::min(dp[i - 1][j], dp[i][j - 1]);
-            else dp[i][j] = 0;
+            else
+                dp[i][j] = 0;
             if (a[i - dp[i][j]][j - dp[i][j]] >= x) ++dp[i][j];
             if (dp[i][j] >= x) return true;
             //			std::cout << dp[i][j] << ' ';
@@ -33,7 +34,8 @@ void solve(void) {
     while (l < r) {
         int mid = (l + r + 1) >> 1;
         if (check(mid)) l = mid;
-        else r = mid - 1;
+        else
+            r = mid - 1;
     }
     std::cout << l << '\n';
 }

@@ -15,7 +15,8 @@ void solve(void) {
     ll sum = 0;
     for (int i = 2; i <= n; i += 2) sum += a[i];
     if (sum >= 0 || n % 2 == 1) std::cout << "YES\n";
-    else std::cout << "NO\n";
+    else
+        std::cout << "NO\n";
 }
 
 int main() {

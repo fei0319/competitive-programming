@@ -56,7 +56,8 @@ void out(int x) {
         if (q) {
             putchar('1');
             if (a[i] > q) --q;
-        } else putchar('0');
+        } else
+            putchar('0');
     puts("");
 }
 
@@ -67,7 +68,8 @@ void solve(void) {
     while (l < r) {
         int mid = (l + r) >> 1;
         if (check(mid)) r = mid;
-        else l = mid + 1;
+        else
+            l = mid + 1;
     }
     out(l);
 }

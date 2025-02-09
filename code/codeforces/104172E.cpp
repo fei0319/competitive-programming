@@ -62,7 +62,8 @@ struct SegmentTree {
     int count(int node, int L, int R, int l, int r) {
         if (l <= L && R <= r) {
             if (tr[node].min == 0) return tr[node].min_c;
-            else return 0;
+            else
+                return 0;
         }
         push_down(node);
         int mid = (L + R) >> 1, res = 0;

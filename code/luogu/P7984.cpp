@@ -145,5 +145,6 @@ int main() {
     dijkstra(dp);
     for (int i = 1; i <= n; ++i)
         if (dp[id[i]] < inf) std::printf("%lld\n", dp[id[i]]);
-        else std::puts("-1");
+        else
+            std::puts("-1");
 }

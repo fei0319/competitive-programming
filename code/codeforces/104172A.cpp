@@ -11,7 +11,8 @@ void dfs(int node) {
     for (int to : G[node]) {
         dfs(to);
         if (dp[to] >= g1) g2 = g1, g1 = dp[to];
-        else if (dp[to] > g2) g2 = dp[to];
+        else if (dp[to] > g2)
+            g2 = dp[to];
     }
     dp[node] = std::max(g1 - 1, g2) + 1;
 }

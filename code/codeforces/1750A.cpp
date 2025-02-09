@@ -12,7 +12,8 @@ void solve(void) {
         std::cin >> a[i];
     }
     if (a[1] == 1) std::cout << "Yes" << std::endl;
-    else std::cout << "No" << std::endl;
+    else
+        std::cout << "No" << std::endl;
 }
 
 int main() {

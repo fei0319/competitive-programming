@@ -51,19 +51,22 @@ void solve() {
         tmp = 0;
         if (za) {
             if (a[1] != 0) b[++tmp] = a[1];
-            else ++zb;
+            else
+                ++zb;
             zb += za - 1;
         }
         for (int i = 2; i <= cnt; ++i)
             if (a[i] - a[i - 1] != 0) b[++tmp] = a[i] - a[i - 1];
-            else ++zb;
+            else
+                ++zb;
         std::sort(b + 1, b + 1 + tmp);
         cnt = tmp;
         for (int i = 1; i <= cnt; ++i) a[i] = b[i];
         std::swap(za, zb);
     }
     if (cnt) printf("%d\n", a[1]);
-    else puts("0");
+    else
+        puts("0");
 }
 
 int main() {

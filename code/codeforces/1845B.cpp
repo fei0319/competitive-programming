@@ -11,7 +11,8 @@ void solve() {
     int ans = 0;
     for (int i = 0; i < 2; ++i) {
         if (x[i][1] == x[i][0] || x[i][2] == x[i][0]) ans += 0;
-        else if ((x[i][1] < x[i][0]) != (x[i][2] < x[i][0])) ans += 0;
+        else if ((x[i][1] < x[i][0]) != (x[i][2] < x[i][0]))
+            ans += 0;
         else
             ans +=
                 std::min(abs(x[i][1] - x[i][0]), abs(x[i][2] - x[i][0]));

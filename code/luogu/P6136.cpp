@@ -69,7 +69,8 @@ int rank(int &rt, int v) {
     int res = 1;
     while (x) {
         if (tr[x].v < v) res += tr[ls].sz + tr[x].cnt, p = x, x = rs;
-        else p = x, x = ls;
+        else
+            p = x, x = ls;
     }
     splay(p), rt = p;
     return res;
@@ -81,7 +82,8 @@ int kth(int &rt, int k) {
         if (k <= tr[ls].sz) x = ls;
         else if (k > tr[ls].sz + tr[x].cnt)
             k -= tr[ls].sz + tr[x].cnt, x = rs;
-        else break;
+        else
+            break;
     }
     splay(x), rt = x;
     return tr[x].v;
@@ -92,7 +94,8 @@ int prev(int &rt, int v) {
         if (tr[x].v < v) {
             if (tr[x].cnt) target = x;
             p = x, x = rs;
-        } else p = x, x = ls;
+        } else
+            p = x, x = ls;
     }
     splay(p), rt = p;
     return tr[target].v;
@@ -103,7 +106,8 @@ int next(int &rt, int v) {
         if (tr[x].v > v) {
             if (tr[x].cnt) target = x;
             p = x, x = ls;
-        } else p = x, x = rs;
+        } else
+            p = x, x = rs;
     }
     splay(p), rt = p;
     return tr[target].v;

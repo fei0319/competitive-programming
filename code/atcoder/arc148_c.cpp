@@ -52,7 +52,8 @@ void dfs2(int node, int t) {
 int lca(int x, int y) {
     while (top[x] != top[y])
         if (dep[top[x]] > dep[top[y]]) x = fa[top[x]];
-        else y = fa[top[y]];
+        else
+            y = fa[top[y]];
     return dep[x] < dep[y] ? x : y;
 }
 
@@ -63,7 +64,8 @@ void dfs(int node) {
         dfs(to);
         if ((dep[to] - dep[node]) == 1)
             t[0] += dp[to][0], t[1] += dp[to][1];
-        else t[0] += dp[to][0], t[1] += dp[to][0] + 1;
+        else
+            t[0] += dp[to][0], t[1] += dp[to][0] + 1;
     }
     if (col[node]) {
         dp[node][0] = t[1] + 1;
@@ -97,7 +99,8 @@ int main() {
             while (dep[st[top]] > dep[x]) {
                 if (dep[st[top - 1]] > dep[x])
                     E[st[top - 1]].push_back(st[top]);
-                else E[x].push_back(st[top]);
+                else
+                    E[x].push_back(st[top]);
                 --top;
             }
             if (st[top] != x) st[++top] = x;

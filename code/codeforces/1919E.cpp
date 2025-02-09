@@ -32,8 +32,10 @@ void solve() {
         int t;
         std::cin >> t;
         if (t < 0) a[-t - 1] += 1;
-        else if (t > 0) b[t - 1] += 1;
-        else ++z;
+        else if (t > 0)
+            b[t - 1] += 1;
+        else
+            ++z;
     }
     while (!a.empty() && !a.back()) a.pop_back();
     while (!b.empty() && !b.back()) b.pop_back();

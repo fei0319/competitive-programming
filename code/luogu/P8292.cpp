@@ -104,7 +104,8 @@ int main() {
             int x;
             read(x), x = kth[x];
             if (x <= 13) s ^= 1 << (x - 1);
-            else all.emplace_back(x);
+            else
+                all.emplace_back(x);
         }
         std::sort(all.begin(), all.end());
         all.resize(std::unique(all.begin(), all.end()) - all.begin());

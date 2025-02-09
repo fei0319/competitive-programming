@@ -26,7 +26,8 @@ void solve() {
             if (v - 1 > 0) {
                 evens[k] = v - 1;
             }
-        } else evens[k] = v;
+        } else
+            evens[k] = v;
     }
 
     auto calc = [&](int p) -> int {

@@ -43,7 +43,8 @@ int main() {
     //(a - x) + (b - x) = (c - x)
     ll x = a[0] + a[1] - a[2];
     if (x < 0ll) puts("-1");
-    else printf("%lld\n", a[2]);
+    else
+        printf("%lld\n", a[2]);
 }
 
 /*
