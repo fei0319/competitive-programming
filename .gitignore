@@ -17,7 +17,5 @@ test*.cpp
 */test*.cpp
 */*/test*.cpp
 
-
-# Added by cargo
-
 /target
+*.pdb
