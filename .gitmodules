@@ -1,0 +1,3 @@
+[submodule "tayu-procon"]
+	path = tayu-procon
+	url = https://github.com/tayu0110/tayu-procon.git
