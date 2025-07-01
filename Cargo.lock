@@ -3,5 +3,284 @@
 version = 4
 
 [[package]]
+name = "arbitrary-modint"
+version = "0.1.0"
+
+[[package]]
+name = "arbitrary-montgomery-modint"
+version = "0.1.0"
+
+[[package]]
+name = "bitset"
+version = "0.1.0"
+
+[[package]]
 name = "competitive-programming"
 version = "0.1.0"
+dependencies = [
+ "tayu-procon",
+]
+
+[[package]]
+name = "complex"
+version = "0.1.0"
+dependencies = [
+ "numeric 0.1.0",
+]
+
+[[package]]
+name = "convolution"
+version = "0.1.0"
+dependencies = [
+ "montgomery-modint",
+ "number-theoretic-transform",
+]
+
+[[package]]
+name = "cpgraph"
+version = "0.1.0"
+source = "git+https://github.com/tayu0110/tayu-procon.git#2a5c2a5e14b16c2f960da74f54da1bb3ad3879c3"
+dependencies = [
+ "unionfind 0.1.0 (git+https://github.com/tayu0110/tayu-procon.git)",
+]
+
+[[package]]
+name = "cpio"
+version = "0.1.0"
+source = "git+https://github.com/tayu0110/tayu-procon.git#2a5c2a5e14b16c2f960da74f54da1bb3ad3879c3"
+
+[[package]]
+name = "ds"
+version = "0.1.0"
+dependencies = [
+ "static-modint 0.1.0",
+]
+
+[[package]]
+name = "ds"
+version = "0.1.0"
+source = "git+https://github.com/tayu0110/tayu-procon.git#2a5c2a5e14b16c2f960da74f54da1bb3ad3879c3"
+dependencies = [
+ "static-modint 0.1.0 (git+https://github.com/tayu0110/tayu-procon.git)",
+]
+
+[[package]]
+name = "fenwick-tree"
+version = "0.1.0"
+
+[[package]]
+name = "flow"
+version = "0.1.0"
+dependencies = [
+ "numeric 0.1.0",
+ "zero-one 0.1.0",
+]
+
+[[package]]
+name = "geometry"
+version = "0.1.0"
+dependencies = [
+ "numeric 0.1.0",
+]
+
+[[package]]
+name = "graph"
+version = "0.1.0"
+dependencies = [
+ "ds 0.1.0",
+ "unionfind 0.1.0",
+]
+
+[[package]]
+name = "iolib"
+version = "0.1.0"
+dependencies = [
+ "ds 0.1.0 (git+https://github.com/tayu0110/tayu-procon.git)",
+]
+
+[[package]]
+name = "math"
+version = "0.1.0"
+dependencies = [
+ "simple-rand",
+]
+
+[[package]]
+name = "matrix"
+version = "0.1.0"
+dependencies = [
+ "arbitrary-modint",
+ "modint-common 0.1.0",
+ "montgomery-modint",
+ "numeric 0.1.0",
+ "static-modint 0.1.0",
+ "zero-one 0.1.0",
+]
+
+[[package]]
+name = "mincost-flow"
+version = "0.1.0"
+
+[[package]]
+name = "modint"
+version = "0.1.0"
+dependencies = [
+ "arbitrary-modint",
+ "arbitrary-montgomery-modint",
+ "modint-common 0.1.0",
+ "montgomery-modint",
+ "static-modint 0.1.0",
+]
+
+[[package]]
+name = "modint-common"
+version = "0.1.0"
+
+[[package]]
+name = "modint-common"
+version = "0.1.0"
+source = "git+https://github.com/tayu0110/tayu-procon.git#2a5c2a5e14b16c2f960da74f54da1bb3ad3879c3"
+
+[[package]]
+name = "montgomery-modint"
+version = "0.1.0"
+dependencies = [
+ "modint-common 0.1.0",
+ "simple-rand",
+ "zero-one 0.1.0",
+]
+
+[[package]]
+name = "number-theoretic-transform"
+version = "0.1.0"
+dependencies = [
+ "montgomery-modint",
+]
+
+[[package]]
+name = "numeric"
+version = "0.1.0"
+dependencies = [
+ "zero-one 0.1.0",
+]
+
+[[package]]
+name = "numeric"
+version = "0.1.0"
+source = "git+https://github.com/tayu0110/tayu-procon.git#2a5c2a5e14b16c2f960da74f54da1bb3ad3879c3"
+dependencies = [
+ "zero-one 0.1.0 (git+https://github.com/tayu0110/tayu-procon.git)",
+]
+
+[[package]]
+name = "polynomial"
+version = "0.1.0"
+dependencies = [
+ "convolution",
+ "montgomery-modint",
+ "number-theoretic-transform",
+ "zero-one 0.1.0",
+]
+
+[[package]]
+name = "rational"
+version = "0.1.0"
+dependencies = [
+ "numeric 0.1.0 (git+https://github.com/tayu0110/tayu-procon.git)",
+]
+
+[[package]]
+name = "segtree"
+version = "0.1.0"
+dependencies = [
+ "static-modint 0.1.0",
+ "zero-one 0.1.0",
+]
+
+[[package]]
+name = "simple-rand"
+version = "0.1.0"
+
+[[package]]
+name = "static-modint"
+version = "0.1.0"
+dependencies = [
+ "modint-common 0.1.0",
+ "zero-one 0.1.0",
+]
+
+[[package]]
+name = "static-modint"
+version = "0.1.0"
+source = "git+https://github.com/tayu0110/tayu-procon.git#2a5c2a5e14b16c2f960da74f54da1bb3ad3879c3"
+dependencies = [
+ "modint-common 0.1.0 (git+https://github.com/tayu0110/tayu-procon.git)",
+ "zero-one 0.1.0 (git+https://github.com/tayu0110/tayu-procon.git)",
+]
+
+[[package]]
+name = "string"
+version = "0.1.0"
+dependencies = [
+ "segtree",
+ "simple-rand",
+]
+
+[[package]]
+name = "tayu-procon"
+version = "0.1.0"
+dependencies = [
+ "bitset",
+ "complex",
+ "convolution",
+ "cpgraph",
+ "cpio",
+ "ds 0.1.0 (git+https://github.com/tayu0110/tayu-procon.git)",
+ "fenwick-tree",
+ "flow",
+ "geometry",
+ "graph",
+ "iolib",
+ "math",
+ "matrix",
+ "mincost-flow",
+ "modint",
+ "numeric 0.1.0",
+ "polynomial",
+ "rational",
+ "segtree",
+ "simple-rand",
+ "string",
+ "trie",
+ "unionfind 0.1.0",
+ "utility",
+]
+
+[[package]]
+name = "trie"
+version = "0.1.0"
+
+[[package]]
+name = "unionfind"
+version = "0.1.0"
+
+[[package]]
+name = "unionfind"
+version = "0.1.0"
+source = "git+https://github.com/tayu0110/tayu-procon.git#2a5c2a5e14b16c2f960da74f54da1bb3ad3879c3"
+
+[[package]]
+name = "utility"
+version = "0.1.0"
+dependencies = [
+ "zero-one 0.1.0",
+]
+
+[[package]]
+name = "zero-one"
+version = "0.1.0"
+
+[[package]]
+name = "zero-one"
+version = "0.1.0"
+source = "git+https://github.com/tayu0110/tayu-procon.git#2a5c2a5e14b16c2f960da74f54da1bb3ad3879c3"
