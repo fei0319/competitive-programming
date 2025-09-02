@@ -5,10 +5,10 @@ using i64 = int64_t;
 void solve() {
     int n;
     std::cin >> n;
-    
+
     std::vector<int> p(n);
     std::for_each(p.begin(), p.end(), [](auto &x) { std::cin >> x; });
-    
+
     i64 ans{};
     i64 pre{};
     int cnt{};

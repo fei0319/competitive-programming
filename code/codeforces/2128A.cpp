@@ -27,9 +27,7 @@ void solve() {
             ++ans;
         }
         a.erase(a.begin() + idx);
-        std::for_each(a.begin(), a.end(), [](i64 &x) {
-            x *= 2;
-        });
+        std::for_each(a.begin(), a.end(), [](i64 &x) { x *= 2; });
     }
 
     std::cout << ans << '\n';

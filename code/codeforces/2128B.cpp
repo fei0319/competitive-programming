@@ -5,7 +5,7 @@ using i64 = int64_t;
 void solve() {
     int n;
     std::cin >> n;
-    
+
     std::vector<int> p(n);
     for (int &i : p) {
         std::cin >> i;
