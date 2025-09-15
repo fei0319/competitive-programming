@@ -5,6 +5,6 @@ AlwaysBreakTemplateDeclarations: Yes
 AllowShortFunctionsOnASingleLine: All
 AllowShortLambdasOnASingleLine: All
 NamespaceIndentation: All
-AllowShortIfStatementsOnASingleLine: Always
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 AllowShortLoopsOnASingleLine: true
 ColumnLimit: 75
