@@ -19,8 +19,7 @@ bool ok(int l, int r) {
     int s = 0;
     for (int i = 1; i <= n; ++i) {
         if (b[i] == '(') ++s;
-        else
-            --s;
+        else --s;
         if (s < 0) return false;
     }
     return true;

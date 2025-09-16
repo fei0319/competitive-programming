@@ -6,12 +6,10 @@ struct Median {
     std::multiset<T> r{};
     void insert(const T &x) {
         if (l.empty()) r.insert(x);
-        else if (r.empty())
-            l.insert(x);
+        else if (r.empty()) l.insert(x);
         else {
             if (x >= *r.begin()) r.insert(x);
-            else
-                l.insert(x);
+            else l.insert(x);
         }
         adjust();
     }

@@ -50,9 +50,7 @@ int main() {
             continue;
         }
         if (r - l == 1) puts("0");
-        else if (r - l == 2)
-            puts("1");
-        else
-            printf("%d\n", r - l - 2);
+        else if (r - l == 2) puts("1");
+        else printf("%d\n", r - l - 2);
     }
 }

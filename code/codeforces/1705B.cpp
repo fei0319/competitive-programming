@@ -50,8 +50,7 @@ void solve() {
     while (l < n && a[l] == 0) ++l;
     for (int i = l; i < n; ++i)
         if (a[i]) ans += a[i];
-        else
-            ++ans;
+        else ++ans;
     printf("%lld\n", ans);
 }
 

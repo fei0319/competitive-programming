@@ -16,8 +16,7 @@ void solve(void) {
     int ans = 1e9;
     for (int i = 1; i < m; ++i) {
         if (pos[a[i]] > pos[a[i + 1]]) ans = 0;
-        else
-            ans = std::min(ans, pos[a[i + 1]] - pos[a[i]]);
+        else ans = std::min(ans, pos[a[i + 1]] - pos[a[i]]);
 
         if (pos[a[i + 1]] > pos[a[i]] + d) ans = 0;
         else if (d <= n - 2)

@@ -111,8 +111,7 @@ void insert(int a) {
     while (l < r) {
         int mid = (l + r + 1) >> 1;
         if (query(1, a, mid) == mid - a + 1) l = mid;
-        else
-            r = mid - 1;
+        else r = mid - 1;
     }
     modify(1, a, l, 0);
     modify(1, l + 1, l + 1, 1);
@@ -124,8 +123,7 @@ void erase(int a) {
     while (l < r) {
         int mid = (l + r + 1) >> 1;
         if (query(1, a, mid) == 0) l = mid;
-        else
-            r = mid - 1;
+        else r = mid - 1;
     }
     modify(1, a, l, 1);
     modify(1, l + 1, l + 1, 0);

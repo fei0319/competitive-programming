@@ -13,8 +13,7 @@ int ask(int x) {
     std::cout << "? " << x << ' ';
     for (int i = 1; i <= n; ++i)
         if (i != x) std::cout << s[i];
-        else
-            std::cout << 0;
+        else std::cout << 0;
     std::cout << std::endl;
 
     std::cin >> x;

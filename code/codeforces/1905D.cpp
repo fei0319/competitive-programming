@@ -30,8 +30,7 @@ class Segment {
         push_down(node);
         int mid = (L + R) / 2;
         if (x <= mid) modify(node << 1, L, mid, x, val);
-        else
-            modify(node << 1 | 1, mid + 1, R, x, val);
+        else modify(node << 1 | 1, mid + 1, R, x, val);
         push_up(node);
     }
     void clear(int node, int L, int R, int l, int r) {

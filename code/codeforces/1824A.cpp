@@ -15,10 +15,8 @@ void solve() {
         if (x > 0) {
             if (s[x] == 0) ++middle;
             s[x] = 1;
-        } else if (x == -1)
-            ++left;
-        else
-            ++right;
+        } else if (x == -1) ++left;
+        else ++right;
     }
     //    printf("%d %d %d\n", left, right, middle);
     int ans = std::min(std::max(left, right), (m - middle)) + middle;

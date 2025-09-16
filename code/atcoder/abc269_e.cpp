@@ -40,16 +40,14 @@ int main() {
     while (l < r) {
         int mid = (l + r) >> 1;
         if (query(l, mid, 1, n) < mid - l + 1) r = mid;
-        else
-            l = mid + 1;
+        else l = mid + 1;
     }
     x = l;
     l = 1, r = n;
     while (l < r) {
         int mid = (l + r) >> 1;
         if (query(1, n, l, mid) < mid - l + 1) r = mid;
-        else
-            l = mid + 1;
+        else l = mid + 1;
     }
     y = l;
     printf("! %d %d\n", x, y);

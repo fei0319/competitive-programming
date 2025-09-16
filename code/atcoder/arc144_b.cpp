@@ -44,8 +44,7 @@ bool check(int v) {
     ll need = 0;
     for (int i = 1; i <= N; ++i)
         if (w[i] > v) need += (w[i] - v) / b;
-        else if (w[i] < v)
-            need -= (v - w[i] + a - 1) / a;
+        else if (w[i] < v) need -= (v - w[i] + a - 1) / a;
     return need >= 0;
 }
 
@@ -56,8 +55,7 @@ int main() {
     while (l < r) {
         int mid = (l + r + 1) >> 1;
         if (check(mid)) l = mid;
-        else
-            r = mid - 1;
+        else r = mid - 1;
     }
     printf("%d\n", l);
 }

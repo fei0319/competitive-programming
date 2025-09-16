@@ -12,8 +12,7 @@ bool check(void) {
     int l = 1, r = n / 2 + 1;
     for (int i = 1; i <= n; ++i) {
         if (i & 1) b[i] = a[l++];
-        else
-            b[i] = a[r++];
+        else b[i] = a[r++];
     }
     b[0] = b[n];
     for (int i = 1; i <= n; ++i)
@@ -28,8 +27,7 @@ void solve(void) {
         std::cout << "YES\n";
         for (int i = 1; i <= n; ++i) std::cout << b[i] << ' ';
         std::cout << '\n';
-    } else
-        std::cout << "NO\n";
+    } else std::cout << "NO\n";
 }
 
 int main() {

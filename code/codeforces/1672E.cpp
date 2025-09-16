@@ -39,8 +39,7 @@ int main() {
     while (l < r) {
         int mid = (l + r) >> 1;
         if (check(mid) <= 1) r = mid;
-        else
-            l = mid + 1;
+        else l = mid + 1;
     }
     int w = l, ans = w * check(w), maxh = 1;
     for (int i = 2; i <= n; ++i) {
@@ -49,8 +48,7 @@ int main() {
         int h = check(w);
         chkmax(maxh, h);
         if (h == n + 1) break;
-        else if (h <= i)
-            ans = w * h, i = h + 1;
+        else if (h <= i) ans = w * h, i = h + 1;
     }
     printf("! %d\n", ans);
 }

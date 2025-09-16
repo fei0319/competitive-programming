@@ -63,8 +63,7 @@ void solve() {
         int rank = mt.query(x);
         int p = mt.kth(rank - 1), q = mt.kth(rank + 1);
         if (t == 0) return calc(p, x) + calc(x, q) - calc(p, q);
-        else
-            return calc(p, x) + calc(x, q) - calc(p, q) + a[x] * 2;
+        else return calc(p, x) + calc(x, q) - calc(p, q) + a[x] * 2;
     };
     for (int i = 2; i < n; ++i) {
         for (int t = 0; t < 2; ++t) {

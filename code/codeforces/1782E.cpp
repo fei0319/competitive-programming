@@ -20,8 +20,7 @@ int find_left(int v) {
     while (L < R) {
         int mid = (L + R) >> 1;
         if (r[b[mid]] >= v) R = mid;
-        else
-            L = mid + 1;
+        else L = mid + 1;
     }
     return L;
 }
@@ -31,8 +30,7 @@ int find_right(int v) {
     while (L < R) {
         int mid = (L + R + 1) >> 1;
         if (l[b[mid]] <= v) L = mid;
-        else
-            R = mid - 1;
+        else R = mid - 1;
     }
     return L;
 }
@@ -58,8 +56,7 @@ void deal(std::vector<Node> a, int f) {
         for (int i = L; i <= R; ++i) {
             if (l[id] <= l[b[i]] && r[b[i]] <= r[id]) {
                 if (f == 1) u[b[i]] = 2;
-                else
-                    d[b[i]] = 1;
+                else d[b[i]] = 1;
             } else {
                 if (l[id] <= r[b[i]] && l[id] >= l[b[i]])
                     l[id] = r[b[i]] + 1;
@@ -91,8 +88,7 @@ void solve(void) {
         for (auto [l, r, id] : a[i]) {
             if (b.size() && l <= b.back().second)
                 b.back().second = std::max(b.back().second, r);
-            else
-                b.emplace_back(l, r);
+            else b.emplace_back(l, r);
         }
         for (auto [l, r] : b) ans += r - l + 1;
         a[i].resize(std::remove_if(a[i].begin(), a[i].end(),

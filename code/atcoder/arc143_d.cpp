@@ -55,8 +55,7 @@ void dfs(int node) {
         if (!vist[to.to]) {
             s[to.id] = (to.to == a[to.id]);
             dfs(to.to);
-        } else
-            s[to.id] = (to.to != a[to.id]);
+        } else s[to.id] = (to.to != a[to.id]);
     }
 }
 

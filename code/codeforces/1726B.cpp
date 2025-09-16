@@ -56,8 +56,7 @@ void sov() {
             puts("YES");
             for (int i = 1; i <= n - 2; ++i) printf("1 ");
             printf("%d %d\n", (m - n + 2) / 2, (m - n + 2) / 2);
-        } else
-            puts("NO");
+        } else puts("NO");
     }
 }
 

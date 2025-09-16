@@ -18,8 +18,7 @@ void solve(void) {
             ++sg;
         } else {
             if (hl >= a[i]) hl -= a[i];
-            else if (a[i] == 1 && sg)
-                --sg;
+            else if (a[i] == 1 && sg) --sg;
             else {
                 std::cout << "No\n";
                 return;

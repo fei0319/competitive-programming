@@ -11,8 +11,7 @@ int get_mind(int x, int d) {
     if (d == 0) return 0;
     while (x % d != 0 && d * d <= x) ++d;
     if (x % d == 0) return d;
-    else
-        return 0;
+    else return 0;
 }
 
 int main() {

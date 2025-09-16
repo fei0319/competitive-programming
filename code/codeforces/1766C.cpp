@@ -55,8 +55,7 @@ void solve(void) {
         }
     }
     if (t == 1) std::cout << "YES\n";
-    else
-        std::cout << "NO\n";
+    else std::cout << "NO\n";
 }
 
 int main() {

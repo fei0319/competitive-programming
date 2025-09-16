@@ -75,10 +75,8 @@ int kth(int &rt, int k) {
     while (true) {
         int lsz = tr[tr[x].ls].sz;
         if (k <= lsz) x = tr[x].ls;
-        else if (k > lsz + 1)
-            x = tr[x].rs, k -= lsz + 1;
-        else
-            return tr[x].val;
+        else if (k > lsz + 1) x = tr[x].rs, k -= lsz + 1;
+        else return tr[x].val;
     }
 }
 int rank(int &rt, int v) {
@@ -118,15 +116,10 @@ int main() {
         t = read(), x = read();
 
         if (t == 0) insert(rt, x);
-        else if (t == 1)
-            erase(rt, x);
-        else if (t == 2)
-            write(kth(rt, x)), putchar('\n');
-        else if (t == 3)
-            write(rank(rt, x)), putchar('\n');
-        else if (t == 4)
-            write(pre(rt, x)), putchar('\n');
-        else if (t == 5)
-            write(nxt(rt, x)), putchar('\n');
+        else if (t == 1) erase(rt, x);
+        else if (t == 2) write(kth(rt, x)), putchar('\n');
+        else if (t == 3) write(rank(rt, x)), putchar('\n');
+        else if (t == 4) write(pre(rt, x)), putchar('\n');
+        else if (t == 5) write(nxt(rt, x)), putchar('\n');
     }
 }

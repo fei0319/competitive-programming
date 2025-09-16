@@ -55,8 +55,7 @@ bool rev;
 int get(int u, int v) {
     if (c[u] != v && c[v] != u) return 0;
     if (c[u] == v) return rev ? k - rnk[u] : rnk[u];
-    else
-        return rev ? k - rnk[v] : rnk[v];
+    else return rev ? k - rnk[v] : rnk[v];
 }
 
 void dijkstra(int s, int *d, int *p) {

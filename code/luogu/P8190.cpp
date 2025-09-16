@@ -80,8 +80,7 @@ int main() {
         while (l < r) {
             int mid = (l + r) >> 1;
             if ((ll)(check(mid - x, v)) > v) r = mid;
-            else
-                l = mid + 1;
+            else l = mid + 1;
         }
         ans = check(l - x, v), x = l;
     }

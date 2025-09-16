@@ -139,8 +139,7 @@ std::vector<Run> all_runs(const std::string &s) {
             while (l < r) {
                 int mid = (l + r) / 2;
                 if (query(mid, R - p) == query(mid + p, R)) r = mid;
-                else
-                    l = mid + 1;
+                else l = mid + 1;
             }
             L = l;
 
@@ -148,8 +147,7 @@ std::vector<Run> all_runs(const std::string &s) {
             while (l < r) {
                 int mid = (l + r + 1) / 2;
                 if (query(L + p, mid) == query(L, mid - p)) l = mid;
-                else
-                    r = mid - 1;
+                else r = mid - 1;
             }
             R = l;
 
@@ -250,8 +248,7 @@ int main() {
         for (int i = n - 1; i >= 0; --i) {
             for (int v : to_ins[i]) {
                 if (v > 0) mt.update(v, 1);
-                else
-                    mt.update(-v, -1);
+                else mt.update(-v, -1);
             }
             for (auto [id, r] : op2[i]) {
                 ans[id] -= mt.query(r);

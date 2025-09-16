@@ -53,8 +53,7 @@ bool check(void) {
             } else {
                 pre = true;
             }
-        } else
-            pre = true;
+        } else pre = true;
         ++l, --r;
     }
     return true;
@@ -64,8 +63,7 @@ int main() {
     read(N);
     scanf("%s", s + 1);
     if (check()) puts("Yes");
-    else
-        puts("No");
+    else puts("No");
 }
 
 /*

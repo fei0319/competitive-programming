@@ -25,8 +25,7 @@ void output(int x) {
             std::cout << char(v.back() + 'a');
             --cnt[s[i] - 'a'], ++cnt[v.back()];
             if (cnt[v.back()] == x) v.pop_back();
-        } else
-            std::cout << s[i];
+        } else std::cout << s[i];
     }
 }
 

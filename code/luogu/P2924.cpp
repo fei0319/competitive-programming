@@ -36,8 +36,7 @@ void solve() {
         int res{};
         for (const auto [id1, id2] : edge_list) {
             if (id2 == s) res = std::max(res, dp[id1] + 1);
-            else
-                dp[id2] = std::max(dp[id2], dp[id1] + 1);
+            else dp[id2] = std::max(dp[id2], dp[id1] + 1);
         }
         return res;
     };

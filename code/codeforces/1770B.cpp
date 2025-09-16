@@ -9,8 +9,7 @@ void solve(void) {
     int l = 1, r = n;
     for (int i = 1; i <= n; ++i) {
         if (i % k == 0) std::cout << l++ << ' ';
-        else
-            std::cout << r-- << ' ';
+        else std::cout << r-- << ' ';
     }
     std::cout << "\n";
 }

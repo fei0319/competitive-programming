@@ -64,8 +64,7 @@ struct Convex {
                 (ta < a.size() &&
                  (a[ta] - a[ta - 1]) * (b[tb] - b[tb - 1])))
                 edge.emplace_back(a[ta] - a[ta - 1]), ++ta;
-            else
-                edge.emplace_back(b[tb] - b[tb - 1]), ++tb;
+            else edge.emplace_back(b[tb] - b[tb - 1]), ++tb;
         }
         edge.pop_back();
         std::vector<Node> res;

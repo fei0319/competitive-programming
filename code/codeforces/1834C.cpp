@@ -17,8 +17,7 @@ void solve() {
     int ans = 1e9;
     for (int i = 0; i < 2; ++i) {
         if (cnt[i]) ans = std::min(ans, cnt[i] * 2 - (cnt[i] % 2 == i));
-        else
-            ans = std::min(ans, (1 - i) * 2);
+        else ans = std::min(ans, (1 - i) * 2);
     }
 
     printf("%d\n", ans);

@@ -47,8 +47,7 @@ int main() {
         int t, x;
         read(t), read(x);
         if (t == 1) p = (p + n - x) % n;
-        else
-            printf("%c\n", s[(p + x - 1) % n]);
+        else printf("%c\n", s[(p + x - 1) % n]);
     }
 }
 

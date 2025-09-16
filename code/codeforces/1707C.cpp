@@ -77,16 +77,14 @@ void dfs2(int node, int t) {
 int lca(int x, int y) {
     while (top[x] != top[y])
         if (dep[top[x]] > dep[top[y]]) x = fa[top[x]];
-        else
-            y = fa[top[y]];
+        else y = fa[top[y]];
     return dep[x] < dep[y] ? x : y;
 }
 int findSon(int x, int y) {
     while (top[x] != top[y]) {
         y = top[y];
         if (fa[y] == x) return y;
-        else
-            y = fa[y];
+        else y = fa[y];
     }
     return son[x];
 }

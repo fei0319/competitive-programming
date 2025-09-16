@@ -25,8 +25,7 @@ void solve(void) {
         while (s.size() && m >= *s.begin())
             m -= *s.begin(), s.erase(s.begin()), ++now;
         if (m < 0 || now < x) now = x;
-        else
-            now = x + 1;
+        else now = x + 1;
     }
     std::cout << n - now + 1 << '\n';
 }

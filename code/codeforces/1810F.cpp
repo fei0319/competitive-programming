@@ -53,8 +53,7 @@ struct MBase {
                 int mid = (l + r + 1) / 2;
                 if (t.query(1, 1, n, x, mid) == ll(m - 1) * (mid - x + 1))
                     l = mid;
-                else
-                    r = mid - 1;
+                else r = mid - 1;
             }
             t.modify(1, 1, n, x, l, -(m - 1));
             t.modify(1, 1, n, l + 1, l + 1, 1);
@@ -68,8 +67,7 @@ struct MBase {
             while (l < r) {
                 int mid = (l + r + 1) / 2;
                 if (t.query(1, 1, n, x, mid) == 0) l = mid;
-                else
-                    r = mid - 1;
+                else r = mid - 1;
             }
             t.modify(1, 1, n, x, l, m - 1);
             t.modify(1, 1, n, l + 1, l + 1, -1);
@@ -80,13 +78,11 @@ struct MBase {
         while (l < r) {
             int mid = (l + r + 1) / 2;
             if (t.query(1, 1, n, mid, n)) l = mid;
-            else
-                r = mid - 1;
+            else r = mid - 1;
         }
         // return l;
         if (t.query(1, 1, n, 1, n) == 1) return l;
-        else
-            return l + 1;
+        else return l + 1;
     }
     void out() {
         // for(int i = 7; i >= 1; --i) std::cout << t.query(1, 1, n, i, i);

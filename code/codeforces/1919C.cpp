@@ -16,10 +16,8 @@ void solve(void) {
         if (x > y) std::swap(x, y);
 
         if (i <= x) x = i;
-        else if (i <= y)
-            y = i;
-        else
-            x = i, ans += 1;
+        else if (i <= y) y = i;
+        else x = i, ans += 1;
     }
 
     std::cout << ans << '\n';

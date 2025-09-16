@@ -46,8 +46,7 @@ int main() {
     }
     auto query = [&](int l, int r) -> Hash {
         if (l == 0) return h[r];
-        else
-            return h[r] % h[l - 1];
+        else return h[r] % h[l - 1];
     };
 
     auto lyndon_roots = [&](auto &op) -> std::vector<std::pair<int, int>> {
@@ -58,8 +57,7 @@ int main() {
                 int mid = (l + r + 1) / 2;
                 if (query(x, x + mid - 1) == query(y, y + mid - 1))
                     l = mid;
-                else
-                    r = mid - 1;
+                else r = mid - 1;
             }
             return op(x + l, y + l);
         };
@@ -97,8 +95,7 @@ int main() {
         while (l < r) {
             int mid = (l + r) / 2;
             if (query(mid, j - p) == query(mid + p, j)) r = mid;
-            else
-                l = mid + 1;
+            else l = mid + 1;
         }
         i = l;
 
@@ -106,8 +103,7 @@ int main() {
         while (l < r) {
             int mid = (l + r + 1) / 2;
             if (query(i + p, mid) == query(i, mid - p)) l = mid;
-            else
-                r = mid - 1;
+            else r = mid - 1;
         }
         j = l;
 

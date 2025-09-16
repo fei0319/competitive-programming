@@ -13,8 +13,7 @@ void solve(void) {
 
     for (int i = 1; i <= n; ++i)
         if (s[i] == 'A') --a;
-        else
-            --b;
+        else --b;
     if (-a != c + d || -b != c + d) {
         std::cout << "NO\n";
         return;
@@ -51,8 +50,7 @@ void solve(void) {
 
     //	std::cout << c << ' ' << d << ' ' << common << '\n';
     if (common >= c + d) std::cout << "YES\n";
-    else
-        std::cout << "NO\n";
+    else std::cout << "NO\n";
 }
 
 int main() {

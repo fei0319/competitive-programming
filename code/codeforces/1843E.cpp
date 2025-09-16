@@ -30,12 +30,10 @@ void solve() {
     while (l < r) {
         int mid = (l + r + 1) / 2;
         if (!check(mid)) l = mid;
-        else
-            r = mid - 1;
+        else r = mid - 1;
     }
     if (l == q) puts("-1");
-    else
-        printf("%d\n", l + 1);
+    else printf("%d\n", l + 1);
 }
 
 int main() {

@@ -11,8 +11,7 @@ struct SegmentTree {
     void push_up(int node) {
         if (a[tr[node << 1]] >= a[tr[node << 1 | 1]])
             tr[node] = tr[node << 1];
-        else
-            tr[node] = tr[node << 1 | 1];
+        else tr[node] = tr[node << 1 | 1];
     }
     void build(int node, int L, int R) {
         if (L == R) {
@@ -31,8 +30,7 @@ struct SegmentTree {
         int res_l = query(node << 1, L, mid, l, r),
             res_r = query(node << 1 | 1, mid + 1, R, l, r);
         if (a[res_l] >= a[res_r]) return res_l;
-        else
-            return res_r;
+        else return res_r;
     }
 } mt;
 

@@ -60,8 +60,7 @@ int main(int argc, char *argv[]) {
         while (l < r) {
             int mid = (l + r + 1) / 2;
             if (st[mid].second <= k) l = mid;
-            else
-                r = mid - 1;
+            else r = mid - 1;
         }
 
         std::cout << (k + st[l].first) / n << '\n';
