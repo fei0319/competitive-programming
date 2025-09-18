@@ -135,8 +135,8 @@ using NodeRc = Rc<const Node, S, 16>;
 NodeRc push_up(const NodeRc &x, const NodeRc &ls, const NodeRc &rs) {
     return NodeRc::make(ls, rs, (ls->sum + rs->sum) * x->tag, x->tag);
 }
-auto multiply(const NodeRc &x, int L, int R, int l, int r, mint w)
-    -> NodeRc {
+auto multiply(const NodeRc &x, int L, int R, int l, int r,
+              mint w) -> NodeRc {
     if (l <= L && R <= r) {
         return NodeRc::make(x->ls, x->rs, x->sum * w, x->tag * w);
     }
@@ -146,8 +146,8 @@ auto multiply(const NodeRc &x, int L, int R, int l, int r, mint w)
     if (r > mid) rs = multiply(rs, mid + 1, R, l, r, w);
     return push_up(x, ls, rs);
 }
-auto insert(const NodeRc &x, mint tag, int L, int R, int p, mint w)
-    -> NodeRc {
+auto insert(const NodeRc &x, mint tag, int L, int R, int p,
+            mint w) -> NodeRc {
     if (L == R) {
         return NodeRc::make(NodeRc{}, NodeRc{}, w / tag, mint{});
     }
@@ -173,7 +173,7 @@ int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
 
-    const_cast<mint &>(NodeRc{}->tag) = 1;
+    const_cast<mint &>(NodeRc {} -> tag) = 1;
 
     int n, k;
     std::cin >> n >> k;
